@@ -1,0 +1,264 @@
+# IRL BUT CHEATS - S01E01 "Noclip"
+# Dave is broke. Reality has a console. Dave has no impulse control.
+id: s01e01
+title: Noclip
+target_seconds: 600
+fps: 24
+resolution: [1280, 720]
+
+scenes:
+  # ------------------------------------------------------------------ 1. cold open
+  - id: cold_open
+    set: apartment
+    cast: {dave: couch}
+    beats:
+      - {act: 3, cam: wide, acts: [{who: dave, do: idle}], ui: [{kind: chat, text: "[SERVER] Dave joined the game.", at: 0.6, dur: 3.5}]}
+      - {say: dave, text: "Rent is due in three days. I have four dollars and a coupon for a free bagel."}
+      - {say: dave, text: "If real life were a video game, I would have rage quit years ago."}
+      - {say: dave, text: "That notice on the wall says final warning. It has said final warning for four months.", cam: wide}
+      - {say: dave, text: "Okay. Laptop. Maybe my bank made a mistake in my favor.", cam: follow, acts: [{who: dave, do: walk_to, to: table}]}
+      - {act: 2.5, cam: dave, sfx: [{name: chime, at: 1.0}], acts: [{who: dave, do: jump, delay: 0.9}], ui: [{kind: console, text: "~", at: 1.0, dur: 1.4}]}
+      - {say: dave, text: "Why is there a text box floating in front of my face?", hp: "100", ui: [{kind: system, text: "Developer console enabled.", at: 0.2, dur: 4}]}
+      - {say: dave, text: "Is that a console? In my apartment? That is not covered by my renters insurance."}
+      - {act: 3.5, cam: dave, sfx: [{name: error, at: 1.6}], ui: [{kind: console, text: "> help", at: 0.2, dur: 1.4}, {kind: system, text: "Unknown command. This is real life, Dave. There is no help.", at: 1.6, dur: 3.5}]}
+      - {say: dave, text: "Rude. Okay, let me try something simple. Something small. Something responsible."}
+      - {cheat: spawn_pizza, dur: 5, cam: two, sfx: [{name: pop, at: 2.0}], acts: [{who: dave, do: spawn, item: pizza, n: 1, to: table, delay: 2.0, dur: 1.0}], ui: [{kind: achievement, text: "First Cheat", at: 2.2, dur: 3.5}]}
+      - {say: dave, text: "That is a free pizza. I have been poor for six years and I just made a pizza out of nothing."}
+      - {say: dave, text: "It is still warm. It smells like pepperoni. This is the greatest day of my life."}
+      - {say: dave, text: "The Sneaker Shack has a limited drop at noon. Four hundred people in line."}
+      - {say: dave, text: "But nobody is going to notice if I just walk through them. Like a ghost. With a coupon.", acts: [{who: dave, do: spin, n: 1}]}
+      - {act: 2.5, cam: wide, acts: [{who: dave, do: run_to, to: door}], sfx: [whoosh]}
+
+  # ------------------------------------------------------------------ 2. title
+  - id: title
+    set: black
+    beats:
+      - {card: "IRL BUT CHEATS", sub: "S01E01  -  NOCLIP", dur: 5, sfx: [boom]}
+
+  # ------------------------------------------------------------------ 3. the line
+  - id: sneaker_line
+    set: street
+    cast:
+      dave: far_left
+      npc_1: {at: queue_front, face: 90}
+      npc_2: {at: queue_mid, face: 90}
+      npc_3: {at: queue_back, face: 90}
+    beats:
+      - {act: 4, cam: wide, sfx: [crowd], ui: [{kind: chat, text: "[SERVER] 400 players waiting in queue.", at: 0.5, dur: 3.5}]}
+      - {say: npc_1, text: "I have been in this line since Tuesday."}
+      - {say: npc_2, text: "Nice weather today."}
+      - {say: npc_3, text: "Nice weather today."}
+      - {say: dave, text: "Okay. Four hundred people. The shop opens in ten minutes. This is fine.", cam: follow, follow: dave, acts: [{who: dave, do: walk_to, to: queue_back}]}
+      - {say: dave, text: "Excuse me, sir. How long have you been waiting?", cam: follow, follow: dave, acts: [{who: dave, do: walk_to, to: queue_mid}]}
+      - {say: npc_1, text: "I have been in this line since Tuesday."}
+      - {say: dave, text: "That is a normal amount of time to wait for shoes. Great. Love that for us."}
+      - {say: dave, text: "Maybe I can ask politely. Hello everyone. I am Dave. May I please cut the line?", cam: two}
+      - {say: npc_2, text: "Nice weather today."}
+      - {say: npc_3, text: "Nice weather today."}
+      - {say: npc_1, text: "The line starts back there, past the lamp post. Then past the second lamp post. Then, honestly, the sea.", cam: wide}
+      - {say: dave, text: "That is geographically unsound."}
+      - {say: dave, text: "Alright. Let us see if this thing works on stuff that is not a pizza.", cam: dave}
+      - {cheat: noclip, dur: 4, cam: dave, sfx: [{name: glitch, at: 1.5}], ui: [{kind: achievement, text: "Cutting In Line (Cheater Edition)", at: 2.0, dur: 3.5}]}
+      - {say: dave, text: "Noclip is on. I am walking through the world like a ghost with a mortgage.", cam: follow, follow: dave, sfx: [whoosh], acts: [{who: dave, do: noclip_to, to: inside}]}
+      - {act: 3, cam: follow, follow: dave, hp: "100", acts: [{who: dave, do: noclip_to, to: edge}], ui: [{kind: chat, text: "[SERVER] Dave is inside a wall.", at: 0.3, dur: 2.6}]}
+      - {say: npc_1, text: "Did that guy just walk through the shoe store?", cam: wide}
+      - {say: npc_2, text: "Nice weather today."}
+      - {say: dave, text: "This is the best day of my... wait. Why is there no ground over here?", cam: follow, follow: dave}
+      - {act: 1.8, cam: dave, sfx: [{name: glitch, at: 0.4}], acts: [{who: dave, do: shake, amt: 0.1}]}
+      - {act: 6, cam: follow, follow: dave, sfx: [fall], acts: [{who: dave, do: fall}], ui: [{kind: chat, text: "[SERVER] Dave fell out of the world.", at: 0.8, dur: 3}, {kind: achievement, text: "Gravity: Still Undefeated", at: 2.4, dur: 3.5}]}
+      - {say: npc_3, text: "Nice weather today.", cam: wide}
+      - {say: npc_1, text: "Honestly I respect that guy."}
+
+  # ------------------------------------------------------------------ 4. the void
+  - id: the_void
+    set: void
+    cast: {dave: center, npc_guide: right}
+    beats:
+      - {loading: "Tip: Reality has no undo button. We checked.", dur: 6}
+      - {act: 3, cam: dave, acts: [{who: dave, do: tpose, hold: true}], ui: [{kind: chat, text: "[SERVER] Dave's model failed to load.", at: 0.5, dur: 3.5}]}
+      - {say: dave, text: "Hello? Why am I in a T pose?", acts: [{who: dave, do: tpose, hold: true}]}
+      - {say: dave, text: "The game did not load my model. I am literally a placeholder.", acts: [{who: dave, do: tpose, hold: true}]}
+      - {say: dave, text: "Hello... hello... hello...", cam: wide, acts: [{who: dave, do: tpose, hold: true}]}
+      - {say: npc_guide, text: "Welcome to the void. Please take a ticket.", cam: wide}
+      - {say: dave, text: "There is a ticket machine in the void?"}
+      - {say: npc_guide, text: "No. That was a joke. I have been here since twenty nineteen."}
+      - {say: dave, text: "What did you do?"}
+      - {say: npc_guide, text: "I walked into a wall. Very enthusiastically."}
+      - {say: dave, text: "Okay. Think, Dave. What would a gamer do?", cam: dave}
+      - {say: dave, text: "Respawn. Please let respawn be a real command.", cam: dave}
+      - {cheat: respawn, dur: 4, cam: dave, sfx: [{name: whoosh, at: 2.0}], acts: [{who: dave, do: vanish, delay: 2.2}]}
+      - {say: npc_guide, text: "Wait. Take me with you."}
+      - {say: dave, text: "Sorry. Reality is full.", cam: wide}
+      - {loading: "Tip: Please do not fall out of the world. It is rude.", dur: 6}
+
+  # ------------------------------------------------------------------ 5. kyle & god mode
+  - id: god_mode
+    set: apartment
+    cast: {dave: left, kyle: right}
+    beats:
+      - {act: 3, cam: wide, acts: [{who: dave, do: idle}, {who: kyle, do: idle}], ui: [{kind: chat, text: "[SERVER] Dave respawned.", at: 0.4, dur: 3}]}
+      - {say: kyle, text: "Dave. You were gone for four hours. Where were you?"}
+      - {say: dave, text: "I fell out of the world."}
+      - {say: kyle, text: "Okay."}
+      - {say: dave, text: "You believe me?"}
+      - {say: kyle, text: "You once told me your cat was a lawyer. My standards are low."}
+      - {say: dave, text: "Real life has cheat codes, Kyle. I have a console. It floats."}
+      - {say: kyle, text: "Prove it. Make me a sandwich."}
+      - {say: dave, text: "It does not work like that. It works on pizza, ground, and me."}
+      - {say: kyle, text: "So it is a very specific superpower."}
+      - {say: dave, text: "Watch this. God mode."}
+      - {cheat: god, dur: 4, cam: dave, hp: "INF", sfx: [{name: chime, at: 1.4}]}
+      - {say: kyle, text: "Nothing happened."}
+      - {say: dave, text: "I am invincible. Try to hurt me. Throw something. Anything."}
+      - {say: kyle, text: "I do not have anything to throw. I do not own a bus."}
+      - {act: 4.5, cam: wide, sfx: [{name: whoosh, at: 0.2}, {name: boom, at: 2.1}], acts: [{who: dave, do: vehicle}, {who: dave, do: launch, to: far_right, delay: 2.0, dur: 1.2}]}
+      - {act: 2.5, cam: follow, follow: dave, acts: [{who: dave, do: flop}]}
+      - {say: dave, text: "I cannot die. But it still hurts. A lot. Why does it hurt?", cam: dave, acts: [{who: dave, do: flop}]}
+      - {say: kyle, text: "So it is pain mode."}
+      - {say: dave, text: "It is god mode with extra steps.", acts: [{who: dave, do: stand}]}
+      - {say: kyle, text: "I would like to try the teleport thing."}
+      - {say: dave, text: "Teleport only works on me. Watch. I am going to the table.", cam: two}
+      - {cheat: teleport, dur: 3.5, cam: two, sfx: [{name: pop, at: 1.5}], acts: [{who: dave, do: teleport, to: table, delay: 1.6}]}
+      - {say: kyle, text: "You are standing inside the table."}
+      - {say: dave, text: "Yes. That is a known issue."}
+
+  # ------------------------------------------------------------------ 5b. console tour
+  - id: console_tour
+    set: apartment
+    cast: {dave: left, kyle: right}
+    beats:
+      - {act: 2.5, cam: wide, acts: [{who: dave, do: walk_to, to: center}]}
+      - {say: kyle, text: "So what else can your magic floating box do?"}
+      - {act: 5, cam: dave, sfx: [{name: chime, at: 1.0}], ui: [{kind: console, text: "> list", at: 0.3, dur: 1.5}, {kind: system, text: "noclip   god   teleport   spawn   respawn", at: 1.5, dur: 4}, {kind: system, text: "infinite_money   fly (LOCKED)", at: 1.9, dur: 3.6}]}
+      - {say: kyle, text: "What does fly say?"}
+      - {say: dave, text: "It is locked. It says: Upgrade to Premium Reality."}
+      - {say: kyle, text: "How much is Premium Reality?"}
+      - {say: dave, text: "Four ninety nine per universe."}
+      - {say: kyle, text: "That is actually a bargain."}
+      - {say: dave, text: "I have four dollars."}
+      - {say: kyle, text: "And a bagel coupon."}
+      - {say: dave, text: "The bagel coupon is not legal tender."}
+      - {say: kyle, text: "Not yet."}
+
+  # ------------------------------------------------------------------ 5c. cheat montage
+  - id: cheat_montage
+    set: apartment
+    cast: {dave: center}
+    beats:
+      - {card: "A COMPLETELY RESPONSIBLE MONTAGE", sub: "Dave uses cheats for good", dur: 3.5}
+      - {act: 4, cam: dave, sfx: [{name: pop, at: 0.8}], acts: [{who: dave, do: spawn, item: coin, n: 30, to: front, spread: 2.5, delay: 0.5, dur: 2.5}], ui: [{kind: chat, text: "[DAVE] spawn coins (for science)", at: 0.2, dur: 3}]}
+      - {act: 4, cam: wide, sfx: [{name: pop, at: 0.5}], acts: [{who: dave, do: teleport, to: window, delay: 0.5}, {who: dave, do: shake, delay: 1.5, dur: 2}], ui: [{kind: chat, text: "[DAVE] teleport window (stuck in window)", at: 0.2, dur: 3}]}
+      - {act: 4, cam: follow, follow: dave, sfx: [whoosh], acts: [{who: dave, do: noclip_to, to: door}], ui: [{kind: chat, text: "[DAVE] noclip to the bathroom", at: 0.2, dur: 3}]}
+      - {act: 4, cam: dave, sfx: [{name: pop, at: 1.0}], acts: [{who: dave, do: spawn, item: sneaker, n: 1, delay: 1.0, dur: 1.0}, {who: dave, do: jump, delay: 2.0, dur: 1.0}], ui: [{kind: chat, text: "[DAVE] spawn sneaker (one, not four hundred)", at: 0.2, dur: 3.5}, {kind: achievement, text: "Free Shoes (Technically)", at: 2.0, dur: 3}]}
+      - {act: 4, cam: dave, sfx: [{name: whoosh, at: 0.5}], acts: [{who: dave, do: grow, by: 2.5, dur: 2}, {who: dave, do: shrink, by: 1.0, delay: 2.2, dur: 1.5}], ui: [{kind: chat, text: "[DAVE] scale 2.5 (too tall for the ceiling)", at: 0.2, dur: 3.5}]}
+      - {act: 4, cam: wide, sfx: [{name: glitch, at: 0.5}], acts: [{who: dave, do: spin, n: 6}], ui: [{kind: chat, text: "[DAVE] spin 6 (no reason)", at: 0.2, dur: 3}]}
+      - {act: 3, cam: dave, ui: [{kind: chat, text: "[SERVER] Dave is having the time of his life.", at: 0.3, dur: 2.5}], acts: [{who: dave, do: wave}]}
+
+  # ------------------------------------------------------------------ 6. the bank
+  - id: bank
+    set: bank
+    cast:
+      dave: front
+      kyle: right
+      npc_teller: {at: counter, face: 180}
+      npc_guard: {at: door, face: 90}
+    beats:
+      - {act: 3, cam: wide, acts: [{who: dave, do: walk_to, to: mid}], ui: [{kind: chat, text: "[SERVER] Dave entered Bank.", at: 0.4, dur: 3}]}
+      - {say: dave, text: "Rent is due in three days. We are about to be rich."}
+      - {say: kyle, text: "Or arrested."}
+      - {say: dave, text: "Same thing, with better lighting."}
+      - {cheat: infinite_money, dur: 5, cam: dave, sfx: [{name: chime, at: 1.4}, {name: error, at: 3.2}], ui: [{kind: system, text: "Account balance: NaN", at: 3.0, dur: 3}]}
+      - {say: dave, text: "Hello. I would like to check my account balance.", cam: wide, acts: [{who: dave, do: walk_to, to: counter}]}
+      - {say: npc_teller, text: "Sir, your balance is NaN dollars."}
+      - {say: dave, text: "Is that a lot?"}
+      - {say: npc_teller, text: "It is not a number, sir."}
+      - {say: kyle, text: "Technically that is not a no."}
+      - {say: npc_teller, text: "I cannot give you NaN dollars. I can give you undefined."}
+      - {say: dave, text: "I will take it."}
+      - {act: 5, cam: wide, sfx: [{name: pop, at: 0.5}, {name: error, at: 2.5}], acts: [{who: npc_teller, do: spawn, item: cube, n: 40, to: counter, spread: 4, dur: 2.5}, {who: npc_teller, do: shake, delay: 2.5, dur: 2}], ui: [{kind: achievement, text: "Broke The Economy", at: 1.0, dur: 4}, {kind: system, text: "ERROR ERROR ERROR ERROR ERROR", at: 2.0, dur: 3}]}
+      - {say: npc_teller, text: "Please hold."}
+      - {say: kyle, text: "Dave, I think the ATM is screaming.", cam: kyle}
+      - {say: dave, text: "That is just the sound of money."}
+      - {say: kyle, text: "It is saying the word error. Forty thousand times."}
+      - {say: npc_teller, text: "Please hold."}
+      - {say: dave, text: "We are leaving. Casually. Do not run.", cam: two}
+      - {say: npc_guard, text: "Sir. You cannot leave. Your balance is not a number.", cam: wide}
+      - {say: dave, text: "Is there a loophole?"}
+      - {say: npc_guard, text: "The loophole is also not a number."}
+      - {say: kyle, text: "Dave. Just run.", cam: kyle}
+      - {say: npc_guard, text: "Nice weather today.", cam: wide}
+      - {act: 2.5, cam: wide, sfx: [whoosh], acts: [{who: dave, do: run_to, to: door}, {who: kyle, do: run_to, to: door}]}
+
+  # ------------------------------------------------------------------ 7. pizza
+  - id: pizza
+    set: apartment
+    cast:
+      dave: left
+      kyle: right
+      npc_landlord: {at: door, face: -90}
+    beats:
+      - {act: 2.5, cam: wide, ui: [{kind: chat, text: "[SERVER] Dave and Kyle joined the game.", at: 0.3, dur: 3}]}
+      - {say: kyle, text: "We have no money. We have no plan. And we are wanted by the Bank of NaN."}
+      - {say: dave, text: "We have pizza. One pizza. Let us celebrate."}
+      - {say: dave, text: "I am going to type spawn pizza four. Just four.", cam: dave}
+      - {act: 3.5, cam: dave, ui: [{kind: console, text: "> spawn pizza 400", at: 0.3, dur: 2.5}, {kind: chat, text: "[DAVE] oops", at: 2.6, dur: 2}]}
+      - {say: dave, text: "I typed an extra zero."}
+      - {act: 8, cam: wide, lag: true, sfx: [{name: pop, at: 0.5}, {name: glitch, at: 4.0}], acts: [{who: dave, do: spawn, item: pizza, n: 400, to: center, spread: 7, dur: 6}, {who: dave, do: shake, delay: 5, dur: 2}], ui: [{kind: achievement, text: "Pizza Overflow", at: 2.0, dur: 4}]}
+      - {say: kyle, text: "Dave. I am a pizza now."}
+      - {say: dave, text: "Eat your way out. It is the only way.", lag: true}
+      - {say: kyle, text: "I do not even like pepperoni."}
+      - {say: kyle, text: "I want you to know I am proud of you. For the first time ever."}
+      - {say: dave, text: "Thanks, buddy."}
+      - {say: kyle, text: "Do not let it go to your head. It is already a very full head."}
+      - {act: 4, cam: wide, sfx: [{name: boom, at: 1.0}], ui: [{kind: chat, text: "[LANDLORD] Dave. Rent.", at: 1.0, dur: 3}], acts: [{who: npc_landlord, do: walk_to, to: center, delay: 0.5}]}
+      - {say: npc_landlord, text: "Dave. Rent."}
+      - {say: dave, text: "I do not have money. But I do have four hundred pizzas."}
+      - {say: npc_landlord, text: "I accept pizza."}
+      - {say: kyle, text: "Wait, that worked?"}
+      - {say: npc_landlord, text: "I accept pizza."}
+      - {say: npc_landlord, text: "Four hundred pizzas. Plus tax. Plus a late fee. Plus the emotional toll of the stairs."}
+      - {say: dave, text: "How many pizzas is that?"}
+      - {say: npc_landlord, text: "Four hundred and one."}
+      - {say: dave, text: "I only spawned four hundred."}
+      - {say: npc_landlord, text: "That one has been covered in cheese for ten minutes. I will take Kyle."}
+      - {say: kyle, text: "Why am I the extra pizza?"}
+      - {act: 4, cam: wide, ui: [{kind: achievement, text: "Rent: Paid (In Pizza)", at: 0.5, dur: 4}], acts: [{who: dave, do: jump}, {who: kyle, do: jump, delay: 0.3}]}
+
+  # ------------------------------------------------------------------ 8. the admin
+  - id: admin
+    set: apartment
+    cast:
+      dave: left
+      kyle: right
+      admin: center
+    beats:
+      - {act: 2.5, cam: wide, ui: [{kind: chat, text: "[SERVER] Everything is fine.", at: 0.3, dur: 2.5}]}
+      - {act: 4, cam: wide, lag: true, sfx: [{name: glitch, at: 0.2}, {name: boom, at: 1.8}], acts: [{who: admin, do: appear, delay: 1.8}], ui: [{kind: admin, text: "WARNING 1 OF 3: Unauthorized commands detected.", at: 2.0, dur: 4}]}
+      - {say: admin, text: "Hello, Dave. I am the Admin.", cam: admin}
+      - {say: dave, text: "The what?"}
+      - {say: admin, text: "The Admin. I moderate this server. Nobody asked me to. It was very quiet here."}
+      - {say: kyle, text: "Dave. There is a floating red crystal in your apartment."}
+      - {say: dave, text: "I know. I did not order it."}
+      - {say: admin, text: "You have used noclip in a retail environment. You have broken the economy with a number that is not a number."}
+      - {say: dave, text: "That one was the bank's fault."}
+      - {say: admin, text: "You have also spawned four hundred pizzas. Do you know how many players were in the pizza hitbox?"}
+      - {say: kyle, text: "How many?"}
+      - {say: admin, text: "Me. I was in the pizza hitbox."}
+      - {say: dave, text: "Are you God?"}
+      - {say: admin, text: "No. God left. I was next on the list."}
+      - {say: admin, text: "This is warning one of three. After three, I press the ban button. It is a very large button."}
+      - {say: dave, text: "Is this because of the shoes?"}
+      - {say: admin, text: "There are no shoes, Dave. You never made it into the shop. You fell out of the world."}
+      - {say: dave, text: "I am aware."}
+      - {say: kyle, text: "Do you do this often?"}
+      - {say: admin, text: "Every day. Mostly I watch a guy named Greg punch a wall."}
+      - {say: dave, text: "Is Greg okay?"}
+      - {say: admin, text: "Greg is thriving."}
+      - {say: admin, text: "It is because of everything. Goodbye, Dave. Please play nicely."}
+      - {act: 3, cam: admin, sfx: [{name: glitch, at: 0.2}, {name: whoosh, at: 1.2}], acts: [{who: admin, do: vanish, delay: 1.2}]}
+      - {say: kyle, text: "He cannot actually ban you from real life. Right?"}
+      - {say: dave, text: "Of course not. That would be insane.", cam: dave}
+      - {act: 5, cam: dave, ui: [{kind: console, text: "> kick admin", at: 0.4, dur: 2}, {kind: system, text: "Permission denied.", at: 2.4, dur: 3}], sfx: [{name: error, at: 2.4}]}
+      - {say: kyle, text: "Dave."}
+      - {say: dave, text: "I regret nothing."}
+      - {card: "NEXT TIME ON IRL BUT CHEATS", sub: "S01E02  -  SPEEDHACK  (DO NOT)", dur: 6}

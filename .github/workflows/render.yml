@@ -1,0 +1,125 @@
+name: Render episode
+
+# Renders a full episode with headless Blender, fanned out over a matrix of ~50 s shards,
+# then stitches shards + game-UI overlay + audio into one mp4 (download from the run's artifacts).
+#
+#   Actions -> "Render episode" -> Run workflow
+#   or push a tag like  ep-s01e01  to render that episode.
+on:
+  workflow_dispatch:
+    inputs:
+      episode:
+        description: Episode file
+        default: episodes/s01e01_noclip.yaml
+      preview:
+        description: Half-resolution preview (about 3x faster)
+        type: boolean
+        default: false
+  push:
+    tags: ["ep-*"]
+
+env:
+  PREVIEW: ${{ inputs.preview && '--preview' || '' }}
+
+jobs:
+  plan:
+    runs-on: ubuntu-24.04
+    outputs:
+      matrix: ${{ steps.plan.outputs.matrix }}
+      episode_id: ${{ steps.plan.outputs.episode_id }}
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+          cache: pip
+      - run: sudo apt-get update && sudo apt-get install -y espeak-ng ffmpeg fonts-dejavu-core
+      - run: pip install -r requirements.txt
+      - name: Resolve episode file
+        env:
+          INPUT_EPISODE: ${{ inputs.episode }}
+        run: |
+          if [ -n "$INPUT_EPISODE" ]; then
+            f="$INPUT_EPISODE"
+          else
+            # tag ep-s01e01 -> episodes/s01e01*.yaml
+            f=$(ls episodes/"${GITHUB_REF_NAME#ep-}"*.yaml | head -n1)
+          fi
+          test -f "$f" || { echo "episode file not found: $f"; exit 1; }
+          echo "EPISODE_FILE=$f" >> "$GITHUB_ENV"
+      - name: Plan (TTS, timing, audio mix, overlay, shard matrix)
+        id: plan
+        run: python -m engine plan "$EPISODE_FILE" --out build --gate
+      - uses: actions/upload-artifact@v4
+        with:
+          name: plan
+          path: build/${{ steps.plan.outputs.episode_id }}
+          retention-days: 3
+
+  render:
+    needs: plan
+    runs-on: ubuntu-24.04
+    strategy:
+      fail-fast: false
+      max-parallel: 20
+      matrix: ${{ fromJson(needs.plan.outputs.matrix) }}
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+          cache: pip
+      - name: Blender (Ubuntu 24.04 ships 4.0.x) + software OpenGL
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y blender xvfb libegl1 libgl1-mesa-dri libglx-mesa0
+      - run: pip install -r requirements.txt
+      - uses: actions/download-artifact@v4
+        with:
+          name: plan
+          path: build/${{ needs.plan.outputs.episode_id }}
+      - name: Render shard ${{ matrix.shard }}
+        run: |
+          python -m engine render "build/${{ needs.plan.outputs.episode_id }}/plan.json" \
+            "${{ matrix.shard }}" --out "build/${{ needs.plan.outputs.episode_id }}/shards" $PREVIEW
+      - uses: actions/upload-artifact@v4
+        with:
+          name: shard-${{ matrix.shard }}
+          path: build/${{ needs.plan.outputs.episode_id }}/shards/${{ matrix.shard }}.mp4
+          retention-days: 1
+
+  assemble:
+    needs: [plan, render]
+    runs-on: ubuntu-24.04
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+          cache: pip
+      - run: sudo apt-get update && sudo apt-get install -y ffmpeg fonts-dejavu-core
+      - run: pip install -r requirements.txt
+      - uses: actions/download-artifact@v4
+        with:
+          name: plan
+          path: build/${{ needs.plan.outputs.episode_id }}
+      - uses: actions/download-artifact@v4
+        with:
+          pattern: shard-*
+          merge-multiple: true
+          path: build/${{ needs.plan.outputs.episode_id }}/shards
+      - name: Assemble
+        run: |
+          python -m engine assemble "build/${{ needs.plan.outputs.episode_id }}/plan.json" \
+            "build/${{ needs.plan.outputs.episode_id }}/shards" \
+            --out "out/${{ needs.plan.outputs.episode_id }}.mp4"
+      - name: Summary
+        run: |
+          d=$(ffprobe -v error -show_entries format=duration -of csv=p=0 "out/${{ needs.plan.outputs.episode_id }}.mp4")
+          echo "### ${{ needs.plan.outputs.episode_id }} rendered" >> "$GITHUB_STEP_SUMMARY"
+          echo "Runtime: ${d}s - download the **episode** artifact below." >> "$GITHUB_STEP_SUMMARY"
+      - uses: actions/upload-artifact@v4
+        with:
+          name: episode-${{ needs.plan.outputs.episode_id }}
+          path: out/${{ needs.plan.outputs.episode_id }}.mp4
+          retention-days: 30
