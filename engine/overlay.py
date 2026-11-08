@@ -87,9 +87,9 @@ def build_ass(plan, path):
         elif k == "achievement":
             s = slots[k].take(t0, t1)
             y = 56 + 74 * s
-            ev(0, t0, t1, "Toast", _rect(860, y, 1260, y + 62, "#2a2300", "20"))
+            ev(0, t0, t1, "Toast", _rect(720, y, 1260, y + 62, "#2a2300", "20"))
             ev(1, t0, t1, "Toast",
-               f"{{\\pos(874,{y + 6})\\1c&H33C9FF&}}ACHIEVEMENT UNLOCKED\\N"
+               f"{{\\pos(734,{y + 6})\\1c&H33C9FF&}}ACHIEVEMENT UNLOCKED\\N"
                f"{{\\1c&HFFFFFF&\\fs22}}{txt}")
         elif k == "admin":
             ev(0, t0, t1, "Toast", _rect(240, 100, 1040, 180, "#4a0000", "10"))
