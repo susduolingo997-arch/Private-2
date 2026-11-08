@@ -261,4 +261,4 @@ scenes:
       - {act: 5, cam: dave, ui: [{kind: console, text: "> kick admin", at: 0.4, dur: 2}, {kind: system, text: "Permission denied.", at: 2.4, dur: 3}], sfx: [{name: error, at: 2.4}]}
       - {say: kyle, text: "Dave."}
       - {say: dave, text: "I regret nothing."}
-      - {card: "NEXT TIME ON IRL BUT CHEATS", sub: "S01E02  -  SPEEDHACK  (DO NOT)", dur: 6}
+      - {card: "NEXT TIME", sub: "S01E02  -  SPEEDHACK  (DO NOT)", dur: 6}

@@ -97,7 +97,7 @@ def cmd_assemble(a):
             f.write(f"file '{os.path.abspath(os.path.join(a.shards, s['id'] + '.mp4'))}'\n")
     out = os.path.abspath(a.out)
     os.makedirs(os.path.dirname(out), exist_ok=True)
-    subprocess.run(["ffmpeg", "-y", "-v", "error", "-stats", "-f", "concat", "-safe", "0",
+    subprocess.run(["ffmpeg", "-y", "-v", "error", "-f", "concat", "-safe", "0",
                     "-i", lst, "-i", "mix.wav", "-vf", "ass=overlay.ass",
                     "-c:v", "libx264", "-preset", "medium", "-crf", "20", "-pix_fmt", "yuv420p",
                     "-c:a", "aac", "-b:a", "160k", "-shortest", "-movflags", "+faststart", out],

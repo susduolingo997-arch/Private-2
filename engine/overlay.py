@@ -41,7 +41,7 @@ Format: Layer,Start,End,Style,Name,MarginL,MarginR,MarginV,Effect,Text
 
 
 def _rect(x1, y1, x2, y2, colour, alpha="40"):
-    return (f"{{\\pos(0,0)\\p1\\bord0\\shad0\\1c{_bgr(colour)}\\1a&H{alpha}&}}"
+    return (f"{{\\an7\\pos(0,0)\\p1\\bord0\\shad0\\1c{_bgr(colour)}\\1a&H{alpha}&}}"
             f"m {x1} {y1} l {x2} {y1} {x2} {y2} {x1} {y2}{{\\p0}}")
 
 
@@ -105,7 +105,7 @@ def build_ass(plan, path):
             ev(1, t0, t1, "Mid", _rect(340, 380, 940, 400, "#444444", "00"))
             dur = int((t1 - t0) * 1000)
             ev(2, t0, t1, "Mid",
-               f"{{\\pos(0,0)\\p1\\bord0\\shad0\\1c&H66FF99&\\clip(340,380,340,400)"
+               f"{{\\an7\\pos(0,0)\\p1\\bord0\\shad0\\1c&H66FF99&\\clip(340,380,340,400)"
                f"\\t(0,{dur},\\clip(340,380,{340 + 600},400))}}m 340 380 l 940 380 940 400 340 400{{\\p0}}")
         elif k == "card":
             ev(0, t0, t1, "Mid", _rect(0, 0, W, H, "#000000", "00"))
