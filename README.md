@@ -60,7 +60,7 @@ title: Speedhack
 target_seconds: 600
 scenes:
   - id: apartment
-    set: apartment                      # apartment | street | bank | void | black
+    set: apartment                      # apartment | street | bank | office | void | black
     cast: {dave: couch, kyle: right}    # character: mark   (or {at: mark, face: degrees})
     beats:
       - {say: dave, text: "Watch this.", cam: dave}
@@ -79,6 +79,7 @@ scenes:
 | `card: "TITLE"` (+`sub`) | Title card | `dur` (3) |
 
 Fields on any beat: `cam`, `acts`, `ui`, `sfx`, `hp`, `lag` (FPS tanks), `shake` (camera shake), `follow`.
+On `say` beats, `speed` (words per minute, default ~170) and `pitch` override the voice for that line, e.g. chipmunk-fast speedhack speech.
 
 * **cam**: `wide two dave kyle admin low top follow black`. Default: close-up of the speaker.
 * **acts** (`who`, `do`, optional `to`, `dur`, `delay`): `idle walk_to run_to noclip_to fall tpose flop stand jump shake spin grow shrink teleport face appear vanish wave spawn vehicle launch`.

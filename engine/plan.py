@@ -21,9 +21,9 @@ def build_plan(ep, audio_dir=None, estimate=False):
             wav = None
             if kind == "say":
                 if use_tts:
-                    wav, secs = tts.synth(b["say"], b["text"], audio_dir)
+                    wav, secs = tts.synth(b["say"], b["text"], audio_dir, b.get("speed"), b.get("pitch"))
                 else:
-                    secs = len(b["text"].split()) / schema.WORDS_PER_SEC
+                    secs = len(b["text"].split()) / schema.WORDS_PER_SEC * 170.0 / float(b.get("speed") or 170)
                 dur = max(float(b.get("dur", 0)), secs + schema.SAY_PAD)
             else:
                 dur = float(b.get("dur", schema.DEFAULT_DUR[kind]))

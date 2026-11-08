@@ -24,13 +24,13 @@ mouths that do not match, loading screens with sarcastic tips.
 5. Game UI exists in the world (console, toasts, HP, FPS). FPS drops when things get out of hand.
 
 ## Running gags
-"Nice weather today." / the bagel coupon / loading-screen tips / Greg / achievements for terrible things / Dave's HP / the FPS counter / the final line of each episode is Kyle saying "Dave."
+"Nice weather today." / Gerald, who is still waiting for a bus / the Admin pretending to be a plant / the bagel coupon / loading-screen tips / Greg / achievements for terrible things / Dave's HP / the FPS counter / the final line of each episode is Kyle saying "Dave."
 
 ## Season 1 slate (8 x ~10 min)
 | Ep | Title | Cheat | Logline |
 |---|---|---|---|
 | 01 | **Noclip** *(scripted)* | noclip, god, teleport, infinite_money, spawn | Dave tries to cut a sneaker line and falls out of the world. Admin warning 1. |
-| 02 | Speedhack | speed 10 | Dave late for a job interview. He arrives in four seconds. His body arrives in forty. |
+| 02 | **Speedhack** *(scripted)* | speed 10 | Dave has eight minutes to reach a job interview. He arrives both early and late, gets hired retroactively as a pizza courier, and learns inner peace from a crystal that insists it is a plant. |
 | 03 | Time Scale | timescale 0.1 | Slow motion makes the worst morning of Dave's life last a week. Kyle ages. |
 | 04 | Aimbot | aimbot | A friendly office paintball day turns into a hostage negotiation with a stapler. |
 | 05 | Spawn Item | spawn landlord | Dave tries to un-spawn something. There is no delete key. |

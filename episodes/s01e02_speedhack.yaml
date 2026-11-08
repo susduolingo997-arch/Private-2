@@ -1,0 +1,272 @@
+# IRL BUT CHEATS - S01E02 "Speedhack"
+# Dave has a job interview in eight minutes. The Admin is watching. Dave goes ten times too fast.
+id: s01e02
+title: Speedhack
+target_seconds: 600
+fps: 24
+resolution: [1280, 720]
+
+scenes:
+  # ------------------------------------------------------------------ 1. cold open
+  - id: cold_open
+    set: apartment
+    cast: {dave: couch, kyle: right}
+    beats:
+      - {act: 3, cam: wide, ui: [{kind: chat, text: "[SERVER] Dave is panicking.", at: 0.5, dur: 3}], acts: [{who: dave, do: shake, amt: 0.08}]}
+      - {say: dave, text: "Kyle. What time is it?", cam: dave}
+      - {say: kyle, text: "Eight fifty two."}
+      - {say: dave, text: "My interview is at nine. Across town. Walking takes forty minutes."}
+      - {say: kyle, text: "That is a mathematical problem, not a Dave problem."}
+      - {say: dave, text: "I could take the bus."}
+      - {say: kyle, text: "You are banned from buses. You were hit by one. It is a whole thing."}
+      - {say: dave, text: "Okay. Okay. I have a plan. A small, quiet, responsible plan."}
+      - {say: kyle, text: "What is the plan?"}
+      - {say: dave, text: "Speed."}
+      - {say: kyle, text: "That is not a plan. That is a noun."}
+      - {say: dave, text: "I contain multitudes, Kyle. Some of them are nouns."}
+      - {say: kyle, text: "Dave. The Admin gave you a warning."}
+      - {say: dave, text: "One warning out of three. I have two spare. That is basically a free cheat."}
+      - {say: kyle, text: "That is not how warnings work."}
+      - {say: dave, text: "I will only go slightly faster than a regular person. Barely noticeable."}
+      - {say: kyle, text: "Please do not type the word speed."}
+      - {cheat: speedhack_10, dur: 4, cam: dave, hp: "100", sfx: [{name: glitch, at: 2.2}], ui: [{kind: achievement, text: "Gotta Go Fast (Legal Action Pending)", at: 2.0, dur: 4}]}
+      - {say: dave, text: "Oh no. My legs are moving and I did not ask them to.", speed: 400, pitch: 80, cam: follow, follow: dave, acts: [{who: dave, do: run_to, to: far_left, dur: 0.8}, {who: dave, do: run_to, to: far_right, delay: 0.8, dur: 0.8}]}
+      - {act: 4, cam: follow, follow: dave, lag: true, sfx: [{name: whoosh, at: 0.3}, {name: whoosh, at: 1.5}, {name: glitch, at: 2.8}], acts: [{who: dave, do: run_to, to: far_left, dur: 0.6}, {who: dave, do: run_to, to: front, delay: 0.6, dur: 0.6}, {who: dave, do: run_to, to: couch, delay: 1.2, dur: 0.6}, {who: dave, do: run_to, to: far_right, delay: 1.8, dur: 0.6}, {who: dave, do: shake, delay: 2.4, dur: 1.6, amt: 0.3}]}
+      - {say: kyle, text: "He is vibrating.", cam: kyle}
+      - {say: dave, text: "I cannot slow down! The more I panic about it, the faster I go!", speed: 400, pitch: 80, cam: follow, follow: dave, lag: true, acts: [{who: dave, do: shake, amt: 0.3}]}
+      - {say: kyle, text: "Then think about something slow. A sloth. Or the government.", cam: kyle}
+      - {act: 3, cam: follow, follow: dave, sfx: [{name: whoosh, at: 0.2}, {name: boom, at: 1.0}], ui: [{kind: chat, text: "[SERVER] Dave left the apartment. Through the wall. Without opening it.", at: 1.0, dur: 3.5}], acts: [{who: dave, do: noclip_to, to: door, dur: 1.0}, {who: dave, do: run_to, to: [20, 2], delay: 1.0, dur: 0.6}]}
+      - {say: kyle, text: "Somebody should tell him that was a wall.", cam: kyle}
+      - {say: kyle, text: "I am going to make a sandwich. I will not follow him. I have boundaries."}
+
+  # ------------------------------------------------------------------ 2. title
+  - id: title
+    set: black
+    beats:
+      - {card: "IRL BUT CHEATS", sub: "S01E02  -  SPEEDHACK", dur: 5, sfx: [boom]}
+
+  # ------------------------------------------------------------------ 3. the street
+  - id: street_run
+    set: street
+    cast:
+      dave: far_left
+      npc_1: {at: queue_mid, face: 90}
+      npc_2: {at: queue_front, face: 90}
+      npc_cop: {at: right, face: 0}
+    beats:
+      - {act: 3, cam: wide, sfx: [crowd], ui: [{kind: chat, text: "[SERVER] Sneaker queue: day 14.", at: 0.4, dur: 3.5}]}
+      - {say: npc_1, text: "I have been in this line since Tuesday. It is now a different Tuesday."}
+      - {say: npc_2, text: "Nice weather today."}
+      - {act: 2.5, cam: follow, follow: dave, sfx: [{name: whoosh, at: 0.2}], acts: [{who: dave, do: run_to, to: far_right, dur: 1.2}, {who: npc_1, do: shake, delay: 0.4, dur: 1.5}]}
+      - {say: npc_1, text: "Was that a man or a weather event?", cam: wide}
+      - {say: npc_2, text: "Nice weather today."}
+      - {say: dave, text: "I can see the office! I cannot stop! The brakes are not a cheat!", speed: 400, pitch: 80, cam: follow, follow: dave, lag: true, acts: [{who: dave, do: run_to, to: far_left, dur: 1.2}]}
+      - {act: 2.5, cam: follow, follow: dave, sfx: [{name: whoosh, at: 0.2}, {name: whoosh, at: 1.3}], acts: [{who: dave, do: run_to, to: far_right, dur: 1.0}, {who: dave, do: run_to, to: curb, delay: 1.0, dur: 1.0}]}
+      - {say: npc_cop, text: "Sir. My radar says you are travelling four hundred kilometres an hour."}
+      - {say: dave, text: "I can explain. It is a cheat code.", cam: two, acts: [{who: dave, do: run_to, to: right, dur: 1.0}]}
+      - {say: npc_cop, text: "Is that a legal defence?"}
+      - {say: dave, text: "No."}
+      - {say: npc_cop, text: "Then it is a speeding ticket. Four dollars."}
+      - {say: dave, text: "I have exactly four dollars."}
+      - {say: npc_cop, text: "Suspiciously exact."}
+      - {say: npc_cop, text: "Also, you ran through a wall on the way here."}
+      - {say: dave, text: "Which wall?"}
+      - {say: npc_cop, text: "Your apartment wall. I live next door. I heard everything."}
+      - {say: dave, text: "I am so sorry."}
+      - {act: 3, cam: dave, hp: "100", sfx: [{name: ding, at: 0.5}], ui: [{kind: chat, text: "[DAVE] -$4.00. Remaining: $0.00 and a bagel coupon.", at: 0.3, dur: 3.2}, {kind: achievement, text: "Fined For Existing", at: 0.8, dur: 3}]}
+      - {say: dave, text: "That was my entire net worth. It is now a piece of paper in a policeman.", cam: dave}
+      - {say: npc_cop, text: "Nice weather today."}
+      - {say: dave, text: "The office is that way. I have two minutes. I am going to walk. Like a normal person.", cam: follow, follow: dave, acts: [{who: dave, do: walk_to, to: far_right}]}
+      - {say: npc_1, text: "I respect that guy.", cam: wide}
+      - {say: npc_2, text: "Nice weather today."}
+
+  # ------------------------------------------------------------------ 4. chores montage
+  - id: chores
+    set: apartment
+    cast: {dave: center, kyle: right}
+    beats:
+      - {card: "MEANWHILE: DAVE USES SPEEDHACK FOR CHORES", sub: "Eight minutes earlier. Do not ask.", dur: 4}
+      - {act: 4, cam: follow, follow: dave, lag: true, sfx: [{name: whoosh, at: 0.5}], acts: [{who: dave, do: run_to, to: far_left, dur: 0.5}, {who: dave, do: run_to, to: couch, delay: 0.5, dur: 0.5}, {who: dave, do: run_to, to: table, delay: 1.0, dur: 0.5}, {who: dave, do: spin, n: 8, delay: 1.5, dur: 1.5}], ui: [{kind: chat, text: "[DAVE] speed 10 (vacuuming)", at: 0.2, dur: 3}]}
+      - {act: 4, cam: wide, lag: true, sfx: [{name: pop, at: 1.0}, {name: glitch, at: 2.5}], acts: [{who: dave, do: spawn, item: pizza, n: 12, to: table, spread: 2, delay: 1.0, dur: 1.5}, {who: dave, do: run_to, to: window, delay: 0.2, dur: 0.6}, {who: dave, do: run_to, to: table, delay: 2.0, dur: 0.6}], ui: [{kind: chat, text: "[DAVE] speed 10 (cooking)", at: 0.2, dur: 3}]}
+      - {say: kyle, text: "Why are the pizzas back?"}
+      - {say: dave, text: "Cooking at high speed produces pizza. That is simply science.", speed: 330, pitch: 70, cam: dave}
+      - {act: 4, cam: follow, follow: dave, lag: true, sfx: [{name: whoosh, at: 0.5}, {name: boom, at: 2.2}], acts: [{who: dave, do: run_to, to: far_right, dur: 0.5}, {who: dave, do: run_to, to: far_left, delay: 0.5, dur: 0.5}, {who: dave, do: shake, delay: 1.5, dur: 2, amt: 0.35}, {who: kyle, do: jump, delay: 2.2, dur: 0.8}], ui: [{kind: chat, text: "[DAVE] speed 10 (cannot find the off switch)", at: 0.2, dur: 3.5}, {kind: achievement, text: "Cleanest Apartment In The Multiverse", at: 2.5, dur: 3.5}]}
+      - {act: 4, cam: follow, follow: dave, lag: true, sfx: [{name: whoosh, at: 0.4}, {name: pop, at: 2.0}], acts: [{who: dave, do: run_to, to: window, dur: 0.5}, {who: dave, do: run_to, to: couch, delay: 0.5, dur: 0.5}, {who: dave, do: spin, n: 10, delay: 1.0, dur: 1.5}, {who: dave, do: run_to, to: door, delay: 2.5, dur: 0.5}], ui: [{kind: chat, text: "[DAVE] speed 10 (brushing teeth, twice, in a wall)", at: 0.2, dur: 3.5}]}
+      - {say: kyle, text: "Dave. You are brushing your teeth on the ceiling."}
+      - {say: dave, text: "It is faster up here. There is less gravity in a hurry.", speed: 330, pitch: 70, cam: dave}
+      - {say: kyle, text: "You still have a job interview, you know.", cam: kyle}
+      - {say: dave, text: "Oh no.", speed: 400, pitch: 80, cam: dave}
+
+  # ------------------------------------------------------------------ 5. the interview
+  - id: interview
+    set: office
+    cast:
+      dave: front
+      npc_interviewer: {at: desk, face: 0}
+      npc_receptionist: {at: lobby, face: 0}
+      admin: plant
+    beats:
+      - {act: 3, cam: wide, hp: "100", ui: [{kind: chat, text: "[SERVER] Dave entered Employer HQ.", at: 0.4, dur: 3}]}
+      - {say: npc_receptionist, text: "Please take a number."}
+      - {say: dave, text: "I do not have time for a number. I am late. Or early. I do not know anymore.", cam: dave}
+      - {say: npc_interviewer, text: "Mister Dave. Please come in and sit down."}
+      - {say: dave, text: "Thank you. I am delighted. I am a very normal man.", speed: 330, pitch: 70, acts: [{who: dave, do: shake, amt: 0.2}]}
+      - {say: npc_interviewer, text: "Why are you vibrating?"}
+      - {say: dave, text: "It is a medical condition. It is called enthusiasm."}
+      - {say: npc_interviewer, text: "Tell me about yourself."}
+      - {say: dave, text: "I am a self starter, a team player, and a person with a coupon for a free bagel. I have no money, no sleep, and no plan, and I would like to work for you.", speed: 320, pitch: 70, lag: true}
+      - {say: npc_interviewer, text: "That was nine seconds. I need you to speak at human speed."}
+      - {say: dave, text: "I am trying. It does not go any slower. My mouth is on a different server."}
+      - {say: npc_interviewer, text: "Where do you see yourself in five years?"}
+      - {say: dave, text: "Honestly, in about four seconds, I will be in your lobby again. After that, I have no idea."}
+      - {say: npc_interviewer, text: "What is your greatest weakness?"}
+      - {say: dave, text: "I once spawned four hundred pizzas by accident."}
+      - {say: npc_interviewer, text: "That sounds like a strength."}
+      - {say: dave, text: "It was a weakness for the pizzas. They were all very warm."}
+      - {act: 3, cam: dave, ui: [{kind: console, text: "> hire_me", at: 0.3, dur: 1.5}, {kind: system, text: "Permission denied.", at: 1.7, dur: 3}], sfx: [{name: error, at: 1.7}]}
+      - {say: npc_interviewer, text: "Are you typing in the air?"}
+      - {say: dave, text: "It is a nervous habit."}
+      - {say: npc_interviewer, text: "It is floating, Mister Dave. There is a text box floating."}
+      - {act: 3.5, cam: dave, ui: [{kind: console, text: "> charm 100", at: 0.3, dur: 1.5}, {kind: system, text: "Unknown command. Charm cannot be cheated.", at: 1.7, dur: 3}], sfx: [{name: error, at: 1.7}]}
+      - {say: dave, text: "It is a very advanced stapler."}
+      - {say: npc_interviewer, text: "I see. Do you have any questions for me?"}
+      - {say: dave, text: "Yes. Why is there a plant in here that is red and floating and has been staring at me?", cam: wide}
+      - {act: 3, cam: admin, sfx: [{name: glitch, at: 0.3}, {name: boom, at: 1.0}], acts: [{who: admin, do: appear, delay: 1.0}], ui: [{kind: admin, text: "NOTICE: Speed modification detected. This is a heads up, not a warning.", at: 1.0, dur: 4.5}]}
+      - {say: npc_interviewer, text: "That is the office plant. It is very healthy."}
+      - {say: admin, text: "I am a plant.", cam: admin}
+      - {say: dave, text: "You are a crystal."}
+      - {say: admin, text: "I am a very dedicated plant. I am only watching you because it is quiet."}
+      - {say: npc_interviewer, text: "It has been in this office since twenty nineteen."}
+      - {say: admin, text: "It is a very long time to be a plant."}
+      - {say: npc_interviewer, text: "It does not talk much. It is a good team member."}
+      - {say: admin, text: "Dave. Do not use any more commands in this interview."}
+      - {say: dave, text: "I am only here for the job. I have no more commands. I swear.", cam: dave}
+      - {say: npc_interviewer, text: "The job requires punctuality. What time did you arrive today?"}
+      - {say: dave, text: "Eight fifty seven. I was early."}
+      - {say: npc_interviewer, text: "Our clock says nine fifteen."}
+      - {act: 3, cam: wide, lag: true, sfx: [{name: glitch, at: 0.5}], ui: [{kind: chat, text: "[SERVER] Time desync detected. Dave is 18 minutes ahead of Dave.", at: 0.3, dur: 3.5}], acts: [{who: dave, do: shake, amt: 0.2}]}
+      - {say: admin, text: "The speed modification sped up the clock. It did not just speed up Dave. It sped up everything around him."}
+      - {say: dave, text: "So I was early, and also very late."}
+      - {say: admin, text: "At the same time. Yes. It is a known issue."}
+      - {say: npc_interviewer, text: "Honestly, I have never seen anyone arrive both early and late. I admire the commitment."}
+      - {say: dave, text: "Does that mean I am hired?"}
+      - {say: npc_interviewer, text: "You start yesterday."}
+      - {say: dave, text: "Yesterday?"}
+      - {say: npc_interviewer, text: "Monday. Yesterday. The Monday that just happened. You are already behind."}
+      - {act: 4, cam: wide, sfx: [{name: ding, at: 0.5}], ui: [{kind: achievement, text: "Employed (Retroactively)", at: 0.5, dur: 4}], acts: [{who: dave, do: jump}, {who: dave, do: spin, delay: 1.2, dur: 1.5, n: 1}]}
+      - {say: dave, text: "What is the job?", cam: dave}
+      - {say: npc_interviewer, text: "Pizza delivery. We need someone very fast."}
+      - {say: dave, text: "Oh no."}
+
+  # ------------------------------------------------------------------ 5b. delivery
+  - id: delivery
+    set: street
+    cast:
+      dave: far_left
+      npc_customer: {at: shop_door, face: 0}
+      npc_customer_2: {at: queue_mid, face: 90}
+    beats:
+      - {card: "FAST DAVE PIZZA DELIVERY", sub: "Shift one. Forty pizzas. Forty doors.", dur: 4}
+      - {act: 3, cam: wide, ui: [{kind: chat, text: "[SERVER] Fast Dave is on the clock.", at: 0.4, dur: 3}]}
+      - {say: dave, text: "Forty pizzas. Forty doors. I will be done before lunch. Or yesterday.", speed: 330, pitch: 70, cam: dave}
+      - {act: 2, cam: follow, follow: dave, sfx: [{name: whoosh, at: 0.2}], acts: [{who: dave, do: run_to, to: shop_door, dur: 1.0}]}
+      - {say: npc_customer, text: "Hello? I ordered a pizza forty minutes ago."}
+      - {say: dave, text: "I am here. The pizza is on its way. It is travelling at normal speed.", speed: 300, pitch: 70, cam: two}
+      - {say: npc_customer, text: "So where is the pizza?"}
+      - {say: dave, text: "I am a very fast person delivering a very slow pizza. Please sign here.", speed: 300, pitch: 70}
+      - {say: npc_customer, text: "That is not a delivery. That is a threat."}
+      - {say: dave, text: "Five stars? Please? I am on a probation.", speed: 300, pitch: 70}
+      - {card: "FORTY MINUTES LATER", sub: "At normal speed.", dur: 3}
+      - {act: 4, cam: wide, sfx: [{name: pop, at: 0.8}], acts: [{who: dave, do: spawn, item: pizza, n: 1, to: shop_door, delay: 0.8, dur: 0.6}], ui: [{kind: chat, text: "[SERVER] Pizza delivered. Forty minutes after Dave.", at: 0.3, dur: 3.5}]}
+      - {say: npc_customer, text: "Finally."}
+      - {act: 3, cam: dave, sfx: [{name: ding, at: 0.6}], ui: [{kind: chat, text: "[REVIEW] 1 star. Delivery man was inside my house before I ordered.", at: 0.3, dur: 4}, {kind: achievement, text: "Customer Is Always Confused", at: 1.2, dur: 3}]}
+      - {say: dave, text: "That is fine. That is an average. It is a very bad average.", cam: dave}
+      - {act: 2, cam: follow, follow: dave, sfx: [{name: whoosh, at: 0.2}], acts: [{who: dave, do: run_to, to: queue_front, dur: 1.0}]}
+      - {say: npc_customer_2, text: "Hello. I ordered a pizza."}
+      - {say: dave, text: "It will be here in forty minutes.", speed: 300, pitch: 70, cam: two}
+      - {say: npc_customer_2, text: "Did you bring it?"}
+      - {say: dave, text: "I brought the receipt. And a very strong sense of urgency.", speed: 300, pitch: 70}
+      - {say: npc_customer_2, text: "Nice weather today."}
+
+  # ------------------------------------------------------------------ 5c. admin orientation
+  - id: orientation
+    set: void
+    cast: {dave: left, admin: right}
+    beats:
+      - {loading: "Tip: Speed is a state of mind. So is regret.", dur: 5}
+      - {act: 3.5, cam: admin, sfx: [{name: glitch, at: 0.3}, {name: boom, at: 1.0}], acts: [{who: admin, do: appear, delay: 1.0}], ui: [{kind: chat, text: "[SERVER] Admin has initiated Orientation.", at: 0.4, dur: 3}]}
+      - {say: admin, text: "Dave. Welcome to Orientation. I do this for everyone."}
+      - {say: dave, text: "Who is everyone?"}
+      - {say: admin, text: "Greg. Mostly Greg."}
+      - {say: admin, text: "Your speed hack is stuck on ten. I cannot turn it off. I can only teach you to be calm."}
+      - {say: dave, text: "You are the Admin. Just turn it off."}
+      - {say: admin, text: "I have a very large ban button. I do not have a very large off button."}
+      - {say: dave, text: "That is a design flaw."}
+      - {say: admin, text: "It is a design feature. Please breathe in. Think of something slow. A glacier."}
+      - {say: dave, text: "Glacier. Glacier. Glacier.", cam: two, acts: [{who: dave, do: shake, amt: 0.25}], lag: true}
+      - {say: admin, text: "Tax returns."}
+      - {say: dave, text: "Tax. Returns. Tax. Returns.", acts: [{who: dave, do: shake, amt: 0.18}]}
+      - {say: admin, text: "A man called Gerald waiting for a bus."}
+      - {act: 4, cam: follow, follow: dave, sfx: [{name: chime, at: 1.0}], acts: [{who: dave, do: walk_to, to: center, dur: 4}], hp: "100", ui: [{kind: system, text: "Speed: 10 -> 1. Dave is calm.", at: 1.0, dur: 3.5}, {kind: achievement, text: "Inner Peace (Low Battery)", at: 2.0, dur: 3}]}
+      - {say: dave, text: "I did it. I am walking at the speed of a normal person.", cam: dave}
+      - {say: admin, text: "You are walking at the speed of a sad person. But yes."}
+      - {say: dave, text: "Thank you, Admin."}
+      - {say: admin, text: "Do not mention it. I will deny everything. I am a plant."}
+      - {say: dave, text: "You are a very good plant."}
+      - {say: admin, text: "That is the nicest thing anyone has said to me since twenty nineteen."}
+
+  # ------------------------------------------------------------------ 6. epilogue
+  - id: epilogue
+    set: apartment
+    cast: {dave: couch, kyle: right}
+    beats:
+      - {act: 3, cam: wide, ui: [{kind: chat, text: "[SERVER] Dave has been employed for 2 hours.", at: 0.4, dur: 3.5}]}
+      - {say: kyle, text: "So how was your first day?"}
+      - {say: dave, text: "I delivered forty pizzas in nine minutes. The pizzas arrived forty minutes after I did."}
+      - {say: kyle, text: "That is not how delivery works."}
+      - {say: dave, text: "My boss says I am the best employee they have ever had and also the worst."}
+      - {say: kyle, text: "So you got a promotion."}
+      - {say: dave, text: "I got a hat that says Fast Dave. I have to wear it forever."}
+      - {say: kyle, text: "At least you can pay your rent now."}
+      - {say: dave, text: "I owe the landlord four hundred pizzas, remember."}
+      - {say: kyle, text: "I thought you paid him in pizza."}
+      - {say: dave, text: "He keeps coming back and asking for more. He says the pizza was very good."}
+      - {say: kyle, text: "Did the Admin help?"}
+      - {say: dave, text: "He taught me to think about Gerald waiting for a bus."}
+      - {say: kyle, text: "Who is Gerald?"}
+      - {say: dave, text: "Nobody knows. He is still waiting."}
+      - {say: kyle, text: "Poor Gerald."}
+      - {act: 4, cam: wide, lag: true, sfx: [{name: boom, at: 1.0}, {name: warn, at: 2.5}], ui: [{kind: admin, text: "REMINDER: 1 of 3 warnings used. The Admin is still a plant.", at: 1.5, dur: 4}]}
+      - {say: kyle, text: "Dave."}
+      - {say: dave, text: "I have an idea for tomorrow."}
+      - {say: kyle, text: "Please do not."}
+      - {say: dave, text: "If I can control speed, I can control time."}
+      - {say: kyle, text: "That is a different command."}
+      - {say: dave, text: "It is the same command with more steps."}
+      - {say: dave, text: "What if I could slow down time instead?"}
+      - {say: kyle, text: "Dave."}
+
+  # ------------------------------------------------------------------ 7. gerald
+  - id: gerald
+    set: street
+    cast:
+      dave: far_left
+      npc_gerald: {at: curb, face: 0}
+    beats:
+      - {act: 3, cam: wide, ui: [{kind: chat, text: "[SERVER] Gerald has been waiting for the bus for 4 hours.", at: 0.4, dur: 3.5}]}
+      - {say: npc_gerald, text: "I am Gerald. I am waiting for a bus."}
+      - {say: dave, text: "Are you the Gerald?", cam: follow, follow: dave, acts: [{who: dave, do: walk_to, to: left}]}
+      - {say: npc_gerald, text: "I am a Gerald. There are several of us."}
+      - {say: dave, text: "Someone has been using you as a relaxation technique.", cam: two}
+      - {say: npc_gerald, text: "That is the nicest thing anyone has ever done for me."}
+      - {say: dave, text: "I think the bus is not coming. I think it is parked in my apartment."}
+      - {say: npc_gerald, text: "Nice weather today."}
+      - {act: 4, cam: wide, sfx: [{name: ding, at: 1.0}], acts: [{who: dave, do: walk_to, to: curb, dur: 2}], ui: [{kind: achievement, text: "Friend Of Gerald", at: 1.5, dur: 3.5}]}
+      - {say: dave, text: "Do you want to wait together?", cam: two}
+      - {say: npc_gerald, text: "I would like that very much."}
+
+  # ------------------------------------------------------------------ 8. next time
+  - id: next_time
+    set: black
+    beats:
+      - {card: "NEXT TIME", sub: "S01E03  -  TIME SCALE  (DO NOT)", dur: 6}

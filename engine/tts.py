@@ -17,9 +17,11 @@ def wav_seconds(path):
         return w.getnframes() / float(w.getframerate())
 
 
-def synth(who, text, out_dir):
-    """Return (wav_path, seconds) for a line spoken by `who`."""
-    c = cast.get(who)
+def synth(who, text, out_dir, speed=None, pitch=None):
+    """Return (wav_path, seconds) for a line spoken by `who`. speed (wpm) / pitch override the voice."""
+    c = dict(cast.get(who))
+    c["speed"] = speed or c["speed"]
+    c["pitch"] = pitch or c["pitch"]
     key = hashlib.sha1(f"{c['voice']}|{c['pitch']}|{c['speed']}|{text}".encode()).hexdigest()[:16]
     os.makedirs(out_dir, exist_ok=True)
     path = os.path.join(out_dir, f"{who}_{key}.wav")
