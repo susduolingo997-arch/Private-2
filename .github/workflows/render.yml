@@ -4,7 +4,8 @@ name: Render episode
 # then stitches shards + game-UI overlay + audio into one mp4 (download from the run's artifacts).
 #
 #   Actions -> "Render episode" -> Run workflow
-#   or push a tag like  ep-s01e01  to render that episode.
+#   or push a tag like  ep-s01e01  to render that episode at full resolution
+#   and publish it as a GitHub Release (with the mp4 attached).
 on:
   workflow_dispatch:
     inputs:
@@ -17,6 +18,9 @@ on:
         default: false
   push:
     tags: ["ep-*"]
+
+permissions:
+  contents: read
 
 env:
   PREVIEW: ${{ inputs.preview && '--preview' || '' }}
@@ -123,3 +127,29 @@ jobs:
           name: episode-${{ needs.plan.outputs.episode_id }}
           path: out/${{ needs.plan.outputs.episode_id }}.mp4
           retention-days: 30
+
+  release:
+    # Tag pushes only (ep-*): publish the finished episode as a GitHub Release.
+    if: startsWith(github.ref, 'refs/tags/ep-')
+    needs: [plan, assemble]
+    runs-on: ubuntu-24.04
+    permissions:
+      contents: write
+    steps:
+      - uses: actions/download-artifact@v4
+        with:
+          name: episode-${{ needs.plan.outputs.episode_id }}
+          path: out
+      - name: Create or update release
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          GH_REPO: ${{ github.repository }}
+          EP: ${{ needs.plan.outputs.episode_id }}
+        run: |
+          file="out/${EP}.mp4"
+          notes="Episode ${EP}, rendered by the engine in this repo (full resolution, espeak-ng voices)."
+          if gh release view "$GITHUB_REF_NAME" >/dev/null 2>&1; then
+            gh release upload "$GITHUB_REF_NAME" "$file" --clobber
+          else
+            gh release create "$GITHUB_REF_NAME" "$file" --title "$EP" --notes "$notes" --verify-tag
+          fi
