@@ -1,0 +1,209 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>World Walk</title>
+<style>
+  html,body{margin:0;height:100%;overflow:hidden;background:#87b5e0;font-family:system-ui,sans-serif}
+  #ui{position:fixed;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center;background:rgba(10,20,30,.85);color:#fff;z-index:10;text-align:center;padding:16px}
+  #ui h1{margin:0 0 8px} #ui p{max-width:480px;opacity:.85}
+  button{font:inherit;padding:10px 18px;margin:4px;border:0;border-radius:8px;background:#3a8ee6;color:#fff;cursor:pointer}
+  input{font:inherit;padding:8px;border-radius:6px;border:0;width:120px}
+  #hud{position:fixed;left:12px;top:12px;color:#fff;background:rgba(0,0,0,.45);padding:8px 12px;border-radius:8px;font-size:13px;z-index:5}
+  #mini{position:fixed;right:12px;top:12px;width:180px;height:180px;border-radius:50%;border:3px solid #fff;background:#223;z-index:5}
+  #cross{position:fixed;left:50%;top:50%;width:6px;height:6px;margin:-3px;border-radius:50%;background:#fff;z-index:5}
+  #joy{position:fixed;left:20px;bottom:20px;width:110px;height:110px;border-radius:50%;background:rgba(255,255,255,.2);display:none;z-index:6;touch-action:none}
+</style>
+</head>
+<body>
+<div id="ui">
+  <h1>World Walk</h1>
+  <p>Walk around the real streets and buildings where you are. Map data comes from OpenStreetMap.</p>
+  <button id="go">Use my location</button>
+  <p style="margin-top:14px">or enter coordinates:</p>
+  <div><input id="lat" placeholder="lat" value="51.5007"><input id="lon" placeholder="lon" value="-0.1246"><button id="manual">Go</button></div>
+  <p id="status"></p>
+  <p style="font-size:12px">WASD / arrows to move · mouse to look · Shift to run · on touch: drag right side to look, joystick to walk</p>
+</div>
+<div id="hud"></div><canvas id="mini" width="360" height="360"></canvas><div id="cross"></div><div id="joy"></div>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+<script>
+const $=id=>document.getElementById(id);
+const RADIUS=600; // metres of map loaded around you
+let scene,camera,renderer,origin,features={ways:[],named:[]};
+let yaw=0,pitch=0,keys={},joy={x:0,y:0};
+const status=t=>$('status').textContent=t;
+
+$('go').onclick=()=>{
+  if(!navigator.geolocation) return status('Geolocation not supported.');
+  status('Finding you…');
+  navigator.geolocation.getCurrentPosition(p=>start(p.coords.latitude,p.coords.longitude),
+    e=>status('Location failed: '+e.message+' — enter coordinates instead.'),{enableHighAccuracy:true,timeout:15000});
+};
+$('manual').onclick=()=>start(+$('lat').value,+$('lon').value);
+
+// lat/lon -> local metres (x east, z south)
+function proj(lat,lon){
+  const R=6378137, k=Math.PI/180;
+  return [(lon-origin.lon)*k*R*Math.cos(origin.lat*k), -(lat-origin.lat)*k*R];
+}
+
+async function start(lat,lon){
+  origin={lat,lon}; status('Downloading map data…');
+  const d=RADIUS/111320, dl=d/Math.cos(lat*Math.PI/180);
+  const bbox=`${lat-d},${lon-dl},${lat+d},${lon+dl}`;
+  const q=`[out:json][timeout:60];(way["building"](${bbox});way["highway"](${bbox});way["natural"="water"](${bbox});way["waterway"](${bbox});way["leisure"~"park|garden|pitch"](${bbox});way["landuse"~"grass|forest|meadow"](${bbox});node["natural"="tree"](${bbox}););out geom;`;
+  const mirrors=['https://overpass-api.de/api/interpreter','https://overpass.kumi.systems/api/interpreter'];
+  let data;
+  for(const m of mirrors){
+    try{const r=await fetch(m,{method:'POST',body:'data='+encodeURIComponent(q)}); if(r.ok){data=await r.json();break;}}catch(e){}
+  }
+  if(!data) return status('Could not load map data. Try again in a moment.');
+  status('Building world…');
+  build(data);
+  $('ui').style.display='none';
+}
+
+function shapeFrom(geom){
+  const s=new THREE.Shape();
+  geom.forEach((g,i)=>{const [x,z]=proj(g.lat,g.lon); i?s.lineTo(x,-z):s.moveTo(x,-z);});
+  return s;
+}
+function flat(geom,color,y){
+  if(geom.length<3) return;
+  const m=new THREE.Mesh(new THREE.ShapeGeometry(shapeFrom(geom)),new THREE.MeshLambertMaterial({color}));
+  m.rotation.x=-Math.PI/2; m.position.y=y; scene.add(m);
+}
+const roadW={motorway:14,trunk:12,primary:10,secondary:9,tertiary:8,residential:6,unclassified:6,service:4,living_street:5,pedestrian:5,footway:2,path:1.5,cycleway:2,steps:2,track:3};
+
+function road(geom,w,color,y){
+  const pos=[];
+  for(let i=0;i<geom.length-1;i++){
+    const [x1,z1]=proj(geom[i].lat,geom[i].lon),[x2,z2]=proj(geom[i+1].lat,geom[i+1].lon);
+    let dx=x2-x1,dz=z2-z1,l=Math.hypot(dx,dz)||1; const nx=-dz/l*w/2,nz=dx/l*w/2;
+    pos.push(x1+nx,y,z1+nz, x1-nx,y,z1-nz, x2+nx,y,z2+nz, x1-nx,y,z1-nz, x2-nx,y,z2-nz, x2+nx,y,z2+nz);
+  }
+  const g=new THREE.BufferGeometry(); g.setAttribute('position',new THREE.Float32BufferAttribute(pos,3)); g.computeVertexNormals();
+  const m=new THREE.Mesh(g,new THREE.MeshLambertMaterial({color,side:THREE.DoubleSide})); scene.add(m);
+}
+
+function build(data){
+  renderer=new THREE.WebGLRenderer({antialias:true}); renderer.setPixelRatio(Math.min(devicePixelRatio,2));
+  renderer.setSize(innerWidth,innerHeight); document.body.prepend(renderer.domElement);
+  scene=new THREE.Scene(); scene.background=new THREE.Color(0x9cc8ef); scene.fog=new THREE.Fog(0x9cc8ef,150,RADIUS);
+  camera=new THREE.PerspectiveCamera(70,innerWidth/innerHeight,0.3,2000); camera.position.set(0,1.7,0);
+  scene.add(new THREE.HemisphereLight(0xffffff,0x556655,0.9));
+  const sun=new THREE.DirectionalLight(0xffffff,0.6); sun.position.set(200,400,100); scene.add(sun);
+  const ground=new THREE.Mesh(new THREE.PlaneGeometry(RADIUS*3,RADIUS*3),new THREE.MeshLambertMaterial({color:0xb9b2a2}));
+  ground.rotation.x=-Math.PI/2; scene.add(ground);
+
+  const trees=[];
+  for(const el of data.elements){
+    const t=el.tags||{};
+    if(el.type==='node'){trees.push(proj(el.lat,el.lon));continue;}
+    const g=el.geometry; if(!g) continue;
+    features.ways.push({t,pts:g.map(p=>proj(p.lat,p.lon))});
+    if(t.name) features.named.push({name:t.name,p:proj(g[0].lat,g[0].lon)});
+    if(t.building){
+      let h=parseFloat(t.height)||(parseFloat(t['building:levels'])||(2+((el.id%4))))*3.2;
+      if(g.length<4) continue;
+      const geo=new THREE.ExtrudeGeometry(shapeFrom(g),{depth:h,bevelEnabled:false});
+      const shade=0.75+((el.id%7)/7)*0.25;
+      const col=new THREE.Color(t['building:colour']||0xd8cfc0); col.multiplyScalar(shade);
+      const m=new THREE.Mesh(geo,new THREE.MeshLambertMaterial({color:col}));
+      m.rotation.x=-Math.PI/2; scene.add(m);
+    } else if(t.highway){
+      road(g,roadW[t.highway]||4,['footway','path','pedestrian','steps','cycleway'].includes(t.highway)?0xc9b48f:0x4a4a4f,0.05);
+    } else if(t.waterway){ road(g,t.waterway==='river'?20:4,0x3b7bbf,0.03);
+    } else if(t.natural==='water'){ flat(g,0x3b7bbf,0.03);
+    } else if(t.landuse==='forest'){ flat(g,0x3d7a3a,0.02);
+    } else { flat(g,0x6fae5a,0.02); }
+  }
+  // trees (instanced)
+  if(trees.length){
+    const trunk=new THREE.InstancedMesh(new THREE.CylinderGeometry(.2,.3,3),new THREE.MeshLambertMaterial({color:0x6b4a2b}),trees.length);
+    const crown=new THREE.InstancedMesh(new THREE.SphereGeometry(2.2,8,6),new THREE.MeshLambertMaterial({color:0x3f8a3a}),trees.length);
+    const M=new THREE.Matrix4();
+    trees.forEach(([x,z],i)=>{M.makeTranslation(x,1.5,z);trunk.setMatrixAt(i,M);M.makeTranslation(x,4.2,z);crown.setMatrixAt(i,M);});
+    scene.add(trunk,crown);
+  }
+  // collision: raycast against buildings
+  colliders=scene.children.filter(o=>o.geometry&&o.geometry.type==='ExtrudeGeometry');
+  setupControls(); last=performance.now(); loop();
+}
+
+let colliders=[],last;
+const ray=new THREE.Raycaster();
+function blocked(dir){
+  ray.set(new THREE.Vector3(camera.position.x,1,camera.position.z),dir); ray.far=0.6;
+  return ray.intersectObjects(colliders).length>0;
+}
+
+function setupControls(){
+  addEventListener('resize',()=>{camera.aspect=innerWidth/innerHeight;camera.updateProjectionMatrix();renderer.setSize(innerWidth,innerHeight);});
+  addEventListener('keydown',e=>keys[e.code]=true); addEventListener('keyup',e=>keys[e.code]=false);
+  const c=renderer.domElement;
+  c.addEventListener('click',()=>c.requestPointerLock&&c.requestPointerLock());
+  addEventListener('mousemove',e=>{if(document.pointerLockElement===c){yaw-=e.movementX*.0025;pitch=Math.max(-1.4,Math.min(1.4,pitch-e.movementY*.0025));}});
+  if('ontouchstart' in window){
+    const J=$('joy'); J.style.display='block'; let jt=null,lt=null,lx,ly;
+    addEventListener('touchstart',e=>{for(const t of e.changedTouches){
+      if(t.clientX<innerWidth/2&&jt===null){jt=t.identifier;} else if(lt===null){lt=t.identifier;lx=t.clientX;ly=t.clientY;}}},{passive:true});
+    addEventListener('touchmove',e=>{for(const t of e.changedTouches){
+      if(t.identifier===jt){const r=J.getBoundingClientRect();joy.x=Math.max(-1,Math.min(1,(t.clientX-r.left-55)/55));joy.y=Math.max(-1,Math.min(1,(t.clientY-r.top-55)/55));}
+      if(t.identifier===lt){yaw-=(t.clientX-lx)*.005;pitch=Math.max(-1.4,Math.min(1.4,pitch-(t.clientY-ly)*.005));lx=t.clientX;ly=t.clientY;}}},{passive:true});
+    addEventListener('touchend',e=>{for(const t of e.changedTouches){if(t.identifier===jt){jt=null;joy.x=joy.y=0;}if(t.identifier===lt)lt=null;}});
+  }
+}
+
+function loop(){
+  requestAnimationFrame(loop);
+  const now=performance.now(),dt=Math.min(.1,(now-last)/1000); last=now;
+  let f=(keys.KeyW||keys.ArrowUp?1:0)-(keys.KeyS||keys.ArrowDown?1:0)-joy.y;
+  let s=(keys.KeyD||keys.ArrowRight?1:0)-(keys.KeyA||keys.ArrowLeft?1:0)+joy.x;
+  if(keys.ArrowLeft&&!keys.KeyA){} 
+  const speed=(keys.ShiftLeft||keys.ShiftRight?9:4)*dt;
+  const fwd=new THREE.Vector3(-Math.sin(yaw),0,-Math.cos(yaw)),right=new THREE.Vector3(Math.cos(yaw),0,-Math.sin(yaw));
+  const mv=fwd.multiplyScalar(f).add(right.multiplyScalar(s));
+  if(mv.lengthSq()>0){
+    mv.normalize();
+    const mx=new THREE.Vector3(Math.sign(mv.x),0,0),mz=new THREE.Vector3(0,0,Math.sign(mv.z));
+    if(mv.x&&!blocked(mx)) camera.position.x+=mv.x*speed;
+    if(mv.z&&!blocked(mz)) camera.position.z+=mv.z*speed;
+    camera.position.y=1.7+Math.sin(now/120)*0.04;
+  }
+  const lim=RADIUS*0.95; camera.position.x=Math.max(-lim,Math.min(lim,camera.position.x)); camera.position.z=Math.max(-lim,Math.min(lim,camera.position.z));
+  camera.rotation.set(pitch,yaw,0,'YXZ');
+  renderer.render(scene,camera); hud(); if((now|0)%3===0||true) mini();
+}
+
+function hud(){
+  const p=camera.position, k=180/Math.PI, R=6378137;
+  const lat=origin.lat - p.z/R*k, lon=origin.lon + p.x/(R*Math.cos(origin.lat/k))*k;
+  let near='',bd=60;
+  for(const n of features.named){const d=Math.hypot(n.p[0]-p.x,n.p[1]-p.z); if(d<bd){bd=d;near=n.name;}}
+  const dirs=['N','NE','E','SE','S','SW','W','NW'];
+  const h=((-yaw*k)%360+360)%360;
+  $('hud').innerHTML=`${lat.toFixed(5)}, ${lon.toFixed(5)}<br>Facing ${dirs[Math.round(h/45)%8]}`+(near?`<br>Near: <b>${near}</b>`:'')+`<br><span style="opacity:.6">© OpenStreetMap contributors</span>`;
+}
+
+function mini(){
+  const c=$('mini').getContext('2d'),S=360,sc=1.2,p=camera.position;
+  c.save(); c.fillStyle='#d9d3c5'; c.fillRect(0,0,S,S);
+  c.translate(S/2,S/2); c.rotate(yaw); c.scale(sc,sc); c.translate(-p.x,-p.z);
+  for(const w of features.ways){
+    const t=w.t; c.beginPath(); w.pts.forEach(([x,z],i)=>i?c.lineTo(x,z):c.moveTo(x,z));
+    if(t.building){c.fillStyle='#a89f90';c.fill();}
+    else if(t.highway){c.strokeStyle='#fff';c.lineWidth=(roadW[t.highway]||4);c.stroke();}
+    else if(t.natural==='water'){c.fillStyle='#6aa3d9';c.fill();}
+    else if(t.waterway){c.strokeStyle='#6aa3d9';c.lineWidth=6;c.stroke();}
+    else {c.fillStyle='#9fcf8a';c.fill();}
+  }
+  c.restore();
+  c.fillStyle='#e33'; c.beginPath(); c.moveTo(S/2,S/2-10); c.lineTo(S/2-7,S/2+7); c.lineTo(S/2+7,S/2+7); c.fill();
+}
+</script>
+</body>
+</html>
