@@ -45,7 +45,7 @@
 <script src="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.min.js"></script>
 <script>
 const $=id=>document.getElementById(id);
-const RADIUS=600; // metres of map loaded around you
+const RADIUS=400; // metres of map loaded around you
 let scene,camera,renderer,origin,features={ways:[],named:[]};
 let yaw=0,pitch=0,keys={},joy={x:0,y:0};
 const status=t=>$('status').textContent=t;
@@ -73,13 +73,22 @@ async function start(lat,lon){
   origin={lat,lon}; status('Downloading map data…');
   const d=RADIUS/111320, dl=d/Math.cos(lat*Math.PI/180);
   const bbox=`${lat-d},${lon-dl},${lat+d},${lon+dl}`;
-  const q=`[out:json][timeout:60];(way["building"](${bbox});way["highway"](${bbox});way["natural"="water"](${bbox});way["waterway"](${bbox});way["leisure"~"park|garden|pitch"](${bbox});way["landuse"~"grass|forest|meadow"](${bbox});node["natural"="tree"](${bbox});node["name"]["amenity"](${bbox});node["name"]["shop"](${bbox});node["name"]["tourism"](${bbox});node["name"]["historic"](${bbox});node["name"]["place"](${bbox});node["name"]["leisure"](${bbox}););out geom;`;
-  const mirrors=['https://overpass-api.de/api/interpreter','https://overpass.kumi.systems/api/interpreter'];
+  const q=`[out:json][timeout:25];(way["building"](${bbox});way["highway"](${bbox});way["natural"="water"](${bbox});way["waterway"](${bbox});way["leisure"~"park|garden|pitch"](${bbox});way["landuse"~"grass|forest|meadow"](${bbox});node["natural"="tree"](${bbox});node["name"]["amenity"](${bbox});node["name"]["shop"](${bbox});node["name"]["tourism"](${bbox});node["name"]["historic"](${bbox});node["name"]["place"](${bbox});node["name"]["leisure"](${bbox}););out geom;`;
+  const mirrors=['https://overpass-api.de/api/interpreter','https://overpass.private.coffee/api/interpreter','https://maps.mail.ru/osm/tools/overpass/api/interpreter','https://overpass.kumi.systems/api/interpreter'];
   let data;
-  for(const m of mirrors){
-    try{const r=await fetch(m,{method:'POST',body:'data='+encodeURIComponent(q)}); if(r.ok){data=await r.json();break;}}catch(e){}
-  }
-  if(!data) return status('Could not load map data. Try again in a moment.');
+  // ask all map servers at once, use whichever answers first; give up after 30 s
+  const ctrls=mirrors.map(()=>new AbortController());
+  const t0=Date.now(),tick=setInterval(()=>status(`Downloading map data… ${Math.round((Date.now()-t0)/1000)}s`),1000);
+  const kill=setTimeout(()=>ctrls.forEach(c=>c.abort()),30000);
+  try{
+    data=await Promise.any(mirrors.map((m,i)=>fetch(m,{method:'POST',signal:ctrls[i].signal,
+      headers:{'Content-Type':'application/x-www-form-urlencoded'},body:'data='+encodeURIComponent(q)})
+      .then(r=>{if(!r.ok)throw 0;return r.json();}).then(j=>{if(!j.elements)throw 0;return j;})));
+  }catch(e){}
+  clearInterval(tick);clearTimeout(kill);ctrls.forEach(c=>c.abort());
+  if(!data) return status(location.protocol==='file:'||!navigator.onLine
+    ? 'Could not reach the map servers. Check your internet connection, and open the game from a web address (e.g. Netlify) rather than as a file.'
+    : 'The map servers are busy or didn\'t answer. Tap the map again to retry, or pick a smaller town.');
   status('Loading terrain…');
   dem=await loadDEM(lat,lon); dem_base=dem?rawH(lat,lon):0;
   status('Building world…');
