@@ -71,10 +71,39 @@ async function start(lat,lon){
     try{const r=await fetch(m,{method:'POST',body:'data='+encodeURIComponent(q)}); if(r.ok){data=await r.json();break;}}catch(e){}
   }
   if(!data) return status('Could not load map data. Try again in a moment.');
+  status('Loading terrain…');
+  dem=await loadDEM(lat,lon); dem_base=dem?rawH(lat,lon):0;
   status('Building world…');
   build(data);
   $('ui').style.display='none';
 }
+
+// ---- Terrain elevation (Terrarium DEM tiles, CORS-enabled) ----
+const Z=14; let dem=null, dem_base=0;
+async function loadDEM(lat,lon){
+  const n=2**Z, tx=Math.floor((lon+180)/360*n), lr=lat*Math.PI/180;
+  const ty=Math.floor((1-Math.log(Math.tan(lr)+1/Math.cos(lr))/Math.PI)/2*n);
+  const cv=document.createElement('canvas'); cv.width=cv.height=768; const cx=cv.getContext('2d');
+  const jobs=[];
+  for(let dy=-1;dy<=1;dy++)for(let dx=-1;dx<=1;dx++) jobs.push(new Promise(res=>{
+    const im=new Image(); im.crossOrigin='anonymous';
+    im.onload=()=>{cx.drawImage(im,(dx+1)*256,(dy+1)*256);res();}; im.onerror=res;
+    im.src=`https://s3.amazonaws.com/elevation-tiles-prod/terrarium/${Z}/${(tx+dx+n)%n}/${ty+dy}.png`;}));
+  await Promise.all(jobs);
+  let px; try{px=cx.getImageData(0,0,768,768).data;}catch(e){return null;}
+  return {px,tx:tx-1,ty:ty-1,n};
+}
+function rawH(lat,lon){
+  if(!dem) return 0;
+  const lr=lat*Math.PI/180;
+  const fx=((lon+180)/360*dem.n-dem.tx)*256-.5, fy=((1-Math.log(Math.tan(lr)+1/Math.cos(lr))/Math.PI)/2*dem.n-dem.ty)*256-.5;
+  const g=(x,y)=>{x=Math.max(0,Math.min(767,x));y=Math.max(0,Math.min(767,y));const i=(y*768+x)*4,p=dem.px;return p[i]*256+p[i+1]+p[i+2]/256-32768;};
+  const x0=Math.floor(fx),y0=Math.floor(fy),ax=fx-x0,ay=fy-y0;
+  return (g(x0,y0)*(1-ax)+g(x0+1,y0)*ax)*(1-ay)+(g(x0,y0+1)*(1-ax)+g(x0+1,y0+1)*ax)*ay;
+}
+// height at local metres (x east, z south), relative to the start point
+function H(x,z){if(!dem)return 0;const k=180/Math.PI,R=6378137;
+  return rawH(origin.lat-z/R*k, origin.lon+x/(R*Math.cos(origin.lat/k))*k)-dem_base;}
 
 function shapeFrom(geom){
   const s=new THREE.Shape();
@@ -83,8 +112,11 @@ function shapeFrom(geom){
 }
 function flat(geom,color,y){
   if(geom.length<3) return;
-  const m=new THREE.Mesh(new THREE.ShapeGeometry(shapeFrom(geom)),new THREE.MeshLambertMaterial({color}));
-  m.rotation.x=-Math.PI/2; m.position.y=y; scene.add(m);
+  const sg=new THREE.ShapeGeometry(shapeFrom(geom)); const a=sg.attributes.position;
+  for(let i=0;i<a.count;i++) a.setZ(i,H(a.getX(i),-a.getY(i))+y);
+  sg.computeVertexNormals();
+  const m=new THREE.Mesh(sg,new THREE.MeshLambertMaterial({color,polygonOffset:true,polygonOffsetFactor:-1,polygonOffsetUnits:-2}));
+  m.rotation.x=-Math.PI/2; scene.add(m);
 }
 const roadW={motorway:14,trunk:12,primary:10,secondary:9,tertiary:8,residential:6,unclassified:6,service:4,living_street:5,pedestrian:5,footway:2,path:1.5,cycleway:2,steps:2,track:3};
 
@@ -93,10 +125,15 @@ function road(geom,w,color,y){
   for(let i=0;i<geom.length-1;i++){
     const [x1,z1]=proj(geom[i].lat,geom[i].lon),[x2,z2]=proj(geom[i+1].lat,geom[i+1].lon);
     let dx=x2-x1,dz=z2-z1,l=Math.hypot(dx,dz)||1; const nx=-dz/l*w/2,nz=dx/l*w/2;
-    pos.push(x1+nx,y,z1+nz, x1-nx,y,z1-nz, x2+nx,y,z2+nz, x1-nx,y,z1-nz, x2-nx,y,z2-nz, x2+nx,y,z2+nz);
+    const steps=Math.max(1,Math.ceil(l/8));
+    for(let k=0;k<steps;k++){
+      const ax=x1+dx*k/steps,az=z1+dz*k/steps,bx=x1+dx*(k+1)/steps,bz=z1+dz*(k+1)/steps;
+      const ha=H(ax,az)+y,hb=H(bx,bz)+y;
+      pos.push(ax+nx,ha,az+nz, ax-nx,ha,az-nz, bx+nx,hb,bz+nz, ax-nx,ha,az-nz, bx-nx,hb,bz-nz, bx+nx,hb,bz+nz);
+    }
   }
   const g=new THREE.BufferGeometry(); g.setAttribute('position',new THREE.Float32BufferAttribute(pos,3)); g.computeVertexNormals();
-  const m=new THREE.Mesh(g,new THREE.MeshLambertMaterial({color,side:THREE.DoubleSide})); scene.add(m);
+  const m=new THREE.Mesh(g,new THREE.MeshLambertMaterial({color,side:THREE.DoubleSide,polygonOffset:true,polygonOffsetFactor:-2,polygonOffsetUnits:-4})); scene.add(m);
 }
 
 function build(data){
@@ -106,7 +143,10 @@ function build(data){
   camera=new THREE.PerspectiveCamera(70,innerWidth/innerHeight,0.3,2000); camera.position.set(0,1.7,0);
   scene.add(new THREE.HemisphereLight(0xffffff,0x556655,0.9));
   const sun=new THREE.DirectionalLight(0xffffff,0.6); sun.position.set(200,400,100); scene.add(sun);
-  const ground=new THREE.Mesh(new THREE.PlaneGeometry(RADIUS*3,RADIUS*3),new THREE.MeshLambertMaterial({color:0xb9b2a2}));
+  const gg=new THREE.PlaneGeometry(RADIUS*3,RADIUS*3,180,180); const ga=gg.attributes.position;
+  for(let i=0;i<ga.count;i++) ga.setZ(i,H(ga.getX(i),-ga.getY(i)));
+  gg.computeVertexNormals();
+  const ground=new THREE.Mesh(gg,new THREE.MeshLambertMaterial({color:0xb9b2a2}));
   ground.rotation.x=-Math.PI/2; scene.add(ground);
 
   const trees=[];
@@ -123,7 +163,7 @@ function build(data){
       const shade=0.75+((el.id%7)/7)*0.25;
       const col=new THREE.Color(t['building:colour']||0xd8cfc0); col.multiplyScalar(shade);
       const m=new THREE.Mesh(geo,new THREE.MeshLambertMaterial({color:col}));
-      m.rotation.x=-Math.PI/2; scene.add(m);
+      m.rotation.x=-Math.PI/2; m.position.y=Math.min(...g.map(q=>{const [x,z]=proj(q.lat,q.lon);return H(x,z);}))-0.5; scene.add(m);
     } else if(t.highway){
       road(g,roadW[t.highway]||4,['footway','path','pedestrian','steps','cycleway'].includes(t.highway)?0xc9b48f:0x4a4a4f,0.05);
     } else if(t.waterway){ road(g,t.waterway==='river'?20:4,0x3b7bbf,0.03);
@@ -136,7 +176,7 @@ function build(data){
     const trunk=new THREE.InstancedMesh(new THREE.CylinderGeometry(.2,.3,3),new THREE.MeshLambertMaterial({color:0x6b4a2b}),trees.length);
     const crown=new THREE.InstancedMesh(new THREE.SphereGeometry(2.2,8,6),new THREE.MeshLambertMaterial({color:0x3f8a3a}),trees.length);
     const M=new THREE.Matrix4();
-    trees.forEach(([x,z],i)=>{M.makeTranslation(x,1.5,z);trunk.setMatrixAt(i,M);M.makeTranslation(x,4.2,z);crown.setMatrixAt(i,M);});
+    trees.forEach(([x,z],i)=>{const h=H(x,z);M.makeTranslation(x,h+1.5,z);trunk.setMatrixAt(i,M);M.makeTranslation(x,h+4.2,z);crown.setMatrixAt(i,M);});
     scene.add(trunk,crown);
   }
   // collision: raycast against buildings
@@ -144,10 +184,10 @@ function build(data){
   setupControls(); last=performance.now(); loop();
 }
 
-let colliders=[],last;
+let colliders=[],last,bob=0;
 const ray=new THREE.Raycaster();
 function blocked(dir){
-  ray.set(new THREE.Vector3(camera.position.x,1,camera.position.z),dir); ray.far=0.6;
+  ray.set(new THREE.Vector3(camera.position.x,camera.position.y-0.7,camera.position.z),dir); ray.far=0.6;
   return ray.intersectObjects(colliders).length>0;
 }
 
@@ -182,9 +222,10 @@ function loop(){
     const mx=new THREE.Vector3(Math.sign(mv.x),0,0),mz=new THREE.Vector3(0,0,Math.sign(mv.z));
     if(mv.x&&!blocked(mx)) camera.position.x+=mv.x*speed;
     if(mv.z&&!blocked(mz)) camera.position.z+=mv.z*speed;
-    camera.position.y=1.7+Math.sin(now/120)*0.04;
+    bob=Math.sin(now/120)*0.04;
   }
   const lim=RADIUS*0.95; camera.position.x=Math.max(-lim,Math.min(lim,camera.position.x)); camera.position.z=Math.max(-lim,Math.min(lim,camera.position.z));
+  camera.position.y=H(camera.position.x,camera.position.z)+1.7+bob;
   camera.rotation.set(pitch,yaw,0,'YXZ');
   renderer.render(scene,camera); hud(); if((now|0)%3===0||true) mini();
 }
@@ -196,7 +237,7 @@ function hud(){
   for(const n of features.named){const d=Math.hypot(n.p[0]-p.x,n.p[1]-p.z); if(d<bd){bd=d;near=n.name;}}
   const dirs=['N','NE','E','SE','S','SW','W','NW'];
   const h=((-yaw*k)%360+360)%360;
-  $('hud').innerHTML=`${lat.toFixed(5)}, ${lon.toFixed(5)}<br>Facing ${dirs[Math.round(h/45)%8]}`+(near?`<br>Near: <b>${near}</b>`:'')+`<br><span style="opacity:.6">© OpenStreetMap contributors</span>`;
+  $('hud').innerHTML=`${lat.toFixed(5)}, ${lon.toFixed(5)}<br>Facing ${dirs[Math.round(h/45)%8]} · Elev ${dem?Math.round(H(p.x,p.z)+dem_base)+' m':'n/a'}`+(near?`<br>Near: <b>${near}</b>`:'')+`<br><span style="opacity:.6">© OpenStreetMap contributors</span>`;
 }
 
 function mini(){
