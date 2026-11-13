@@ -2,20 +2,29 @@
 <html lang="en">
 <head>
 <meta charset="utf-8">
-<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no,viewport-fit=cover">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="mobile-web-app-capable" content="yes">
+<meta name="theme-color" content="#0a141e">
 <title>World Walk</title>
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.min.css">
 <style>
   #pick{width:min(720px,94vw);height:min(420px,50vh);border-radius:10px;margin:8px 0}
-  html,body{margin:0;height:100%;overflow:hidden;background:#87b5e0;font-family:system-ui,sans-serif}
-  #ui{position:fixed;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center;background:rgba(10,20,30,.85);color:#fff;z-index:10;text-align:center;padding:16px}
+  html,body{margin:0;height:100%;overflow:hidden;touch-action:none;-webkit-user-select:none;user-select:none;overscroll-behavior:none;background:#87b5e0;font-family:system-ui,sans-serif}
+  #ui{position:fixed;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:safe center;overflow-y:auto;touch-action:pan-y;box-sizing:border-box;padding-top:max(16px,env(safe-area-inset-top));padding-bottom:max(16px,env(safe-area-inset-bottom));background:rgba(10,20,30,.85);color:#fff;z-index:10;text-align:center;padding:16px}
   #ui h1{margin:0 0 8px} #ui p{max-width:480px;opacity:.85}
   button{font:inherit;padding:10px 18px;margin:4px;border:0;border-radius:8px;background:#3a8ee6;color:#fff;cursor:pointer}
   input{font:inherit;padding:8px;border-radius:6px;border:0;width:120px}
-  #hud{position:fixed;left:12px;top:12px;color:#fff;background:rgba(0,0,0,.45);padding:8px 12px;border-radius:8px;font-size:13px;z-index:5}
-  #mini{position:fixed;right:12px;top:12px;width:180px;height:180px;border-radius:50%;border:3px solid #fff;background:#223;z-index:5}
+  #hud{position:fixed;left:calc(12px + env(safe-area-inset-left));top:calc(12px + env(safe-area-inset-top));color:#fff;background:rgba(0,0,0,.45);padding:8px 12px;border-radius:8px;font-size:13px;z-index:5}
+  #mini{position:fixed;right:calc(12px + env(safe-area-inset-right));top:calc(12px + env(safe-area-inset-top));width:180px;height:180px;border-radius:50%;border:3px solid #fff;background:#223;z-index:5}
   #cross{position:fixed;left:50%;top:50%;width:6px;height:6px;margin:-3px;border-radius:50%;background:#fff;z-index:5}
-  #joy{position:fixed;left:20px;bottom:20px;width:110px;height:110px;border-radius:50%;background:rgba(255,255,255,.2);display:none;z-index:6;touch-action:none}
+  #joy{position:fixed;left:calc(24px + env(safe-area-inset-left));bottom:calc(24px + env(safe-area-inset-bottom));width:120px;height:120px;border:2px solid rgba(255,255,255,.5);box-sizing:border-box;border-radius:50%;background:rgba(255,255,255,.2);display:none;z-index:6;touch-action:none}
+  #knob{position:absolute;left:50%;top:50%;width:50px;height:50px;margin:-25px;border-radius:50%;background:rgba(255,255,255,.75);pointer-events:none}
+  .mbtn{position:fixed;z-index:6;display:none;width:64px;height:64px;border-radius:50%;padding:0;font-size:13px;font-weight:600;background:rgba(0,0,0,.45);border:2px solid rgba(255,255,255,.6)}
+  #runBtn{right:calc(24px + env(safe-area-inset-right));bottom:calc(40px + env(safe-area-inset-bottom))}
+  #mapBtn{right:calc(24px + env(safe-area-inset-right));bottom:calc(116px + env(safe-area-inset-bottom));font-size:12px}
+  #runBtn.on{background:#3a8ee6}
+  @media (max-width:600px){#mini{width:110px;height:110px}#hud{font-size:11px;max-width:52vw}#ui h1{font-size:24px}#ui p{font-size:14px;margin:6px 0}}
 </style>
 </head>
 <body>
@@ -23,14 +32,14 @@
   <h1>World Walk</h1>
   <p>Walk around the real streets and buildings where you are. Map data comes from OpenStreetMap.</p>
   <div id="pick"></div>
-  <p style="margin:4px">Click anywhere on the map to drop in there, or</p>
+  <p style="margin:4px">Tap or click anywhere on the map to drop in there, or</p>
   <button id="go">Use my location</button>
   <p style="margin-top:8px">or enter coordinates:</p>
   <div><input id="lat" placeholder="lat" value="51.5007"><input id="lon" placeholder="lon" value="-0.1246"><button id="manual">Go</button></div>
   <p id="status"></p>
-  <p style="font-size:12px">WASD / arrows to move · mouse to look · Shift to run · on touch: drag right side to look, joystick to walk</p>
+  <p style="font-size:12px">Phone: left thumb joystick to walk, drag right side to look, RUN to sprint, MAP to pick a new place.<br>Desktop: WASD / arrows to move · mouse to look · Shift to run</p>
 </div>
-<div id="hud"></div><canvas id="mini" width="360" height="360"></canvas><div id="cross"></div><div id="joy"></div>
+<div id="hud" style="display:none"></div><canvas id="mini" width="360" height="360" style="display:none"></canvas><div id="cross" style="display:none"></div><div id="joy"><div id="knob"></div></div><button class="mbtn" id="runBtn">RUN</button><button class="mbtn" id="mapBtn">MAP</button>
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.min.js"></script>
@@ -75,7 +84,9 @@ async function start(lat,lon){
   dem=await loadDEM(lat,lon); dem_base=dem?rawH(lat,lon):0;
   status('Building world…');
   build(data);
-  $('ui').style.display='none';
+  $('ui').style.display='none'; for(const i of ['hud','mini','cross']) $(i).style.display='';
+  if('ontouchstart' in window){try{document.documentElement.requestFullscreen?.().catch(()=>{});}catch(e){}
+    try{navigator.wakeLock?.request('screen').catch(()=>{});}catch(e){}}
 }
 
 // ---- Terrain elevation (Terrarium DEM tiles, CORS-enabled) ----
@@ -137,7 +148,7 @@ function road(geom,w,color,y){
 }
 
 function build(data){
-  renderer=new THREE.WebGLRenderer({antialias:true}); renderer.setPixelRatio(Math.min(devicePixelRatio,2));
+  renderer=new THREE.WebGLRenderer({antialias:true}); renderer.setPixelRatio(Math.min(devicePixelRatio,('ontouchstart' in window)?1.5:2));
   renderer.setSize(innerWidth,innerHeight); document.body.prepend(renderer.domElement);
   scene=new THREE.Scene(); scene.background=new THREE.Color(0x9cc8ef); scene.fog=new THREE.Fog(0x9cc8ef,150,RADIUS);
   camera=new THREE.PerspectiveCamera(70,innerWidth/innerHeight,0.3,2000); camera.position.set(0,1.7,0);
@@ -184,7 +195,7 @@ function build(data){
   setupControls(); last=performance.now(); loop();
 }
 
-let colliders=[],last,bob=0;
+let colliders=[],last,bob=0,running=false;
 const ray=new THREE.Raycaster();
 function blocked(dir){
   ray.set(new THREE.Vector3(camera.position.x,camera.position.y-0.7,camera.position.z),dir); ray.far=0.6;
@@ -199,12 +210,16 @@ function setupControls(){
   addEventListener('mousemove',e=>{if(document.pointerLockElement===c){yaw-=e.movementX*.0025;pitch=Math.max(-1.4,Math.min(1.4,pitch-e.movementY*.0025));}});
   if('ontouchstart' in window){
     const J=$('joy'); J.style.display='block'; let jt=null,lt=null,lx,ly;
-    addEventListener('touchstart',e=>{for(const t of e.changedTouches){
+    for(const b of ['runBtn','mapBtn']) $(b).style.display='block';
+    $('runBtn').ontouchstart=e=>{e.stopPropagation();running=!running;$('runBtn').classList.toggle('on',running);};
+    $('mapBtn').ontouchstart=e=>{e.stopPropagation();location.reload();};
+    addEventListener('touchstart',e=>{if(e.target.tagName==='BUTTON')return;for(const t of e.changedTouches){
       if(t.clientX<innerWidth/2&&jt===null){jt=t.identifier;} else if(lt===null){lt=t.identifier;lx=t.clientX;ly=t.clientY;}}},{passive:true});
     addEventListener('touchmove',e=>{for(const t of e.changedTouches){
-      if(t.identifier===jt){const r=J.getBoundingClientRect();joy.x=Math.max(-1,Math.min(1,(t.clientX-r.left-55)/55));joy.y=Math.max(-1,Math.min(1,(t.clientY-r.top-55)/55));}
+      if(t.identifier===jt){const r=J.getBoundingClientRect();joy.x=Math.max(-1,Math.min(1,(t.clientX-r.left-60)/60));joy.y=Math.max(-1,Math.min(1,(t.clientY-r.top-60)/60));$('knob').style.transform=`translate(${joy.x*40}px,${joy.y*40}px)`;}
       if(t.identifier===lt){yaw-=(t.clientX-lx)*.005;pitch=Math.max(-1.4,Math.min(1.4,pitch-(t.clientY-ly)*.005));lx=t.clientX;ly=t.clientY;}}},{passive:true});
-    addEventListener('touchend',e=>{for(const t of e.changedTouches){if(t.identifier===jt){jt=null;joy.x=joy.y=0;}if(t.identifier===lt)lt=null;}});
+    addEventListener('touchcancel',()=>{jt=lt=null;joy.x=joy.y=0;$('knob').style.transform='';});
+    addEventListener('touchend',e=>{for(const t of e.changedTouches){if(t.identifier===jt){jt=null;joy.x=joy.y=0;$('knob').style.transform='';}if(t.identifier===lt)lt=null;}});
   }
 }
 
@@ -214,7 +229,7 @@ function loop(){
   let f=(keys.KeyW||keys.ArrowUp?1:0)-(keys.KeyS||keys.ArrowDown?1:0)-joy.y;
   let s=(keys.KeyD||keys.ArrowRight?1:0)-(keys.KeyA||keys.ArrowLeft?1:0)+joy.x;
   if(keys.ArrowLeft&&!keys.KeyA){} 
-  const speed=(keys.ShiftLeft||keys.ShiftRight?9:4)*dt;
+  const speed=(keys.ShiftLeft||keys.ShiftRight||running?9:4)*dt;
   const fwd=new THREE.Vector3(-Math.sin(yaw),0,-Math.cos(yaw)),right=new THREE.Vector3(Math.cos(yaw),0,-Math.sin(yaw));
   const mv=fwd.multiplyScalar(f).add(right.multiplyScalar(s));
   if(mv.lengthSq()>0){
