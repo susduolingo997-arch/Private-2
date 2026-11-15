@@ -47,6 +47,7 @@
 
   // ---------- state ----------
   const st = {
+    tab: 'kitchen',
     li: 0, level: null, edits: {}, mode: 'menu', run: null, t: 0, world: null,
     drag: null, daily: false, shake: 0, lastEv: 0, firstWatch: true,
   };
@@ -130,15 +131,19 @@
   function menu() {
     st.mode = 'menu'; $('result').hidden = true; $('menu').hidden = false;
     const g = $('levelGrid'); g.innerHTML = '';
-    ['kitchen', 'city', 'space', 'factory'].forEach((wn) => {
-      const h = document.createElement('div'); h.className = 'world';
-      h.textContent = { kitchen: '🍳 Kitchen', city: '🏙️ City', space: '🚀 Space Station', factory: '🏭 Factory' }[wn]; g.appendChild(h);
+    const names = { kitchen: '🍳 Kitchen', city: '🏙️ City', space: '🚀 Space', factory: '🏭 Factory' };
+    const tabs = document.createElement('div'); tabs.className = 'tabs'; g.appendChild(tabs);
+    Object.keys(names).forEach((wn) => {
+      const t = document.createElement('button'); t.textContent = names[wn]; t.className = wn === st.tab ? 'tab on' : 'tab';
+      t.onclick = () => { st.tab = wn; store.set('tab', wn); menu(); }; tabs.appendChild(t);
+    });
+    [st.tab].forEach((wn) => {
       worldOrder(wn).forEach((i, k, arr) => {
       const lv = LEVELS[i];
       const b = document.createElement('button'), s = best[i] || 0;
       const unlocked = k === 0 || best[arr[k - 1]] || best[i];
       b.innerHTML = `${k + 1}<small>${'★'.repeat(s)}</small>`; b.title = lv.name; b.disabled = !unlocked;
-      b.onclick = () => { audio(); loadLevel(i); };
+      b.onclick = () => { audio(); st.tab = wn; loadLevel(i); };
       g.appendChild(b);
       });
     });
@@ -640,6 +645,7 @@
     requestAnimationFrame(loop);
   }
 
+  st.tab = store.get('tab', 'kitchen');
   menu();
   requestAnimationFrame(loop);
 })();
