@@ -12,6 +12,9 @@
     pot:    { r: 15, m: 1.2, e: 0.2,  frag: 360 },
     soccer: { r: 14, m: 1,   e: 0.55, frag: 0 },
     robot:  { r: 18, m: 6,   e: 0.0,  frag: 0, speed: 80 },
+    orb:    { r: 13, m: 1,   e: 0.5,  frag: 0 },
+    crystal:{ r: 12, m: 0.8, e: 0.2,  frag: 330 },
+    rover:  { r: 18, m: 6,   e: 0.0,  frag: 0, speed: 75 },
   };
   const clone = (o) => JSON.parse(JSON.stringify(o));
 
@@ -312,7 +315,120 @@
     }),
   ];
   KITCHEN2.forEach((l) => { l.world = 'kitchen'; LEVELS.push(l); });
+
+  // ---- Space Station: low gravity, conveyor belts, magnets, portals ----
+  const dock = (id, x, y, w, o) => { const b = bowl(id, x, y, w, o); b.segs.forEach((sg) => { sg.mat = 'dock'; }); b.zone.label = 'dock'; return b; };
+  const portals = (ax, ay, bx, by, o) => [
+    { id: 'pin', x: ax, y: ay, portal: 'pout', label: 'portal-in' },
+    Object.assign({ id: 'pout', x: bx, y: by, label: 'portal-out' }, o || {}),
+  ];
+  const SPACE = [
+    L({
+      name: 'Moonwalk', par: 1, gravity: 0.35,
+      story: 'Low gravity! The orb floats right past the dock. Move the dock to where it lands.',
+      segs: [seg('ledge', 0, 200, 260, 200, { mat: 'hull' })],
+      bowls: [dock('dock', 380, 428, 90, { movable: true })],
+      bodies: [body('o', 'orb', 30, 180, { vx: 130 })],
+      hint: [{ id: 'dock', dx: 150, dy: 0 }],
+      goals: [{ t: 'in', id: 'o', zone: 'dock' }],
+    }),
+    L({
+      name: 'Wrong Way Belt', par: 1,
+      story: 'The conveyor carries the crystal straight off the edge. Tap the belt to reverse it.',
+      segs: [seg('belt', 120, 260, 520, 260, { mat: 'conveyor', belt: 90, toggle: true }),
+             seg('wallL', 120, 260, 120, 220, { mat: 'hull' })],
+      bodies: [body('c', 'crystal', 300, 246)],
+      hint: [{ id: 'belt', toggle: true }],
+      goals: [{ t: 'intact', id: 'c' }],
+    }),
+    L({
+      name: 'Magnetic Pull', par: 1, gravity: 0.5,
+      story: 'The orb sails over the dock. Switch on the magnet to pull it down.',
+      segs: [seg('ledge', 0, 180, 220, 180, { mat: 'hull' })],
+      fans: [{ id: 'mag', type: 'magnet', x: 520, y: 380, r: 300, pull: 1200, on: false, toggle: true }],
+      bowls: [dock('dock', 520, 428, 90)],
+      bodies: [body('o', 'orb', 30, 160, { vx: 200 })],
+      hint: [{ id: 'mag', toggle: true }],
+      goals: [{ t: 'in', id: 'o', zone: 'dock' }],
+    }),
+    L({
+      name: 'Portal Hop', par: 1,
+      story: 'The orb rolls into the purple portal. Drag the orange exit portal somewhere useful.',
+      segs: [seg('floorL', 0, 300, 360, 300, { mat: 'hull' })],
+      zones: portals(330, 286, 120, 380, { movable: true }),
+      bowls: [dock('dock', 640, 428, 100)],
+      bodies: [body('o', 'orb', 40, 286, { vx: 160 })],
+      hint: [{ id: 'pout', dx: 500, dy: -80 }],
+      goals: [{ t: 'in', id: 'o', zone: 'dock' }],
+    }),
+    L({
+      name: 'Rover Runaway', par: 1,
+      story: 'The rover is trundling towards the open airlock. Put a hull panel in its way.',
+      segs: [seg('panel', 80, 430, 80, 370, { movable: true, mat: 'panel' })],
+      zones: [{ id: 'airlock', x: 720, y: 300, w: 80, h: 130, label: 'airlock', trap: true }],
+      bodies: [body('r', 'rover', 300, 410, { dir: 1 })],
+      hint: [{ id: 'panel', dx: 560, dy: 0 }],
+      goals: [{ t: 'out', id: 'r', zone: 'airlock' }],
+    }),
+    L({
+      name: 'Belt Delivery', par: 1,
+      story: 'The orb needs to reach the dock at the far end of the belt.',
+      segs: [seg('belt', 60, 330, 520, 330, { mat: 'conveyor', belt: -110, toggle: true }),
+             seg('stop', 60, 330, 60, 290, { mat: 'hull' })],
+      bowls: [dock('dock', 620, 428, 100)],
+      bodies: [body('o', 'orb', 300, 316)],
+      hint: [{ id: 'belt', toggle: true }],
+      goals: [{ t: 'in', id: 'o', zone: 'dock' }],
+    }),
+    L({
+      name: 'Wormhole Rover', par: 1,
+      story: 'The rover wants its charging pad on the upper deck. Use the portal.',
+      segs: [seg('deck', 420, 220, 800, 220, { mat: 'hull' })],
+      zones: [{ id: 'pin', x: 560, y: 410, portal: 'pout', label: 'portal-in' },
+              { id: 'pout', x: 120, y: 330, label: 'portal-out', movable: true },
+              { id: 'pad', x: 680, y: 150, w: 100, h: 75, label: 'pad', trap: true, only: 'rover' }],
+      bodies: [body('r', 'rover', 300, 410, { dir: 1 })],
+      hint: [{ id: 'pout', dx: 360, dy: -140 }],
+      goals: [{ t: 'reach', id: 'r', zone: 'pad' }],
+    }),
+    L({
+      name: 'Crystal Express', par: 2,
+      story: 'Belt runs the wrong way AND the crystal will smash on landing. Two changes.',
+      segs: [seg('belt', 60, 240, 460, 240, { mat: 'conveyor', belt: -100, toggle: true }),
+             seg('stop', 60, 240, 60, 200, { mat: 'hull' }),
+             seg('foam', 660, 430, 760, 430, { movable: true, mat: 'foam' })],
+      bodies: [body('c', 'crystal', 300, 226)],
+      zones: [{ id: 'bay', x: 470, y: 330, w: 330, h: 105, label: 'bay' }],
+      hint: [{ id: 'belt', toggle: true }, { id: 'foam', dx: -170, dy: 0 }],
+      goals: [{ t: 'intact', id: 'c' }, { t: 'in', id: 'c', zone: 'bay' }],
+    }),
+    L({
+      name: 'Decoy Magnet', par: 1, gravity: 0.6,
+      story: 'Get the orb into the dock. The magnet looks helpful... but do you even need it?',
+      segs: [seg('ledge', 0, 260, 300, 260, { mat: 'hull' })],
+      zones: portals(270, 246, 60, 120, { movable: true }),
+      fans: [{ id: 'mag', type: 'magnet', x: 640, y: 380, r: 300, pull: 1200, on: false, toggle: true }],
+      bowls: [dock('dock', 640, 428, 90)],
+      bodies: [body('o', 'orb', 40, 246, { vx: 150 })],
+      hint: [{ id: 'pout', dx: 540, dy: 180 }],
+      goals: [{ t: 'in', id: 'o', zone: 'dock' }],
+    }),
+    L({
+      name: 'Mission Control', par: 2, gravity: 0.5,
+      story: 'Final mission: orb in the dock AND the rover stays aboard.',
+      segs: [seg('belt', 60, 220, 400, 220, { mat: 'conveyor', belt: -110, toggle: true }),
+             seg('stop', 60, 220, 60, 180, { mat: 'hull' }),
+             seg('panel', 30, 430, 30, 370, { movable: true, mat: 'panel' })],
+      bowls: [dock('dock', 520, 428, 100)],
+      zones: [{ id: 'airlock', x: 720, y: 300, w: 80, h: 130, label: 'airlock', trap: true }],
+      bodies: [body('o', 'orb', 250, 206), body('r', 'rover', 620, 410, { dir: 1 })],
+      hint: [{ id: 'belt', toggle: true }, { id: 'panel', dx: 670, dy: 0 }],
+      goals: [{ t: 'in', id: 'o', zone: 'dock' }, { t: 'out', id: 'r', zone: 'airlock' }],
+    }),
+  ];
+
   CITY2.forEach((l) => { l.world = 'city'; LEVELS.push(l); });
+  SPACE.forEach((l) => { l.world = 'space'; LEVELS.push(l); });
 
   // ---- edits ----
   function movables(level) {
@@ -320,14 +436,15 @@
     const add = (id) => { if (!ids.includes(id)) ids.push(id); };
     level.segs.forEach((s) => { if (s.movable) add(s.group || s.id); });
     level.bodies.forEach((b) => { if (b.movable) add(b.id); });
+    level.zones.forEach((z) => { if (z.movable && !z.group) add(z.id); });
     return ids;
   }
   function build(level, edits) {
-    const w = { segs: clone(level.segs), bodies: clone(level.bodies), fans: clone(level.fans), zones: clone(level.zones), events: [], tick: 0 };
+    const w = { g: G * (level.gravity || 1), segs: clone(level.segs), bodies: clone(level.bodies), fans: clone(level.fans), zones: clone(level.zones), events: [], tick: 0 };
     for (const e of edits || []) {
-      if (e.toggle) { const f = w.fans.find((f) => f.id === e.id); if (f) f.on = !f.on; continue; }
+      if (e.toggle) { const f = w.fans.find((f) => f.id === e.id); if (f) f.on = !f.on; w.segs.forEach((sg) => { if (sg.id === e.id && sg.belt) sg.belt = -sg.belt; }); continue; }
       w.segs.forEach((s) => { if (s.id === e.id || s.group === e.id) { s.x1 += e.dx; s.x2 += e.dx; s.y1 += e.dy; s.y2 += e.dy; } });
-      w.zones.forEach((z) => { if (z.group === e.id) { z.x += e.dx; z.y += e.dy; } });
+      w.zones.forEach((z) => { if (z.group === e.id || (z.movable && z.id === e.id)) { z.x += e.dx; z.y += e.dy; } });
       w.bodies.forEach((b) => { if (b.id === e.id) { b.x += e.dx; b.y += e.dy; } });
     }
     for (const b of w.bodies) {
@@ -349,7 +466,7 @@
     nx /= d; ny /= d; b.x += nx * (R - d); b.y += ny * (R - d);
     const vn = b.vx * nx + b.vy * ny;
     if (vn < 0) {
-      const bouncy = s.mat === 'jelly' || s.mat === 'awning', soft = s.mat === 'sponge' || s.mat === 'trash';
+      const bouncy = s.mat === 'jelly' || s.mat === 'awning', soft = s.mat === 'sponge' || s.mat === 'trash' || s.mat === 'foam';
       let imp = -vn, e = bouncy ? 0.95 : soft ? 0 : b.e;
       if (soft) imp *= 0.25;
       if (imp < 40 && !bouncy) e = 0;
@@ -357,6 +474,7 @@
       b.vx -= (1 + e) * vn * nx; b.vy -= (1 + e) * vn * ny;
       const tx = -ny, ty = nx, vt = b.vx * tx + b.vy * ty, f = soft ? 0.3 : 0.0004;
       b.vx -= vt * f * tx; b.vy -= vt * f * ty;
+      if (s.belt && !b.speed) { const want = s.belt * Math.sign(s.x2 - s.x1 || 1) * (ty < 0 ? -1 : 1), cur = b.vx * tx + b.vy * ty, d = (want - cur) * 0.08; b.vx += d * tx; b.vy += d * ty; }
     }
     if (b.speed && Math.abs(nx) > 0.7 && nx * b.dir < 0) b.dir = -b.dir;
   }
@@ -381,10 +499,18 @@
       for (const b of live) {
         if (b.broken) continue;
         if (b.speed) b.vx = b.dir * b.speed;
-        b.vy += G * h;
-        for (const f of w.fans) if (f.on && b.x > f.x && b.x < f.x + f.w && b.y > f.y && b.y < f.y + f.h) { b.vx += f.fx * h / b.m; b.vy += f.fy * h / b.m; }
+        b.vy += w.g * h;
+        for (const f of w.fans) if (f.type === 'magnet') {
+          if (!f.on) continue; const dx = f.x - b.x, dy = f.y - b.y, d = Math.hypot(dx, dy);
+          if (d < f.r && d > 4) { b.vx += dx / d * f.pull * h / b.m; b.vy += dy / d * f.pull * h / b.m; }
+        } else if (f.on && b.x > f.x && b.x < f.x + f.w && b.y > f.y && b.y < f.y + f.h) { b.vx += f.fx * h / b.m; b.vy += f.fy * h / b.m; }
         b.x += b.vx * h; b.y += b.vy * h; b.a += b.vx * h / b.r;
         for (const sg of w.segs) colSeg(w, b, sg);
+        if (b.cool > 0) b.cool -= h;
+        for (const z of w.zones) if (z.portal && !(b.cool > 0) && Math.hypot(b.x - z.x, b.y - z.y) < 22) {
+          const o = w.zones.find((q) => q.id === z.portal); b.x = o.x + (o.ox || 0); b.y = o.y + (o.oy || 0); b.cool = 0.5;
+          w.events.push({ t: w.tick, type: 'warp', id: b.id });
+        }
         for (const z of w.zones) if (z.trap && (!z.only || z.only === b.kind) && inZone(b, z)) { b.broken = true; b.caught = z.id; b.vx = b.vy = 0; w.events.push({ t: w.tick, type: z.label === 'bed' ? 'nap' : 'escape', id: b.id, zone: z.id }); }
       }
       for (let i = 0; i < live.length; i++) for (let j = i + 1; j < live.length; j++) {

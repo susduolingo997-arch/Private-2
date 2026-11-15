@@ -10,10 +10,12 @@ const only = process.argv[2] ? process.argv[2].split(',').map(Number) : null;
 function candidates(level) {
   const out = [];
   for (const f of level.fans) if (f.toggle) out.push([{ id: f.id, toggle: true }]);
+  for (const sg of level.segs) if (sg.toggle) out.push([{ id: sg.id, toggle: true }]);
   for (const id of S.movables(level)) {
     const w = S.build(level, []);
     const pts = w.segs.filter(s => s.id === id || s.group === id).flatMap(s => [[s.x1, s.y1], [s.x2, s.y2]])
-      .concat(w.bodies.filter(b => b.id === id).map(b => [b.x, b.y]));
+      .concat(w.bodies.filter(b => b.id === id).map(b => [b.x, b.y]))
+      .concat(w.zones.filter(z => z.id === id && !z.group).map(z => [z.x, z.y]));
     const minx = Math.min(...pts.map(p => p[0])), maxx = Math.max(...pts.map(p => p[0]));
     const miny = Math.min(...pts.map(p => p[1])), maxy = Math.max(...pts.map(p => p[1]));
     for (let dx = Math.ceil((10 - minx) / 10) * 10; dx <= 790 - maxx; dx += STEP)
@@ -26,7 +28,7 @@ let ok = true;
 S.LEVELS.forEach((lv, i) => {
   if (only && !only.includes(i + 1)) return;
   const base = S.run(lv, []);
-  const singles = candidates(lv).map(c => ({ c, r: S.run(lv, c) }));
+  const singles = candidates(lv).map(c => { const r = S.run(lv, c); return { c, r: { win: r.win, results: r.results } }; });
   const wins1 = singles.filter(x => x.r.win).map(x => x.c);
   let wins2 = [];
   if (!wins1.length) {
@@ -53,7 +55,7 @@ S.LEVELS.forEach((lv, i) => {
   if (base.win) probs.push('wins with no changes');
   if (!need) probs.push('unsolvable');
   if (need && need !== lv.par) probs.push(`par is ${lv.par} but needs ${need}`);
-  if (sols < MIN_SOLS && !(lv.fans.length && all.every(c => c.every(e => e.toggle)))) probs.push(`too fussy (${sols} solutions)`);
+  if (sols < MIN_SOLS && !all.every(c => c.every(e => e.toggle))) probs.push(`too fussy (${sols} solutions)`);
   if (!hintOk) probs.push('hint fails');
   if (probs.length) ok = false;
   console.log(`${String(i + 1).padStart(2)}. ${lv.world.padEnd(7)} ${lv.name.padEnd(18)} needs ${need} · ${sols} solutions ${probs.length ? 'BAD: ' + probs.join('; ') : 'OK'}`);
