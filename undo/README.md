@@ -11,4 +11,29 @@ Each level is a 10-second moment in a kitchen that goes wrong. Watch it, rewind 
 - Daily Moment with a shareable emoji result card
 - Progress saved in the browser
 
-**Files:** `sim.js` (physics + levels), `game.js` (rendering/input), `test/check.js` (verifies every level fails untouched and has a solution: `node undo/test/check.js`).
+**Worlds:** 🍳 Kitchen (15) · 🏙️ City (10) · 🚀 Space Station (10) · 🏭 Factory (10)
+
+## Making levels fast: Forge
+
+Write a level once as a *template* with a few tunable numbers, and Forge finds the best version automatically.
+
+```js
+// levels/factory.src.js
+{ name: 'Gate Keeper', par: 1, story: '...',
+  grid: { belt: [70, 100, 130], gx: [300, 360, 420] },   // values to try
+  make: (p, H) => ({ segs: [H.seg('gate', p.gx, 300, ...)], ... }) }
+```
+
+```
+node undo/tools/forge.js undo/levels/factory.src.js      # all levels (~1 min)
+node undo/tools/forge.js undo/levels/factory.src.js 5 8  # just levels 5 and 8
+```
+
+For every combination it checks that the level goes wrong untouched, needs exactly `par` changes,
+and keeps the setting with the most winning placements. It then picks a natural hint
+(preferring spots on the floor), verifies it in the full simulator and writes `levels/<world>.js`.
+New worlds: add a `.src.js`, run Forge, add one `<script>` tag in `index.html`.
+
+`node undo/test/check.js` audits all levels in parallel on every CPU core (~2 min for 45 levels).
+
+**Files:** `sim.js` (physics + hand-made levels), `levels/*.src.js` (Forge templates) → `levels/*.js` (generated), `game.js` (rendering/input), `tools/search.js` (parallel solver), `tools/forge.js`, `test/check.js`.

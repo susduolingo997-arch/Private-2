@@ -15,6 +15,10 @@
     orb:    { r: 13, m: 1,   e: 0.5,  frag: 0 },
     crystal:{ r: 12, m: 0.8, e: 0.2,  frag: 330 },
     rover:  { r: 18, m: 6,   e: 0.0,  frag: 0, speed: 75 },
+    crate:  { r: 15, m: 1.5, e: 0.25, frag: 0 },
+    bulb:   { r: 11, m: 0.6, e: 0.2,  frag: 280 },
+    widget: { r: 12, m: 0.8, e: 0.45, frag: 0 },
+    forkbot:{ r: 18, m: 6,   e: 0.0,  frag: 0, speed: 85 },
   };
   const clone = (o) => JSON.parse(JSON.stringify(o));
 
@@ -442,11 +446,12 @@
   function build(level, edits) {
     const w = { g: G * (level.gravity || 1), segs: clone(level.segs), bodies: clone(level.bodies), fans: clone(level.fans), zones: clone(level.zones), events: [], tick: 0 };
     for (const e of edits || []) {
-      if (e.toggle) { const f = w.fans.find((f) => f.id === e.id); if (f) f.on = !f.on; w.segs.forEach((sg) => { if (sg.id === e.id && sg.belt) sg.belt = -sg.belt; }); continue; }
+      if (e.toggle) { const f = w.fans.find((f) => f.id === e.id); if (f) f.on = !f.on; w.segs.forEach((sg) => { if (sg.id === e.id && sg.belt) sg.belt = -sg.belt; if (sg.id === e.id && sg.gate) sg.off = !sg.off; }); continue; }
       w.segs.forEach((s) => { if (s.id === e.id || s.group === e.id) { s.x1 += e.dx; s.x2 += e.dx; s.y1 += e.dy; s.y2 += e.dy; } });
       w.zones.forEach((z) => { if (z.group === e.id || (z.movable && z.id === e.id)) { z.x += e.dx; z.y += e.dy; } });
       w.bodies.forEach((b) => { if (b.id === e.id) { b.x += e.dx; b.y += e.dy; } });
     }
+    for (const sg of w.segs) if (sg.lift) { sg.b = [sg.x1, sg.y1, sg.x2, sg.y2]; sg.vx = sg.vy = 0; }
     for (const b of w.bodies) {
       Object.assign(b, KINDS[b.kind], { vx: b.vx || 0, vy: b.vy || 0, a: 0, broken: false, dir: b.dir || 1 });
     }
@@ -458,15 +463,16 @@
     else if (imp > 120) w.events.push({ t: w.tick, type: 'bump', id: b.id, imp });
   }
   function colSeg(w, b, s) {
+    if (s.off) return;
     const dx = s.x2 - s.x1, dy = s.y2 - s.y1, L2 = dx * dx + dy * dy || 1;
     let t = ((b.x - s.x1) * dx + (b.y - s.y1) * dy) / L2; t = t < 0 ? 0 : t > 1 ? 1 : t;
     const px = s.x1 + dx * t, py = s.y1 + dy * t;
     let nx = b.x - px, ny = b.y - py; const d = Math.hypot(nx, ny), R = b.r + 3;
     if (d >= R || d === 0) return;
     nx /= d; ny /= d; b.x += nx * (R - d); b.y += ny * (R - d);
-    const vn = b.vx * nx + b.vy * ny;
+    const svx = s.vx || 0, svy = s.vy || 0, vn = (b.vx - svx) * nx + (b.vy - svy) * ny;
     if (vn < 0) {
-      const bouncy = s.mat === 'jelly' || s.mat === 'awning', soft = s.mat === 'sponge' || s.mat === 'trash' || s.mat === 'foam';
+      const bouncy = s.mat === 'jelly' || s.mat === 'awning' || s.mat === 'lift', soft = s.mat === 'sponge' || s.mat === 'trash' || s.mat === 'foam';
       let imp = -vn, e = bouncy ? 0.95 : soft ? 0 : b.e;
       if (soft) imp *= 0.25;
       if (imp < 40 && !bouncy) e = 0;
@@ -496,6 +502,12 @@
   function step(w) {
     const h = DT / SUB, live = w.bodies.filter((b) => !b.broken);
     for (let s = 0; s < SUB; s++) {
+      const tt = (w.tick + s / SUB) * DT;
+      for (const sg of w.segs) if (sg.lift) {
+        const L = sg.lift, k = (1 - Math.cos(2 * Math.PI * tt / L.period)) / 2, dk = Math.PI / L.period * Math.sin(2 * Math.PI * tt / L.period);
+        const ox = (L.dx || 0) * k, oy = (L.dy || 0) * k;
+        sg.x1 = sg.b[0] + ox; sg.y1 = sg.b[1] + oy; sg.x2 = sg.b[2] + ox; sg.y2 = sg.b[3] + oy; sg.vx = (L.dx || 0) * dk; sg.vy = (L.dy || 0) * dk;
+      }
       for (const b of live) {
         if (b.broken) continue;
         if (b.speed) b.vx = b.dir * b.speed;
@@ -511,6 +523,7 @@
           const o = w.zones.find((q) => q.id === z.portal); b.x = o.x + (o.ox || 0); b.y = o.y + (o.oy || 0); b.cool = 0.5;
           w.events.push({ t: w.tick, type: 'warp', id: b.id });
         }
+        for (const z of w.zones) if (z.crush && b.frag && !b.broken && inZone(b, z)) { b.broken = true; b.vx = b.vy = 0; w.events.push({ t: w.tick, type: 'break', id: b.id }); }
         for (const z of w.zones) if (z.trap && (!z.only || z.only === b.kind) && inZone(b, z)) { b.broken = true; b.caught = z.id; b.vx = b.vy = 0; w.events.push({ t: w.tick, type: z.label === 'bed' ? 'nap' : 'escape', id: b.id, zone: z.id }); }
       }
       for (let i = 0; i < live.length; i++) for (let j = i + 1; j < live.length; j++) {
@@ -533,6 +546,22 @@
       return false;
     });
   }
+  // Fast mode for tools: no frame recording, stops early once nothing can change.
+  function fastRun(level, edits) {
+    const w = build(level, edits); w.goals = level.goals;
+    const dynamic = w.segs.some((s) => s.lift);
+    let still = 0;
+    for (let t = 0; t < TICKS; t++) {
+      step(w);
+      if (dynamic) continue;
+      const moving = w.bodies.some((b) => !b.broken && (b.speed || Math.abs(b.vx) + Math.abs(b.vy) > 3));
+      still = moving ? 0 : still + 1;
+      if (still > 40) break;
+    }
+    const results = evaluate(w);
+    return { results, win: results.every(Boolean) };
+  }
+  function addLevels(arr) { arr.forEach((l) => LEVELS.push(l)); }
   function run(level, edits) {
     const w = build(level, edits); w.goals = level.goals;
     const frames = [snap(w)];
@@ -541,6 +570,6 @@
     return { frames, events: w.events, results, win: results.every(Boolean), world: w };
   }
 
-  const API = { LEVELS, KINDS, TICKS, DT, build, run, movables };
+  const API = { LEVELS, KINDS, TICKS, DT, build, run, fastRun, movables, addLevels, helpers: { seg, body, bowl, room, L, block, ramp, dock, portals } };
   if (typeof module !== 'undefined' && module.exports) module.exports = API; else root.UndoSim = API;
 })(this);

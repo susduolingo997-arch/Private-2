@@ -92,15 +92,15 @@
     ui();
   }
   function failText(r) {
-    const names = { vase: "Grandma's vase", egg: 'The egg', orange: 'The orange', ball: 'The ball', cat: 'Mittens', mug: 'The mug', pot: 'The flower pot', soccer: 'The football', robot: 'The delivery robot', orb: 'The orb', crystal: 'The crystal', rover: 'The rover' };
+    const names = { vase: "Grandma's vase", egg: 'The egg', orange: 'The orange', ball: 'The ball', cat: 'Mittens', mug: 'The mug', pot: 'The flower pot', soccer: 'The football', robot: 'The delivery robot', orb: 'The orb', crystal: 'The crystal', rover: 'The rover', crate: 'The crate', bulb: 'The light bulb', widget: 'The widget', forkbot: 'The forkbot' };
     const out = [];
     st.level.goals.forEach((g, i) => {
       if (r.results[i]) return;
       const b = r.world.bodies.find((x) => x.id === g.id), n = names[b.kind];
       if (g.t === 'intact') out.push(`${n} didn't survive.`);
-      else if (g.t === 'in') out.push(b.broken ? `${n} broke on the way.` : g.zone === 'bay' ? `${n} never reached the cargo bay.` : `${n} missed the ${{ city: 'bin', space: 'dock' }[st.level.world] || 'bowl'}.`);
+      else if (g.t === 'in') out.push(b.broken ? `${n} broke on the way.` : g.zone === 'bay' ? `${n} never reached the cargo bay.` : `${n} missed the ${{ city: 'bin', space: 'dock', factory: 'chute' }[st.level.world] || 'bowl'}.`);
       else if (g.t === 'reach') out.push(b.kind === 'rover' ? `${n} never reached its charger.` : `${n} never made it to bed.`);
-      else if (g.t === 'out') out.push(b.kind === 'robot' ? `${n} fell down the manhole!` : b.kind === 'rover' ? `${n} drifted out of the airlock!` : `${n} escaped through the door!`);
+      else if (g.t === 'out') out.push(b.kind === 'robot' ? `${n} fell down the manhole!` : b.kind === 'rover' ? `${n} drifted out of the airlock!` : b.kind === 'forkbot' ? `${n} drove into the recycler!` : `${n} escaped through the door!`);
     });
     return out.join(' ');
   }
@@ -130,9 +130,9 @@
   function menu() {
     st.mode = 'menu'; $('result').hidden = true; $('menu').hidden = false;
     const g = $('levelGrid'); g.innerHTML = '';
-    ['kitchen', 'city', 'space'].forEach((wn) => {
+    ['kitchen', 'city', 'space', 'factory'].forEach((wn) => {
       const h = document.createElement('div'); h.className = 'world';
-      h.textContent = { kitchen: '🍳 Kitchen', city: '🏙️ City', space: '🚀 Space Station' }[wn]; g.appendChild(h);
+      h.textContent = { kitchen: '🍳 Kitchen', city: '🏙️ City', space: '🚀 Space Station', factory: '🏭 Factory' }[wn]; g.appendChild(h);
       worldOrder(wn).forEach((i, k, arr) => {
       const lv = LEVELS[i];
       const b = document.createElement('button'), s = best[i] || 0;
@@ -155,7 +155,7 @@
     $('resetBtn').disabled = m !== 'edit' || !changeCount();
     $('scrub').disabled = !(m === 'result' || m === 'play');
     $('status').innerHTML = m === 'menu' ? '' :
-      `${st.daily ? '☀️ Daily · ' : ''}<b>${{ kitchen: '🍳', city: '🏙️', space: '🚀' }[lv.world]} ${numInWorld(st.li)}. ${lv.name}</b><br>Changes <b>${changeCount()}</b> · par ${lv.par}`;
+      `${st.daily ? '☀️ Daily · ' : ''}<b>${{ kitchen: '🍳', city: '🏙️', space: '🚀', factory: '🏭' }[lv.world]} ${numInWorld(st.li)}. ${lv.name}</b><br>Changes <b>${changeCount()}</b> · par ${lv.par}`;
   }
 
   // ---------- input ----------
@@ -252,7 +252,21 @@
     ctx.fillStyle = '#5ce1e6'; for (let x = 30; x < W; x += 100) ctx.fillRect(x, 436, 30, 3);
     if (st.level.gravity) { ctx.fillStyle = '#5ce1e6'; ctx.font = 'bold 12px ui-monospace,monospace'; ctx.textAlign = 'right'; ctx.fillText('GRAVITY ' + Math.round(st.level.gravity * 100) + '%', 784, 290); }
   }
+  function drawFactory() {
+    const g = ctx.createLinearGradient(0, 0, 0, H); g.addColorStop(0, '#3a3f4b'); g.addColorStop(1, '#525866');
+    ctx.fillStyle = g; ctx.fillRect(0, 0, W, H);
+    ctx.strokeStyle = '#2d313b'; ctx.lineWidth = 6;
+    for (let x = 0; x < W; x += 160) { ctx.beginPath(); ctx.moveTo(x, 0); ctx.lineTo(x + 80, 70); ctx.lineTo(x + 160, 0); ctx.stroke(); }
+    ctx.fillStyle = '#2d313b'; ctx.fillRect(0, 66, W, 8);
+    const t = now();
+    [[110, 140], [690, 120]].forEach(([x, y], i) => { ctx.save(); ctx.translate(x, y); ctx.rotate(t * (i ? -0.6 : 0.8)); ctx.fillStyle = '#6b7280';
+      for (let k = 0; k < 8; k++) { ctx.rotate(Math.PI / 4); ctx.fillRect(-6, -38, 12, 14); } ctx.beginPath(); ctx.arc(0, 0, 28, 0, 7); ctx.fill(); ctx.fillStyle = '#3a3f4b'; ctx.beginPath(); ctx.arc(0, 0, 10, 0, 7); ctx.fill(); ctx.restore(); });
+    ctx.fillStyle = '#ffd16622'; ctx.fillRect(300, 74, 200, 6);
+    ctx.fillStyle = '#ffd166'; for (let x = 0; x < W; x += 40) { ctx.save(); ctx.translate(x, 430); ctx.fillRect(0, 0, 20, 20); ctx.restore(); }
+    ctx.fillStyle = '#222'; for (let x = 20; x < W; x += 40) ctx.fillRect(x, 430, 20, 20);
+  }
   function drawRoom() {
+    if (st.level && st.level.world === 'factory') return drawFactory();
     if (st.level && st.level.world === 'space') return drawSpace();
     if (st.level && st.level.world === 'city') return drawCity();
     const g = ctx.createLinearGradient(0, 0, 0, H); g.addColorStop(0, '#ffe9d6'); g.addColorStop(1, '#ffd9c2');
@@ -289,6 +303,14 @@
       ctx.fillStyle = '#fff6'; ctx.beginPath(); ctx.ellipse(x + w / 3, s.y1 - 2, w / 6, 2.5, 0, 0, 7); ctx.fill();
     }
     else if (s.mat === 'bowl') line(s, 7, st.level.world === 'city' ? '#2e7d4f' : '#4fb3bf');
+    else if (s.mat === 'metal') { line(s, 12, '#8a919e'); line({ x1: s.x1, y1: s.y1 - 3, x2: s.x2, y2: s.y2 - 3 }, 3, '#c4c9d4'); }
+    else if (s.mat === 'chute') line(s, 7, '#ffd166');
+    else if (s.mat === 'lift') { line(s, 12, '#ff9f1c'); ctx.save(); ctx.setLineDash([8, 8]); line(s, 12, '#222'); ctx.restore(); ctx.strokeStyle = '#8a919e'; ctx.lineWidth = 3; ctx.beginPath(); ctx.moveTo((s.x1 + s.x2) / 2, s.y1 + 6); ctx.lineTo((s.x1 + s.x2) / 2, 430); ctx.stroke(); }
+    else if (s.mat === 'gate') {
+      if (s.off) { ctx.save(); ctx.setLineDash([3, 5]); line(s, 4, '#ff6b8b88'); ctx.restore(); }
+      else { line(s, 10, '#ff6b8b'); ctx.save(); ctx.setLineDash([6, 6]); line(s, 10, '#fff'); ctx.restore(); }
+      ctx.fillStyle = s.off ? '#7ee0a4' : '#ff6b8b'; ctx.font = 'bold 10px system-ui'; ctx.textAlign = 'center'; ctx.fillText(s.off ? 'GATE OPEN' : 'GATE SHUT', s.x1, Math.min(s.y1, s.y2) - 8);
+    }
     else if (s.mat === 'hull') { line(s, 12, '#5a5f9e'); line({ x1: s.x1, y1: s.y1 - 3, x2: s.x2, y2: s.y2 - 3 }, 3, '#9aa0e0'); }
     else if (s.mat === 'dock') line(s, 7, '#5ce1e6');
     else if (s.mat === 'panel') { line(s, 11, '#c9cdf2'); line(s, 3, '#ff9f1c'); }
@@ -325,6 +347,20 @@
       ctx.fillStyle = '#7b5ea7'; rr(z.x, z.y + 28, z.w, 26, 13); ctx.fill();
       ctx.fillStyle = '#c9b6f2'; rr(z.x + 8, z.y + 22, z.w - 16, 18, 9); ctx.fill();
       ctx.fillStyle = '#ff6b8b'; ctx.font = 'bold 11px system-ui'; ctx.textAlign = 'center'; ctx.fillText('CAT BED', z.x + z.w / 2, z.y + 14);
+    }
+    if (z.label === 'press') {
+      const tt = now(), drop = (Math.sin(tt * 3) * 0.5 + 0.5) * 30;
+      ctx.fillStyle = '#2d313b'; ctx.fillRect(z.x, z.y + z.h - 8, z.w, 8);
+      ctx.fillStyle = '#6b7280'; ctx.fillRect(z.x + z.w / 2 - 6, 0, 12, z.y - 10 + drop);
+      ctx.fillStyle = '#ff6b8b'; ctx.fillRect(z.x + 6, z.y - 10 + drop, z.w - 12, 16);
+      ctx.fillStyle = '#ffd166'; for (let x = z.x + 10; x < z.x + z.w - 10; x += 16) ctx.fillRect(x, z.y - 4 + drop, 8, 4);
+      ctx.fillStyle = '#ff6b8b'; ctx.font = 'bold 11px system-ui'; ctx.textAlign = 'center'; ctx.fillText('⚠ PRESS', z.x + z.w / 2, z.y + z.h - 14);
+    }
+    if (z.label === 'recycler') {
+      ctx.fillStyle = '#1f2937'; ctx.fillRect(z.x + 4, z.y, z.w - 4, z.h);
+      ctx.fillStyle = '#7ee0a4'; ctx.font = 'bold 22px system-ui'; ctx.textAlign = 'center'; ctx.fillText('♻', z.x + z.w / 2 + 2, z.y + z.h / 2);
+      ctx.fillStyle = '#ffd166'; for (let y = z.y; y < z.y + z.h; y += 16) ctx.fillRect(z.x, y, 4, 8);
+      ctx.fillStyle = '#7ee0a4'; ctx.font = 'bold 11px system-ui'; ctx.fillText('RECYCLER', z.x + z.w / 2, z.y - 8);
     }
     if (z.label === 'portal-in' || z.label === 'portal-out') {
       const c = z.label === 'portal-in' ? '#b388ff' : '#ff9f1c', t = now();
@@ -416,6 +452,23 @@
       ctx.strokeStyle = '#7d8cc4'; ctx.beginPath(); ctx.moveTo(0, -14); ctx.lineTo(0, -24); ctx.stroke(); ctx.fillStyle = '#ffd166'; ctx.beginPath(); ctx.arc(0, -25, 3, 0, 7); ctx.fill();
       ctx.fillStyle = '#3d3b4f'; ctx.save(); ctx.translate(-9, 13); ctx.rotate(a); ctx.fillRect(-4, -1, 8, 2); ctx.beginPath(); ctx.arc(0, 0, 5, 0, 7); ctx.fill(); ctx.restore();
       ctx.save(); ctx.translate(9, 13); ctx.beginPath(); ctx.arc(0, 0, 5, 0, 7); ctx.fill(); ctx.restore();
+    } else if (k === 'crate') {
+      ctx.rotate(a * 0.15); ctx.fillStyle = '#c8955c'; ctx.fillRect(-r, -r, 2 * r, 2 * r); ctx.strokeStyle = '#8a5a3c'; ctx.lineWidth = 2; ctx.strokeRect(-r, -r, 2 * r, 2 * r);
+      ctx.beginPath(); ctx.moveTo(-r, -r); ctx.lineTo(r, r); ctx.moveTo(r, -r); ctx.lineTo(-r, r); ctx.stroke();
+    } else if (k === 'bulb') {
+      if (broken) { shards('#fff3b0', bt); ctx.fillStyle = '#8a919e'; ctx.fillRect(-4, r - 6, 8, 6); }
+      else { ctx.rotate(a * 0.3); ctx.fillStyle = '#fff3b0'; ctx.beginPath(); ctx.arc(0, -2, r - 1, 0, 7); ctx.fill(); ctx.fillStyle = '#ffd16655'; ctx.beginPath(); ctx.arc(0, -2, r + 5, 0, 7); ctx.fill();
+        ctx.fillStyle = '#8a919e'; ctx.fillRect(-5, r - 6, 10, 7); ctx.strokeStyle = '#ff9f1c'; ctx.lineWidth = 1.5; ctx.beginPath(); ctx.moveTo(-3, 2); ctx.lineTo(0, -4); ctx.lineTo(3, 2); ctx.stroke(); }
+    } else if (k === 'widget') {
+      ctx.rotate(a); ctx.fillStyle = '#5ce1e6'; ctx.beginPath(); for (let i = 0; i < 6; i++) { const an = i * Math.PI / 3; ctx.lineTo(Math.cos(an) * r, Math.sin(an) * r); } ctx.fill();
+      ctx.fillStyle = '#3a3f4b'; ctx.beginPath(); ctx.arc(0, 0, 4, 0, 7); ctx.fill();
+    } else if (k === 'forkbot') {
+      if (broken) { ctx.globalAlpha = Math.max(0, 1 - bt * 1.5); ctx.translate(0, Math.min(25, bt * 50)); }
+      ctx.scale(dir || 1, 1);
+      ctx.fillStyle = '#ffd166'; rr(-18, -16, 26, 26, 4); ctx.fill(); ctx.fillStyle = '#3a3f4b'; ctx.fillRect(-14, -12, 14, 10);
+      ctx.fillStyle = '#5ce1e6'; ctx.beginPath(); ctx.arc(-7, -7, 2.5, 0, 7); ctx.fill();
+      ctx.fillStyle = '#8a919e'; ctx.fillRect(8, -18, 4, 28); ctx.fillRect(8, 6, 14, 4);
+      ctx.fillStyle = '#222'; [-12, 2].forEach((x) => { ctx.beginPath(); ctx.arc(x, 12, 5, 0, 7); ctx.fill(); });
     } else if (k === 'orb') {
       const g = ctx.createRadialGradient(-4, -4, 2, 0, 0, r); g.addColorStop(0, '#e0f7ff'); g.addColorStop(1, '#5ce1e6');
       ctx.fillStyle = g; ctx.beginPath(); ctx.arc(0, 0, r, 0, 7); ctx.fill(); ctx.rotate(a); ctx.strokeStyle = '#ffffffaa'; ctx.lineWidth = 2; ctx.beginPath(); ctx.arc(0, 0, r - 4, 0, 1.5); ctx.stroke();
@@ -476,7 +529,12 @@
     const t = frameIdx * S.DT;
     w.zones.forEach((z) => drawZone(z, editing));
     w.fans.forEach((f) => drawFan(f, editing, t));
-    w.segs.forEach((s) => drawSeg(s, editing));
+    w.segs.forEach((s) => {
+      if (s.lift && !editing) {
+        const L = s.lift, k = (1 - Math.cos(2 * Math.PI * t / L.period)) / 2, ox = (L.dx || 0) * k, oy = (L.dy || 0) * k;
+        drawSeg(Object.assign({}, s, { x1: s.b[0] + ox, y1: s.b[1] + oy, x2: s.b[2] + ox, y2: s.b[3] + oy }), editing);
+      } else drawSeg(s, editing);
+    });
     const frame = st.run && !editing ? st.run.frames[Math.min(TICKS, Math.round(frameIdx))] : w.bodies.map((b) => [b.x, b.y, 0, 0, b.dir]);
     const evs = st.run && !editing ? st.run.events : [];
     w.bodies.forEach((b, i) => {
