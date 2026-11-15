@@ -45,6 +45,7 @@
       segs: [seg('counter', 0, 250, 400, 250, { mat: 'counter' }),
              seg('board', 700, 430, 700, 380, { movable: true, mat: 'board' })],
       bodies: [body('b', 'ball', 40, 230, { vx: 160 }), body('v', 'vase', 500, 410)],
+      hint: [{ id: "board", dx: -410, dy: -180 }],
       goals: [{ t: 'intact', id: 'v' }],
     }),
     L({
@@ -54,8 +55,8 @@
       fans: [{ id: 'fan', x: 300, y: 220, w: 300, h: 210, fx: 260, fy: 0, on: true, toggle: true }],
       bowls: [bowl('bowl', 390, 428, 70)],
       bodies: [body('o', 'orange', 30, 180, { vx: 90 })],
+      hint: [{ id: "fan", toggle: true }],
       goals: [{ t: 'in', id: 'o', zone: 'bowl' }],
-      solution: [{ id: 'fan', toggle: true }],
     }),
     L({
       name: 'Great Escape', par: 1,
@@ -64,8 +65,8 @@
              seg('shelf', 60, 330, 240, 330, { mat: 'counter' })],
       zones: [{ id: 'door', x: 720, y: 300, w: 80, h: 130, label: 'door', trap: true }],
       bodies: [body('c', 'cat', 260, 410, { dir: 1 })],
+      hint: [{ id: "board", dx: 390, dy: 70 }],
       goals: [{ t: 'out', id: 'c', zone: 'door' }],
-      solution: [{ id: 'board', dx: 480, dy: 90 }],
     }),
     L({
       name: 'Soft Landing', par: 1,
@@ -73,8 +74,8 @@
       segs: [seg('shelf', 0, 200, 420, 200, { mat: 'counter' }),
              seg('sponge', 60, 430, 160, 430, { movable: true, mat: 'sponge' })],
       bodies: [body('b', 'ball', 30, 180, { vx: 220 }), body('e', 'egg', 300, 186)],
+      hint: [{ id: "sponge", dx: 370, dy: -150 }],
       goals: [{ t: 'intact', id: 'e' }],
-      solution: null, // found by search in test
     }),
     L({
       name: 'Jelly Jump', par: 1,
@@ -84,8 +85,8 @@
              seg('high', 430, 300, 620, 300, { mat: 'counter' })],
       bowls: [bowl('bowl', 500, 298, 70)],
       bodies: [body('b', 'ball', 30, 140, { vx: 120 })],
+      hint: [{ id: "jelly", dx: 190, dy: -180 }],
       goals: [{ t: 'in', id: 'b', zone: 'bowl' }],
-      solution: null,
     }),
     L({
       name: 'Double Trouble', par: 2,
@@ -96,8 +97,8 @@
       bowls: [bowl('bowl', 450, 428, 70)],
       zones: [{ id: 'door', x: 720, y: 300, w: 80, h: 130, label: 'door', trap: true }],
       bodies: [body('o', 'orange', 100, 230, { vx: 150 }), body('c', 'cat', 560, 410, { dir: 1 })],
+      hint: [{ id: "fan", toggle: true }, { id: "board", dx: 510, dy: 150 }],
       goals: [{ t: 'in', id: 'o', zone: 'bowl' }, { t: 'out', id: 'c', zone: 'door' }],
-      solution: null,
     }),
     L({
       name: 'Move the Bowl', par: 1,
@@ -105,8 +106,8 @@
       segs: [seg('ramp', 0, 120, 260, 220, { mat: 'counter' })],
       bowls: [bowl('bowl', 120, 428, 70, { movable: true })],
       bodies: [body('o', 'orange', 30, 100)],
+      hint: [{ id: "bowl", dx: 200, dy: -110 }],
       goals: [{ t: 'in', id: 'o', zone: 'bowl' }],
-      solution: null,
     }),
     L({
       name: 'Cat Pinball', par: 1,
@@ -114,8 +115,8 @@
       segs: [seg('counter', 0, 300, 540, 300, { mat: 'counter' })],
       bowls: [bowl('bowl', 600, 428, 70)],
       bodies: [body('b', 'ball', 330, 280), body('c', 'cat', 250, 280, { dir: -1, movable: true })],
+      hint: [{ id: "c", dx: -200, dy: 0 }],
       goals: [{ t: 'in', id: 'b', zone: 'bowl' }],
-      solution: null,
     }),
     L({
       name: 'Egg Express', par: 2,
@@ -125,8 +126,8 @@
       fans: [{ id: 'fan', x: 300, y: 180, w: 300, h: 250, fx: 900, fy: 0, on: false, toggle: true }],
       bowls: [bowl('bowl', 560, 428, 70)],
       bodies: [body('e', 'egg', 30, 166, { vx: 120 })],
+      hint: [{ id: "fan", toggle: true }, { id: "sponge", dx: -160, dy: -30 }],
       goals: [{ t: 'in', id: 'e', zone: 'bowl' }, { t: 'intact', id: 'e' }],
-      solution: null,
     }),
     L({
       name: 'Kitchen Chaos', par: 2,
@@ -138,8 +139,8 @@
       bowls: [bowl('bowl', 450, 428, 70)],
       zones: [{ id: 'door', x: 720, y: 300, w: 80, h: 130, label: 'door', trap: true }],
       bodies: [body('o', 'orange', 30, 120), body('v', 'vase', 620, 410), body('c', 'cat', 670, 410, { dir: 1 })],
+      hint: [{ id: "fan", toggle: true }, { id: "board", dx: 650, dy: -40 }],
       goals: [{ t: 'in', id: 'o', zone: 'bowl' }, { t: 'intact', id: 'v' }, { t: 'out', id: 'c', zone: 'door' }],
-      solution: null,
     }),
   ];
 

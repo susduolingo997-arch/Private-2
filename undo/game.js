@@ -54,7 +54,7 @@
   const changeCount = () => Object.keys(st.edits).length;
 
   function loadLevel(i, daily) {
-    st.li = i; st.level = LEVELS[i]; st.edits = {}; st.daily = !!daily; st.drag = null;
+    st.li = i; st.level = LEVELS[i]; st.edits = {}; st.daily = !!daily; st.drag = null; st.hint = false;
     $('menu').hidden = true; $('result').hidden = true;
     $('story').textContent = st.level.story;
     // First, watch the disaster unfold.
@@ -140,6 +140,8 @@
   function ui() {
     const m = st.mode, lv = st.level;
     $('playBtn').disabled = m !== 'edit';
+    $('hintBtn').disabled = m !== 'edit';
+    $('hintBtn').textContent = st.hint ? '💡 Hide hint' : '💡 Hint';
     $('rewindBtn').disabled = !(m === 'play' || m === 'result');
     $('resetBtn').disabled = m !== 'edit' || !changeCount();
     $('scrub').disabled = !(m === 'result' || m === 'play');
@@ -152,6 +154,7 @@
   $('rewindBtn').onclick = rewind;
   $('resetBtn').onclick = () => { st.edits = {}; enterEdit(); sfx.drop(); };
   $('menuBtn').onclick = menu;
+  $('hintBtn').onclick = () => { st.hint = !st.hint; if (st.hint) toast('Move things to the faded ghost spots, then press Play.'); sfx.pick(); ui(); };
   $('dailyBtn').onclick = () => { audio(); loadLevel(dayNumber() % LEVELS.length, true); };
   $('scrub').oninput = (e) => { if (st.mode === 'play') st.mode = 'result'; st.t = +e.target.value; st.lastEv = st.t; };
   window.addEventListener('keydown', (e) => {
@@ -340,6 +343,7 @@
       const ev = broken ? evs.find((e) => e.id === b.id && (e.type === 'break' || e.type === 'escape')) : null;
       drawBody(b, f, editing, broken, ev ? (frameIdx - ev.t) * S.DT : 0);
     });
+    if (editing && st.hint) drawHint();
     // goal markers
     if (editing || frameIdx === 0) {
       st.level.goals.forEach((g) => {
@@ -350,6 +354,40 @@
     }
   }
 
+  function centerOf(w, id) {
+    const pts = w.segs.filter((s) => s.id === id || s.group === id).flatMap((s) => [[s.x1, s.y1], [s.x2, s.y2]])
+      .concat(w.bodies.filter((b) => b.id === id).map((b) => [b.x, b.y]));
+    return { x: pts.reduce((a, q) => a + q[0], 0) / pts.length, y: pts.reduce((a, q) => a + q[1], 0) / pts.length };
+  }
+  function drawHint() {
+    const lv = st.level, hw = S.build(lv, lv.hint), pulse = 0.5 + 0.5 * Math.sin(now() * 4);
+    ctx.save();
+    for (const h of lv.hint) {
+      if (h.toggle) {
+        const f = st.world.fans.find((x) => x.id === h.id), p = fanPos(f), done = !!st.edits[h.id];
+        ctx.globalAlpha = 1; ctx.fillStyle = done ? '#2e933c' : '#ffd166';
+        rr(p.x - 34, p.y - 62, 68, 24, 12); ctx.fill();
+        ctx.fillStyle = '#1d1b2e'; ctx.font = 'bold 12px system-ui'; ctx.textAlign = 'center';
+        ctx.fillText(done ? '✓ done' : '👆 TAP', p.x, p.y - 45);
+        continue;
+      }
+      ctx.globalAlpha = 0.35 + 0.25 * pulse;
+      hw.segs.filter((sg) => sg.id === h.id || sg.group === h.id).forEach((sg) => drawSeg(Object.assign({}, sg, { movable: false }), false));
+      hw.bodies.filter((b) => b.id === h.id).forEach((b) => drawBody(b, [b.x, b.y, 0, 0, b.dir], false, false, 0));
+      const from = centerOf(st.world, h.id), to = centerOf(hw, h.id), d = Math.hypot(to.x - from.x, to.y - from.y);
+      ctx.globalAlpha = 1;
+      if (d > 15) {
+        ctx.strokeStyle = '#ffd166'; ctx.lineWidth = 3; ctx.setLineDash([8, 6]); ctx.lineDashOffset = -now() * 40;
+        ctx.beginPath(); ctx.moveTo(from.x, from.y); ctx.lineTo(to.x, to.y); ctx.stroke(); ctx.setLineDash([]);
+        const a = Math.atan2(to.y - from.y, to.x - from.x);
+        ctx.fillStyle = '#ffd166'; ctx.beginPath(); ctx.moveTo(to.x, to.y);
+        ctx.lineTo(to.x - 14 * Math.cos(a - 0.4), to.y - 14 * Math.sin(a - 0.4)); ctx.lineTo(to.x - 14 * Math.cos(a + 0.4), to.y - 14 * Math.sin(a + 0.4)); ctx.fill();
+      } else {
+        ctx.fillStyle = '#2e933c'; ctx.font = 'bold 13px system-ui'; ctx.textAlign = 'center'; ctx.fillText('✓', to.x, to.y - 22);
+      }
+    }
+    ctx.restore();
+  }
   function drawVHS(intensity) {
     const t = now();
     ctx.fillStyle = `rgba(20,0,40,${0.25 * intensity})`; ctx.fillRect(0, 0, W, H);
