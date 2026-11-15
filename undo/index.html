@@ -44,6 +44,8 @@
   #menu .tabs { grid-column:1/-1; display:flex; gap:6px; justify-content:center; flex-wrap:wrap; margin-bottom:4px; }
   #menu .tabs .tab { padding:8px 14px; min-height:40px; font-size:15px; border-radius:999px; flex-direction:row; }
   #menu .tabs .tab.on { background:var(--accent); color:#fff; }
+  #menu { position:fixed; inset:0; z-index:10; border-radius:0; align-items:flex-start; overflow-y:auto; -webkit-overflow-scrolling:touch; touch-action:pan-y; overscroll-behavior:contain; padding:16px; background:#1d1b2ee6; }
+  #menu .card { max-height:none; overflow:visible; margin:auto; }
   .big { font-size:36px; font-weight:900; letter-spacing:.1em; margin:0; }
   .big span { color:var(--accent); }
   #toast { position:fixed; left:50%; bottom:24px; transform:translateX(-50%); background:#000c; padding:10px 16px; border-radius:10px; font-size:14px; opacity:0; transition:opacity .3s; pointer-events:none; }
