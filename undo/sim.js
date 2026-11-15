@@ -126,10 +126,10 @@
       story: 'Get the egg into the bowl without cracking it.',
       segs: [seg('shelf', 0, 180, 300, 180, { mat: 'counter' }),
              seg('sponge', 690, 430, 750, 430, { movable: true, mat: 'sponge' })],
-      fans: [{ id: 'fan', x: 300, y: 180, w: 300, h: 250, fx: 900, fy: 0, on: false, toggle: true }],
-      bowls: [bowl('bowl', 560, 428, 70)],
+      fans: [{ id: 'fan', x: 300, y: 180, w: 300, h: 250, fx: 500, fy: 0, on: false, toggle: true }],
+      bowls: [bowl('bowl', 520, 428, 70)],
       bodies: [body('e', 'egg', 30, 166, { vx: 120 })],
-      hint: [{ id: "fan", toggle: true }, { id: "sponge", dx: -160, dy: -30 }],
+      hint: [{ id: "fan", toggle: true }, { id: "sponge", dx: -210, dy: -20 }],
       goals: [{ t: 'in', id: 'e', zone: 'bowl' }, { t: 'intact', id: 'e' }],
     }),
     L({
