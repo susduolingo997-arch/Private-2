@@ -9,6 +9,9 @@
     egg:    { r: 11, m: 0.6, e: 0.2,  frag: 300 },
     mug:    { r: 13, m: 1,   e: 0.2,  frag: 420 },
     cat:    { r: 18, m: 5,   e: 0.0,  frag: 0, speed: 70 },
+    pot:    { r: 15, m: 1.2, e: 0.2,  frag: 360 },
+    soccer: { r: 14, m: 1,   e: 0.55, frag: 0 },
+    robot:  { r: 18, m: 6,   e: 0.0,  frag: 0, speed: 80 },
   };
   const clone = (o) => JSON.parse(JSON.stringify(o));
 
@@ -32,7 +35,7 @@
     seg('wallR', 800, -400, 800, 430, { mat: 'wall' }),
   ];
   function L(def) {
-    const segs = room().concat(def.segs || []), zones = (def.zones || []).slice();
+    const segs = (def.segs || []).concat(room()), zones = (def.zones || []).slice();
     (def.bowls || []).forEach((b) => { segs.push(...b.segs); zones.push(b.zone); });
     return Object.assign({ fans: [], bodies: [] }, def, { segs, zones });
   }
@@ -74,7 +77,7 @@
       segs: [seg('shelf', 0, 200, 420, 200, { mat: 'counter' }),
              seg('sponge', 60, 430, 160, 430, { movable: true, mat: 'sponge' })],
       bodies: [body('b', 'ball', 30, 180, { vx: 220 }), body('e', 'egg', 300, 186)],
-      hint: [{ id: "sponge", dx: 370, dy: -150 }],
+      hint: [{ id: "sponge", dx: 420, dy: 0 }],
       goals: [{ t: 'intact', id: 'e' }],
     }),
     L({
@@ -143,6 +146,63 @@
       goals: [{ t: 'in', id: 'o', zone: 'bowl' }, { t: 'intact', id: 'v' }, { t: 'out', id: 'c', zone: 'door' }],
     }),
   ];
+  LEVELS.forEach((l) => { l.world = 'kitchen'; });
+
+  const CITY = [
+    L({
+      name: 'Window Box', par: 1,
+      story: 'A stray football knocks the flower pot off the balcony. Something soft on the pavement would help.',
+      segs: [seg('ledge', 0, 190, 380, 190, { mat: 'ledge' }),
+             seg('trash', 640, 430, 740, 430, { movable: true, mat: 'trash' })],
+      bodies: [body('b', 'soccer', 30, 170, { vx: 230 }), body('p', 'pot', 300, 175)],
+      hint: [{ id: "trash", dx: -220, dy: 0 }],
+      goals: [{ t: 'intact', id: 'p' }],
+    }),
+    L({
+      name: 'Open Manhole', par: 1,
+      story: 'The delivery robot is rolling straight towards an open manhole. Put a plank in its way.',
+      segs: [seg('plank', 60, 300, 60, 250, { movable: true, mat: 'plank' }),
+             seg('ledge', 0, 300, 200, 300, { mat: 'ledge' })],
+      zones: [{ id: 'hole', x: 560, y: 395, w: 70, h: 40, label: 'manhole', trap: true }],
+      bodies: [body('r', 'robot', 230, 410, { dir: 1 })],
+      hint: [{ id: "plank", dx: 300, dy: 130 }],
+      goals: [{ t: 'out', id: 'r', zone: 'hole' }],
+    }),
+    L({
+      name: 'Updraft', par: 1,
+      story: 'The football should land in the bin on the balcony. The subway vent is switched off.',
+      segs: [seg('ledge', 0, 200, 240, 200, { mat: 'ledge' }),
+             seg('balcony', 430, 250, 640, 250, { mat: 'ledge' })],
+      fans: [{ id: 'vent', x: 240, y: 0, w: 140, h: 430, fx: 0, fy: -1300, on: false, toggle: true }],
+      bowls: [bowl('bin', 520, 248, 70)],
+      bodies: [body('b', 'soccer', 30, 180, { vx: 120 })],
+      hint: [{ id: "vent", toggle: true }],
+      goals: [{ t: 'in', id: 'b', zone: 'bin' }],
+    }),
+    L({
+      name: 'Awning Assist', par: 1,
+      story: 'Bounce the football off the café awning and into the rooftop bin.',
+      segs: [seg('ledge', 0, 150, 200, 150, { mat: 'ledge' }),
+             seg('awning', 60, 425, 160, 425, { movable: true, mat: 'awning' }),
+             seg('roof', 440, 280, 640, 280, { mat: 'ledge' })],
+      bowls: [bowl('bin', 520, 278, 70)],
+      bodies: [body('b', 'soccer', 30, 130, { vx: 110 })],
+      hint: [{ id: "awning", dx: 110, dy: -40 }],
+      goals: [{ t: 'in', id: 'b', zone: 'bin' }],
+    }),
+    L({
+      name: 'Rush Hour', par: 2,
+      story: 'A gust is blowing the flower pot off the ledge AND the robot is heading for the manhole.',
+      segs: [seg('ledge', 0, 220, 330, 220, { mat: 'ledge' }),
+             seg('plank', 40, 430, 40, 380, { movable: true, mat: 'plank' })],
+      fans: [{ id: 'gust', x: 0, y: 120, w: 420, h: 110, fx: 500, fy: 0, on: true, toggle: true }],
+      zones: [{ id: 'hole', x: 640, y: 395, w: 70, h: 40, label: 'manhole', trap: true }],
+      bodies: [body('p', 'pot', 250, 205), body('r', 'robot', 420, 410, { dir: 1 })],
+      hint: [{ id: "gust", toggle: true }, { id: "plank", dx: 390, dy: -40 }],
+      goals: [{ t: 'intact', id: 'p' }, { t: 'out', id: 'r', zone: 'hole' }],
+    }),
+  ];
+  CITY.forEach((l) => { l.world = 'city'; LEVELS.push(l); });
 
   // ---- edits ----
   function movables(level) {
@@ -179,15 +239,16 @@
     nx /= d; ny /= d; b.x += nx * (R - d); b.y += ny * (R - d);
     const vn = b.vx * nx + b.vy * ny;
     if (vn < 0) {
-      let imp = -vn, e = s.mat === 'jelly' ? 0.95 : s.mat === 'sponge' ? 0 : b.e;
-      if (s.mat === 'sponge') imp *= 0.25;
-      if (imp < 40 && s.mat !== 'jelly') e = 0;
+      const bouncy = s.mat === 'jelly' || s.mat === 'awning', soft = s.mat === 'sponge' || s.mat === 'trash';
+      let imp = -vn, e = bouncy ? 0.95 : soft ? 0 : b.e;
+      if (soft) imp *= 0.25;
+      if (imp < 40 && !bouncy) e = 0;
       hit(w, b, imp);
       b.vx -= (1 + e) * vn * nx; b.vy -= (1 + e) * vn * ny;
-      const tx = -ny, ty = nx, vt = b.vx * tx + b.vy * ty, f = s.mat === 'sponge' ? 0.3 : 0.0004;
+      const tx = -ny, ty = nx, vt = b.vx * tx + b.vy * ty, f = soft ? 0.3 : 0.0004;
       b.vx -= vt * f * tx; b.vy -= vt * f * ty;
     }
-    if (b.kind === 'cat' && Math.abs(nx) > 0.7 && nx * b.dir < 0) b.dir = -b.dir;
+    if (b.speed && Math.abs(nx) > 0.7 && nx * b.dir < 0) b.dir = -b.dir;
   }
   function colPair(w, a, b) {
     let nx = b.x - a.x, ny = b.y - a.y; const d = Math.hypot(nx, ny), R = a.r + b.r;
@@ -201,15 +262,15 @@
       if (!a.broken) { a.vx -= j / a.m * nx; a.vy -= j / a.m * ny; }
       if (!b.broken) { b.vx += j / b.m * nx; b.vy += j / b.m * ny; }
     }
-    if (a.kind === 'cat' && nx * a.dir > 0.7 && b.broken) a.dir = -a.dir;
-    if (b.kind === 'cat' && -nx * b.dir > 0.7 && a.broken) b.dir = -b.dir;
+    if (a.speed && nx * a.dir > 0.7 && b.broken) a.dir = -a.dir;
+    if (b.speed && -nx * b.dir > 0.7 && a.broken) b.dir = -b.dir;
   }
   function step(w) {
     const h = DT / SUB, live = w.bodies.filter((b) => !b.broken);
     for (let s = 0; s < SUB; s++) {
       for (const b of live) {
         if (b.broken) continue;
-        if (b.kind === 'cat') b.vx = b.dir * b.speed;
+        if (b.speed) b.vx = b.dir * b.speed;
         b.vy += G * h;
         for (const f of w.fans) if (f.on && b.x > f.x && b.x < f.x + f.w && b.y > f.y && b.y < f.y + f.h) { b.vx += f.fx * h / b.m; b.vy += f.fy * h / b.m; }
         b.x += b.vx * h; b.y += b.vy * h; b.a += b.vx * h / b.r;

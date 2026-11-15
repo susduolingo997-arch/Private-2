@@ -33,7 +33,7 @@ S.LEVELS.forEach((lv, i) => {
         if (S.run(lv, c).win) pairs.push(c);
       }
   }
-  const hintOk = S.run(lv, lv.hint).win && lv.hint.length <= lv.par;
+  const hintOk = lv.hint && S.run(lv, lv.hint).win && lv.hint.length <= lv.par;
   if (!hintOk) { ok = false; console.log('   HINT FAILS'); }
   const solvable = lv.par === 1 ? sols.length > 0 : (sols.length === 0 && pairs.length > 0) || sols.length > 0;
   const good = !base.win && solvable;

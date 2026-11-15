@@ -38,7 +38,10 @@
   #menu .grid { display:grid; grid-template-columns:repeat(5, 1fr); gap:8px; margin:12px 0; }
   #menu .grid button { padding:10px 0; border-radius:12px; display:flex; flex-direction:column; align-items:center; font-size:18px; min-width:54px; }
   #menu .grid button small { font-size:11px; color:var(--gold); min-height:13px; }
-  .big { font-size:46px; font-weight:900; letter-spacing:.1em; margin:0; }
+  #menu .grid .world { grid-column:1/-1; text-align:left; font-weight:800; font-size:14px; color:var(--muted); margin-top:4px; }
+  .card { max-height:96%; overflow:auto; }
+  #menu .card { padding:14px 20px; } #menu .grid { margin:6px 0; gap:6px; } #menu .grid button { padding:6px 0; min-height:38px; } #menu p { margin:4px 0 8px; }
+  .big { font-size:36px; font-weight:900; letter-spacing:.1em; margin:0; }
   .big span { color:var(--accent); }
   #toast { position:fixed; left:50%; bottom:24px; transform:translateX(-50%); background:#000c; padding:10px 16px; border-radius:10px; font-size:14px; opacity:0; transition:opacity .3s; pointer-events:none; }
   #toast.show { opacity:1; }
@@ -60,7 +63,7 @@
         <p>You can't act. You can only <b>rewind</b> and change one small thing.</p>
         <div class="row"><button class="primary" id="dailyBtn">☀️ Daily Moment</button></div>
         <div class="grid" id="levelGrid"></div>
-        <p style="font-size:12px;margin:0">Kitchen World · 10 moments</p>
+        <p style="font-size:12px;margin:0">Kitchen · City — 15 moments</p>
       </div>
     </div>
     <div id="result" class="overlay" hidden>
