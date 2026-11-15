@@ -1,0 +1,87 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no">
+<title>Undo</title>
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>⏪</text></svg>">
+<style>
+  :root { --bg:#1d1b2e; --panel:#2a2742; --ink:#f4f1ff; --muted:#a9a3c9; --accent:#ff6b8b; --accent2:#5ce1e6; --gold:#ffd166; }
+  * { box-sizing:border-box; -webkit-tap-highlight-color:transparent; }
+  html,body { margin:0; height:100%; background:var(--bg); color:var(--ink); font-family:system-ui,-apple-system,"Segoe UI",Roboto,sans-serif; overflow:hidden; user-select:none; }
+  #app { display:flex; flex-direction:column; align-items:center; height:100%; padding:8px 16px; gap:8px; }
+  header { width:100%; max-width:960px; display:flex; align-items:center; justify-content:space-between; gap:8px; min-height:40px; }
+  .logo { font-weight:900; letter-spacing:.08em; font-size:22px; }
+  .logo span { color:var(--accent); }
+  #status { font-size:14px; color:var(--muted); text-align:right; }
+  #status b { color:var(--ink); }
+  #stage { position:relative; width:100%; max-width:960px; }
+  canvas { display:block; width:100%; border-radius:14px; box-shadow:0 10px 40px #0008; touch-action:none; background:#fde8d7; }
+  #story { width:100%; max-width:960px; font-size:15px; color:var(--muted); min-height:20px; text-align:center; }
+  #timeline { width:100%; max-width:960px; display:flex; align-items:center; gap:10px; }
+  #time { font-variant-numeric:tabular-nums; font-size:13px; color:var(--muted); width:44px; }
+  input[type=range] { flex:1; accent-color:var(--accent); height:28px; }
+  #controls { display:flex; gap:8px; flex-wrap:wrap; justify-content:center; }
+  button { font:inherit; font-weight:700; border:0; border-radius:999px; padding:12px 20px; cursor:pointer; background:var(--panel); color:var(--ink); transition:transform .08s, opacity .2s; min-height:44px; }
+  button:active { transform:scale(.95); }
+  button.primary { background:var(--accent); color:#fff; }
+  button.cyan { background:var(--accent2); color:#102; }
+  button:disabled { opacity:.35; pointer-events:none; }
+  .overlay { position:absolute; inset:0; display:flex; align-items:center; justify-content:center; background:#1d1b2e55; border-radius:14px; }
+  .overlay[hidden] { display:none; }
+  .card { background:var(--panel); padding:20px 24px; border-radius:18px; text-align:center; max-width:92%; box-shadow:0 10px 40px #0009; }
+  .card h2 { margin:0 0 6px; font-size:26px; }
+  .card p { margin:6px 0 14px; color:var(--muted); }
+  .stars { font-size:34px; letter-spacing:4px; margin:4px 0; }
+  .row { display:flex; gap:8px; justify-content:center; flex-wrap:wrap; }
+  #menu .grid { display:grid; grid-template-columns:repeat(5, 1fr); gap:8px; margin:12px 0; }
+  #menu .grid button { padding:10px 0; border-radius:12px; display:flex; flex-direction:column; align-items:center; font-size:18px; min-width:54px; }
+  #menu .grid button small { font-size:11px; color:var(--gold); min-height:13px; }
+  .big { font-size:46px; font-weight:900; letter-spacing:.1em; margin:0; }
+  .big span { color:var(--accent); }
+  #toast { position:fixed; left:50%; bottom:24px; transform:translateX(-50%); background:#000c; padding:10px 16px; border-radius:10px; font-size:14px; opacity:0; transition:opacity .3s; pointer-events:none; }
+  #toast.show { opacity:1; }
+  @media (max-width:600px) { .logo { font-size:18px; } #menu .grid { grid-template-columns:repeat(5,1fr); } .big { font-size:34px; } button { padding:10px 14px; } #story { font-size:13px; } }
+  @media (max-height:500px) and (orientation:landscape) { #app { padding:4px 16px; gap:4px; } #stage, header, #timeline, #story { max-width:calc((100vh - 130px) * 16 / 9); } }
+</style>
+</head>
+<body>
+<div id="app">
+  <header>
+    <div class="logo">⏪ UN<span>DO</span></div>
+    <div id="status"></div>
+  </header>
+  <div id="stage">
+    <canvas id="c" width="1600" height="900"></canvas>
+    <div id="menu" class="overlay">
+      <div class="card">
+        <p class="big">UN<span>DO</span></p>
+        <p>You can't act. You can only <b>rewind</b> and change one small thing.</p>
+        <div class="row"><button class="primary" id="dailyBtn">☀️ Daily Moment</button></div>
+        <div class="grid" id="levelGrid"></div>
+        <p style="font-size:12px;margin:0">Kitchen World · 10 moments</p>
+      </div>
+    </div>
+    <div id="result" class="overlay" hidden>
+      <div class="card">
+        <h2 id="resTitle"></h2>
+        <div class="stars" id="resStars"></div>
+        <p id="resText"></p>
+        <div class="row" id="resButtons"></div>
+      </div>
+    </div>
+  </div>
+  <div id="story"></div>
+  <div id="timeline"><span id="time">0.0s</span><input type="range" id="scrub" min="0" max="600" value="0"></div>
+  <div id="controls">
+    <button id="menuBtn">☰</button>
+    <button id="resetBtn">↺ Clear changes</button>
+    <button id="rewindBtn" class="cyan">⏪ Rewind</button>
+    <button id="playBtn" class="primary">▶ Play</button>
+  </div>
+</div>
+<div id="toast"></div>
+<script src="sim.js"></script>
+<script src="game.js"></script>
+</body>
+</html>
