@@ -82,7 +82,7 @@
       showResult('Perfect moment!', '⭐'.repeat(stars) + '☆'.repeat(3 - stars),
         `${n} change${n === 1 ? '' : 's'} · par ${par}` + (stars < 3 ? ' — can you do it in fewer?' : ''),
         [st.daily ? ['📋 Share', share, 'cyan'] : null, ['↺ Replay', () => { $('result').hidden = true; startPlay(); }],
-          st.li < LEVELS.length - 1 && LEVELS[st.li + 1].world === st.level.world ? ['Next ▶', () => loadLevel(st.li + 1), 'primary'] : ['🏁 Menu', menu, 'primary']].filter(Boolean));
+          nextInWorld(st.li) >= 0 ? ['Next ▶', () => loadLevel(nextInWorld(st.li)), 'primary'] : ['🏁 Menu', menu, 'primary']].filter(Boolean));
     } else {
       sfx.fail();
       const why = failText(r);
@@ -99,6 +99,7 @@
       const b = r.world.bodies.find((x) => x.id === g.id), n = names[b.kind];
       if (g.t === 'intact') out.push(`${n} didn't survive.`);
       else if (g.t === 'in') out.push(b.broken ? `${n} broke on the way.` : `${n} missed the ${st.level.world === 'city' ? 'bin' : 'bowl'}.`);
+      else if (g.t === 'reach') out.push(`${n} never made it to bed.`);
       else if (g.t === 'out') out.push(b.kind === 'robot' ? `${n} fell down the manhole!` : `${n} escaped through the door!`);
     });
     return out.join(' ');
@@ -123,20 +124,23 @@
   }
   let toastT; function toast(m) { const t = $('toast'); t.textContent = m; t.classList.add('show'); clearTimeout(toastT); toastT = setTimeout(() => t.classList.remove('show'), 2200); }
 
+  const worldOrder = (wn) => LEVELS.map((l, i) => i).filter((i) => LEVELS[i].world === wn);
+  const nextInWorld = (i) => { const o = worldOrder(LEVELS[i].world), k = o.indexOf(i); return k < o.length - 1 ? o[k + 1] : -1; };
+  const numInWorld = (i) => worldOrder(LEVELS[i].world).indexOf(i) + 1;
   function menu() {
     st.mode = 'menu'; $('result').hidden = true; $('menu').hidden = false;
     const g = $('levelGrid'); g.innerHTML = '';
-    LEVELS.forEach((lv, i) => {
-      if (i === 0 || lv.world !== LEVELS[i - 1].world) {
-        const h = document.createElement('div'); h.className = 'world';
-        h.textContent = lv.world === 'city' ? '🏙️ City' : '🍳 Kitchen'; g.appendChild(h);
-      }
+    ['kitchen', 'city'].forEach((wn) => {
+      const h = document.createElement('div'); h.className = 'world';
+      h.textContent = wn === 'city' ? '🏙️ City' : '🍳 Kitchen'; g.appendChild(h);
+      worldOrder(wn).forEach((i, k, arr) => {
+      const lv = LEVELS[i];
       const b = document.createElement('button'), s = best[i] || 0;
-      const first = i === 0 || lv.world !== LEVELS[i - 1].world;
-      const unlocked = first || best[i - 1] || best[i];
-      b.innerHTML = `${i + 1}<small>${'★'.repeat(s)}</small>`; b.title = lv.name; b.disabled = !unlocked;
+      const unlocked = k === 0 || best[arr[k - 1]] || best[i];
+      b.innerHTML = `${k + 1}<small>${'★'.repeat(s)}</small>`; b.title = lv.name; b.disabled = !unlocked;
       b.onclick = () => { audio(); loadLevel(i); };
       g.appendChild(b);
+      });
     });
     st.level = LEVELS[0]; st.world = S.build(st.level, []); st.run = null;
     $('story').textContent = ''; ui();
@@ -151,7 +155,7 @@
     $('resetBtn').disabled = m !== 'edit' || !changeCount();
     $('scrub').disabled = !(m === 'result' || m === 'play');
     $('status').innerHTML = m === 'menu' ? '' :
-      `${st.daily ? '☀️ Daily · ' : ''}<b>${st.li + 1}. ${lv.name}</b><br>Changes <b>${changeCount()}</b> · par ${lv.par}`;
+      `${st.daily ? '☀️ Daily · ' : ''}<b>${lv.world === 'city' ? '🏙️' : '🍳'} ${numInWorld(st.li)}. ${lv.name}</b><br>Changes <b>${changeCount()}</b> · par ${lv.par}`;
   }
 
   // ---------- input ----------
@@ -289,6 +293,11 @@
       ctx.fillStyle = '#a0623f'; ctx.save(); ctx.translate(z.x + 6, z.y - 10); ctx.transform(1, 0.12, 0, 1, 0, 0); ctx.fillRect(0, 0, 16, z.h + 10); ctx.restore();
       ctx.fillStyle = '#ff6b8b'; ctx.font = 'bold 12px system-ui'; ctx.textAlign = 'center'; ctx.fillText('EXIT', z.x + z.w / 2 + 4, z.y - 16);
     }
+    if (z.label === 'bed') {
+      ctx.fillStyle = '#7b5ea7'; rr(z.x, z.y + 28, z.w, 26, 13); ctx.fill();
+      ctx.fillStyle = '#c9b6f2'; rr(z.x + 8, z.y + 22, z.w - 16, 18, 9); ctx.fill();
+      ctx.fillStyle = '#ff6b8b'; ctx.font = 'bold 11px system-ui'; ctx.textAlign = 'center'; ctx.fillText('CAT BED', z.x + z.w / 2, z.y + 14);
+    }
     if (z.label === 'manhole') {
       ctx.fillStyle = '#1a1a24'; ctx.beginPath(); ctx.ellipse(z.x + z.w / 2, 432, z.w / 2, 7, 0, 0, 7); ctx.fill();
       ctx.fillStyle = '#5c5a6e'; ctx.beginPath(); ctx.ellipse(z.x + z.w + 18, 427, 16, 5, 0, 0, 7); ctx.fill();
@@ -327,7 +336,7 @@
     ctx.restore();
     ctx.fillStyle = on ? '#5ce1e6' : '#ff6b8b'; ctx.font = 'bold 10px system-ui'; ctx.textAlign = 'center'; ctx.fillText(on ? 'ON' : 'OFF', p.x, p.y + 36);
   }
-  function drawBody(b, f, editing, broken, bt) {
+  function drawBody(b, f, editing, broken, bt, napping) {
     const [x, y, a, , dir] = f; ctx.save(); ctx.translate(x, y);
     if (editing && b.movable) { ctx.strokeStyle = '#5ce1e6'; ctx.lineWidth = 3; ctx.setLineDash([5, 5]); ctx.beginPath(); ctx.arc(0, 0, b.r + 8 + Math.sin(now() * 5) * 2, 0, 7); ctx.stroke(); ctx.setLineDash([]); }
     const k = b.kind, r = b.r;
@@ -370,7 +379,8 @@
       if (broken) { ctx.fillStyle = '#fff'; ctx.beginPath(); ctx.ellipse(0, r - 3, r + 8, 4, 0, 0, 7); ctx.fill(); ctx.fillStyle = '#ffc93c'; ctx.beginPath(); ctx.arc(0, r - 4, 5, 0, 7); ctx.fill(); shards('#f3e9dc', bt, 4); }
       else { ctx.rotate(a * 0.3); ctx.fillStyle = '#f7efe3'; ctx.beginPath(); ctx.ellipse(0, 0, r - 2, r + 1, 0, 0, 7); ctx.fill(); ctx.strokeStyle = '#d8c8b0'; ctx.lineWidth = 1; ctx.stroke(); }
     } else if (k === 'cat') {
-      if (broken) ctx.globalAlpha = Math.max(0, 1 - bt * 1.5); // escaped: fade out
+      if (broken && napping) { ctx.fillStyle = '#7b5ea7'; ctx.font = 'bold 14px system-ui'; ctx.textAlign = 'center'; ctx.fillText('z'.repeat(1 + Math.floor(now() * 2) % 3), 4, -30); }
+      else if (broken) ctx.globalAlpha = Math.max(0, 1 - bt * 1.5); // escaped: fade out
       ctx.scale(dir || 1, 1);
       const step = Math.sin(x * 0.25) * 3;
       ctx.fillStyle = '#f4a259';
@@ -405,8 +415,8 @@
     const evs = st.run && !editing ? st.run.events : [];
     w.bodies.forEach((b, i) => {
       const f = frame[i], broken = !!f[3];
-      const ev = broken ? evs.find((e) => e.id === b.id && (e.type === 'break' || e.type === 'escape')) : null;
-      drawBody(b, f, editing, broken, ev ? (frameIdx - ev.t) * S.DT : 0);
+      const ev = broken ? evs.find((e) => e.id === b.id && (e.type === 'break' || e.type === 'escape' || e.type === 'nap')) : null;
+      drawBody(b, f, editing, broken, ev ? (frameIdx - ev.t) * S.DT : 0, ev && ev.type === 'nap');
     });
     if (editing && st.hint) drawHint();
     // goal markers
@@ -484,6 +494,7 @@
       for (const ev of st.run.events) if (ev.t > prev && ev.t <= st.t) {
         if (ev.type === 'break') { sfx.break(); st.shake = 0.35; }
         else if (ev.type === 'escape') sfx.escape();
+        else if (ev.type === 'nap') sfx.toggle();
         else if (ev.type === 'bump' && ev.imp > 180) sfx.bump(ev.imp);
       }
       if (st.t >= TICKS) finish();

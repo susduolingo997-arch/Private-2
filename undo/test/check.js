@@ -1,6 +1,12 @@
-// Verifies each level: unchanged run must fail, and a solution within par must exist.
+// Verifies every level:
+//  - doing nothing fails
+//  - it is solvable within par, and NOT solvable with fewer changes
+//  - it is forgiving: many distinct winning placements (MIN_SOLS)
+//  - the stored hint wins
+// Two-change levels are searched by combining single changes that each fix part of the goal set.
 const S = require('../sim.js');
-const STEP = +process.env.STEP || 20;
+const MIN_SOLS = +process.env.MIN || 10, STEP = 10;
+const only = process.argv[2] ? process.argv[2].split(',').map(Number) : null;
 function candidates(level) {
   const out = [];
   for (const f of level.fans) if (f.toggle) out.push([{ id: f.id, toggle: true }]);
@@ -10,36 +16,47 @@ function candidates(level) {
       .concat(w.bodies.filter(b => b.id === id).map(b => [b.x, b.y]));
     const minx = Math.min(...pts.map(p => p[0])), maxx = Math.max(...pts.map(p => p[0]));
     const miny = Math.min(...pts.map(p => p[1])), maxy = Math.max(...pts.map(p => p[1]));
-    for (let dx = -minx + 10; dx <= 790 - maxx; dx += STEP)
-      for (let dy = -miny + 20; dy <= 430 - maxy; dy += STEP) {
-        const rdx = Math.round(dx / 10) * 10, rdy = Math.round(dy / 10) * 10;
-        if (rdx || rdy) out.push([{ id, dx: rdx, dy: rdy }]);
-      }
+    for (let dx = Math.ceil((10 - minx) / 10) * 10; dx <= 790 - maxx; dx += STEP)
+      for (let dy = Math.ceil((20 - miny) / 10) * 10; dy <= 430 - maxy; dy += STEP)
+        if (dx || dy) out.push([{ id, dx, dy }]);
   }
   return out;
 }
 let ok = true;
 S.LEVELS.forEach((lv, i) => {
+  if (only && !only.includes(i + 1)) return;
   const base = S.run(lv, []);
-  const single = candidates(lv);
-  let sols = single.filter(c => S.run(lv, c).win);
-  let pairs = [];
-  if (lv.par >= 2 && !sols.length) {
-    const nt = single.filter(c => c[0].toggle).length || single.length;
-    for (let a = 0; a < nt && pairs.length < 5; a++)
-      for (let b = a + 1; b < single.length && pairs.length < 5; b++) {
-        if (single[a][0].id === single[b][0].id) continue;
-        const c = single[a].concat(single[b]);
-        if (S.run(lv, c).win) pairs.push(c);
+  const singles = candidates(lv).map(c => ({ c, r: S.run(lv, c) }));
+  const wins1 = singles.filter(x => x.r.win).map(x => x.c);
+  let wins2 = [];
+  if (!wins1.length) {
+    // pair up changes that each fix something, distinct objects
+    const useful = singles.filter(x => x.c[0].toggle || x.r.results.some((v, k) => v && !base.results[k]));
+    const byId = {}; useful.forEach(x => (byId[x.c[0].id] = byId[x.c[0].id] || []).push(x));
+    const ids = Object.keys(byId);
+    for (const k of ids) { const L = byId[k], st = Math.max(1, Math.floor(L.length / 50)); byId[k] = L.filter((_, j) => j % st === 0); }
+    // a fan switch + any single move: test exhaustively (cheap)
+    for (const t of singles.filter(x => x.c[0].toggle)) for (const m of singles) {
+      if (m.c[0].toggle || wins2.length >= 60) continue;
+      const c = t.c.concat(m.c); if (S.run(lv, c).win) wins2.push(c);
+    }
+    if (!wins2.length) outer: for (let a = 0; a < ids.length; a++) for (let b = a + 1; b < ids.length; b++)
+      for (const x of byId[ids[a]]) for (const y of byId[ids[b]]) {
+        const c = x.c.concat(y.c); if (S.run(lv, c).win) wins2.push(c);
+        if (wins2.length >= 60) break outer;
       }
   }
+  const all = wins1.length ? wins1 : wins2;
+  const need = wins1.length ? 1 : wins2.length ? 2 : 0, sols = wins1.length || wins2.length;
   const hintOk = lv.hint && S.run(lv, lv.hint).win && lv.hint.length <= lv.par;
-  if (!hintOk) { ok = false; console.log('   HINT FAILS'); }
-  const solvable = lv.par === 1 ? sols.length > 0 : (sols.length === 0 && pairs.length > 0) || sols.length > 0;
-  const good = !base.win && solvable;
-  if (!good) ok = false;
-  console.log(`${i + 1}. ${lv.name.padEnd(15)} base=${base.win ? 'WIN(bad)' : 'fail'} [${base.results}] 1-change sols=${sols.length}/${single.length} pairs=${pairs.length} ${good ? 'OK' : 'BAD'}`);
-  const ex = sols[Math.floor(sols.length / 2)] || pairs[0];
-  if (ex) console.log('   e.g.', JSON.stringify(ex));
+  const probs = [];
+  if (base.win) probs.push('wins with no changes');
+  if (!need) probs.push('unsolvable');
+  if (need && need !== lv.par) probs.push(`par is ${lv.par} but needs ${need}`);
+  if (sols < MIN_SOLS && !(lv.fans.length && all.every(c => c.every(e => e.toggle)))) probs.push(`too fussy (${sols} solutions)`);
+  if (!hintOk) probs.push('hint fails');
+  if (probs.length) ok = false;
+  console.log(`${String(i + 1).padStart(2)}. ${lv.world.padEnd(7)} ${lv.name.padEnd(18)} needs ${need} · ${sols} solutions ${probs.length ? 'BAD: ' + probs.join('; ') : 'OK'}`);
+  if (probs.length && all.length) console.log('    median:', JSON.stringify(all[Math.floor(all.length / 2)]));
 });
 process.exit(ok ? 0 : 1);

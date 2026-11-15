@@ -204,6 +204,116 @@
   ];
   CITY.forEach((l) => { l.world = 'city'; LEVELS.push(l); });
 
+  // ---- pack 2 (appended so saved progress keeps its level numbers) ----
+  const ramp = (id, x, o) => seg(id, x, 428, x + 90, 368, Object.assign({ movable: true, mat: 'board' }, o || {}));
+  const block = (id, x1, x2, top, mat) => [seg(id + 'L', x1, 430, x1, top, { mat }), seg(id + 'T', x1, top, x2, top, { mat }), seg(id + 'R', x2, top, x2, 430, { mat })];
+  const KITCHEN2 = [
+    L({
+      name: 'Mug Shot', par: 1,
+      story: 'Mittens strolls along the counter and nudges the favourite mug off the edge. Block the way.',
+      segs: [seg('counter', 0, 260, 460, 260, { mat: 'counter' }),
+             seg('board', 700, 430, 700, 380, { movable: true, mat: 'board' }),
+             seg('sponge', 40, 430, 140, 430, { movable: true, mat: 'sponge' })],
+      bodies: [body('c', 'cat', 100, 240, { dir: 1 }), body('m', 'mug', 420, 245)],
+      hint: [{ id: 'board', dx: -300, dy: -170 }],
+      goals: [{ t: 'intact', id: 'm' }],
+    }),
+    L({
+      name: 'Nap Time', par: 1,
+      story: 'Mittens just wants a nap, but a cutting board blocks the way to the cat bed.',
+      segs: [seg('board', 470, 430, 470, 370, { movable: true, mat: 'board' })],
+      zones: [{ id: 'bed', x: 620, y: 380, w: 90, h: 55, label: 'bed', trap: true, only: 'cat' }],
+      bodies: [body('c', 'cat', 260, 410, { dir: 1 })],
+      hint: [{ id: 'board', dx: -400, dy: -100 }],
+      goals: [{ t: 'reach', id: 'c', zone: 'bed' }],
+    }),
+    L({
+      name: 'Ramp Up', par: 1,
+      story: 'The ball bounces off the kitchen island. Help it roll over the top and drop into the bowl.',
+      segs: block('island', 420, 620, 368, 'counter').concat([ramp('ramp', 20)]),
+      bowls: [bowl('bowl', 700, 428, 120)],
+      bodies: [body('b', 'ball', 200, 410, { vx: 520 })],
+      hint: [{ id: 'ramp', dx: 290, dy: 0 }],
+      goals: [{ t: 'in', id: 'b', zone: 'bowl' }],
+    }),
+    L({
+      name: 'Breezy Breakfast', par: 2,
+      story: 'The fan blows the egg along the counter, and the ball is coming for it too.',
+      segs: [seg('counter', 0, 250, 520, 250, { mat: 'counter' }),
+             seg('board', 740, 430, 740, 380, { movable: true, mat: 'board' })],
+      fans: [{ id: 'fan', x: 120, y: 150, w: 420, h: 100, fx: 260, fy: 0, on: true, toggle: true }],
+      bodies: [body('b', 'ball', 30, 230, { vx: 200 }), body('e', 'egg', 300, 236)],
+      hint: [{ id: 'fan', toggle: true }, { id: 'board', dx: -500, dy: -180 }],
+      goals: [{ t: 'intact', id: 'e' }],
+    }),
+    L({
+      name: 'Sleepy Chaos', par: 2,
+      story: 'Grand finale: ball in the bowl AND Mittens in bed. Two changes.',
+      segs: block('island', 420, 620, 368, 'counter').concat([ramp('ramp', 700, { y: 0 }),
+             seg('board', 130, 430, 130, 370, { movable: true, mat: 'board' })]),
+      bowls: [bowl('bowl', 700, 428, 120)],
+      zones: [{ id: 'bed', x: 20, y: 380, w: 90, h: 55, label: 'bed', trap: true, only: 'cat' }],
+      bodies: [body('b', 'ball', 250, 410, { vx: 520 }), body('c', 'cat', 190, 410, { dir: -1 })],
+      hint: [{ id: 'ramp', dx: -380, dy: 0 }, { id: 'board', dx: 0, dy: -200 }],
+      goals: [{ t: 'in', id: 'b', zone: 'bowl' }, { t: 'reach', id: 'c', zone: 'bed' }],
+    }),
+  ];
+  const CITY2 = [
+    L({
+      name: 'Kick Ramp', par: 1,
+      story: 'The football bounces off the newspaper kiosk. A plank ramp could get it over and into the bin.',
+      segs: block('kiosk', 420, 620, 368, 'ledge').concat([ramp('plank', 20, { mat: 'plank' })]),
+      bowls: [bowl('bin', 700, 428, 120)],
+      bodies: [body('b', 'soccer', 200, 410, { vx: 520 })],
+      hint: [{ id: 'plank', dx: 290, dy: 0 }],
+      goals: [{ t: 'in', id: 'b', zone: 'bin' }],
+    }),
+    L({
+      name: 'Robot Push', par: 1,
+      story: 'The rooftop robot is about to shove a flower pot off the edge.',
+      segs: [seg('ledge', 0, 260, 460, 260, { mat: 'ledge' }),
+             seg('plank', 720, 430, 720, 380, { movable: true, mat: 'plank' }),
+             seg('trash', 40, 430, 140, 430, { movable: true, mat: 'trash' })],
+      bodies: [body('r', 'robot', 100, 240, { dir: 1 }), body('p', 'pot', 420, 245)],
+      hint: [{ id: 'plank', dx: -360, dy: -130 }],
+      goals: [{ t: 'intact', id: 'p' }],
+    }),
+    L({
+      name: 'Gusty Goal', par: 1,
+      story: 'The football rolls off the roof towards the bin, but a gust blows it off course.',
+      segs: [seg('roof', 0, 200, 260, 200, { mat: 'ledge' })],
+      fans: [{ id: 'gust', x: 260, y: 150, w: 540, h: 280, fx: 700, fy: 0, on: true, toggle: true }],
+      bowls: [bowl('bin', 360, 428, 130)],
+      bodies: [body('b', 'soccer', 30, 180, { vx: 120 })],
+      hint: [{ id: 'gust', toggle: true }],
+      goals: [{ t: 'in', id: 'b', zone: 'bin' }],
+    }),
+    L({
+      name: 'Safe Crossing', par: 1,
+      story: 'The robot is rolling left towards the manhole. Turn it around.',
+      segs: [seg('plank', 760, 430, 760, 380, { movable: true, mat: 'plank' })],
+      zones: [{ id: 'hole', x: 100, y: 395, w: 70, h: 40, label: 'manhole', trap: true }],
+      bodies: [body('r', 'robot', 520, 410, { dir: -1 })],
+      hint: [{ id: 'plank', dx: -480, dy: 0 }],
+      goals: [{ t: 'out', id: 'r', zone: 'hole' }],
+    }),
+    L({
+      name: 'Grand Central', par: 2,
+      story: 'City finale: the vent must lift the ball into the bin, and the robot must not fall in.',
+      segs: [seg('ledge', 0, 200, 240, 200, { mat: 'ledge' }),
+             seg('balcony', 430, 250, 640, 250, { mat: 'ledge' }),
+             seg('plank', 30, 430, 30, 380, { movable: true, mat: 'plank' })],
+      fans: [{ id: 'vent', x: 240, y: 0, w: 140, h: 430, fx: 0, fy: -1300, on: false, toggle: true }],
+      bowls: [bowl('bin', 520, 248, 70)],
+      zones: [{ id: 'hole', x: 690, y: 395, w: 70, h: 40, label: 'manhole', trap: true }],
+      bodies: [body('b', 'soccer', 30, 180, { vx: 120 }), body('r', 'robot', 470, 410, { dir: 1 })],
+      hint: [{ id: 'vent', toggle: true }, { id: 'plank', dx: 620, dy: 0 }],
+      goals: [{ t: 'in', id: 'b', zone: 'bin' }, { t: 'out', id: 'r', zone: 'hole' }],
+    }),
+  ];
+  KITCHEN2.forEach((l) => { l.world = 'kitchen'; LEVELS.push(l); });
+  CITY2.forEach((l) => { l.world = 'city'; LEVELS.push(l); });
+
   // ---- edits ----
   function movables(level) {
     const ids = [];
@@ -275,7 +385,7 @@
         for (const f of w.fans) if (f.on && b.x > f.x && b.x < f.x + f.w && b.y > f.y && b.y < f.y + f.h) { b.vx += f.fx * h / b.m; b.vy += f.fy * h / b.m; }
         b.x += b.vx * h; b.y += b.vy * h; b.a += b.vx * h / b.r;
         for (const sg of w.segs) colSeg(w, b, sg);
-        for (const z of w.zones) if (z.trap && inZone(b, z)) { b.broken = true; b.caught = z.id; b.vx = b.vy = 0; w.events.push({ t: w.tick, type: 'escape', id: b.id }); }
+        for (const z of w.zones) if (z.trap && (!z.only || z.only === b.kind) && inZone(b, z)) { b.broken = true; b.caught = z.id; b.vx = b.vy = 0; w.events.push({ t: w.tick, type: z.label === 'bed' ? 'nap' : 'escape', id: b.id, zone: z.id }); }
       }
       for (let i = 0; i < live.length; i++) for (let j = i + 1; j < live.length; j++) {
         const a = live[i], b = live[j];
@@ -292,6 +402,7 @@
       const b = w.bodies.find((x) => x.id === g.id), z = w.zones.find((x) => x.id === g.zone);
       if (g.t === 'intact') return !b.broken;
       if (g.t === 'out') return b.caught !== g.zone && !inZone(b, z);
+      if (g.t === 'reach') return b.caught === g.zone;
       if (g.t === 'in') return !b.broken && inZone(b, z);
       return false;
     });
