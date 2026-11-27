@@ -68,12 +68,13 @@
 
   function player(v) {
     const c = chan[v.channel];
-    if (v.src && /^https?:/.test(v.src)) return `<div class="player"><video controls preload="metadata" poster="${esc(v.thumb_img || "")}" src="${esc(v.src)}"></video></div>`;
+    if (v.src && /^https?:/.test(v.src)) return `<div class="player" id="vp"><video controls preload="metadata" playsinline poster="${esc(v.thumb_img || "")}" src="${esc(v.src)}"></video>
+      <div class="fallback" id="vfb" hidden><p>This viewer can't play the video inline.</p><a class="go" href="${esc(v.src)}" target="_blank" rel="noopener">&#9654; Open the video</a></div></div>`;
     if (v.link) return `<div class="player ext" style="--c:${esc(c.color)}"><div class="fake">
       <h2>${esc(v.title.split(" - ").pop())}</h2><p>${esc(v.description.split("\n")[0])}</p>
       <a class="go" href="${esc(v.link)}" target="_blank" rel="noopener">&#9654; Watch the full ${clock(v.duration)} film</a>
       <p style="margin-top:14px;font-size:12px;opacity:.65">Published as a release. Opens in a new tab.</p></div></div>`;
-    if (v.embed_src) return `<div class="player embed"><iframe src="${esc(v.embed_src)}" title="${esc(v.title)}" allow="autoplay; fullscreen" allowfullscreen></iframe></div>`;
+    if (v.embed_src) return `<div class="player embed" id="vp"><iframe src="${esc(v.embed_src)}" title="${esc(v.title)}" allow="autoplay; fullscreen" allowfullscreen></iframe></div>`;
     if (v.status === "live") return `<div class="player"><video controls autoplay src="${esc(v.src)}"></video></div>`;
     const msg = v.status === "scripted"
       ? "Script is written. Render it with the engine, then run <code>python -m engine universe publish</code>."
@@ -109,7 +110,7 @@
       <div class="desc"><b>${stats(v)}${v.status === "live" ? "" : " &middot; " + esc(v.status)}${ph(v)}</b>${esc(v.description)}
         ${v.cast.length ? `<div class="cast">${v.cast.map((p) => person[p]).filter(Boolean).map((p) =>
           `<a href="#/people">${dot(p)} ${esc(p.name)}</a>`).join("")}</div>` : ""}
-        ${v.link && v.src ? `<div class="univ"><a href="${esc(v.link)}" target="_blank" rel="noopener">&#8599; Release page (download)</a></div>` : ""}${related.length ? `<div class="univ"><b>In this universe</b>${related.map((m) =>
+        ${v.src && /^https?:/.test(v.src) ? `<div class="univ"><a href="${esc(v.src)}" target="_blank" rel="noopener">&#9654; Open the video file</a>${v.link ? `<a href="${esc(v.link)}" target="_blank" rel="noopener">&#8599; Release page (download)</a>` : ""}</div>` : ""}${v.embed_src ? `<div class="univ"><a href="${esc(v.embed_src)}" target="_blank" rel="noopener">&#9654; Open this episode in its own page</a></div>` : ""}${related.length ? `<div class="univ"><b>In this universe</b>${related.map((m) =>
           `<a href="#/watch/${esc(m.id)}">&#8627; ${esc(m.channel_name)}: ${esc(m.title.split("|")[0])}</a>`).join("")}</div>` : ""}
       </div>
       <div class="comments"><h3>${comments.length} Comments</h3>
@@ -191,6 +192,12 @@
       store.set("comments", m);
       render();
     };
+    const vid0 = document.querySelector("#vp video");
+    if (vid0) {
+      const show = () => { const fb = $("#vfb"); if (fb) { fb.hidden = false; vid0.style.display = "none"; } };
+      vid0.addEventListener("error", show);
+      setTimeout(() => { if (vid0.readyState === 0 && !vid0.error) show(); }, 8000);
+    }
     const fp = $("#fakeplay");
     if (fp) fp.onclick = () => {
       const bar = $("#fakebar");
