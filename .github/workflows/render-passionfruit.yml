@@ -72,8 +72,7 @@ jobs:
           path: ~/ffmpeg-bin
           key: ffmpeg-static-v1
       - run: |
-          if [ ! -x ~/ffmpeg-bin/ffmpeg ]; then mkdir -p ~/ffmpeg-bin && curl -sSL https://johnvansickle.com/ffmpeg/releases/ffmpeg-release-amd64-static.tar.xz | tar xJ --strip-components=1 -C ~/ffmpeg-bin; fi
-          echo "$HOME/ffmpeg-bin" >> $GITHUB_PATH
+          (which ffmpeg >/dev/null 2>&1) || (sudo apt-get update -qq && sudo apt-get install -y ffmpeg)
       - name: three + chromium
         run: cd $E && npm i three playwright-core && npx playwright install --with-deps chromium
       - name: Render this part
@@ -117,8 +116,7 @@ jobs:
           path: ~/ffmpeg-bin
           key: ffmpeg-static-v1
       - run: |
-          if [ ! -x ~/ffmpeg-bin/ffmpeg ]; then mkdir -p ~/ffmpeg-bin && curl -sSL https://johnvansickle.com/ffmpeg/releases/ffmpeg-release-amd64-static.tar.xz | tar xJ --strip-components=1 -C ~/ffmpeg-bin; fi
-          echo "$HOME/ffmpeg-bin" >> $GITHUB_PATH
+          (which ffmpeg >/dev/null 2>&1) || (sudo apt-get update -qq && sudo apt-get install -y ffmpeg)
       - name: Concat and encode 480p
         run: |
           for i in $(seq 0 19); do echo "file 'parts/part$i.mp4'"; done > list.txt
