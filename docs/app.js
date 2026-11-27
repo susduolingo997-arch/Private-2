@@ -68,7 +68,7 @@
 
   function player(v) {
     const c = chan[v.channel];
-    if (v.src && /^https?:/.test(v.src)) return `<div class="player" id="vp"><video controls preload="metadata" playsinline poster="${esc(v.thumb_img || "")}" src="${esc(v.src)}"></video>
+    if (v.src) return `<div class="player" id="vp"><video controls preload="metadata" playsinline poster="${esc(v.thumb_img || "")}" src="${esc(v.src)}"></video>
       <div class="fallback" id="vfb" hidden><p>This browser can't play the video inline.</p><p id="vfe" style="font-size:12px;opacity:.7"></p><a class="go" href="${esc(v.src)}" target="_blank" rel="noopener">&#9654; Open the video</a></div></div>`;
     if (v.link) return `<div class="player ext" style="--c:${esc(c.color)}"><div class="fake">
       <h2>${esc(v.title.split(" - ").pop())}</h2><p>${esc(v.description.split("\n")[0])}</p>
