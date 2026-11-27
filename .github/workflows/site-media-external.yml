@@ -70,6 +70,7 @@ jobs:
       - uses: actions/setup-python@v5
         with:
           python-version: "3.12"
+      - run: sudo apt-get update -qq && sudo apt-get install -y ffmpeg
       - name: Download, shrink
         env:
           ID: ${{ matrix.item.name }}
@@ -84,8 +85,8 @@ jobs:
             *)    curl -sSL --retry 3 --fail -o in.mp4 "$SRC" ;;
           esac
           mkdir -p out
-          ffmpeg -y -v error -i in.mp4 -vf "scale=-2:${H}" -c:v libx264 -preset veryfast -crf 32 \
-                 -c:a aac -b:a 64k -movflags +faststart "out/${ID}.mp4"
+          ffmpeg -y -v error -i in.mp4 -vf "scale=-2:${H},format=yuv420p" -c:v libx264 -profile:v main -level 4.0 \
+                 -preset veryfast -crf 32 -c:a aac -b:a 64k -ac 2 -movflags +faststart "out/${ID}.mp4"
           ls -la out
       - uses: actions/upload-artifact@v4
         with:

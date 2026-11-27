@@ -53,8 +53,8 @@ jobs:
       - name: Encode 480p
         run: |
           mkdir -p docs/media
-          ffmpeg -y -v error -i "in/${ID}.mp4" -vf scale=-2:480 -c:v libx264 -preset slow -crf 30 \
-                 -c:a aac -b:a 96k -movflags +faststart "docs/media/${ID}.mp4"
+          ffmpeg -y -v error -i "in/${ID}.mp4" -vf "scale=-2:480,format=yuv420p" -c:v libx264 -profile:v main -level 4.0 -preset slow -crf 30 \
+                 -c:a aac -b:a 96k -ac 2 -movflags +faststart "docs/media/${ID}.mp4"
           ls -la docs/media
       - name: Rebuild the site and push
         run: |
