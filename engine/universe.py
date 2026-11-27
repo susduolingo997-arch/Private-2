@@ -189,6 +189,17 @@ def build_site(out_dir=SITE_DIR, universe_path=UNIVERSE_FILE, pages=False):
     # data.js (not fetch) so the site works straight from file:// with no server.
     with open(os.path.join(out_dir, "data.js"), "w", encoding="utf-8") as f:
         f.write("window.UNIVERSE = " + json.dumps(data, indent=1) + ";\n")
+    # cache-bust: phones keep old copies of app.js/style.css/data.js for minutes (or longer) after a deploy
+    import hashlib
+    h = hashlib.sha1()
+    for n in ("app.js", "style.css", "data.js"):
+        h.update(open(os.path.join(out_dir, n), "rb").read())
+    v = h.hexdigest()[:10]
+    ip0 = os.path.join(out_dir, "index.html")
+    t = open(ip0, encoding="utf-8").read()
+    for n in ("app.js", "style.css", "data.js"):
+        t = t.replace(f'"{n}"', f'"{n}?v={v}"')
+    open(ip0, "w", encoding="utf-8").write(t)
     if pages:  # GitHub Pages: a complete HTML document (standards mode) instead of the artifact fragment
         ip = os.path.join(out_dir, "index.html")
         body = open(ip, encoding="utf-8").read()
