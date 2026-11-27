@@ -321,7 +321,11 @@ def build_art(universe, only=None, force=False, art=ART, work=None):
         t = v["thumb"]
         c = chans[v["channel"]]
         if t.get("frame"):
-            raw = grab_frame(t["frame"]["url"], t["frame"].get("at", 60), os.path.join(tmp, "t_" + v["id"] + ".png"))
+            try:
+                raw = grab_frame(t["frame"]["url"], t["frame"].get("at", 60), os.path.join(tmp, "t_" + v["id"] + ".png"))
+            except Exception as e:  # asset missing / offline: still give the video a (plain) thumbnail
+                print(f"art: could not grab a frame for {v['id']} ({type(e).__name__}); using plain art")
+                raw = plain_keynote_bg(os.path.join(tmp, "t_" + v["id"] + ".png"), c["color"])
         elif t.get("plain"):
             raw = plain_keynote_bg(os.path.join(tmp, "t_" + v["id"] + ".png"), c["color"])
         elif t.get("capture"):

@@ -357,7 +357,7 @@ videos:
     views: 4105000
     likes: 254000
     cast: [pixelpanic, bloop, leggy]
-    thumb: {frame: {url: "https://github.com/susduolingo997-arch/private/releases/download/v1.0/shardwild_ep1_web.mp4", at: 70}, text: ["THE", "HOUSE"], hl: 1, tag: "EP 1", style: letsplay}
+    thumb: {frame: {url: "https://github.com/susduolingo997-arch/private/raw/claude/voxel-survival-letsplay-k76okk/letsplay/shardwild_letsplay_web.mp4", at: 70}, text: ["THE", "HOUSE"], hl: 1, tag: "EP 1", style: letsplay}
     description: "WHAT IS UP, everybody! Welcome back to the channel! Today, we are playing a brand new game called... Shardwild! And this is going to be a completely, totally, one hundred percent normal survival playthrough."
 
   - id: sw-e2
