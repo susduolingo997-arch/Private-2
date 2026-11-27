@@ -1094,7 +1094,7 @@ window.UNIVERSE = {
    "tags": [],
    "thumb_img": "art/thumbs/pf-e1.jpg",
    "status": "live",
-   "src": "https://github.com/susduolingo997-arch/private/releases/download/pf-1.0/passionfruit_event1.mp4",
+   "src": "media/pf-e1.mp4",
    "channel_name": "PASSIONFRUIT"
   },
   {
@@ -1134,7 +1134,7 @@ window.UNIVERSE = {
    "tags": [],
    "thumb_img": "art/thumbs/pf-e2.jpg",
    "status": "live",
-   "src": "https://github.com/susduolingo997-arch/private/releases/download/pf-2.0/passionfruit_event2.mp4",
+   "src": "media/pf-e2.mp4",
    "channel_name": "PASSIONFRUIT"
   },
   {
@@ -1175,7 +1175,7 @@ window.UNIVERSE = {
    "tags": [],
    "thumb_img": "art/thumbs/pf-e3.jpg",
    "status": "live",
-   "src": "https://github.com/susduolingo997-arch/private/releases/download/pf-3.0/passionfruit_event3.mp4",
+   "src": "media/pf-e3.mp4",
    "channel_name": "PASSIONFRUIT"
   },
   {
@@ -1216,7 +1216,7 @@ window.UNIVERSE = {
    "tags": [],
    "thumb_img": "art/thumbs/pf-e4.jpg",
    "status": "live",
-   "src": "https://github.com/susduolingo997-arch/private/releases/download/pf-4.0/passionfruit_event4.mp4",
+   "src": "media/pf-e4.mp4",
    "channel_name": "PASSIONFRUIT"
   },
   {
@@ -1258,7 +1258,7 @@ window.UNIVERSE = {
    "tags": [],
    "thumb_img": "art/thumbs/pf-e5.jpg",
    "status": "live",
-   "src": "https://github.com/susduolingo997-arch/private/releases/download/pf-5.0/passionfruit_event5.mp4",
+   "src": "media/pf-e5.mp4",
    "channel_name": "PASSIONFRUIT"
   },
   {
@@ -1330,7 +1330,7 @@ window.UNIVERSE = {
    "tags": [],
    "thumb_img": "art/thumbs/sw-e1.jpg",
    "status": "live",
-   "src": "https://github.com/susduolingo997-arch/private/releases/download/v1.0/shardwild_letsplay_web.mp4",
+   "src": "media/sw-e1.mp4",
    "channel_name": "Pixelpanic"
   },
   {
@@ -1367,7 +1367,7 @@ window.UNIVERSE = {
    "tags": [],
    "thumb_img": "art/thumbs/sw-e2.jpg",
    "status": "live",
-   "src": "https://github.com/susduolingo997-arch/private/releases/download/v2.0/shardwild_ep2_web.mp4",
+   "src": "media/sw-e2.mp4",
    "channel_name": "Pixelpanic"
   },
   {
@@ -1404,7 +1404,7 @@ window.UNIVERSE = {
    "tags": [],
    "thumb_img": "art/thumbs/sw-e3.jpg",
    "status": "live",
-   "src": "https://github.com/susduolingo997-arch/private/releases/download/v3.0/shardwild_ep3_web.mp4",
+   "src": "media/sw-e3.mp4",
    "channel_name": "Pixelpanic"
   },
   {
@@ -1441,7 +1441,7 @@ window.UNIVERSE = {
    "tags": [],
    "thumb_img": "art/thumbs/sw-e4.jpg",
    "status": "live",
-   "src": "https://github.com/susduolingo997-arch/private/releases/download/v4.0/shardwild_ep4_web.mp4",
+   "src": "media/sw-e4.mp4",
    "channel_name": "Pixelpanic"
   },
   {
@@ -1478,7 +1478,7 @@ window.UNIVERSE = {
    "tags": [],
    "thumb_img": "art/thumbs/sw-e5.jpg",
    "status": "live",
-   "src": "https://github.com/susduolingo997-arch/private/releases/download/v5.0/shardwild_ep5_web.mp4",
+   "src": "media/sw-e5.mp4",
    "channel_name": "Pixelpanic"
   },
   {
@@ -1515,7 +1515,7 @@ window.UNIVERSE = {
    "tags": [],
    "thumb_img": "art/thumbs/sw-e6.jpg",
    "status": "live",
-   "src": "https://github.com/susduolingo997-arch/private/releases/download/v6.0/shardwild_ep6_web.mp4",
+   "src": "media/sw-e6.mp4",
    "channel_name": "Pixelpanic"
   },
   {
@@ -1552,7 +1552,7 @@ window.UNIVERSE = {
    "tags": [],
    "thumb_img": "art/thumbs/sw-e7.jpg",
    "status": "live",
-   "src": "https://github.com/susduolingo997-arch/private/releases/download/v7.0/shardwild_ep7_web.mp4",
+   "src": "media/sw-e7.mp4",
    "channel_name": "Pixelpanic"
   },
   {
@@ -1589,7 +1589,7 @@ window.UNIVERSE = {
    "tags": [],
    "thumb_img": "art/thumbs/sw-e8.jpg",
    "status": "live",
-   "src": "https://github.com/susduolingo997-arch/private/releases/download/v8.0/shardwild_ep8_web.mp4",
+   "src": "media/sw-e8.mp4",
    "channel_name": "Pixelpanic"
   },
   {
@@ -1626,7 +1626,7 @@ window.UNIVERSE = {
    "tags": [],
    "thumb_img": "art/thumbs/sw-e9.jpg",
    "status": "live",
-   "src": "https://github.com/susduolingo997-arch/private/releases/download/v9.0/shardwild_ep9_web.mp4",
+   "src": "media/sw-e9.mp4",
    "channel_name": "Pixelpanic"
   },
   {
@@ -1663,7 +1663,7 @@ window.UNIVERSE = {
    "tags": [],
    "thumb_img": "art/thumbs/sw-e10.jpg",
    "status": "live",
-   "src": "https://github.com/susduolingo997-arch/private/releases/download/v10.0/shardwild_ep10_web.mp4",
+   "src": "media/sw-e10.mp4",
    "channel_name": "Pixelpanic"
   },
   {
@@ -1700,7 +1700,7 @@ window.UNIVERSE = {
    "tags": [],
    "thumb_img": "art/thumbs/sw-e11.jpg",
    "status": "live",
-   "src": "https://github.com/susduolingo997-arch/private/releases/download/v11.0/shardwild_ep11_web.mp4",
+   "src": "media/sw-e11.mp4",
    "channel_name": "Pixelpanic"
   },
   {
@@ -1737,7 +1737,7 @@ window.UNIVERSE = {
    "tags": [],
    "thumb_img": "art/thumbs/sw-e12.jpg",
    "status": "live",
-   "src": "https://github.com/susduolingo997-arch/private/releases/download/v12.0/shardwild_ep12_web.mp4",
+   "src": "media/sw-e12.mp4",
    "channel_name": "Pixelpanic"
   },
   {
@@ -1774,7 +1774,7 @@ window.UNIVERSE = {
    "tags": [],
    "thumb_img": "art/thumbs/sw-e13.jpg",
    "status": "live",
-   "src": "https://github.com/susduolingo997-arch/private/releases/download/v13.0/shardwild_ep13_web.mp4",
+   "src": "media/sw-e13.mp4",
    "channel_name": "Pixelpanic"
   },
   {
@@ -1811,7 +1811,7 @@ window.UNIVERSE = {
    "tags": [],
    "thumb_img": "art/thumbs/sw-e14.jpg",
    "status": "live",
-   "src": "https://github.com/susduolingo997-arch/private/releases/download/v14.0/shardwild_ep14_web.mp4",
+   "src": "media/sw-e14.mp4",
    "channel_name": "Pixelpanic"
   },
   {
@@ -1848,7 +1848,7 @@ window.UNIVERSE = {
    "tags": [],
    "thumb_img": "art/thumbs/sw-e15.jpg",
    "status": "live",
-   "src": "https://github.com/susduolingo997-arch/private/releases/download/v15.0/shardwild_ep15_web.mp4",
+   "src": "media/sw-e15.mp4",
    "channel_name": "Pixelpanic"
   },
   {
@@ -1885,7 +1885,7 @@ window.UNIVERSE = {
    "tags": [],
    "thumb_img": "art/thumbs/sw-e16.jpg",
    "status": "live",
-   "src": "https://github.com/susduolingo997-arch/private/releases/download/v16.0/shardwild_ep16_web.mp4",
+   "src": "media/sw-e16.mp4",
    "channel_name": "Pixelpanic"
   },
   {
@@ -1922,7 +1922,7 @@ window.UNIVERSE = {
    "tags": [],
    "thumb_img": "art/thumbs/sw-e17.jpg",
    "status": "live",
-   "src": "https://github.com/susduolingo997-arch/private/releases/download/v17.0/shardwild_ep17_web.mp4",
+   "src": "media/sw-e17.mp4",
    "channel_name": "Pixelpanic"
   },
   {
@@ -1959,7 +1959,7 @@ window.UNIVERSE = {
    "tags": [],
    "thumb_img": "art/thumbs/sw-e18.jpg",
    "status": "live",
-   "src": "https://github.com/susduolingo997-arch/private/releases/download/v18.0/shardwild_ep18_web.mp4",
+   "src": "media/sw-e18.mp4",
    "channel_name": "Pixelpanic"
   },
   {
@@ -1996,7 +1996,7 @@ window.UNIVERSE = {
    "tags": [],
    "thumb_img": "art/thumbs/sw-e19.jpg",
    "status": "live",
-   "src": "https://github.com/susduolingo997-arch/private/releases/download/v19.0/shardwild_ep19_web.mp4",
+   "src": "media/sw-e19.mp4",
    "channel_name": "Pixelpanic"
   },
   {
@@ -2033,7 +2033,7 @@ window.UNIVERSE = {
    "tags": [],
    "thumb_img": "art/thumbs/sw-e20.jpg",
    "status": "live",
-   "src": "https://github.com/susduolingo997-arch/private/releases/download/v20.0/shardwild_ep20_web.mp4",
+   "src": "media/sw-e20.mp4",
    "channel_name": "Pixelpanic"
   },
   {
@@ -2070,7 +2070,7 @@ window.UNIVERSE = {
    "tags": [],
    "thumb_img": "art/thumbs/sw-e21.jpg",
    "status": "live",
-   "src": "https://github.com/susduolingo997-arch/private/releases/download/v21.0/shardwild_ep21_web.mp4",
+   "src": "media/sw-e21.mp4",
    "channel_name": "Pixelpanic"
   },
   {
@@ -2107,7 +2107,7 @@ window.UNIVERSE = {
    "tags": [],
    "thumb_img": "art/thumbs/sw-e22.jpg",
    "status": "live",
-   "src": "https://github.com/susduolingo997-arch/private/releases/download/v22.0/shardwild_ep22_web.mp4",
+   "src": "media/sw-e22.mp4",
    "channel_name": "Pixelpanic"
   },
   {
@@ -2144,7 +2144,7 @@ window.UNIVERSE = {
    "tags": [],
    "thumb_img": "art/thumbs/sw-e23.jpg",
    "status": "live",
-   "src": "https://github.com/susduolingo997-arch/private/releases/download/v23.0/shardwild_ep23_web.mp4",
+   "src": "media/sw-e23.mp4",
    "channel_name": "Pixelpanic"
   },
   {
@@ -2181,7 +2181,7 @@ window.UNIVERSE = {
    "tags": [],
    "thumb_img": "art/thumbs/sw-e24.jpg",
    "status": "live",
-   "src": "https://github.com/susduolingo997-arch/private/releases/download/v24.0/shardwild_ep24_web.mp4",
+   "src": "media/sw-e24.mp4",
    "channel_name": "Pixelpanic"
   },
   {
@@ -2218,7 +2218,7 @@ window.UNIVERSE = {
    "tags": [],
    "thumb_img": "art/thumbs/sw-e25.jpg",
    "status": "live",
-   "src": "https://github.com/susduolingo997-arch/private/releases/download/v25.0/shardwild_ep25_web.mp4",
+   "src": "media/sw-e25.mp4",
    "channel_name": "Pixelpanic"
   },
   {
@@ -2255,7 +2255,7 @@ window.UNIVERSE = {
    "tags": [],
    "thumb_img": "art/thumbs/sw-e26.jpg",
    "status": "live",
-   "src": "https://github.com/susduolingo997-arch/private/releases/download/v26.0/shardwild_ep26_web.mp4",
+   "src": "media/sw-e26.mp4",
    "channel_name": "Pixelpanic"
   },
   {
@@ -2292,7 +2292,7 @@ window.UNIVERSE = {
    "tags": [],
    "thumb_img": "art/thumbs/sw-e27.jpg",
    "status": "live",
-   "src": "https://github.com/susduolingo997-arch/private/releases/download/v27.0/shardwild_ep27_web.mp4",
+   "src": "media/sw-e27.mp4",
    "channel_name": "Pixelpanic"
   },
   {
@@ -2329,7 +2329,7 @@ window.UNIVERSE = {
    "tags": [],
    "thumb_img": "art/thumbs/sw-e28.jpg",
    "status": "live",
-   "src": "https://github.com/susduolingo997-arch/private/releases/download/v28.0/shardwild_ep28_web.mp4",
+   "src": "media/sw-e28.mp4",
    "channel_name": "Pixelpanic"
   },
   {
@@ -2366,7 +2366,7 @@ window.UNIVERSE = {
    "tags": [],
    "thumb_img": "art/thumbs/sw-e29.jpg",
    "status": "live",
-   "src": "https://github.com/susduolingo997-arch/private/releases/download/v29.0/shardwild_ep29_web.mp4",
+   "src": "media/sw-e29.mp4",
    "channel_name": "Pixelpanic"
   },
   {
@@ -2403,7 +2403,7 @@ window.UNIVERSE = {
    "tags": [],
    "thumb_img": "art/thumbs/sw-e30.jpg",
    "status": "live",
-   "src": "https://github.com/susduolingo997-arch/private/releases/download/v30.0/shardwild_ep30_web.mp4",
+   "src": "media/sw-e30.mp4",
    "channel_name": "Pixelpanic"
   },
   {
@@ -2440,7 +2440,7 @@ window.UNIVERSE = {
    "tags": [],
    "thumb_img": "art/thumbs/sw-e31.jpg",
    "status": "live",
-   "src": "https://github.com/susduolingo997-arch/private/releases/download/v31.0/shardwild_ep31_web.mp4",
+   "src": "media/sw-e31.mp4",
    "channel_name": "Pixelpanic"
   },
   {
@@ -2477,7 +2477,7 @@ window.UNIVERSE = {
    "tags": [],
    "thumb_img": "art/thumbs/sw-e32.jpg",
    "status": "live",
-   "src": "https://github.com/susduolingo997-arch/private/releases/download/v32.0/shardwild_ep32_web.mp4",
+   "src": "media/sw-e32.mp4",
    "channel_name": "Pixelpanic"
   }
  ]
