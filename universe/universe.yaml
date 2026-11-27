@@ -1,0 +1,191 @@
+# THE UNIVERSE: one world, one fake video site, every show.
+#
+# Everything the site shows comes from this file. To add a show: add a channel, add its
+# characters, add videos. To link a video to a renderable script, set `episode:` to a file
+# in episodes/. Entries marked `placeholder: true` are stand-ins invented by the scaffold:
+# rewrite them (or delete them) to match your real canon, then drop the flag.
+#
+#   python -m engine universe check     validate the whole universe
+#   python -m engine universe build     write site/  (open site/index.html, no server needed)
+#   python -m engine universe publish   copy rendered mp4s into site/media/
+
+site:
+  name: ViewTube
+  tagline: Broadcast Yourself, Technically
+  # In-universe "today". Dates below are relative to this world, not ours.
+  today: 2026-11-27
+
+# ---------------------------------------------------------------- channels
+channels:
+  - id: irl-but-cheats
+    name: IRL BUT CHEATS
+    handle: "@irlbutcheats"
+    color: "#f2a33a"
+    subs: 1840000
+    about: >
+      Dave discovers that real life has a developer console. He is not qualified to use it.
+      A very badly funny animated series. New episodes whenever the Admin allows it.
+    links: [Greg's Wall-Punching Channel (not real)]
+
+  - id: passion-fruit-events
+    name: Passion Fruit Events
+    handle: "@passionfruitevents"
+    color: "#ff4fa3"
+    subs: 392000
+    placeholder: true
+    about: >
+      Events so good they are slightly illegal. Weddings, launches, drops and galas,
+      planned by people who say "per my last email" out loud.
+
+  - id: news-channel-9
+    name: News Channel 9
+    handle: "@newschannel9"
+    color: "#2b7de9"
+    subs: 5210000
+    placeholder: true
+    about: >
+      Live. Local. Mostly accurate. Covering everything that happens in town, including
+      the things that should not be able to happen.
+
+# ---------------------------------------------------------------- characters
+# Everyone lives in the same world, so anyone can show up in anyone's video, or in a comment.
+# `engine` links a person to a voice/model in engine/cast.py (dave, kyle, admin, npc_<name>).
+characters:
+  - {id: dave,    name: Dave,           channel: irl-but-cheats,       color: "#f2a33a", engine: dave,  role: "Main character. Four dollars and a bagel coupon."}
+  - {id: kyle,    name: Kyle,           channel: irl-but-cheats,       color: "#4a90e2", engine: kyle,  role: "Deadpan best friend."}
+  - {id: admin,   name: The Admin,      channel: irl-but-cheats,       color: "#e03a3a", engine: admin, role: "Floating red crystal. Moderator. Pretends to be a plant."}
+  - {id: gerald,  name: Gerald,         channel: null,                 color: "#7fb7be", engine: npc_gerald, role: "Still waiting for a bus."}
+  - {id: greg,    name: Greg,           channel: null,                 color: "#b08968", engine: npc_greg,   role: "Punches a wall. Thriving."}
+  - {id: anchor,  name: Pam Ferreira,   channel: news-channel-9,        color: "#2b7de9", engine: npc_anchor, role: "Lead anchor, News Channel 9.", placeholder: true}
+  - {id: reporter,name: Duncan Okafor,  channel: news-channel-9,        color: "#4fb3a9", engine: npc_reporter, role: "Field reporter. Always outside.", placeholder: true}
+  - {id: planner, name: Marisol Quinn,  channel: passion-fruit-events,  color: "#ff4fa3", engine: npc_planner, role: "Lead planner at Passion Fruit Events.", placeholder: true}
+
+# ---------------------------------------------------------------- videos
+# status is derived: `live` (an mp4 is in site/media), `scripted` (episode file exists),
+# otherwise `planned` (the site shows a "premieres soon" player).
+# mentions: ids of other videos this one refers to (shown as "In this universe" links).
+# comments: [{by: <character id or any name>, text, likes}]
+videos:
+  # ---------------- IRL BUT CHEATS
+  - id: irl-s01e01
+    channel: irl-but-cheats
+    title: "I Found A Console In Real Life (Noclip) | IRL BUT CHEATS S01E01"
+    episode: episodes/s01e01_noclip.yaml
+    published: 2026-03-02
+    views: 4120000
+    likes: 301000
+    cast: [dave, kyle, admin, greg]
+    description: |
+      Dave tries to cut a sneaker line and falls out of the world.
+      Admin warning 1 of 3.
+      Cheats used: noclip, god, teleport, infinite_money, spawn
+    comments:
+      - {by: kyle,  text: "Dave.", likes: 88000}
+      - {by: admin, text: "This is not a plant. Do not look at me.", likes: 41200}
+      - {by: greg,  text: "I was not asked about the wall. The wall is fine.", likes: 22800}
+      - {by: gerald, text: "Does anyone know if the 9 is running late", likes: 9100}
+
+  - id: irl-s01e02
+    channel: irl-but-cheats
+    title: "Speedhack Got Me Hired Retroactively | IRL BUT CHEATS S01E02"
+    episode: episodes/s01e02_speedhack.yaml
+    published: 2026-03-09
+    views: 3480000
+    likes: 266000
+    cast: [dave, kyle, admin, gerald, greg]
+    mentions: [n9-early-late]
+    description: |
+      Eight minutes to reach a job interview. Dave arrives both early and late,
+      becomes a pizza courier, and learns inner peace from a crystal that insists it is a plant.
+    comments:
+      - {by: gerald, text: "Poor Gerald. Yes. That is me. Still here.", likes: 120400}
+      - {by: kyle,   text: "Dave.", likes: 71000}
+      - {by: admin,  text: "Warning 1 was a suggestion. Warning 2 is also a suggestion.", likes: 30300}
+
+  - id: irl-s01e03
+    channel: irl-but-cheats
+    title: "Time Scale | IRL BUT CHEATS S01E03"
+    published: 2026-03-16
+    cast: [dave, kyle]
+    description: Slow motion makes the worst morning of Dave's life last a week. Kyle ages.
+    cheat: timescale 0.1
+
+  - id: irl-s01e04
+    channel: irl-but-cheats
+    title: "Aimbot | IRL BUT CHEATS S01E04"
+    published: 2026-03-23
+    cast: [dave, kyle]
+    description: A friendly office paintball day turns into a hostage negotiation with a stapler.
+    cheat: aimbot
+    mentions: [pf-office-day]
+
+  - id: irl-s01e05
+    channel: irl-but-cheats
+    title: "Spawn Item | IRL BUT CHEATS S01E05"
+    published: 2026-03-30
+    cast: [dave, kyle, admin]
+    description: Dave tries to un-spawn something. There is no delete key.
+    cheat: spawn landlord
+
+  # ---------------- News Channel 9
+  - id: n9-sneaker-line
+    channel: news-channel-9
+    title: "BREAKING: Man Falls Out Of The World Outside Sneaker Shack"
+    published: 2026-03-02
+    views: 2210000
+    likes: 41000
+    placeholder: true
+    cast: [anchor, reporter, dave]
+    mentions: [irl-s01e01]
+    description: |
+      Duncan Okafor is live outside the Sneaker Shack, where four hundred people witnessed a man
+      pass through the floor. Police say the sidewalk is "fine".
+    comments:
+      - {by: dave, text: "Hi. Yes. That was me. It's fine.", likes: 66000}
+      - {by: kyle, text: "Dave.", likes: 30200}
+
+  - id: n9-early-late
+    channel: news-channel-9
+    title: "Local Man Arrives Both Early AND Late To Job Interview"
+    published: 2026-03-09
+    views: 1180000
+    likes: 22000
+    placeholder: true
+    cast: [anchor, dave]
+    mentions: [irl-s01e02]
+    description: "Experts are baffled. The interviewer says he was hired retroactively. Weather next."
+
+  - id: n9-gerald
+    channel: news-channel-9
+    title: "Gerald Update: Still Waiting For The Bus (Day 214)"
+    published: 2026-09-14
+    views: 3900000
+    likes: 140000
+    placeholder: true
+    cast: [anchor, reporter, gerald]
+    description: "Our longest running story. The bus is reportedly 'close'."
+    comments:
+      - {by: gerald, text: "It is close.", likes: 98000}
+
+  # ---------------- Passion Fruit Events
+  - id: pf-sneaker-drop
+    channel: passion-fruit-events
+    title: "How We Planned A 400-Person Sneaker Drop (And Lost One Guest To The Floor)"
+    published: 2026-03-20
+    views: 640000
+    likes: 28000
+    placeholder: true
+    cast: [planner]
+    mentions: [irl-s01e01, n9-sneaker-line]
+    description: "Crowd control, queue psychology, and what to do when a guest leaves through the floor."
+
+  - id: pf-office-day
+    channel: passion-fruit-events
+    title: "Corporate Paintball Day: Full Event Recap"
+    published: 2026-03-24
+    views: 210000
+    likes: 9000
+    placeholder: true
+    cast: [planner]
+    mentions: [irl-s01e04]
+    description: "We have been asked to stop saying 'stapler incident'. This is a recap of the stapler incident."

@@ -52,6 +52,29 @@ Blender needs OpenGL even in background mode; `xvfb-run` + Mesa provide that on 
 CLI uses `xvfb-run` automatically when there is no `$DISPLAY`). Blender 4.0.x is what Ubuntu 24.04
 and the GitHub runners ship, and what this was developed against.
 
+## The universe (every show, one fake video site)
+
+All shows share one world and live on one fake video site, **ViewTube**. News Channel 9 can report
+on what Dave did, Passion Fruit Events can plan the sneaker drop, and Gerald can comment on all of it.
+
+```
+universe/universe.yaml     channels, shared characters, every video (+ crossover links, in-world comments)
+universe/web/              the site (plain HTML/JS/CSS, no dependencies)
+        |  python -m engine universe build      -> site/index.html (open it; no server needed)
+        |  python -m engine universe publish    -> copy rendered mp4s into site/media/, rebuild
+```
+
+* `universe check` validates the whole world (unknown channel/character, dangling `mentions`, bad episode files).
+* A video with `episode: episodes/xxx.yaml` is linked to a render script. Status is derived:
+  **planned** (no script) -> **scripted** (script exists) -> **live** (mp4 in `site/media/`, plays in the player).
+* `mentions: [other-video-id]` makes crossovers show up under "In this universe" on both videos.
+* Site features: home grid with channel chips, watch page with player/likes/subscribe/comments (yours are
+  saved in your browser), channel pages (videos/cast/about), search, a universe timeline, and a cast list.
+* Entries marked `placeholder: true` were invented by the scaffold (Passion Fruit Events, News Channel 9 and
+  their people/videos). Rewrite them to your real canon and remove the flag.
+* To add a show: add a channel, its characters, and videos in `universe.yaml`. Characters link to engine
+  voices through `engine:` (`dave`, `kyle`, `admin`, or any `npc_<name>`).
+
 ## Writing an episode
 
 ```yaml
@@ -102,6 +125,7 @@ engine/audio.py           dialogue + synthesised sfx + chiptune bed -> mix.wav
 engine/overlay.py         burn-in game UI as an ASS subtitle file
 engine/blender_render.py  runs inside Blender: scene builder + renderer
 engine/cast.py, sets.py   characters, locations, camera presets (data)
+universe/, engine/universe.py  shared universe + fake video site
 docs/series_bible.md      cast, rules, running gags, season 1 slate
 ```
 

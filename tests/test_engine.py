@@ -96,3 +96,36 @@ class OutputTests(unittest.TestCase):
 
 if __name__ == "__main__":
     unittest.main()
+
+
+class UniverseTests(unittest.TestCase):
+    def test_universe_is_valid_and_builds(self):
+        from engine import universe
+        u = universe.load()
+        self.assertGreaterEqual(len(u["channels"]), 3)
+        with tempfile.TemporaryDirectory() as d:
+            data = universe.build_site(d)
+            self.assertTrue(os.path.exists(os.path.join(d, "index.html")))
+            self.assertTrue(os.path.exists(os.path.join(d, "data.js")))
+            ep = next(v for v in data["videos"] if v.get("episode"))
+            self.assertEqual(ep["status"], "scripted")
+            self.assertTrue(ep["duration"])
+
+    def test_rejects_dangling_references(self):
+        from engine import universe
+        u = universe.load()
+        u["videos"][0]["channel"] = "nope"
+        u["videos"][0]["mentions"] = ["ghost"]
+        u["videos"][0]["cast"] = ["nobody"]
+        with self.assertRaises(universe.UniverseError) as c:
+            universe.validate(u)
+        msg = "\n".join(c.exception.errors)
+        self.assertIn("unknown channel", msg)
+        self.assertIn("mentions unknown video", msg)
+        self.assertIn("not in characters", msg)
+
+    def test_publish_makes_video_live(self):
+        from engine import universe
+        with tempfile.TemporaryDirectory() as b, tempfile.TemporaryDirectory() as s:
+            open(os.path.join(b, "s01e01.mp4"), "wb").write(b"x")
+            self.assertEqual(universe.publish(b, s), ["irl-s01e01"])

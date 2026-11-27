@@ -7,7 +7,7 @@ import shutil
 import subprocess
 import sys
 
-from . import audio, overlay, plan as planner, schema
+from . import audio, overlay, plan as planner, schema, universe
 
 ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 TOLERANCE = 0.05  # episodes must land within 5% of target_seconds (default 600 = 10 min)
@@ -123,6 +123,27 @@ def cmd_build(a):
                                         out=os.path.join(a.out, plan["id"] + ".mp4")))
 
 
+def cmd_universe(a):
+    try:
+        if a.action == "check":
+            u = universe.load()
+            ph = [x["id"] for k in ("channels", "characters", "videos") for x in u[k] if x.get("placeholder")]
+            print(f"universe OK: {len(u['channels'])} channels, {len(u['characters'])} characters, "
+                  f"{len(u['videos'])} videos")
+            if ph:
+                print(f"  {len(ph)} placeholder entries to rewrite: {', '.join(ph)}")
+        elif a.action == "build":
+            d = universe.build_site(a.out)
+            live = sum(v["status"] == "live" for v in d["videos"])
+            print(f"site -> {os.path.join(a.out, 'index.html')}  ({len(d['videos'])} videos, {live} playable)")
+        else:
+            copied = universe.publish(a.build, a.out)
+            print("published: " + (", ".join(copied) if copied else "nothing (no rendered mp4s in " + a.build + ")"))
+    except universe.UniverseError as e:
+        print("Universe errors:\n  " + "\n  ".join(e.errors), file=sys.stderr)
+        raise SystemExit(1)
+
+
 def main(argv=None):
     ap = argparse.ArgumentParser(prog="engine")
     sub = ap.add_subparsers(dest="cmd", required=True)
@@ -162,6 +183,12 @@ def main(argv=None):
     p.add_argument("--only", nargs="*", help="render only these shard ids (no assemble)")
     p.add_argument("--limit", type=int, default=0, help="only first N frames of each shard")
     p.set_defaults(fn=cmd_build)
+
+    p = sub.add_parser("universe", help="the shared universe + fake video site (universe/universe.yaml)")
+    p.add_argument("action", choices=["check", "build", "publish"])
+    p.add_argument("--out", default=universe.SITE_DIR, help="site directory (default: site/)")
+    p.add_argument("--build", default="build", help="where rendered mp4s are (publish)")
+    p.set_defaults(fn=cmd_universe)
 
     a = ap.parse_args(argv)
     try:
