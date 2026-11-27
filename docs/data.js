@@ -410,7 +410,8 @@ window.UNIVERSE = {
    "duration": 565,
    "thumb_img": "art/thumbs/irl-s01e01.jpg",
    "target": 600,
-   "status": "scripted",
+   "status": "live",
+   "src": "media/s01e01.mp4",
    "channel_name": "IRL BUT CHEATS"
   },
   {
@@ -473,7 +474,8 @@ window.UNIVERSE = {
    "duration": 548,
    "thumb_img": "art/thumbs/irl-s01e02.jpg",
    "target": 600,
-   "status": "scripted",
+   "status": "live",
+   "src": "media/s01e02.mp4",
    "channel_name": "IRL BUT CHEATS"
   },
   {
@@ -543,7 +545,8 @@ window.UNIVERSE = {
    "duration": 603,
    "thumb_img": "art/thumbs/irl-s01e03.jpg",
    "target": 600,
-   "status": "scripted",
+   "status": "live",
+   "src": "media/s01e03.mp4",
    "channel_name": "IRL BUT CHEATS"
   },
   {
@@ -864,7 +867,8 @@ window.UNIVERSE = {
    "duration": 613,
    "thumb_img": "art/thumbs/n9-s01e03.jpg",
    "target": 600,
-   "status": "scripted",
+   "status": "live",
+   "src": "media/n9s01e03.mp4",
    "channel_name": "Channel 9"
   },
   {
@@ -940,7 +944,8 @@ window.UNIVERSE = {
    "duration": 602,
    "thumb_img": "art/thumbs/n9-s01e04.jpg",
    "target": 600,
-   "status": "scripted",
+   "status": "live",
+   "src": "media/n9s01e04.mp4",
    "channel_name": "Channel 9"
   },
   {
