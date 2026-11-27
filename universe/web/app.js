@@ -194,6 +194,10 @@
     };
     const vid0 = document.querySelector("#vp video");
     if (vid0) {
+      const fsb = document.createElement("button");
+      fsb.className = "btn"; fsb.textContent = "\u26F6 Fullscreen"; fsb.style.marginTop = "8px";
+      fsb.onclick = () => { if (vid0.webkitEnterFullscreen) vid0.webkitEnterFullscreen(); else if (vid0.requestFullscreen) vid0.requestFullscreen(); };
+      $("#vp").after(fsb);
       const show = () => { const fb = $("#vfb"); if (fb) { fb.hidden = false; vid0.style.display = "none"; const m = $("#vfe"); if (m) m.textContent = "Browser said: " + (vid0.error ? "media error " + vid0.error.code + (vid0.error.message ? " (" + vid0.error.message + ")" : "") : "no response") + " | " + navigator.userAgent.replace(/\).*/, ")").slice(0, 80); } };
       vid0.addEventListener("error", show);
       setTimeout(() => { if (vid0.readyState === 0 && !vid0.error) show(); }, 8000);
