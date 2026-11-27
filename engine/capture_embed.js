@@ -12,6 +12,6 @@ const { chromium } = require('playwright');
   await p.evaluate((t) => { const s = document.querySelector('#seek'); s.value = t; s.dispatchEvent(new Event('input', { bubbles: true })); s.dispatchEvent(new Event('change', { bubbles: true })); }, at);
   await p.waitForTimeout(2500);
   await p.evaluate(() => { const c = document.querySelector('#ctl'); if (c) c.classList.add('hide'); });
-  await p.locator('#tv').screenshot({ path: out });
+  await p.locator('#tv').screenshot({ path: out, timeout: 120000, animations: 'allow' });
   await b.close();
 })();

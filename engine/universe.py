@@ -83,8 +83,10 @@ def validate(u):
         for cm in v.get("comments") or []:
             if not cm.get("text"):
                 errs.append(f"{w}: comment without text")
-        if sum(bool(v.get(k)) for k in ("episode", "embed", "link")) > 1:
-            errs.append(f"{w}: use only one of episode / embed / link")
+        if sum(bool(v.get(k)) for k in ("episode", "embed", "link", "script")) > 1:
+            errs.append(f"{w}: use only one of episode / embed / link / script")
+        if v.get("script") and not os.path.exists(os.path.join(ROOT, v["script"])):
+            errs.append(f"{w}: script file {v['script']!r} does not exist")
         if v.get("link") and not str(v["link"]).startswith("https://"):
             errs.append(f"{w}: link must be an https:// URL")
         emb = v.get("embed")
@@ -151,7 +153,7 @@ def enrich(u, media_dir, art_dir=ART_DIR):
             d["status"], d["embed_src"] = "live", "embeds/" + os.path.basename(v["embed"])
         elif _media_file(v, media_dir):
             d["status"], d["src"] = "live", f"media/{v['id']}.mp4"
-        elif v.get("episode"):
+        elif v.get("episode") or v.get("script"):
             d["status"] = "scripted"
         else:
             d["status"] = "planned"

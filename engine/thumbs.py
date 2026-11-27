@@ -320,7 +320,9 @@ def build_art(universe, only=None, force=False, art=ART, work=None):
             continue
         t = v["thumb"]
         c = chans[v["channel"]]
-        if t.get("frame"):
+        if t.get("file"):
+            raw = os.path.join(ROOT, t["file"])
+        elif t.get("frame"):
             try:
                 raw = grab_frame(t["frame"]["url"], t["frame"].get("at", 60), os.path.join(tmp, "t_" + v["id"] + ".png"))
             except Exception as e:  # asset missing / offline: still give the video a (plain) thumbnail

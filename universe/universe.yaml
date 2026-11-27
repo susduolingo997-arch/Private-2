@@ -283,6 +283,25 @@ videos:
       - {by: pruitt,  text: "I would like to say, for the record, that I am the real landlord.", likes: 40000}
       - {by: david,   text: "Nice weather.", likes: 33000}
 
+  - id: n9-s01e06
+    channel: channel-9
+    title: "The Small Episode (Speaker Size Of Rice, Thimble Baskets) | Channel 9 Evening News S01E06"
+    embed: universe/embeds/n9-s01e06.html
+    duration: 600
+    published: 2026-11-27
+    views: 48
+    likes: 2
+    cast: [martin, sarah, david, emma, kevin, richard, gnome]
+    mentions: [pf-e6]
+    thumb: {capture: {embed: universe/embeds/n9-s01e06.html, at: 40}, text: ["EVERYTHING", "IS SMALL"], hl: 1, tag: "EPISODE 3", style: news}
+    description: |
+      Passionfruit releases a speaker the size of rice. Greenway's baskets shrink to thimbles. A pigeon is an instrument.
+      A speck on Kevin says "keys". Viewers: forty-eight (up one). Gerald the gnome: still missing, still small.
+      Made in the original Channel 9 page format (the numbering follows the original pages: this is Episode 3 of the page series).
+    comments:
+      - {by: richard, text: "FORTY-EIGHT!", likes: 40}
+      - {by: kevin,   text: "keys", likes: 33}
+
   # ================================================================ PASSIONFRUIT
   # The five real events (cast and products from passionfruit/eventN/event.json). Each is a ~22 minute film
   # published as a GitHub release; the site links out to it.
@@ -345,6 +364,20 @@ videos:
     cast: [dana, imogen, theo, marco, priya, bea, rafa, ollie]
     thumb: {frame: {url: "https://github.com/susduolingo997-arch/private/releases/download/pf-5.0/passionfruit_event5.mp4", at: 150}, text: ["WE'RE", "SORRY"], hl: 1, tag: "EVENT 5", style: keynote}
     description: "PASSIONFRUIT Event 5: We're Sorry.\nOn stage: Dana Pith, Imogen Rind, Theo Seedling, Marco Nectar, Priya Zest, Bea Nectarine, Rafa Kernel, Ollie Pardon.\nProducts: Pulp Sniff ($129), Pulp Ding ($179), Pulp Mirror ($899), Zest Toaster ($149), Pulp Fern ($89), Pulp Glow ($99), Pebble Pro Max, Pulp Drive, Pulp Phone 1, Pulp Phone 1 Thick ($1,299), Pip, Nope."
+
+  - id: pf-e6
+    channel: passionfruit
+    title: "PASSIONFRUIT Event 6 - Think Small"
+    script: canon/passionfruit/event6/event.json
+    duration: 1392
+    published: 2026-11-27
+    cast: [dana, imogen, priya, bea, rafa, ollie]
+    thumb: {file: canon/passionfruit/event6/still.jpg, text: ["THINK", "SMALL"], hl: 1, tag: "EVENT 6", style: keynote}
+    description: |
+      Written, validated and ready to render (not yet published as a release). Theo hosts a launch of only tiny products:
+      Pulp Grain (a speaker the size of a grain of rice, one note), Pith Pin, Rind Thimble, Pulp Speck (a camera you cannot find),
+      Zest Colony (four hundred ant assistants), Nectar Period (a physical full stop) and Pulp Stamp (the whole world, folded).
+      One more thing: Pulp Nudge, which says one word. Usually "keys".
 
   # ================================================================ SHARDWILD (Pixelpanic)
   # 32 episodes, ~5 minutes each, published as releases v1.0 - v32.0. The series is retired.
