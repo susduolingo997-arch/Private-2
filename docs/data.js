@@ -614,10 +614,11 @@ window.UNIVERSE = {
     }
    ],
    "tags": [],
-   "duration": 590,
+   "duration": 625,
    "thumb_img": "art/thumbs/irl-s01e04.jpg",
    "target": 600,
-   "status": "scripted",
+   "status": "live",
+   "src": "media/s01e04.mp4",
    "channel_name": "IRL BUT CHEATS"
   },
   {
@@ -680,7 +681,7 @@ window.UNIVERSE = {
     }
    ],
    "tags": [],
-   "duration": 573,
+   "duration": 636,
    "thumb_img": "art/thumbs/irl-s01e05.jpg",
    "target": 600,
    "status": "scripted",
