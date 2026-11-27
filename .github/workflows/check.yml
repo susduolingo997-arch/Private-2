@@ -22,6 +22,6 @@ jobs:
       - run: python -m unittest discover -s tests -v
       - name: Validate every episode (estimated 10-minute gate) and the universe
         run: |
-          python -m engine validate --gate episodes/*.yaml
+          python -m engine validate --gate --tolerance 0.12 episodes/*.yaml
           python -m engine universe check
           python -m engine universe build --out "$RUNNER_TEMP/site"

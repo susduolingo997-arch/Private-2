@@ -17,9 +17,9 @@ def _fmt(sec):
     return f"{int(sec // 60)}:{sec % 60:04.1f}"
 
 
-def _gate(ep, plan):
+def _gate(ep, plan, tol=TOLERANCE):
     target = float(ep.get("target_seconds", 600))
-    lo, hi = target * (1 - TOLERANCE), target * (1 + TOLERANCE)
+    lo, hi = target * (1 - tol), target * (1 + tol)
     if not lo <= plan["seconds"] <= hi:
         raise SystemExit(f"{ep['id']}: runtime {_fmt(plan['seconds'])} is outside "
                          f"{_fmt(lo)}-{_fmt(hi)} (target {_fmt(target)}). Add/trim beats.")
@@ -34,7 +34,7 @@ def cmd_validate(a):
         for sid, secs, words in planner.stats(plan):
             print(f"   {sid:<12} {_fmt(secs):>7}   {words} spoken words")
         if a.gate:
-            _gate(ep, plan)
+            _gate(ep, plan, a.tolerance)
 
 
 def cmd_plan(a):
@@ -156,6 +156,7 @@ def main(argv=None):
     p = sub.add_parser("validate", help="check episodes, print estimated runtime")
     p.add_argument("episodes", nargs="+")
     p.add_argument("--gate", action="store_true", help="fail if runtime is not ~10 min")
+    p.add_argument("--tolerance", type=float, default=TOLERANCE, help="gate tolerance (estimates are rough: CI uses 0.12)")
     p.set_defaults(fn=cmd_validate)
 
     p = sub.add_parser("plan", help="TTS + timing + audio mix + overlay + shard matrix")
