@@ -62,7 +62,7 @@ class _Slots:
 _SHOW = {  # per-show branding: bug text, accent colour (hex), HUD label for `hp:` beats
     "irl": dict(bug="IRL BUT CHEATS", accent="#33c9ff", hp="HP"),
     "news": dict(bug="CHANNEL 9", accent="#f5b70a", hp="VIEWERS"),
-    "events": dict(bug="MARIGOLD EVENTS", accent="#ff9f1c", hp="BUDGET"),
+    "events": dict(bug="PASSIONFRUIT", accent="#8e2de2", hp="BUDGET"),
 }
 
 

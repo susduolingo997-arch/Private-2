@@ -134,7 +134,7 @@ def logo(kind, size=400, color="#f2a33a"):
         d.ellipse((S * .06, S * .06, S * .94, S * .94), outline=(245, 183, 10), width=int(S * .06))
         d.text((c, c * 1.03), "9", font=_font(int(S * .66)), fill=(255, 255, 255), anchor="mm")
         d.rectangle((S * .30, S * .80, S * .70, S * .87), fill=(215, 18, 43))
-    elif kind == "flower":  # marigold
+    elif kind == "flower":  # spare logo style  # marigold
         d.ellipse((0, 0, S, S), fill=_rgb(color))
         import math
         for i in range(12):

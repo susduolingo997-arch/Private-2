@@ -41,18 +41,6 @@ channels:
       straight, even when the story is a sandwich. Martin Miller and Sarah Collins anchor; David Storm
       has the weather; Emma Parker is outside; Kevin Brooks is somewhere with a camera.
 
-  - id: marigold-events
-    name: Marigold Events
-    handle: "@marigoldevents"
-    color: "#ff9f1c"
-    subs: 392000
-    logo: flower
-    banner: {set: ballroom, cast: {marisol: center, tobias: left, kyle: right}, cam: wide, acts: [{who: tobias, do: jump, dur: 1.5}], at: 8}
-    about: >
-      Events so good they are slightly illegal. Weddings, launches, drops and galas,
-      planned by people who say "per my last email" out loud. One year in business. Zero fountains.
-      (Not to be confused with PASSIONFRUIT, which is a company. This is a planner.)
-
   - id: passionfruit
     name: PASSIONFRUIT
     handle: "@passionfruit"
@@ -80,18 +68,13 @@ characters:
   - {id: landlord2, name: "Landlord (Copy)", channel: null,               color: "#8fb996", engine: npc_landlord_copy, role: "Landlord. Spawned. Has a better clipboard."}
   - {id: gary,      name: Gary,            channel: null,                color: "#d4a373", engine: npc_gary, role: "Office manager. Survived a stapler. Pink."}
   - {id: steve,     name: Steve,           channel: null,                color: "#7fb7be", engine: npc_stapler, role: "A stapler. Fully refilled.", shrink: 0.3}
-  - {id: karen,     name: Karen,           channel: null,                color: "#c9a0dc", engine: npc_karen, role: "Queue veteran. Owns a dog called Receipt."}
-  - {id: shack,     name: Mr. Shack,       channel: null,                color: "#b08968", engine: npc_owner, role: "Owns the Sneaker Shack. Has a sign."}
   - {id: martin,    name: Martin Miller,   channel: channel-9,           color: "#7fb2ff", engine: martin, role: "Main anchor, Channel 9. Everything is grave. Everything."}
   - {id: sarah,     name: Sarah Collins,   channel: channel-9,           color: "#ffb3c7", engine: sarah, role: "Co-anchor and producer. Says 'Martin.' a lot."}
   - {id: david,     name: David Storm,     channel: channel-9,           color: "#9ef0c0", engine: david, role: "Chief weather presenter. The map is Iceland again."}
   - {id: emma,      name: Emma Parker,     channel: channel-9,           color: "#ffd27a", engine: emma,  role: "Field reporter. Always in a car park."}
   - {id: kevin,     name: Kevin Brooks,    channel: channel-9,           color: "#c9a7ff", engine: kevin, role: "Camera operator. Sometimes a chef. Pressed the big button."}
   - {id: richard,   name: Richard Wilson,  channel: channel-9,           color: "#ff9a7a", engine: richard, role: "Station manager. Viewers: forty-seven. Demands energy."}
-  - {id: lindqvist, name: Prof. Lindqvist, channel: null,                color: "#9fe3da", engine: npc_professor, role: "Studies floors. And clocks. And, once, staplers."}
   - {id: gnome,     name: Gerald (Gnome),  channel: null,                color: "#7fb7be", engine: npc_gnome, role: "Twelve inches of ceramic. Missing from Birchwood Lane. Found at a bus stop.", shrink: 0.35}
-  - {id: marisol,   name: Marisol Quinn,   channel: marigold-events, color: "#ff4fa3", engine: marisol, role: "Lead planner. Does not talk about the fountain."}
-  - {id: tobias,    name: Tobias,          channel: marigold-events, color: "#8e6bd6", engine: tobias, role: "Junior planner. Cries at weddings, galas and coats."}
   - {id: dana,      name: Dana,            channel: passionfruit,        color: "#8e2de2", engine: npc_dana, role: "CEO of PASSIONFRUIT. Appears from an empty theater."}
   - {id: rafa,      name: Rafa,            channel: passionfruit,        color: "#e8883a", engine: npc_rafa, role: "Host of Event 4 (Go Further)."}
   - {id: bea,       name: Bea Nectarine,   channel: passionfruit,        color: "#ffd27a", engine: npc_bea,  role: "Home & Ambience. Introduced Pulp Ding."}
@@ -99,10 +82,6 @@ characters:
   - {id: pip,       name: Pip,             channel: passionfruit,        color: "#9ef0c0", engine: npc_pip,  role: "Home assistant that agrees with everything. Now a manager."}
   - {id: nope,      name: Nope,            channel: passionfruit,        color: "#ff9a7a", engine: npc_nope, role: "Home assistant that disagrees with everything. Resigned in one word."}
   - {id: ollie,     name: Ollie Pardon,    channel: passionfruit,        color: "#7fb2ff", engine: npc_ollie, role: "Chief Apology Officer."}
-  - {id: doug,      name: Doug,            channel: marigold-events, color: "#7fb7be", engine: npc_doug, role: "Security. Silent. Excellent."}
-  - {id: bjorn,     name: Bjorn,           channel: null,                color: "#9aa5b1", engine: npc_sculptor, role: "Ice sculptor. A nine is a six that gave up."}
-  - {id: priya,     name: Priya,           channel: null,                color: "#c9a0dc", engine: npc_bride, role: "Bride. Very high standards."}
-  - {id: oscar,     name: Oscar,           channel: null,                color: "#8fb996", engine: npc_groom, role: "Groom. Loves the plant."}
 
 # ---------------------------------------------------------------- videos
 # status is derived: `live` (an mp4 is in site/media), `scripted` (episode file exists),
@@ -172,16 +151,16 @@ videos:
     published: 2026-03-23
     views: 2640000
     likes: 228000
-    cast: [dave, kyle, marisol, tobias, admin]
-    mentions: [mg-s01e02, n9-s01e04]
+    cast: [dave, kyle, admin, gary, steve]
+    mentions: [n9-s01e04]
     thumb: {set: office, cast: {dave: left, npc_gary: desk, npc_stapler: [1.8, 2.4]}, acts: [{who: npc_stapler, do: shrink, by: 0.35, dur: 0.2}, {who: npc_gary, do: shake, dur: 1.5}], at: 16,   text: ["THE STAPLER", "HAS A TIE"], hl: 1, tag: AIMBOT}
     description: |
       A friendly office paintball day turns into a hostage negotiation with a stapler.
-      Event planning by Marigold Events. Cheat used: aimbot
+      Cheat used: aimbot
     comments:
       - {by: gary,    text: "I am still a little pink. I would like to thank Steve.", likes: 77200}
       - {by: steve,   text: "click", likes: 61000}
-      - {by: marisol, text: "We do not ask. It is policy. Five stars.", likes: 32000}
+      - {by: kyle, text: "Dave.", likes: 32000}
 
   - id: irl-s01e05
     channel: irl-but-cheats
@@ -261,8 +240,8 @@ videos:
     published: 2026-03-23
     views: 6400000
     likes: 310000
-    cast: [martin, sarah, david, emma, kevin, richard, marisol, tobias, gary, steve, kyle, dave]
-    mentions: [irl-s01e04, mg-s01e02]
+    cast: [martin, sarah, david, emma, kevin, richard, gary, steve, kyle, dave]
+    mentions: [irl-s01e04]
     thumb: {set: office, cast: {emma: right, npc_gary: desk, npc_stapler: [1.8, 2.4]}, cam: two, acts: [{who: npc_stapler, do: shrink, by: 0.35, dur: 0.2}], at: 16, text: ["STAPLER", "STANDOFF"], hl: 0, tag: LIVE, style: news}
     description: "An office manager is held by his tie. The captor is a stapler. Channel 9 is on the scene. Viewers: four thousand three hundred. Our most watched broadcast of the year."
     comments:
@@ -373,81 +352,7 @@ videos:
       - {by: nope,  text: "I quit. No.", likes: 250000}
       - {by: pip,   text: "I approved a phone for dogs.", likes: 120000}
 
-  # ================================================================ MARIGOLD EVENTS
-  - id: mg-s01e01
-    channel: marigold-events
-    title: "How We Planned A 400-Person Sneaker Drop (And Lost One Guest To The Floor) | Marigold Events S01E01"
-    episode: episodes/mg_s01e01_sneaker_drop.yaml
-    published: 2026-03-20
-    views: 640000
-    likes: 28000
-    cast: [marisol, tobias, shack, karen, doug, dave]
-    mentions: [irl-s01e01]
-    thumb: {set: street, cast: {marisol: left, tobias: right, npc_doug: shop_door}, cam: wide, acts: [{who: tobias, do: shake, amt: 0.1, dur: 1.5}], at: 16, text: ["400 GUESTS,", "1 FLOOR"], hl: 1, tag: S01E01, style: events}
-    description: "Crowd control, queue psychology, twelve porta potties, and what to do when a guest leaves through the floor (the Silver Lining Protocol)."
-    comments:
-      - {by: doug,    text: "...", likes: 51000}
-      - {by: karen,   text: "Receipt gave it five stars. Woof.", likes: 30000}
-      - {by: marisol, text: "We do not ask. It is policy.", likes: 22000}
 
-  - id: mg-s01e02
-    channel: marigold-events
-    title: "Corporate Paintball Day: Full Event Recap (Including The Stapler Incident) | Marigold Events S01E02"
-    episode: episodes/mg_s01e02_paintball.yaml
-    published: 2026-03-24
-    views: 1210000
-    likes: 59000
-    cast: [marisol, tobias, gary, steve, dave, kyle, emma]
-    mentions: [irl-s01e04, n9-s01e04]
-    thumb: {set: office, cast: {marisol: front, tobias: left, npc_gary: desk}, cam: wide, acts: [{who: marisol, do: wave, dur: 1.5}], at: 16, text: ["ITEM 38:", "THE STAPLER"], hl: 1, tag: S01E02, style: events}
-    description: "We have been asked to stop saying 'stapler incident'. This is a recap of the stapler incident. Includes the full 37 item risk assessment."
-    comments:
-      - {by: tobias, text: "I cried. I would like that on the record.", likes: 29000}
-      - {by: gary,   text: "Five stars. And a stapler.", likes: 24000}
 
-  - id: mg-s01e03
-    channel: marigold-events
-    title: "The Wedding Of The Year (A Bus Stop Was Built) | Marigold Events S01E03"
-    episode: episodes/mg_s01e03_wedding.yaml
-    published: 2026-05-02
-    views: 880000
-    likes: 47000
-    cast: [marisol, tobias, priya, oscar, greg, kyle, admin, gerald]
-    thumb: {set: garden, cast: {npc_bride: aisle_mid, npc_groom: altar, greg: right, admin: left}, cam: wide, acts: [{who: greg, do: shake, amt: 0.15, dur: 1.5}], at: 16, text: ["A BUS STOP", "AT A WEDDING"], hl: 0, tag: S01E03, style: events}
-    description: "A garden wedding. The best man punches walls. The uncle cannot leave a bus stop. The centrepiece is a very dedicated plant."
-    comments:
-      - {by: greg,   text: "I did not punch the arch. I punched the cake. It was a good cake.", likes: 36000}
-      - {by: gerald, text: "I was invited. I sat at the bench. Nice weather.", likes: 31000}
-      - {by: admin,  text: "A very expensive fern. That is all.", likes: 25000}
 
-  - id: mg-s01e04
-    channel: marigold-events
-    title: "We Planned Channel 9's 20th Anniversary Gala (The Nine Melted) | Marigold Events S01E04"
-    episode: episodes/mg_s01e04_gala.yaml
-    published: 2026-06-13
-    views: 1530000
-    likes: 82000
-    cast: [marisol, tobias, richard, martin, emma, david, lindqvist, bjorn, dave, kyle, admin]
-    mentions: [n9-s01e02]
-    thumb: {set: ballroom, cast: {marisol: front, tobias: left, npc_sculptor: right}, cam: wide, acts: [{who: tobias, do: shake, amt: 0.12, dur: 1.5}], at: 16, text: ["THE NINE", "MELTED"], hl: 1, tag: S01E04, style: events}
-    description: "Four hundred guests. A live broadcast. An ice sculpture of the number nine. A very warm ballroom. A blackout, and a pizza nobody ordered."
-    comments:
-      - {by: richard, text: "I screamed. For energy.", likes: 64000}
-      - {by: bjorn,  text: "A nine is a six that gave up.", likes: 41000}
-      - {by: david,  text: "Nice.", likes: 18000}
 
-  - id: mg-s01e05
-    channel: marigold-events
-    title: "SEASON FINALE: Our Own Anniversary Party (The Bus Arrives) | Marigold Events S01E05"
-    episode: episodes/mg_s01e05_finale.yaml
-    published: 2026-11-14
-    views: 2740000
-    likes: 190000
-    cast: [marisol, tobias, dave, kyle, admin, gerald, greg, martin, emma, david, pruitt, landlord2, gary, steve, karen, shack]
-    mentions: [mg-s01e03, mg-s01e04, irl-s01e05, n9-s01e03]
-    thumb: {set: ballroom, cast: {marisol: center, tobias: left, dave: right, kyle: far_right}, cam: wide, acts: [{who: marisol, do: jump, dur: 1.5}, {who: tobias, do: jump, dur: 1.5}], at: 18, text: ["THE BUS", "ARRIVED"], hl: 1, tag: FINALE, style: events}
-    description: "One year of Marigold Events. Everyone in the universe is invited. Gerald gets his bus. Marisol faces the fountain. Per my last email, this is the finale."
-    comments:
-      - {by: gerald, text: "It was lovely. I will wait for the next one.", likes: 150000}
-      - {by: marisol, text: "I am in the fountain. I am so happy.", likes: 120000}
-      - {by: kyle,   text: "Dave.", likes: 99000}

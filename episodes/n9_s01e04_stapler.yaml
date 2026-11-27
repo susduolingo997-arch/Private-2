@@ -46,18 +46,18 @@ scenes:
 
   - id: pfe_spokesperson
     set: office
-    cast: {emma: front, marisol: right, tobias: lobby}
+    cast: {emma: front, npc_organizer: right, npc_intern: lobby}
     beats:
-      - {act: 3, cam: wide, ui: [{kind: lower, text: "EMMA PARKER|Outside the cordon. Speaking to the planners.", at: 0.3, dur: 3.5}, {kind: ticker, text: "MARIGOLD EVENTS: 'THIS WAS A TEAM BUILDING EVENT'", at: 0.3}]}
+      - {act: 3, cam: wide, ui: [{kind: lower, text: "EMMA PARKER|Outside the cordon. Speaking to the planners.", at: 0.3, dur: 3.5}, {kind: ticker, text: "TEAM SPIRIT CO.: 'THIS WAS A TEAM BUILDING EVENT'", at: 0.3}]}
       - {say: emma, text: "I am now speaking to the event planner behind today's corporate paintball day. Ma'am, can you tell us what happened?", cam: emma}
-      - {say: marisol, text: "Of course. I am Marisol Quinn from Marigold Events. We organised a team building day. It was going very well, until the stapler.", cam: marisol, ui: [{kind: lower, text: "MARISOL QUINN|Marigold Events, Lead Planner", at: 0.2, dur: 3.5}]}
+      - {say: npc_organizer, text: "Of course. I am Maxine from Team Spirit Co.. We organised a team building day. It was going very well, until the stapler.", cam: npc_organizer, ui: [{kind: lower, text: "MARISOL QUINN|Team Spirit Co., Lead Planner", at: 0.2, dur: 3.5}]}
       - {say: emma, text: "Did you foresee a hostage situation?"}
-      - {say: marisol, text: "We did a risk assessment. It had thirty seven items. Stapler was not one of them. It was number thirty eight. We have since added it."}
+      - {say: npc_organizer, text: "We did a risk assessment. It had thirty seven items. Stapler was not one of them. It was number thirty eight. We have since added it."}
       - {say: emma, text: "And what is your team doing now?"}
-      - {say: marisol, text: "Tobias, my junior planner, is doing a lot of deep breathing. I am handling logistics. We have sent for snacks. It is a long afternoon. And we are still hoping for good reviews."}
-      - {say: tobias, text: "I am not okay! I have never seen a stapler cry! It had a little tear! It was a drop of ink!", cam: tobias, ui: [{kind: lower, text: "TOBIAS|Junior planner. Not okay.", at: 0.2, dur: 3.5}]}
-      - {say: marisol, text: "Tobias, you are on television."}
-      - {say: tobias, text: "I am so sorry. Hello, television. We will be right back with more balloons."}
+      - {say: npc_organizer, text: "Toby, my junior planner, is doing a lot of deep breathing. I am handling logistics. We have sent for snacks. It is a long afternoon. And we are still hoping for good reviews."}
+      - {say: npc_intern, text: "I am not okay! I have never seen a stapler cry! It had a little tear! It was a drop of ink!", cam: npc_intern, ui: [{kind: lower, text: "TOBIAS|Junior planner. Not okay.", at: 0.2, dur: 3.5}]}
+      - {say: npc_organizer, text: "Toby, you are on television."}
+      - {say: npc_intern, text: "I am so sorry. Hello, television. We will be right back with more balloons."}
       - {say: emma, text: "Martin, a lot of emotions out here. Back to you.", cam: emma}
 
   - id: station_manager
@@ -125,10 +125,10 @@ scenes:
     set: black
     cast: {npc_announcer: center}
     beats:
-      - {card: "THE FOLLOWING IS A PAID ANNOUNCEMENT", sub: "Marigold Events", dur: 3.5, sfx: [whoosh]}
-      - {say: npc_announcer, text: "Marigold Events. We plan weddings, galas, product launches, and the occasional corporate hostage situation. Our planners are very trained, very calm, and very much on a break right now.", cam: black}
-      - {say: npc_announcer, text: "Call today, and receive a free consultation, a free balloon, and a free emergency exit. Marigold Events. Events so good, they are slightly illegal."}
-      - {card: "MARIGOLD EVENTS", sub: "Per my last email.", dur: 3.5, sfx: [ding]}
+      - {card: "THE FOLLOWING IS A PAID ANNOUNCEMENT", sub: "Team Spirit Co.", dur: 3.5, sfx: [whoosh]}
+      - {say: npc_announcer, text: "Team Spirit Co.. We plan weddings, galas, product launches, and the occasional corporate hostage situation. Our planners are very trained, very calm, and very much on a break right now.", cam: black}
+      - {say: npc_announcer, text: "Call today, and receive a free consultation, a free balloon, and a free emergency exit. Team Spirit Co.. Events so good, they are slightly illegal."}
+      - {card: "TEAM SPIRIT CO.", sub: "Per my last email.", dur: 3.5, sfx: [ding]}
 
   - id: viewer_mail
     set: newsroom

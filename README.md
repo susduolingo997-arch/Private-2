@@ -54,15 +54,14 @@ and the GitHub runners ship, and what this was developed against.
 
 ## The universe (every show, one fake video site)
 
-All shows share one world and live on one fake video site, **ViewTube**. Channel 9 can report on what Dave did,
-Marigold Events can plan the paintball day, and Gerald can comment on all of it. Four channels, five videos each:
+All shows share one world and live on one fake video site, **ViewTube**. Channel 9 can report on what Dave did
+and Gerald can comment on all of it. Three channels, five videos each:
 
 | Channel | What it is | Videos |
 |---|---|---|
 | **IRL BUT CHEATS** | Dave, Kyle and the Admin (this repo's 3D engine) | `episodes/s01e0N_*.yaml` |
 | **Channel 9** | Evening news: Martin, Sarah, David, Emma, Kevin, Richard. E01 + E02 are the original standalone pages (`universe/embeds/`), E03-E05 are engine episodes | `episodes/n9_*.yaml` + embeds |
 | **PASSIONFRUIT** | The keynote events (Pulp Phone and friends). Already published as releases in the PASSIONFRUIT repo, so the site links out (`link:`) | 5 external videos |
-| **Marigold Events** | Marisol and Tobias plan events (a wedding, a gala, a stapler) | `episodes/mg_*.yaml` |
 
 ```
 universe/universe.yaml     channels, shared characters, every video (+ crossover links, in-world comments)
@@ -96,7 +95,7 @@ measures the real audio and enforces 10 minutes +/- 5 %.
 ## Show looks
 
 Set `show:` and `music:` at the top of an episode: `irl` (game HUD, default), `news` (CHANNEL 9 bug, LIVE, scrolling
-`ticker`, `lower` thirds, `headline` banners; `hp:` becomes VIEWERS) or `events` (`hp:` becomes BUDGET, `lower` thirds).
+`ticker`, `lower` thirds, `headline` banners; `hp:` becomes VIEWERS) or `events` (`hp:` becomes BUDGET, `lower` thirds; unused by the current canon).
 Music beds: `arcade`, `news`, `party`. New sets: `newsroom`, `ballroom`, `garden`. Any character can be a camera: `cam: martin`.
 
 ## Writing an episode

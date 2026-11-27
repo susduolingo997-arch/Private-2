@@ -1,5 +1,5 @@
 # IRL BUT CHEATS - S01E04 "Aimbot"
-# Corporate Paintball Day, planned by Marigold Events. Dave cannot aim. Dave can now not miss. Both are worse.
+# Corporate Paintball Day, planned by Team Spirit Co.. Dave cannot aim. Dave can now not miss. Both are worse.
 id: s01e04
 title: Aimbot
 target_seconds: 600
@@ -10,22 +10,22 @@ scenes:
   # ------------------------------------------------------------------ 1. cold open
   - id: cold_open
     set: office
-    cast: {marisol: front, dave: left, kyle: right, npc_gary: {at: desk, face: 0}}
+    cast: {npc_organizer: front, dave: left, kyle: right, npc_gary: {at: desk, face: 0}}
     beats:
-      - {act: 3, cam: wide, hp: "100", ui: [{kind: chat, text: "[SERVER] Corporate Paintball Day. Hosted by Marigold Events.", at: 0.4, dur: 4}]}
-      - {say: marisol, text: "Good morning, team! I am Marisol from Marigold Events, and I will be your event planner today.", cam: marisol}
+      - {act: 3, cam: wide, hp: "100", ui: [{kind: chat, text: "[SERVER] Corporate Paintball Day. Hosted by Team Spirit Co..", at: 0.4, dur: 4}]}
+      - {say: npc_organizer, text: "Good morning, team! I am Maxine from Team Spirit Co., and I will be your event planner today.", cam: npc_organizer}
       - {say: npc_gary, text: "I am Gary. I run the office. I did not ask for this."}
-      - {say: marisol, text: "Gary, you did. It is in the budget. It is called team building."}
+      - {say: npc_organizer, text: "Gary, you did. It is in the budget. It is called team building."}
       - {say: npc_gary, text: "I thought it was a typo for team billing."}
-      - {say: marisol, text: "Today's rules are simple. Paint stays on the clothes. Clothes stay on the people. Nobody paintballs the printer."}
+      - {say: npc_organizer, text: "Today's rules are simple. Paint stays on the clothes. Clothes stay on the people. Nobody paintballs the printer."}
       - {say: dave, text: "Why would anyone paintball the printer?", cam: dave}
       - {say: kyle, text: "Because it is the only target that has ever deserved it."}
-      - {say: marisol, text: "Dave, you are on Gary's team. Kyle, you are with the accounting department."}
+      - {say: npc_organizer, text: "Dave, you are on Gary's team. Kyle, you are with the accounting department."}
       - {say: kyle, text: "Accounting? They hate me."}
-      - {say: marisol, text: "They have never met you."}
+      - {say: npc_organizer, text: "They have never met you."}
       - {say: kyle, text: "They have read my expense reports."}
       - {say: dave, text: "I have never held a paintball gun before. Is it like a regular gun, but sadder?", cam: dave}
-      - {say: marisol, text: "It is like a regular gun, but with consequences that wash out at thirty degrees."}
+      - {say: npc_organizer, text: "It is like a regular gun, but with consequences that wash out at thirty degrees."}
       - {say: npc_gary, text: "Dave, how good are you at sports?"}
       - {say: dave, text: "I once lost an argument with a swing."}
       - {say: npc_gary, text: "Fantastic. You will be our secret weapon."}
@@ -38,7 +38,7 @@ scenes:
   # ------------------------------------------------------------------ 3. the game
   - id: the_game
     set: office
-    cast: {dave: left, kyle: far_right, marisol: door, npc_gary: desk}
+    cast: {dave: left, kyle: far_right, npc_organizer: door, npc_gary: desk}
     beats:
       - {act: 3, cam: wide, ui: [{kind: chat, text: "[SERVER] Round one. Dave is hiding behind a fern.", at: 0.4, dur: 3.5}], acts: [{who: dave, do: walk_to, to: plant, dur: 2}]}
       - {say: dave, text: "Okay, okay. I am a professional. I have watched a documentary about snipers.", cam: dave}
@@ -50,20 +50,20 @@ scenes:
       - {act: 4, cam: wide, sfx: [{name: pop, at: 0.5}, {name: pop, at: 1.2}, {name: pop, at: 1.9}], acts: [{who: dave, do: spin, n: 1, dur: 2}], ui: [{kind: chat, text: "[SERVER] Dave eliminated Accounting (all of Accounting).", at: 0.3, dur: 3.5}]}
       - {say: kyle, text: "Dave! You just hit three people behind a wall!", cam: kyle}
       - {say: dave, text: "I did not even aim! The gun aimed itself! It is an amazing gun!", cam: dave}
-      - {say: marisol, text: "Dave, that is a perfect score. Fifty out of fifty. You hit everyone in the building.", cam: marisol}
+      - {say: npc_organizer, text: "Dave, that is a perfect score. Fifty out of fifty. You hit everyone in the building.", cam: npc_organizer}
       - {say: dave, text: "Even the people on the roof?"}
-      - {say: marisol, text: "We are all on the roof now. It is not the original plan. It is a very good rooftop experience."}
+      - {say: npc_organizer, text: "We are all on the roof now. It is not the original plan. It is a very good rooftop experience."}
       - {act: 4, cam: wide, sfx: [{name: ding, at: 1.0}], ui: [{kind: achievement, text: "Headshot Nobody Asked For", at: 1.0, dur: 3.5}], acts: [{who: dave, do: jump, delay: 1.0, dur: 3}]}
       - {say: npc_gary, text: "Dave. You have hit me eleven times. I am bright pink.", cam: npc_gary}
       - {say: dave, text: "It is a flattering colour on you."}
       - {say: npc_gary, text: "I have a board meeting in an hour."}
       - {say: dave, text: "They are going to love it.", cam: dave}
-      - {say: marisol, text: "For the record, Marigold Events has now stopped keeping score. Our insurance asked us to."}
+      - {say: npc_organizer, text: "For the record, Team Spirit Co. has now stopped keeping score. Our insurance asked us to."}
 
   # ------------------------------------------------------------------ 3b. aimbot montage
   - id: montage
     set: office
-    cast: {dave: center, kyle: left, marisol: door}
+    cast: {dave: center, kyle: left, npc_organizer: door}
     beats:
       - {card: "A COMPLETELY FAIR ROUND TWO", sub: "Dave uses aimbot for team spirit", dur: 4, sfx: [whoosh]}
       - {act: 4, cam: dave, sfx: [{name: pop, at: 0.8}, {name: pop, at: 1.6}], acts: [{who: dave, do: spin, n: 2}], ui: [{kind: chat, text: "[DAVE] hit the exit sign (accidentally)", at: 0.2, dur: 3}]}
@@ -72,7 +72,7 @@ scenes:
       - {say: kyle, text: "I am a wet blue smear now. I have been a smear since eleven. I am just going to stay a smear.", cam: kyle}
       - {say: dave, text: "I did not mean to hit you. It is the gun. It is the gun that likes you.", cam: dave}
       - {say: kyle, text: "I have heard that excuse from people who have been hit by golf balls."}
-      - {say: marisol, text: "For legal reasons, I must remind everyone that this event is fully insured and the paint is made of water, food colouring, and a very small amount of regret.", cam: marisol}
+      - {say: npc_organizer, text: "For legal reasons, I must remind everyone that this event is fully insured and the paint is made of water, food colouring, and a very small amount of regret.", cam: npc_organizer}
       - {act: 4, cam: wide, sfx: [{name: ding, at: 1.0}], ui: [{kind: achievement, text: "One Shot, One Everything", at: 1.0, dur: 3.5}], acts: [{who: dave, do: spin, n: 3, dur: 3}]}
       - {say: dave, text: "I think I am becoming very good at this. Is this what it feels like to be good at something?", cam: dave}
       - {say: kyle, text: "It is what it feels like to be good at something using a cheat. It is different. It is a lot more guilt.", cam: kyle}
@@ -81,7 +81,7 @@ scenes:
   # ------------------------------------------------------------------ 4. the bug
   - id: the_bug
     set: office
-    cast: {dave: front, kyle: left, npc_gary: {at: desk, face: 0}, npc_stapler: {at: desk, face: 0}, tobias: lobby}
+    cast: {dave: front, kyle: left, npc_gary: {at: desk, face: 0}, npc_stapler: {at: desk, face: 0}, npc_intern: lobby}
     beats:
       - {act: 3, cam: wide, hp: "88", sfx: [{name: glitch, at: 0.5}], ui: [{kind: system, text: "WARNING: aimbot has locked onto nearest target.", at: 0.5, dur: 3.5}]}
       - {say: dave, text: "Kyle. I cannot turn my gun away. It keeps pointing at Gary's desk.", cam: dave, acts: [{who: dave, do: shake, amt: 0.08}]}
@@ -93,12 +93,12 @@ scenes:
       - {say: npc_gary, text: "Please do not point things at my stapler. It is very sensitive.", cam: npc_gary}
       - {say: dave, text: "Gary, you do not understand. I cannot stop. My arm will not go down. It is locked in. Everything else is blurry."}
       - {say: npc_gary, text: "That is how I feel after lunch."}
-      - {act: 3, cam: wide, sfx: [{name: whoosh, at: 0.5}], acts: [{who: tobias, do: run_to, to: front, dur: 2}], ui: [{kind: lower, text: "TOBIAS|Marigold Events, Junior Planner, Crying", at: 0.4, dur: 3.5}]}
-      - {say: tobias, text: "Hello! Is everything okay in here? I just got a call that someone in the office is in a standoff?", cam: tobias}
+      - {act: 3, cam: wide, sfx: [{name: whoosh, at: 0.5}], acts: [{who: npc_intern, do: run_to, to: front, dur: 2}], ui: [{kind: lower, text: "TOBIAS|Team Spirit Co., Junior Planner, Crying", at: 0.4, dur: 3.5}]}
+      - {say: npc_intern, text: "Hello! Is everything okay in here? I just got a call that someone in the office is in a standoff?", cam: npc_intern}
       - {say: kyle, text: "It is a standoff with a stapler."}
-      - {say: tobias, text: "Is the stapler armed?"}
+      - {say: npc_intern, text: "Is the stapler armed?"}
       - {say: kyle, text: "It has a lot of staples."}
-      - {say: tobias, text: "I did not train for this. I trained for balloons."}
+      - {say: npc_intern, text: "I did not train for this. I trained for balloons."}
       - {say: npc_stapler, text: "I have been quiet for six years. Nobody ever asks me anything.", pitch: 78, cam: npc_stapler}
       - {say: dave, text: "Kyle. The stapler is talking.", cam: dave}
       - {say: kyle, text: "The stapler is talking. We are all very calm.", cam: kyle}
@@ -109,9 +109,9 @@ scenes:
       - {say: kyle, text: "I want everyone to remain calm. We are all professionals. Gary is attached to a stapler by his tie, and we are going to treat that like a regular Tuesday."}
       - {say: npc_gary, text: "It is a Friday. I have been attached for quite some time. I have missed two calls and a lunch.", cam: npc_gary}
       - {say: kyle, text: "Okay. We need a negotiator.", cam: kyle}
-      - {say: tobias, text: "I will do it! I have taken an online course on difficult conversations!"}
-      - {say: kyle, text: "Tobias, no. You cried at a cake."}
-      - {say: tobias, text: "It was a very beautiful cake."}
+      - {say: npc_intern, text: "I will do it! I have taken an online course on difficult conversations!"}
+      - {say: kyle, text: "Toby, no. You cried at a cake."}
+      - {say: npc_intern, text: "It was a very beautiful cake."}
 
   # ------------------------------------------------------------------ 5. the negotiation
   - id: negotiation
@@ -156,14 +156,14 @@ scenes:
   # ------------------------------------------------------------------ 6. the cleanup
   - id: cleanup
     set: office
-    cast: {dave: front, kyle: left, marisol: door, npc_gary: desk}
+    cast: {dave: front, kyle: left, npc_organizer: door, npc_gary: desk}
     beats:
       - {act: 3, cam: wide, hp: "100", ui: [{kind: chat, text: "[SERVER] The standoff has ended. Nobody was hit. Except everyone.", at: 0.4, dur: 4}]}
-      - {say: marisol, text: "Well. That is the first time we have had a hostage situation at a Marigold Event. It is a real milestone.", cam: marisol}
-      - {say: dave, text: "I am so sorry, Marisol. I should not have brought a cheat to your event.", cam: dave}
-      - {say: marisol, text: "What cheat? I do not know what you mean. We just had a very high energy afternoon."}
+      - {say: npc_organizer, text: "Well. That is the first time we have had a hostage situation at a Team Spirit event. It is a real milestone.", cam: npc_organizer}
+      - {say: dave, text: "I am so sorry, Maxine. I should not have brought a cheat to your event.", cam: dave}
+      - {say: npc_organizer, text: "What cheat? I do not know what you mean. We just had a very high energy afternoon."}
       - {say: kyle, text: "She is not going to ask. That is professionalism."}
-      - {say: marisol, text: "I have been planning events for twelve years. I have seen a groom fall into a fountain. I know when not to ask."}
+      - {say: npc_organizer, text: "I have been planning events for twelve years. I have seen a groom fall into a fountain. I know when not to ask."}
       - {say: dave, text: "Aimbot is still on. I do not know how to turn it off.", cam: dave}
       - {say: kyle, text: "Type aimbot off."}
       - {act: 4, cam: dave, sfx: [{name: chime, at: 1.5}], ui: [{kind: console, text: "> aimbot off", at: 0.3, dur: 1.7}, {kind: system, text: "aimbot disabled. Previous aim restored (it was bad).", at: 2.0, dur: 3.5}]}
@@ -172,7 +172,7 @@ scenes:
       - {say: kyle, text: "You missed the cup. You hit yourself."}
       - {say: dave, text: "That is a lot more like me."}
       - {say: npc_gary, text: "I would like to thank everyone for a team building event I will never forget. I am still pink.", cam: npc_gary}
-      - {say: marisol, text: "We will send you a survey. It will be very polite."}
+      - {say: npc_organizer, text: "We will send you a survey. It will be very polite."}
       - {say: npc_gary, text: "I will give it five stars. And a stapler. I will give it a nice stapler."}
       - {say: dave, text: "Dave out.", cam: dave}
       - {say: kyle, text: "Dave.", cam: kyle}

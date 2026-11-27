@@ -23,11 +23,6 @@ CAST = {
                   voice="en-us+m3", pitch=75, speed=190, sub="#c9a7ff", kv="am_liam"),
     "richard": dict(label="RICHARD", color="#ff9a7a", hair="#5b5b5b", height=1.0,
                     voice="en-us+m4", pitch=12, speed=195, sub="#ff9a7a", kv="am_santa"),
-    # ---- Marigold Events
-    "marisol": dict(label="MARISOL", color="#ff4fa3", hair="#3a1f2b", height=1.0,
-                    voice="en-us+f4", pitch=58, speed=182, sub="#ffa6d2", kv="af_bella"),
-    "tobias": dict(label="TOBIAS", color="#8e6bd6", hair="#c9b27a", height=0.97,
-                   voice="en-gb+m5", pitch=62, speed=176, sub="#cdb8ff", kv="bm_fable"),
     "gerald": dict(label="GERALD", color="#7fb7be", hair="#9aa5b1", height=1.0,
                    voice="en-us+m3", pitch=30, speed=140, sub="#bfe3e8", kv="am_eric"),
     "greg": dict(label="GREG", color="#b08968", hair="#2b2b2b", height=1.18,
