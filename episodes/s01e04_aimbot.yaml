@@ -156,7 +156,7 @@ scenes:
   # ------------------------------------------------------------------ 6. the cleanup
   - id: cleanup
     set: office
-    cast: {dave: front, kyle: left, npc_organizer: door, npc_gary: desk}
+    cast: {dave: front, kyle: left, npc_organizer: door, npc_gary: desk, npc_stapler: {at: desk, face: 0}}
     beats:
       - {act: 3, cam: wide, hp: "100", ui: [{kind: chat, text: "[SERVER] The standoff has ended. Nobody was hit. Except everyone.", at: 0.4, dur: 4}]}
       - {say: npc_organizer, text: "Well. That is the first time we have had a hostage situation at a Team Spirit event. It is a real milestone.", cam: npc_organizer}
@@ -174,6 +174,13 @@ scenes:
       - {say: npc_gary, text: "I would like to thank everyone for a team building event I will never forget. I am still pink.", cam: npc_gary}
       - {say: npc_organizer, text: "We will send you a survey. It will be very polite."}
       - {say: npc_gary, text: "I will give it five stars. And a stapler. I will give it a nice stapler."}
+      - {say: dave, text: "Maxine, I would like to thank you for not asking. It is the kindest thing anyone has done for me this month.", cam: dave}
+      - {say: npc_organizer, text: "Dave, I have planned four hundred events. The ones that go wrong are the ones I remember. The staplers. The fountains. The goose."}
+      - {say: kyle, text: "What happened with the goose?", cam: kyle}
+      - {say: npc_organizer, text: "We do not ask about the goose."}
+      - {act: 4, cam: wide, sfx: [{name: pop, at: 1.0}], ui: [{kind: chat, text: "[SERVER] A very small click was heard from the supply cabinet.", at: 0.4, dur: 3.5}]}
+      - {say: npc_stapler, text: "Thank you for the nice one. I will think of you every time I am pressed.", pitch: 78, cam: npc_stapler}
+      - {say: npc_gary, text: "Steve, you are welcome to stay on my desk. Forever. I will never wear a tie again.", cam: npc_gary}
       - {say: dave, text: "Dave out.", cam: dave}
       - {say: kyle, text: "Dave.", cam: kyle}
 
