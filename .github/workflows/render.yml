@@ -157,7 +157,7 @@ jobs:
         run: |
           file="out/${EP}.mp4"
           notes="Episode ${EP}, rendered by the engine in this repo (full resolution, Kokoro voices)."
-          case "$GITHUB_REF" in refs/tags/ep-*) TAG="$GITHUB_REF_NAME"; TARGET="" ;; *) TAG="ep-${EP}"; TARGET="--target $GITHUB_SHA" ;; esac
+          case "$GITHUB_REF" in refs/tags/ep-*) TAG="$GITHUB_REF_NAME"; TARGET="" ;; *) TAG="ep-${EP}"; TARGET="--target ${{ github.event.repository.default_branch }}" ;; esac
           if gh release view "$TAG" >/dev/null 2>&1; then
             gh release upload "$TAG" "$file" --clobber
           else

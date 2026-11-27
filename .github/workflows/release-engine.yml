@@ -1,0 +1,37 @@
+name: Release engine episodes
+
+# Publishes GitHub releases (ep-<episode id>, with the full-resolution mp4) for finished renders listed in
+# .github/triggers/release.txt ("<render run id> <episode id>" per line). The release points at the default branch tip:
+# GitHub refuses to create a tag at a commit that changed workflow files, which is what made the release step of
+# "Render episode" fail with HTTP 403 on those commits.
+on:
+  push:
+    branches: ["ccr-a2104a91-0ijgt3"]
+    paths: [".github/triggers/release.txt"]
+  workflow_dispatch:
+
+permissions:
+  contents: write
+  actions: read
+
+jobs:
+  release:
+    runs-on: ubuntu-24.04
+    env:
+      GH_TOKEN: ${{ github.token }}
+      GH_REPO: ${{ github.repository }}
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: ${{ github.ref_name }}
+      - name: Create releases
+        run: |
+          DEFAULT=$(gh repo view --json defaultBranchRef -q .defaultBranchRef.name)
+          while read -r RUN EID; do
+            [ -n "$RUN" ] || continue
+            TAG="ep-$EID"
+            if gh release view "$TAG" >/dev/null 2>&1; then echo "$TAG exists"; continue; fi
+            rm -rf dl && gh run download "$RUN" -n "episode-$EID" -D dl || { echo "no artifact for $EID"; continue; }
+            gh release create "$TAG" "dl/$EID.mp4" --target "$DEFAULT" --title "$EID" \
+              --notes "Episode $EID, rendered by the engine in this repo (full resolution, Kokoro voices)." || echo "release $TAG failed"
+          done < .github/triggers/release.txt
