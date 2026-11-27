@@ -47,6 +47,14 @@ def _shot(spec):
             "lens": sh.get("lens", spec.get("lens", 35))}
 
 
+def grab_frame(url, at, out_png):
+    """One frame of a published video (ffmpeg seeks over HTTP, so only a few MB are fetched)."""
+    os.makedirs(os.path.dirname(out_png), exist_ok=True)
+    subprocess.run(["ffmpeg", "-y", "-v", "error", "-ss", str(at), "-i", url, "-frames:v", "1", out_png],
+                   check=True, timeout=240)
+    return out_png
+
+
 def capture_embed(embed, out_png, at, work=None):
     """Screenshot a self-contained player page (universe/embeds/*.html) at `at` seconds via Playwright.
     Set THREE_JS to a local three.min.js if the page's CDN is unreachable (offline CI / sandboxes)."""
@@ -134,6 +142,12 @@ def logo(kind, size=400, color="#f2a33a"):
         d.ellipse((S * .06, S * .06, S * .94, S * .94), outline=(245, 183, 10), width=int(S * .06))
         d.text((c, c * 1.03), "9", font=_font(int(S * .66)), fill=(255, 255, 255), anchor="mm")
         d.rectangle((S * .30, S * .80, S * .70, S * .87), fill=(215, 18, 43))
+    elif kind == "shard":  # Pixelpanic: a crystal shard
+        d.ellipse((0, 0, S, S), fill=(14, 38, 40))
+        d.ellipse((S * .03, S * .03, S * .97, S * .97), outline=_rgb(color), width=int(S * .045))
+        d.polygon([(c, S * .14), (S * .72, S * .42), (c, S * .88), (S * .28, S * .42)], fill=(53, 201, 165))
+        d.polygon([(c, S * .14), (S * .72, S * .42), (c, S * .5)], fill=(150, 255, 230))
+        d.polygon([(S * .28, S * .42), (c, S * .5), (c, S * .88)], fill=(30, 140, 118))
     elif kind == "flower":  # spare logo style  # marigold
         d.ellipse((0, 0, S, S), fill=_rgb(color))
         import math
@@ -195,6 +209,10 @@ def compose_thumb(raw_png, out_jpg, text, hl=0, tag="", style="irl", color="#f2a
         d.rectangle((0, H - 84, 300, H), fill=(245, 183, 10))
         _outlined(d, (24, H - 26), "CHANNEL 9", _font(48), (11, 31, 74), stroke=0)
         _outlined(d, (330, H - 28), "EVENING NEWS", _font(40), (200, 215, 255), stroke=0)
+    elif style == "letsplay":
+        d.rounded_rectangle((28, 24, 28 + 40 + len(tag or "EP") * 36, 96), radius=14, fill=(255, 225, 77, 255))
+        _outlined(d, (28 + 20, 76), tag or "EP", _font(52), (20, 20, 20), stroke=0)
+        _outlined(d, (W - 40, 70), "SHARDWILD", _font(40), (255, 255, 255), stroke=6, anchor="rs")
     elif style == "keynote":
         d.rounded_rectangle((28, 24, 28 + 40 + len(tag or "EVENT") * 36, 96), radius=36, fill=accent + (255,))
         _outlined(d, (28 + 24, 76), tag or "EVENT", _font(52), (255, 255, 255), stroke=0)
@@ -274,13 +292,18 @@ def build_art(universe, only=None, force=False, art=ART, work=None):
             made.append(lg_out)
         out = want("banners", c["id"])
         if out and c.get("banner"):
-            raw = render_still(c["banner"], os.path.join(tmp, "b_" + c["id"] + ".png"))
+            if c["banner"].get("frame"):
+                raw = grab_frame(c["banner"]["frame"]["url"], c["banner"]["frame"].get("at", 60), os.path.join(tmp, "b_" + c["id"] + ".png"))
+            else:
+                raw = render_still(c["banner"], os.path.join(tmp, "b_" + c["id"] + ".png"))
             compose_banner(raw, out, c["name"], c["color"], logos[c["id"]])
             made.append(out)
     for p in universe["characters"]:
         out = want("avatars", p["id"])
         if not out:
             continue
+        if not p.get("engine"):
+            continue  # not a 3D model in this engine: the site falls back to an initials avatar
         who = p["engine"]
         acts = [{"who": who, "do": "appear"}] if who == "admin" else []
         if p.get("shrink"):
@@ -297,7 +320,9 @@ def build_art(universe, only=None, force=False, art=ART, work=None):
             continue
         t = v["thumb"]
         c = chans[v["channel"]]
-        if t.get("plain"):
+        if t.get("frame"):
+            raw = grab_frame(t["frame"]["url"], t["frame"].get("at", 60), os.path.join(tmp, "t_" + v["id"] + ".png"))
+        elif t.get("plain"):
             raw = plain_keynote_bg(os.path.join(tmp, "t_" + v["id"] + ".png"), c["color"])
         elif t.get("capture"):
             raw = capture_embed(t["capture"]["embed"], os.path.join(tmp, "t_" + v["id"] + ".png"), t["capture"].get("at", 40))

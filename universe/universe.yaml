@@ -47,18 +47,44 @@ channels:
     color: "#8e2de2"
     subs: 9800000
     logo: fruit
-    banner: {set: black, cast: {npc_dana: center}, cam: npc_dana, at: 8, shift: 0}
+    banner: {frame: {url: "https://github.com/susduolingo997-arch/private/releases/download/pf-5.0/passionfruit_event5.mp4", at: 400}}
     about: >
-      The annual-ish PASSIONFRUIT keynote. New products, bold claims, and one more thing.
-      Phones one side thin, chips that make you calmer, and a car that only drives to the store for passionfruit.
+      The PASSIONFRUIT keynote events. New products, bold claims, and one more thing. Pulp Phones of
+      escalating thinness, a Chief Apology Officer, and a car that only drives to the store for passionfruit.
       Every event runs about twenty minutes. Please remain seated.
 
+  - id: pixelpanic
+    name: Pixelpanic
+    handle: "@pixelpanic"
+    color: "#35c9a5"
+    subs: 2150000
+    logo: shard
+    banner: {frame: {url: "https://github.com/susduolingo997-arch/private/releases/download/v21.0/shardwild_ep21_web.mp4", at: 40}}
+    about: >
+      Completely Normal Survival Playthrough of Shardwild, an original voxel survival game. Thirty-two episodes
+      of building the greatest house ever, and then watching it become a boat, a sky house, a fountain, or a
+      lake. Retired. Every episode ends on "yep." Subscribe.
 
 # ---------------------------------------------------------------- characters
 # Everyone lives in the same world, so anyone can show up in anyone's video, or in a comment.
 # `engine` links a person to the voice/model in engine/cast.py (a named cast member or npc_<name>);
 # the avatar is a Blender close-up of that exact model.
 characters:
+  # PASSIONFRUIT (names/titles from the event files; avatars are initials: they are voxel/vector people, not 3D models here)
+  - {id: dana,    name: Dana Pith,       channel: passionfruit, color: "#8e2de2", role: "Chief Executive Officer. Turtleneck. Appears from an empty theater."}
+  - {id: imogen,  name: Imogen Rind,     channel: passionfruit, color: "#c9a0dc", role: "Chief Design Officer."}
+  - {id: theo,    name: Theo Seedling,   channel: passionfruit, color: "#6a8fd0", role: "Senior Engineer, Thinness. Nervous."}
+  - {id: marco,   name: Marco Nectar,    channel: passionfruit, color: "#26324a", role: "SVP, Wearables & Wanderables."}
+  - {id: priya,   name: Priya Zest,      channel: passionfruit, color: "#5cc96b", role: "VP, Health & Silence."}
+  - {id: bea,     name: Bea Nectarine,   channel: passionfruit, color: "#ff8a3d", role: "VP, Home & Ambience."}
+  - {id: rafa,    name: Rafa Kernel,     channel: passionfruit, color: "#26324a", role: "SVP, Mobility & Going Places."}
+  - {id: ollie,   name: Ollie Pardon,    channel: passionfruit, color: "#7fb2ff", role: "Chief Apology Officer."}
+  - {id: pip,     name: Pip,             channel: passionfruit, color: "#9ef0c0", role: "A $99 home assistant that agrees with everything."}
+  - {id: nope,    name: Nope,            channel: passionfruit, color: "#ff9a7a", role: "A $99 home assistant that disagrees with everything."}
+  # SHARDWILD / Pixelpanic
+  - {id: pixelpanic, name: Pixelpanic,   channel: pixelpanic, color: "#ff9f1c", role: "The host. Orange hoodie, captain hat, crystal crown (currently missing). Builds the greatest house ever."}
+  - {id: bloop,   name: Bloop,           channel: pixelpanic, color: "#e8883a", role: "A Burble builder. Builds things that were not asked for. Hands over invoices."}
+  - {id: leggy,   name: Leggy,           channel: pixelpanic, color: "#8a5a3c", role: "A Hexapede with so many legs. Found lurking in a cave. Family."}
   - {id: dave,      name: Dave,            channel: irl-but-cheats,      color: "#f2a33a", engine: dave,  role: "Main character. Four dollars and a bagel coupon."}
   - {id: kyle,      name: Kyle,            channel: irl-but-cheats,      color: "#4a90e2", engine: kyle,  role: "Deadpan best friend. Has a newsletter."}
   - {id: admin,     name: The Admin,       channel: irl-but-cheats,      color: "#e03a3a", engine: admin, role: "Floating red crystal. Moderator. Insists it is a plant."}
@@ -75,13 +101,6 @@ characters:
   - {id: kevin,     name: Kevin Brooks,    channel: channel-9,           color: "#c9a7ff", engine: kevin, role: "Camera operator. Sometimes a chef. Pressed the big button."}
   - {id: richard,   name: Richard Wilson,  channel: channel-9,           color: "#ff9a7a", engine: richard, role: "Station manager. Viewers: forty-seven. Demands energy."}
   - {id: gnome,     name: Gerald (Gnome),  channel: null,                color: "#7fb7be", engine: npc_gnome, role: "Twelve inches of ceramic. Missing from Birchwood Lane. Found at a bus stop.", shrink: 0.35}
-  - {id: dana,      name: Dana,            channel: passionfruit,        color: "#8e2de2", engine: npc_dana, role: "CEO of PASSIONFRUIT. Appears from an empty theater."}
-  - {id: rafa,      name: Rafa,            channel: passionfruit,        color: "#e8883a", engine: npc_rafa, role: "Host of Event 4 (Go Further)."}
-  - {id: bea,       name: Bea Nectarine,   channel: passionfruit,        color: "#ffd27a", engine: npc_bea,  role: "Home & Ambience. Introduced Pulp Ding."}
-  - {id: imogen,    name: Imogen,          channel: passionfruit,        color: "#c9a0dc", engine: npc_imogen, role: "Design. Apologised for designing loss, beautifully."}
-  - {id: pip,       name: Pip,             channel: passionfruit,        color: "#9ef0c0", engine: npc_pip,  role: "Home assistant that agrees with everything. Now a manager."}
-  - {id: nope,      name: Nope,            channel: passionfruit,        color: "#ff9a7a", engine: npc_nope, role: "Home assistant that disagrees with everything. Resigned in one word."}
-  - {id: ollie,     name: Ollie Pardon,    channel: passionfruit,        color: "#7fb2ff", engine: npc_ollie, role: "Chief Apology Officer."}
 
 # ---------------------------------------------------------------- videos
 # status is derived: `live` (an mp4 is in site/media), `scripted` (episode file exists),
@@ -265,94 +284,451 @@ videos:
       - {by: david,   text: "Nice weather.", likes: 33000}
 
   # ================================================================ PASSIONFRUIT
-  # The five real events. Each is a ~22 minute film published as a GitHub release (pf-N.0); the site links to it.
+  # The five real events (cast and products from passionfruit/eventN/event.json). Each is a ~22 minute film
+  # published as a GitHub release; the site links out to it.
   - id: pf-e1
     channel: passionfruit
     title: "PASSIONFRUIT Event 1 - Juicier Than Ever"
     link: https://github.com/susduolingo997-arch/private/releases/tag/pf-1.0
     duration: 1206
-    published: 2026-04-14
-    views: 8200000
-    likes: 410000
-    cast: [dana, pip]
-    thumb: {plain: true, tag: "EVENT 1", text: ["JUICIER", "THAN EVER"], hl: 1, style: keynote}
-    description: |
-      The first PASSIONFRUIT event. Pulp Phone 1 arrives. It has one side. Pip agrees with everything.
-      A phone-shaped Pebble does nothing, beautifully.
-    comments:
-      - {by: pip,  text: "Yes.", likes: 120000}
-      - {by: dana, text: "We are very proud of the one side.", likes: 88000}
+    published: 2026-10-12
+    views: 6900000
+    likes: 345000
+    cast: [dana, imogen, theo, marco, priya]
+    thumb: {frame: {url: "https://github.com/susduolingo997-arch/private/releases/download/pf-1.0/passionfruit_event1.mp4", at: 150}, text: ["JUICIER THAN", "EVER"], hl: 1, tag: "EVENT 1", style: keynote}
+    description: "PASSIONFRUIT Event 1: Juicier Than Ever.\nOn stage: Dana Pith, Imogen Rind, Theo Seedling, Marco Nectar, Priya Zest.\nProducts: Pulp Phone 1 ($1,299), Pulp Phone 1 Max ($1,599), Rind Watch Series 0 ($399), Seeds Pro ($249), PulpBook Air Air ($2,199), Pip ($99), Passionfruit Pebble ($349), Passionfruit ($4), Pulp Case ($59), Pulp Power Brick ($79), P1 Pith (Inside everything)."
 
   - id: pf-e2
     channel: passionfruit
     title: "PASSIONFRUIT Event 2 - Peel the Future"
     link: https://github.com/susduolingo997-arch/private/releases/tag/pf-2.0
     duration: 1368
-    published: 2026-05-19
+    published: 2026-10-11
     views: 7400000
-    likes: 380000
-    cast: [dana, bea, pip, nope]
-    thumb: {plain: true, tag: "EVENT 2", text: ["PEEL THE", "FUTURE"], hl: 1, style: keynote}
-    description: |
-      Pulp Phone 2 has a second side. Nine cameras. A chip that makes you calmer about slow apps.
-      Nope disagrees with everything. Seeds Air earbuds fly to your ear; one landed in Portugal.
-      One more thing: a 400 kg Pebble Pro Max.
-    comments:
-      - {by: nope, text: "No.", likes: 140000}
-      - {by: bea,  text: "Please enjoy the ambience.", likes: 66000}
+    likes: 370000
+    cast: [dana, imogen, theo, marco, priya, bea]
+    thumb: {frame: {url: "https://github.com/susduolingo997-arch/private/releases/download/pf-2.0/passionfruit_event2.mp4", at: 150}, text: ["PEEL THE", "FUTURE"], hl: 1, tag: "EVENT 2", style: keynote}
+    description: "PASSIONFRUIT Event 2: Peel the Future.\nOn stage: Dana Pith, Imogen Rind, Theo Seedling, Marco Nectar, Priya Zest, Bea Nectarine.\nProducts: Pulp Phone 2 ($1,349), Rind Ring ($299), Pulp Pad Unfold ($1,899), Nectar Speaker ($199), Pulp Pen ($129), Nope ($99), Pip ($99), Seeds Air ($279), Pebble Pro Max ($3,499), P2 Pith (Inside Pulp Phone 2), Pulp Card (No annual fee)."
 
   - id: pf-e3
     channel: passionfruit
     title: "PASSIONFRUIT Event 3 - Ripe for Change"
     link: https://github.com/susduolingo997-arch/private/releases/tag/pf-3.0
     duration: 1362
-    published: 2026-07-14
+    published: 2026-10-11
     views: 7900000
-    likes: 402000
-    cast: [dana, bea]
-    thumb: {plain: true, tag: "EVENT 3", text: ["RIPE FOR", "CHANGE"], hl: 1, style: keynote}
-    description: |
-      A phone whose edge becomes a third screen showing only good news. A one-button remote that says "fine".
-      A mood-sensing kettle. One more thing: a one-seat car that can only drive to the store for passionfruit.
-    comments:
-      - {by: dana, text: "It is fine.", likes: 91000}
+    likes: 395000
+    cast: [dana, imogen, theo, marco, priya, bea, rafa]
+    thumb: {frame: {url: "https://github.com/susduolingo997-arch/private/releases/download/pf-3.0/passionfruit_event3.mp4", at: 150}, text: ["RIPE FOR", "CHANGE"], hl: 1, tag: "EVENT 3", style: keynote}
+    description: "PASSIONFRUIT Event 3: Ripe for Change.\nOn stage: Dana Pith, Imogen Rind, Theo Seedling, Marco Nectar, Priya Zest, Bea Nectarine, Rafa Kernel.\nProducts: Pulp Phone 3 ($1,399), Pulp Remote ($69), Zest Kettle ($249), Pulp Narrator ($499), Pulp Pillow ($179), Pulp Carry ($899), Nope, Pulp Drive ($89,000), P3 Pith (Inside Pulp Phone 3)."
 
   - id: pf-e4
     channel: passionfruit
     title: "PASSIONFRUIT Event 4 - Go Further"
     link: https://github.com/susduolingo997-arch/private/releases/tag/pf-4.0
     duration: 1302
-    published: 2026-09-15
+    published: 2026-10-11
     views: 6900000
-    likes: 350000
-    cast: [rafa, dana]
-    thumb: {plain: true, tag: "EVENT 4", text: ["GO", "FURTHER"], hl: 1, style: keynote}
-    description: |
-      A world tour hosted by Rafa. A beach test where every product is thrown into the sea.
-      A store that cannot be closed because it has no lock. One more thing: Pulp Orbit, a personal satellite.
-      It finds the earbud from Event 2.
-    comments:
-      - {by: rafa, text: "Departing in 3... 2... 1...", likes: 77000}
+    likes: 345000
+    cast: [dana, imogen, theo, marco, priya, bea, rafa]
+    thumb: {frame: {url: "https://github.com/susduolingo997-arch/private/releases/download/pf-4.0/passionfruit_event4.mp4", at: 150}, text: ["GO", "FURTHER"], hl: 1, tag: "EVENT 4", style: keynote}
+    description: "PASSIONFRUIT Event 4: Go Further.\nOn stage: Dana Pith, Imogen Rind, Theo Seedling, Marco Nectar, Priya Zest, Bea Nectarine, Rafa Kernel.\nProducts: Zest Bottle ($59), Rind Compass ($449), Pulp Polite ($149), Pulp Tent ($699), Pulp Passport ($19), Pulp Cloud Personal ($9.99 / month), Pulp Carry, Pulp Orbit ($4,999 / year), Pulp Shade ($229), Pulp Umbrella ($149)."
 
   - id: pf-e5
     channel: passionfruit
     title: "PASSIONFRUIT Event 5 - We're Sorry"
     link: https://github.com/susduolingo997-arch/private/releases/tag/pf-5.0
     duration: 1377
-    published: 2026-11-24
+    published: 2026-11-25
     views: 12600000
-    likes: 870000
-    cast: [ollie, bea, imogen, pip, nope, dana]
-    thumb: {plain: true, tag: "EVENT 5", text: ["WE'RE", "SORRY"], hl: 1, style: keynote}
-    description: |
-      The first apology event. Ollie Pardon, Chief Apology Officer, apologises for everything. Apologies so far: 7.5.
-      Each apology leads straight into a new product. One more thing: Pulp Phone 1 Thick.
-    comments:
-      - {by: ollie, text: "Sorry this was twenty-two minutes long.", likes: 400000}
-      - {by: nope,  text: "I quit. No.", likes: 250000}
-      - {by: pip,   text: "I approved a phone for dogs.", likes: 120000}
+    likes: 630000
+    cast: [dana, imogen, theo, marco, priya, bea, rafa, ollie]
+    thumb: {frame: {url: "https://github.com/susduolingo997-arch/private/releases/download/pf-5.0/passionfruit_event5.mp4", at: 150}, text: ["WE'RE", "SORRY"], hl: 1, tag: "EVENT 5", style: keynote}
+    description: "PASSIONFRUIT Event 5: We're Sorry.\nOn stage: Dana Pith, Imogen Rind, Theo Seedling, Marco Nectar, Priya Zest, Bea Nectarine, Rafa Kernel, Ollie Pardon.\nProducts: Pulp Sniff ($129), Pulp Ding ($179), Pulp Mirror ($899), Zest Toaster ($149), Pulp Fern ($89), Pulp Glow ($99), Pebble Pro Max, Pulp Drive, Pulp Phone 1, Pulp Phone 1 Thick ($1,299), Pip, Nope."
 
+  # ================================================================ SHARDWILD (Pixelpanic)
+  # 32 episodes, ~5 minutes each, published as releases v1.0 - v32.0. The series is retired.
+  - id: sw-e1
+    channel: pixelpanic
+    title: "Shardwild Ep 1: The House | Completely Normal Survival Playthrough"
+    link: https://github.com/susduolingo997-arch/private/releases/tag/v1.0
+    duration: 292
+    published: 2026-10-04
+    views: 4105000
+    likes: 254000
+    cast: [pixelpanic, bloop, leggy]
+    thumb: {frame: {url: "https://github.com/susduolingo997-arch/private/releases/download/v1.0/shardwild_ep1_web.mp4", at: 70}, text: ["THE", "HOUSE"], hl: 1, tag: "EP 1", style: letsplay}
+    description: "WHAT IS UP, everybody! Welcome back to the channel! Today, we are playing a brand new game called... Shardwild! And this is going to be a completely, totally, one hundred percent normal survival playthrough."
 
+  - id: sw-e2
+    channel: pixelpanic
+    title: "Shardwild Ep 2: The Fortress | Completely Normal Survival Playthrough"
+    link: https://github.com/susduolingo997-arch/private/releases/tag/v2.0
+    duration: 292
+    published: 2026-10-04
+    views: 4010000
+    likes: 248000
+    cast: [pixelpanic, bloop, leggy]
+    thumb: {frame: {url: "https://github.com/susduolingo997-arch/private/releases/download/v2.0/shardwild_ep2_web.mp4", at: 70}, text: ["THE", "FORTRESS"], hl: 1, tag: "EP 2", style: letsplay}
+    description: "Previously... on Shardwild. I built the greatest house in history. Then I removed one block... and it all fell down. WHAT IS UP, everybody! Welcome back! Episode two! And yes. I am still sitting in the rubble."
 
+  - id: sw-e3
+    channel: pixelpanic
+    title: "Shardwild Ep 3: The Boat | Completely Normal Survival Playthrough"
+    link: https://github.com/susduolingo997-arch/private/releases/tag/v3.0
+    duration: 292
+    published: 2026-10-04
+    views: 3915000
+    likes: 242000
+    cast: [pixelpanic, bloop, leggy]
+    thumb: {frame: {url: "https://github.com/susduolingo997-arch/private/releases/download/v3.0/shardwild_ep3_web.mp4", at: 70}, text: ["THE", "BOAT"], hl: 1, tag: "EP 3", style: letsplay}
+    description: "WHAT IS UP, everybody! Welcome back to Shardwild! Episode three! So. Quick update. My fortress is now a lake. Leggy loves it. Look at her swimming. She has no regrets."
 
+  - id: sw-e4
+    channel: pixelpanic
+    title: "Shardwild Ep 4: The Sky | Completely Normal Survival Playthrough"
+    link: https://github.com/susduolingo997-arch/private/releases/tag/v4.0
+    duration: 292
+    published: 2026-10-04
+    views: 3820000
+    likes: 236000
+    cast: [pixelpanic, bloop, leggy]
+    thumb: {frame: {url: "https://github.com/susduolingo997-arch/private/releases/download/v4.0/shardwild_ep4_web.mp4", at: 70}, text: ["THE", "SKY"], hl: 1, tag: "EP 4", style: letsplay}
+    description: "WHAT IS UP, everybody! Shardwild! Episode four! We... washed up on a beach. Let's review. The house fell down. The fortress sank. The boat sank. The island was a fish. So the ground is bad, and the water is bad. You know what's left?"
+
+  - id: sw-e5
+    channel: pixelpanic
+    title: "Shardwild Ep 5: Underground | Completely Normal Survival Playthrough"
+    link: https://github.com/susduolingo997-arch/private/releases/tag/v5.0
+    duration: 292
+    published: 2026-10-05
+    views: 3725000
+    likes: 230000
+    cast: [pixelpanic, bloop, leggy]
+    thumb: {frame: {url: "https://github.com/susduolingo997-arch/private/releases/download/v5.0/shardwild_ep5_web.mp4", at: 70}, text: ["UNDERGROUND", ""], hl: 1, tag: "EP 5", style: letsplay}
+    description: "WHAT IS UP, everybody! Shardwild, episode five! We are sitting next to a sky house... that is now a ground house. The house fell. The fortress sank. The boat sank. The island swam away. The sky house fell. So what's the one place that can't fall, can't sink, and can't swim away?"
+
+  - id: sw-e6
+    channel: pixelpanic
+    title: "Shardwild Ep 6: The Volcano | Completely Normal Survival Playthrough"
+    link: https://github.com/susduolingo997-arch/private/releases/tag/v6.0
+    duration: 292
+    published: 2026-10-05
+    views: 3630000
+    likes: 224000
+    cast: [pixelpanic, bloop, leggy]
+    thumb: {frame: {url: "https://github.com/susduolingo997-arch/private/releases/download/v6.0/shardwild_ep6_web.mp4", at: 70}, text: ["THE", "VOLCANO"], hl: 1, tag: "EP 6", style: letsplay}
+    description: "HEY HEY HEY, welcome back to Shardwild! Episode six! That's our old bunker. It's a fountain now. And Leggy is still soaking wet. She's been shivering for two days. Look at her. Little drippy noodle. So today we fix everything. We need a house that is warm, dry, and impossible to flood."
+
+  - id: sw-e7
+    channel: pixelpanic
+    title: "Shardwild Ep 7: The Iceberg | Completely Normal Survival Playthrough"
+    link: https://github.com/susduolingo997-arch/private/releases/tag/v7.0
+    duration: 292
+    published: 2026-10-05
+    views: 3535000
+    likes: 218000
+    cast: [pixelpanic, bloop, leggy]
+    thumb: {frame: {url: "https://github.com/susduolingo997-arch/private/releases/download/v7.0/shardwild_ep7_web.mp4", at: 70}, text: ["THE", "ICEBERG"], hl: 1, tag: "EP 7", style: letsplay}
+    description: "Welcome back to Shardwild, episode seven! New rule today: we are NOT building a house. No houses. Zero houses. Puff, buddy, you stay here and keep the hot tub warm. Good boy. Stay. Wait, who's that sliding up the beach? Is that... a seal in a bow tie?"
+
+  - id: sw-e8
+    channel: pixelpanic
+    title: "Shardwild Ep 8: Bloop Quits?! | Completely Normal Survival Playthrough"
+    link: https://github.com/susduolingo997-arch/private/releases/tag/v8.0
+    duration: 292
+    published: 2026-10-06
+    views: 3440000
+    likes: 212000
+    cast: [pixelpanic, bloop, leggy]
+    thumb: {frame: {url: "https://github.com/susduolingo997-arch/private/releases/download/v8.0/shardwild_ep8_web.mp4", at: 70}, text: ["BLOOP", "QUITS?!"], hl: 1, tag: "EP 8", style: letsplay}
+    description: "Shardwild, episode eight! Last time, Bloop handed me a stack of invoices. Today he's back. With more paper. Whoa! WHOA! That's not a stack. That's a mountain. That's an invoice MOUNTAIN! Every invoice from every episode. The house. The fortress. The boat. The volcano. Two thousand and forty-eight logs."
+
+  - id: sw-e9
+    channel: pixelpanic
+    title: "Shardwild Ep 9: The Rival | Completely Normal Survival Playthrough"
+    link: https://github.com/susduolingo997-arch/private/releases/tag/v9.0
+    duration: 292
+    published: 2026-10-06
+    views: 3345000
+    likes: 206000
+    cast: [pixelpanic, bloop, leggy]
+    thumb: {frame: {url: "https://github.com/susduolingo997-arch/private/releases/download/v9.0/shardwild_ep9_web.mp4", at: 70}, text: ["THE", "RIVAL"], hl: 1, tag: "EP 9", style: letsplay}
+    description: "Shardwild, episode nine! Bloop is back, Leggy is happy, Puff is warm, and I am... still broke. Life is good! Wait. What's that sound? Is that a golden hover-sled? Who parks a hover-sled on a beach? Oh no. Perfect hair. Perfect suit. Sunglasses. That's Prestin Glow."
+
+  - id: sw-e10
+    channel: pixelpanic
+    title: "Shardwild Ep 10: Space?! | Completely Normal Survival Playthrough"
+    link: https://github.com/susduolingo997-arch/private/releases/tag/v10.0
+    duration: 292
+    published: 2026-10-06
+    views: 3250000
+    likes: 200000
+    cast: [pixelpanic, bloop, leggy]
+    thumb: {frame: {url: "https://github.com/susduolingo997-arch/private/releases/download/v10.0/shardwild_ep10_web.mp4", at: 70}, text: ["SPACE?!", ""], hl: 1, tag: "EP 10", style: letsplay}
+    description: "Shardwild, episode ten! Double digits! And today we are NOT staying on the ground. We're going to SPACE! Prestin got a sponsor. First YouTubers on the Shard Moon. That pink thing in the sky. Up there. One tiny problem. We don't have a rocket."
+
+  - id: sw-e11
+    channel: pixelpanic
+    title: "Shardwild Ep 11: The Heist | Completely Normal Survival Playthrough"
+    link: https://github.com/susduolingo997-arch/private/releases/tag/v11.0
+    duration: 292
+    published: 2026-10-06
+    views: 3155000
+    likes: 194000
+    cast: [pixelpanic, bloop, leggy]
+    thumb: {frame: {url: "https://github.com/susduolingo997-arch/private/releases/download/v11.0/shardwild_ep11_web.mp4", at: 70}, text: ["THE", "HEIST"], hl: 1, tag: "EP 11", style: letsplay}
+    description: "Shardwild, episode eleven. Look at my head. What's missing? My CROWN. It's been gone since episode eight. The goose still has it. In his shop. Behind a lock. And tonight... we're getting it back. Welcome to the heist plan. Step one: Prestin is the distraction. He's very distracting."
+
+  - id: sw-e12
+    channel: pixelpanic
+    title: "Shardwild Ep 12: The Birthday | Completely Normal Survival Playthrough"
+    link: https://github.com/susduolingo997-arch/private/releases/tag/v12.0
+    duration: 292
+    published: 2026-10-07
+    views: 3060000
+    likes: 188000
+    cast: [pixelpanic, bloop, leggy]
+    thumb: {frame: {url: "https://github.com/susduolingo997-arch/private/releases/download/v12.0/shardwild_ep12_web.mp4", at: 70}, text: ["THE", "BIRTHDAY"], hl: 1, tag: "EP 12", style: letsplay}
+    description: "Shardwild, episode twelve! And today is a very special day. Today... Leggy turns ONE! One year since I found her lurking in that cave. She tried to eat me. Now she's family. So we're throwing her a SURPRISE party. Here's the plan."
+
+  - id: sw-e13
+    channel: pixelpanic
+    title: "Shardwild Ep 13: The Grand Race | Completely Normal Survival Playthrough"
+    link: https://github.com/susduolingo997-arch/private/releases/tag/v13.0
+    duration: 292
+    published: 2026-10-07
+    views: 2965000
+    likes: 182000
+    cast: [pixelpanic, bloop, leggy]
+    thumb: {frame: {url: "https://github.com/susduolingo997-arch/private/releases/download/v13.0/shardwild_ep13_web.mp4", at: 70}, text: ["THE GRAND", "RACE"], hl: 1, tag: "EP 13", style: letsplay}
+    description: "Shardwild, episode thirteen! Welcome to... THE GRAND RACE! Around the whole island! Judge Flopsy is announcing. He's back! Bow tie and everything. The racers: Prestin on his golden hover-sled. The goose, riding Bonk-bot. He fixed the robot!"
+
+  - id: sw-e14
+    channel: pixelpanic
+    title: "Shardwild Ep 14: The Haunted Mine | Completely Normal Survival Playthrough"
+    link: https://github.com/susduolingo997-arch/private/releases/tag/v14.0
+    duration: 292
+    published: 2026-10-07
+    views: 2870000
+    likes: 176000
+    cast: [pixelpanic, bloop, leggy]
+    thumb: {frame: {url: "https://github.com/susduolingo997-arch/private/releases/download/v14.0/shardwild_ep14_web.mp4", at: 70}, text: ["THE HAUNTED", "MINE"], hl: 1, tag: "EP 14", style: letsplay}
+    description: "Shardwild, episode fourteen! Tonight... THE HAUNTED MINE. Ooooh. This is the old mine on the hill. The sign says: keep out, haunted. Very spooky font. And it's moaning. Listen. Ooooooo. That's not me. I want to be clear. That's the mine."
+
+  - id: sw-e15
+    channel: pixelpanic
+    title: "Shardwild Ep 15: The Talent Show | Completely Normal Survival Playthrough"
+    link: https://github.com/susduolingo997-arch/private/releases/tag/v15.0
+    duration: 292
+    published: 2026-10-08
+    views: 2775000
+    likes: 170000
+    cast: [pixelpanic, bloop, leggy]
+    thumb: {frame: {url: "https://github.com/susduolingo997-arch/private/releases/download/v15.0/shardwild_ep15_web.mp4", at: 70}, text: ["THE TALENT", "SHOW"], hl: 1, tag: "EP 15", style: letsplay}
+    description: "Shardwild, episode fifteen! Tonight... THE TALENT SHOW! Look at this poster. Talent show, tonight. First prize: a golden mallet. I need that mallet. And my act? Introducing... Bonk-bot! Bonk-bot is going to DANCE.\n\nYep. It brought the house down."
+
+  - id: sw-e16
+    channel: pixelpanic
+    title: "Shardwild Ep 16: It Worked?! | Completely Normal Survival Playthrough"
+    link: https://github.com/susduolingo997-arch/private/releases/tag/v16.0
+    duration: 292
+    published: 2026-10-08
+    views: 2680000
+    likes: 164000
+    cast: [pixelpanic, bloop, leggy]
+    thumb: {frame: {url: "https://github.com/susduolingo997-arch/private/releases/download/v16.0/shardwild_ep16_web.mp4", at: 70}, text: ["IT", "WORKED?!"], hl: 1, tag: "EP 16", style: letsplay}
+    description: "Shardwild, episode sixteen. Today... nothing goes wrong. I'm told. Okay. Hi. I'm calm. I'm very calm. Last episode a stage fell on me. So. Calm. Today's project: a bridge. Over the gorge. A normal bridge. For walking. Normally.\n\nYep. It... worked?"
+
+  - id: sw-e17
+    channel: pixelpanic
+    title: "Shardwild Ep 17: The Time Machine | Completely Normal Survival Playthrough"
+    link: https://github.com/susduolingo997-arch/private/releases/tag/v17.0
+    duration: 292
+    published: 2026-10-08
+    views: 2585000
+    likes: 158000
+    cast: [pixelpanic, bloop, leggy]
+    thumb: {frame: {url: "https://github.com/susduolingo997-arch/private/releases/download/v17.0/shardwild_ep17_web.mp4", at: 70}, text: ["THE TIME", "MACHINE"], hl: 1, tag: "EP 17", style: letsplay}
+    description: "Shardwild, episode seventeen! THE TIME MACHINE! Bloop built a time machine. Out of a phone booth, a toaster, and a crystal he found in a pond. And here's my plan. We go back to episode one. And we stop my first house from falling over.\n\nYep. It followed us home."
+
+  - id: sw-e18
+    channel: pixelpanic
+    title: "Shardwild Ep 18: The Shrink Ray | Completely Normal Survival Playthrough"
+    link: https://github.com/susduolingo997-arch/private/releases/tag/v18.0
+    duration: 292
+    published: 2026-10-08
+    views: 2490000
+    likes: 152000
+    cast: [pixelpanic, bloop, leggy]
+    thumb: {frame: {url: "https://github.com/susduolingo997-arch/private/releases/download/v18.0/shardwild_ep18_web.mp4", at: 70}, text: ["THE SHRINK", "RAY"], hl: 1, tag: "EP 18", style: letsplay}
+    description: "Shardwild, episode eighteen! THE SHRINK RAY! So. Remember the baby dinosaur from last time? Chompy? He's not a baby anymore. Look at him. He ate the garden. He ate the mailbox. He ate one of my boots. While I was wearing it.\n\nYep. It hit the wrong guy."
+
+  - id: sw-e19
+    channel: pixelpanic
+    title: "Shardwild Ep 19: The Treasure Map | Completely Normal Survival Playthrough"
+    link: https://github.com/susduolingo997-arch/private/releases/tag/v19.0
+    duration: 292
+    published: 2026-10-09
+    views: 2395000
+    likes: 146000
+    cast: [pixelpanic, bloop, leggy]
+    thumb: {frame: {url: "https://github.com/susduolingo997-arch/private/releases/download/v19.0/shardwild_ep19_web.mp4", at: 70}, text: ["THE TREASURE", "MAP"], hl: 1, tag: "EP 19", style: letsplay}
+    description: "Shardwild, episode nineteen! THE TREASURE MAP! Beach day! Sun, sand, and Muffin found... a bottle? There's something inside! A MAP! A real treasure map! With a dotted line! And a big red X! Chat, we're rich!\n\nYep. It was chocolate."
+
+  - id: sw-e20
+    channel: pixelpanic
+    title: "Shardwild Ep 20: The Time Machine (Again) | Completely Normal Survival Playthrough"
+    link: https://github.com/susduolingo997-arch/private/releases/tag/v20.0
+    duration: 292
+    published: 2026-10-09
+    views: 2300000
+    likes: 140000
+    cast: [pixelpanic, bloop, leggy]
+    thumb: {frame: {url: "https://github.com/susduolingo997-arch/private/releases/download/v20.0/shardwild_ep20_web.mp4", at: 70}, text: ["THE TIME MACHINE", "(AGAIN)"], hl: 1, tag: "EP 20", style: letsplay}
+    description: "Shardwild, episode twenty! THE TIME MACHINE! And this time... it works. Allegedly. Chat, welcome to my house. Or what's left of it. Tilted. Soggy. Slightly on fire, once. Nineteen days of disasters. This house has fallen, sunk, flooded and floated. It's tired. I'm tired.\n\nYep. It works. Too well."
+
+  - id: sw-e21
+    channel: pixelpanic
+    title: "Shardwild Ep 21: Three of Me | Completely Normal Survival Playthrough"
+    link: https://github.com/susduolingo997-arch/private/releases/tag/v21.0
+    duration: 292
+    published: 2026-10-09
+    views: 2205000
+    likes: 134000
+    cast: [pixelpanic, bloop, leggy]
+    thumb: {frame: {url: "https://github.com/susduolingo997-arch/private/releases/download/v21.0/shardwild_ep21_web.mp4", at: 70}, text: ["THREE OF", "ME"], hl: 1, tag: "EP 21", style: letsplay}
+    description: "Shardwild, episode twenty-one! Welcome back, chat. Quick headcount... there are three of me. Hi chat! I'm me from day one! The handsome one! And I'm me from day ninety-nine. The wise one. The one with the hat.\n\nYep. It fits."
+
+  - id: sw-e22
+    channel: pixelpanic
+    title: "Shardwild Ep 22: The Ghost Train | Completely Normal Survival Playthrough"
+    link: https://github.com/susduolingo997-arch/private/releases/tag/v22.0
+    duration: 292
+    published: 2026-10-10
+    views: 2110000
+    likes: 128000
+    cast: [pixelpanic, bloop, leggy]
+    thumb: {frame: {url: "https://github.com/susduolingo997-arch/private/releases/download/v22.0/shardwild_ep22_web.mp4", at: 70}, text: ["THE GHOST", "TRAIN"], hl: 1, tag: "EP 22", style: letsplay}
+    description: "Shardwild, episode twenty-two! Chat, it's a calm evening. Sofie's asleep. The house is standing. Suspicious. Wait. Did you hear that? A whistle. A train whistle. We don't HAVE trains. Something's floating down. Glowing. Spinning. It's a... ticket?\n\nYep. It's haunted."
+
+  - id: sw-e23
+    channel: pixelpanic
+    title: "Shardwild Ep 23: The Bake-Off | Completely Normal Survival Playthrough"
+    link: https://github.com/susduolingo997-arch/private/releases/tag/v23.0
+    duration: 292
+    published: 2026-10-10
+    views: 2015000
+    likes: 122000
+    cast: [pixelpanic, bloop, leggy]
+    thumb: {frame: {url: "https://github.com/susduolingo997-arch/private/releases/download/v23.0/shardwild_ep23_web.mp4", at: 70}, text: ["THE", "BAKE-OFF"], hl: 1, tag: "EP 23", style: letsplay}
+    description: "Shardwild, episode twenty-three! Good morning, chat! Today we're doing something calm. Something wholesome. Baking. Bloop built an oven. The Turbo-Oven. It bakes a cake in ten seconds. What could possibly go wrong? Test cake. Flour, eggs, sugar. Stir, stir, stir. I'm basically a chef.\n\nYep. It fights back."
+
+  - id: sw-e24
+    channel: pixelpanic
+    title: "Shardwild Ep 24: The Lighthouse | Completely Normal Survival Playthrough"
+    link: https://github.com/susduolingo997-arch/private/releases/tag/v24.0
+    duration: 292
+    published: 2026-10-10
+    views: 1920000
+    likes: 116000
+    cast: [pixelpanic, bloop, leggy]
+    thumb: {frame: {url: "https://github.com/susduolingo997-arch/private/releases/download/v24.0/shardwild_ep24_web.mp4", at: 70}, text: ["THE", "LIGHTHOUSE"], hl: 1, tag: "EP 24", style: letsplay}
+    description: "Shardwild, episode twenty-four! We're at the seaside, chat! Sunset! Sand! A job interview! This is Barnaby. He's a pelican. He's the lighthouse keeper. And he's going on vacation. So tonight, we keep the lighthouse. Just one night. How hard can it be?\n\nYep. It's a fish."
+
+  - id: sw-e25
+    channel: pixelpanic
+    title: "Shardwild Ep 25: The Snow Globe | Completely Normal Survival Playthrough"
+    link: https://github.com/susduolingo997-arch/private/releases/tag/v25.0
+    duration: 292
+    published: 2026-10-10
+    views: 1825000
+    likes: 110000
+    cast: [pixelpanic, bloop, leggy]
+    thumb: {frame: {url: "https://github.com/susduolingo997-arch/private/releases/download/v25.0/shardwild_ep25_web.mp4", at: 70}, text: ["THE SNOW", "GLOBE"], hl: 1, tag: "EP 25", style: letsplay}
+    description: "Shardwild, episode twenty-five! Chat, I got mail! A package! With a bow! It's from Duke Fluffington. Thanks for saving his yacht. And it's... a snow globe! Look at it. Tiny houses. Tiny trees. Tiny snow. It's adorable.\n\nYep. It snowed."
+
+  - id: sw-e26
+    channel: pixelpanic
+    title: "Shardwild Ep 26: The Museum | Completely Normal Survival Playthrough"
+    link: https://github.com/susduolingo997-arch/private/releases/tag/v26.0
+    duration: 292
+    published: 2026-10-11
+    views: 1730000
+    likes: 104000
+    cast: [pixelpanic, bloop, leggy]
+    thumb: {frame: {url: "https://github.com/susduolingo997-arch/private/releases/download/v26.0/shardwild_ep26_web.mp4", at: 70}, text: ["THE", "MUSEUM"], hl: 1, tag: "EP 26", style: letsplay}
+    description: "Shardwild, episode twenty-six! Chat, we got tickets! The grand opening of the Shardwild Museum! Columns. A banner. A sign that says do not touch the museum. Fancy. Bloop brought a statue. Of himself.\n\nYep. He touched it."
+
+  - id: sw-e27
+    channel: pixelpanic
+    title: "Shardwild Ep 27: The Road Trip | Completely Normal Survival Playthrough"
+    link: https://github.com/susduolingo997-arch/private/releases/tag/v27.0
+    duration: 292
+    published: 2026-10-11
+    views: 1635000
+    likes: 98000
+    cast: [pixelpanic, bloop, leggy]
+    thumb: {frame: {url: "https://github.com/susduolingo997-arch/private/releases/download/v27.0/shardwild_ep27_web.mp4", at: 70}, text: ["THE ROAD", "TRIP"], hl: 1, tag: "EP 27", style: letsplay}
+    description: "Shardwild, episode twenty-seven! Chat, it's ROAD TRIP DAY! Destination: the World's Biggest Shard! And Bloop built us a ride. Behold. The Bloopmobile! It has wheels! It has a stripe! Okay, I call driver. Obviously. I'm walking to the... Leggy's in the driver's seat. HEY.\n\nYep. She parked it."
+
+  - id: sw-e28
+    channel: pixelpanic
+    title: "Shardwild Ep 28: The Dragon Egg | Completely Normal Survival Playthrough"
+    link: https://github.com/susduolingo997-arch/private/releases/tag/v28.0
+    duration: 292
+    published: 2026-10-11
+    views: 1540000
+    likes: 92000
+    cast: [pixelpanic, bloop, leggy]
+    thumb: {frame: {url: "https://github.com/susduolingo997-arch/private/releases/download/v28.0/shardwild_ep28_web.mp4", at: 70}, text: ["THE DRAGON", "EGG"], hl: 1, tag: "EP 28", style: letsplay}
+    description: "Shardwild, episode twenty-eight! Chat, it's a peaceful morning walk. Nothing can go wrong on a walk. Leggy's sniffing something in that bush. Leggy, what is it? A rock? A snack? Wait. She's pushing something out. Something big. Something... round."
+
+  - id: sw-e29
+    channel: pixelpanic
+    title: "Shardwild Ep 29: The Carnival | Completely Normal Survival Playthrough"
+    link: https://github.com/susduolingo997-arch/private/releases/tag/v29.0
+    duration: 292
+    published: 2026-10-12
+    views: 1445000
+    likes: 86000
+    cast: [pixelpanic, bloop, leggy]
+    thumb: {frame: {url: "https://github.com/susduolingo997-arch/private/releases/download/v29.0/shardwild_ep29_web.mp4", at: 70}, text: ["THE", "CARNIVAL"], hl: 1, tag: "EP 29", style: letsplay}
+    description: "Shardwild, episode twenty-nine! Chat, we're at the carnival. Rides, games, snacks. Zero building. Zero disasters. That's Barker Bix. Top hat, megaphone, and a mustache that moves on its own. It says weak. It says WEAK. The puck barely left the ground. That's five tickets."
+
+  - id: sw-e30
+    channel: pixelpanic
+    title: "Shardwild Ep 30: The Submarine | Completely Normal Survival Playthrough"
+    link: https://github.com/susduolingo997-arch/private/releases/tag/v30.0
+    duration: 292
+    published: 2026-10-12
+    views: 1350000
+    likes: 80000
+    cast: [pixelpanic, bloop, leggy]
+    thumb: {frame: {url: "https://github.com/susduolingo997-arch/private/releases/download/v30.0/shardwild_ep30_web.mp4", at: 70}, text: ["THE", "SUBMARINE"], hl: 1, tag: "EP 30", style: letsplay}
+    description: "Shardwild, episode thirty! Chat, today we are going UNDER the sea. In a submarine. Built by Bloop. What could go wrong? Bloop yanks the tarp and... TA-DAA! The Deep Dipper! It's yellow! It's chunky! It's beautiful! Wait, Leggy found something in the water. A bottle? With a note inside?"
+
+  - id: sw-e31
+    channel: pixelpanic
+    title: "Shardwild Ep 31: The Mountain | Completely Normal Survival Playthrough"
+    link: https://github.com/susduolingo997-arch/private/releases/tag/v31.0
+    duration: 292
+    published: 2026-10-12
+    views: 1255000
+    likes: 74000
+    cast: [pixelpanic, bloop, leggy]
+    thumb: {frame: {url: "https://github.com/susduolingo997-arch/private/releases/download/v31.0/shardwild_ep31_web.mp4", at: 70}, text: ["THE", "MOUNTAIN"], hl: 1, tag: "EP 31", style: letsplay}
+    description: "Leggy, you okay? She climbed one block. One. And she's shaking. Bloop is explaining eco mode. Yeah, yeah. Cool. Let's go. WIND! Bloop's hard hat is flying! ...and it came back."
+
+  - id: sw-e32
+    channel: pixelpanic
+    title: "Shardwild Ep 32: The Pizza Run | Completely Normal Survival Playthrough"
+    link: https://github.com/susduolingo997-arch/private/releases/tag/v32.0
+    duration: 292
+    published: 2026-10-13
+    views: 1160000
+    likes: 68000
+    cast: [pixelpanic, bloop, leggy]
+    thumb: {frame: {url: "https://github.com/susduolingo997-arch/private/releases/download/v32.0/shardwild_ep32_web.mp4", at: 70}, text: ["THE PIZZA", "RUN"], hl: 1, tag: "EP 32", style: letsplay}
+    description: "This is Chef Crustino. He's a tomato who makes pizza. Don't think about it. Ooh, he's tossing the dough! Spin, spin... and it's on my head. Dough hat. Thirty minutes or it's free. Ordered by... a sauce stain."
 

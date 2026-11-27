@@ -136,13 +136,14 @@ class UniverseTests(unittest.TestCase):
         for path in EPISODES:
             self.assertIn(os.path.relpath(path, ROOT), linked, path + " is not a video in universe.yaml")
         for ch in u["channels"]:
-            self.assertEqual(sum(v["channel"] == ch["id"] for v in u["videos"]), 5, ch["id"])
+            self.assertGreaterEqual(sum(v["channel"] == ch["id"] for v in u["videos"]), 5, ch["id"])
         with tempfile.TemporaryDirectory() as d:
             data = universe.build_site(d)
             for v in data["videos"]:
                 self.assertTrue(v["thumb_img"], v["id"] + " has no thumbnail (python -m engine universe art)")
             for p in data["characters"] + data["channels"]:
-                self.assertTrue(p["avatar"], p["id"] + " has no avatar")
+                if p.get("engine") or "logo" in p:  # 3D models and channel logos get art; others use initials
+                    self.assertTrue(p["avatar"], p["id"] + " has no avatar")
             emb = [v for v in data["videos"] if v.get("embed_src")]
             self.assertTrue(emb and all(v["status"] == "live" for v in emb))
             self.assertTrue(os.path.exists(os.path.join(d, emb[0]["embed_src"])))
