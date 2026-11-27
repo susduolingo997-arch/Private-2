@@ -22,7 +22,7 @@ body.slim #side{display:none}body.slim #view{margin-left:0}
 #side hr{border:0;border-top:1px solid var(--line);margin:12px 0}
 .dot{width:24px;height:24px;border-radius:50%;display:grid;place-items:center;font-size:11px;font-weight:700;color:#fff;flex:none}
 #view{margin:56px 0 0 240px;padding:24px;padding-left:max(24px,env(safe-area-inset-left,0px));padding-right:max(24px,env(safe-area-inset-right,0px))}
-@media(max-width:900px){#side{display:none}#view{margin-left:0;padding:12px}body:not(.slim) #side.open{display:block}}
+@media(max-width:900px){#side{display:none;z-index:20;width:min(280px,82vw);box-shadow:0 0 0 100vmax #0008}#view{margin-left:0;padding:12px}body.navopen #side{display:block}}
 .chips{display:flex;gap:12px;overflow:auto;padding-bottom:16px;position:sticky;top:56px;background:var(--bg);margin:-8px 0 8px;padding-top:8px;z-index:5}
 .chip{background:var(--panel);border:0;border-radius:8px;padding:6px 12px;white-space:nowrap}
 .chip.on{background:var(--text);color:var(--bg)}

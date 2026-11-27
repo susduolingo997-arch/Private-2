@@ -225,8 +225,10 @@
   }
 
   $("#sitename").textContent = U.site.name;
-  $("#menu").onclick = () => { document.body.classList.toggle("slim"); $("#side").classList.toggle("open"); };
+  const narrow = () => window.matchMedia("(max-width: 900px)").matches;
+  $("#menu").onclick = () => document.body.classList.toggle(narrow() ? "navopen" : "slim");
+  $("#side").addEventListener("click", () => document.body.classList.remove("navopen")); // phone: close after choosing a page
   $("#search").onsubmit = (e) => { e.preventDefault(); const q = $("#q").value.trim(); if (q) location.hash = "#/search/" + encodeURIComponent(q); };
-  window.addEventListener("hashchange", () => render(true));
+  window.addEventListener("hashchange", () => { document.body.classList.remove("navopen"); render(true); });
   render(true);
 })();
