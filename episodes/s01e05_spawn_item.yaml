@@ -172,7 +172,18 @@ scenes:
       - {say: npc_landlord_copy, text: "Nice weather today."}
       - {say: kyle, text: "He said the line. He is an NPC now. This is the most Dave thing that has ever happened."}
       - {say: dave, text: "I have learned something about myself this week. I do not like to delete things. I like to keep them. Even the bad ones. Even the ones with clipboards.", cam: dave}
-      - {say: kyle, text: "Dave.", cam: kyle}
+      - {say: dave, text: "I have been thinking about what the landlord said. About deleting things. About how I would delete a lot of things I would regret.", cam: dave}
+      - {say: kyle, text: "That is the most mature thing you have said all season.", cam: kyle}
+      - {say: dave, text: "I would delete the bagel coupon. I would delete the time I told Gerald that the bus was a myth. I would delete the pigeon incident. I would not delete you."}
+      - {say: kyle, text: "I appreciate that. I would delete the pigeon incident too. What happened with the pigeon?"}
+      - {say: dave, text: "I would rather not say. It is in the past. It is on a couch. It is a landlord now."}
+      - {act: 4, cam: wide, sfx: [{name: pop, at: 1.0}], ui: [{kind: chat, text: "[SERVER] The landlord copy has rated the couch four stars.", at: 0.4, dur: 3.5}], acts: [{who: npc_landlord_copy, do: shake, amt: 0.04, delay: 1.0, dur: 2}]}
+      - {say: npc_landlord_copy, text: "I have decided to raise the rent on the couch. It is four hundred dollars a month. It is a very good couch.", cam: npc_landlord_copy}
+      - {say: dave, text: "You live on the couch. You are the landlord of the couch and also a tenant of the couch.", cam: dave}
+      - {say: npc_landlord_copy, text: "It is a very complicated lease. I am happy with it. I have a clipboard that says so."}
+      - {say: kyle, text: "Dave. The bagel coupon. Where is it?", cam: kyle}
+      - {say: dave, text: "Mister Pruitt took it. He said it was a fair price for the discount."}
+      - {say: kyle, text: "Dave."}
 
   - id: next_time
     set: black
