@@ -16,6 +16,10 @@ on:
         description: Half-resolution preview (about 3x faster)
         type: boolean
         default: false
+      publish:
+        description: Publish the finished mp4 as a release named ep-<episode id>
+        type: boolean
+        default: false
   push:
     tags: ["ep-*"]
 
@@ -134,8 +138,8 @@ jobs:
           retention-days: 30
 
   release:
-    # Tag pushes only (ep-*): publish the finished episode as a GitHub Release.
-    if: startsWith(github.ref, 'refs/tags/ep-')
+    # Tag pushes (ep-*) or a manual run with "publish": publish the finished episode as a GitHub Release.
+    if: startsWith(github.ref, 'refs/tags/ep-') || (github.event_name == 'workflow_dispatch' && inputs.publish && !inputs.preview)
     needs: [plan, assemble]
     runs-on: ubuntu-24.04
     permissions:
@@ -152,9 +156,10 @@ jobs:
           EP: ${{ needs.plan.outputs.episode_id }}
         run: |
           file="out/${EP}.mp4"
-          notes="Episode ${EP}, rendered by the engine in this repo (full resolution, espeak-ng voices)."
-          if gh release view "$GITHUB_REF_NAME" >/dev/null 2>&1; then
-            gh release upload "$GITHUB_REF_NAME" "$file" --clobber
+          notes="Episode ${EP}, rendered by the engine in this repo (full resolution, Kokoro voices)."
+          case "$GITHUB_REF" in refs/tags/ep-*) TAG="$GITHUB_REF_NAME"; TARGET="" ;; *) TAG="ep-${EP}"; TARGET="--target $GITHUB_SHA" ;; esac
+          if gh release view "$TAG" >/dev/null 2>&1; then
+            gh release upload "$TAG" "$file" --clobber
           else
-            gh release create "$GITHUB_REF_NAME" "$file" --title "$EP" --notes "$notes" --verify-tag
+            gh release create "$TAG" "$file" --title "$EP" --notes "$notes" $TARGET
           fi
