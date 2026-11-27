@@ -1007,7 +1007,8 @@ window.UNIVERSE = {
    "duration": 601,
    "thumb_img": "art/thumbs/n9-s01e05.jpg",
    "target": 600,
-   "status": "scripted",
+   "status": "live",
+   "src": "media/n9s01e05.mp4",
    "channel_name": "Channel 9"
   },
   {
