@@ -684,7 +684,8 @@ window.UNIVERSE = {
    "duration": 636,
    "thumb_img": "art/thumbs/irl-s01e05.jpg",
    "target": 600,
-   "status": "scripted",
+   "status": "live",
+   "src": "media/s01e05.mp4",
    "channel_name": "IRL BUT CHEATS"
   },
   {
