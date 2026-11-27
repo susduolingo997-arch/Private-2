@@ -157,14 +157,17 @@ def enrich(u, media_dir, art_dir=ART_DIR):
             ep = schema.load(os.path.join(ROOT, v["episode"]))
             d["duration"] = round(planner.build_plan(ep, estimate=True)["seconds"])
             d["target"] = ep.get("target_seconds")
-        if v.get("link"):  # published elsewhere (e.g. a GitHub release): the site links out
+        mf = _media_file(v, media_dir)
+        if mf:  # a copy hosted on the site itself plays best (correct MIME type, same origin)
+            d["status"], d["src"] = "live", "media/" + os.path.basename(mf)
+            if v.get("link"):
+                d["link"] = v["link"]
+        elif v.get("link"):  # published elsewhere (e.g. a GitHub release): the site links out
             d["status"], d["link"] = "external", v["link"]
-            if v.get("play"):  # a direct mp4 URL (release asset): the watch page plays it inline
+            if v.get("play"):  # a direct mp4 URL (release asset): the watch page tries to play it inline
                 d["status"], d["src"] = "live", v["play"]
         elif v.get("embed"):  # a self-contained player page: plays as-is
             d["status"], d["embed_src"] = "live", "embeds/" + os.path.basename(v["embed"])
-        elif _media_file(v, media_dir):
-            d["status"], d["src"] = "live", "media/" + os.path.basename(_media_file(v, media_dir))
         elif v.get("episode") or v.get("script"):
             d["status"] = "scripted"
         else:

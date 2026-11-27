@@ -110,7 +110,7 @@
       <div class="desc"><b>${stats(v)}${v.status === "live" ? "" : " &middot; " + esc(v.status)}${ph(v)}</b>${esc(v.description)}
         ${v.cast.length ? `<div class="cast">${v.cast.map((p) => person[p]).filter(Boolean).map((p) =>
           `<a href="#/people">${dot(p)} ${esc(p.name)}</a>`).join("")}</div>` : ""}
-        ${v.src && /^https?:/.test(v.src) ? `<div class="univ"><a href="${esc(v.src)}" target="_blank" rel="noopener">&#9654; Open the video file</a>${v.link ? `<a href="${esc(v.link)}" target="_blank" rel="noopener">&#8599; Release page (download)</a>` : ""}</div>` : ""}${v.embed_src ? `<div class="univ"><a href="${esc(v.embed_src)}" target="_blank" rel="noopener">&#9654; Open this episode in its own page</a></div>` : ""}${related.length ? `<div class="univ"><b>In this universe</b>${related.map((m) =>
+        ${v.src ? `<div class="univ"><a href="${esc(v.src)}" target="_blank" rel="noopener">&#9654; Open the video file</a>${v.link ? `<a href="${esc(v.link)}" target="_blank" rel="noopener">&#8599; Release page (download)</a>` : ""}</div>` : ""}${v.embed_src ? `<div class="univ"><a href="${esc(v.embed_src)}" target="_blank" rel="noopener">&#9654; Open this episode in its own page</a></div>` : ""}${related.length ? `<div class="univ"><b>In this universe</b>${related.map((m) =>
           `<a href="#/watch/${esc(m.id)}">&#8627; ${esc(m.channel_name)}: ${esc(m.title.split("|")[0])}</a>`).join("")}</div>` : ""}
       </div>
       <div class="comments"><h3>${comments.length} Comments</h3>

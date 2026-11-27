@@ -1,0 +1,110 @@
+name: Site media (release videos)
+
+# Downloads each video that universe.yaml plays from a release (Shardwild, PASSIONFRUIT), shrinks it to a small
+# 360p copy and stores it in docs/media/, so it plays from the Pages site itself. Release downloads are served as
+# generic files that many browsers will not play inline.
+on:
+  workflow_dispatch:
+    inputs:
+      height:
+        description: Output height in pixels
+        default: "360"
+
+permissions:
+  contents: write
+
+concurrency:
+  group: site-media
+  cancel-in-progress: false
+
+jobs:
+  matrix:
+    runs-on: ubuntu-24.04
+    outputs:
+      ids: ${{ steps.m.outputs.ids }}
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: ${{ github.ref_name }}
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - run: pip install pyyaml
+      - id: m
+        run: |
+          python - <<'PY'
+          import json, os, yaml
+          u = yaml.safe_load(open("universe/universe.yaml"))
+          ids = [v["id"] for v in u["videos"] if v.get("play") and not os.path.exists(f"docs/media/{v['id']}.mp4")]
+          print(len(ids), "videos to encode")
+          open(os.environ["GITHUB_OUTPUT"], "a").write("ids=" + json.dumps(ids) + "\n")
+          PY
+
+  encode:
+    needs: matrix
+    if: needs.matrix.outputs.ids != '[]'
+    runs-on: ubuntu-24.04
+    strategy:
+      fail-fast: false
+      max-parallel: 10
+      matrix:
+        id: ${{ fromJSON(needs.matrix.outputs.ids) }}
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: ${{ github.ref_name }}
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - run: pip install pyyaml
+      - name: Download, shrink
+        env:
+          ID: ${{ matrix.id }}
+          H: ${{ inputs.height }}
+        run: |
+          URL=$(python -c "import yaml,sys; u=yaml.safe_load(open('universe/universe.yaml')); print(next(v['play'] for v in u['videos'] if v['id']==sys.argv[1]))" "$ID")
+          echo "$URL"
+          curl -sSL --retry 3 --fail -o in.mp4 "$URL"
+          mkdir -p out
+          ffmpeg -y -v error -i in.mp4 -vf "scale=-2:${H}" -c:v libx264 -preset veryfast -crf 32 \
+                 -c:a aac -b:a 64k -movflags +faststart "out/${ID}.mp4"
+          ls -la out
+      - uses: actions/upload-artifact@v4
+        with:
+          name: media-${{ matrix.id }}
+          path: out/${{ matrix.id }}.mp4
+          retention-days: 3
+
+  publish:
+    needs: [matrix, encode]
+    if: ${{ !cancelled() && needs.matrix.outputs.ids != '[]' }}
+    runs-on: ubuntu-24.04
+    env:
+      BRANCH: ${{ github.ref_name }}
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: ${{ github.ref_name }}
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - run: pip install pyyaml numpy
+      - uses: actions/download-artifact@v4
+        with:
+          pattern: media-*
+          merge-multiple: true
+          path: docs/media
+      - name: Rebuild the site and push
+        run: |
+          du -sh docs/media
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          for i in 1 2 3 4 5; do
+            git fetch origin "$BRANCH" && git reset --hard "origin/$BRANCH"
+            python -m engine universe build --out docs --pages
+            git add docs
+            git commit -m "Site: host release videos as small copies" || exit 0
+            git push origin "HEAD:$BRANCH" && exit 0
+            sleep $((i * 8))
+          done
+          exit 1
