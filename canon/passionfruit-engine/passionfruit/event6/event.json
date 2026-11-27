@@ -1,0 +1,1308 @@
+{
+ "number": 6,
+ "title": "Think Small",
+ "date": "November 27",
+ "subtitles": true,
+ "cast": {
+  "ceo": {
+   "name": "Dana Pith",
+   "title": "Chief Executive Officer",
+   "voice": "am_michael",
+   "speed": 0.95,
+   "look": {
+    "style": "turtleneck",
+    "outfit": "#1b1b22",
+    "pants": "#2a2a33",
+    "hair": "short",
+    "hairColor": "#a9a9ad",
+    "glasses": "round",
+    "skin": "#e9be98"
+   }
+  },
+  "design": {
+   "name": "Imogen Rind",
+   "title": "Chief Design Officer",
+   "voice": "bf_emma",
+   "speed": 0.92,
+   "look": {
+    "style": "blazer",
+    "outfit": "#e9e4da",
+    "shirt": "#1b1b1b",
+    "pants": "#d8d2c6",
+    "hair": "bob",
+    "hairColor": "#d7b36a",
+    "skin": "#f1cfb0",
+    "shoes": "#1b1b1b"
+   }
+  },
+  "eng": {
+   "name": "Theo Seedling",
+   "title": "Senior Engineer, Thinness",
+   "voice": "am_adam",
+   "speed": 1.1,
+   "look": {
+    "style": "labcoat",
+    "shirt": "#6a8fd0",
+    "hair": "curly",
+    "hairColor": "#3a2414",
+    "skin": "#a8714a",
+    "nervous": true,
+    "glasses": "square",
+    "height": 0.96
+   }
+  },
+  "watch": {
+   "name": "Marco Nectar",
+   "title": "SVP, Wearables & Wanderables",
+   "voice": "am_liam",
+   "look": {
+    "style": "vest",
+    "outfit": "#f2f2f2",
+    "accent": "#26324a",
+    "pants": "#3a4a66",
+    "hair": "quiff",
+    "hairColor": "#4a2c18",
+    "skin": "#d9a27a",
+    "beard": true,
+    "height": 1.04
+   }
+  },
+  "health": {
+   "name": "Priya Zest",
+   "title": "VP, Health & Silence",
+   "voice": "af_heart",
+   "look": {
+    "style": "tee",
+    "outfit": "#5cc96b",
+    "pants": "#22252c",
+    "hair": "long",
+    "hairColor": "#1c1210",
+    "skin": "#b98260",
+    "shoes": "#ffffff"
+   }
+  },
+  "vo": {
+   "name": "The Voice of Passionfruit",
+   "voice": "bm_george",
+   "offscreen": true,
+   "speed": 0.95
+  },
+  "home": {
+   "name": "Bea Nectarine",
+   "title": "VP, Home & Ambience",
+   "voice": "af_nicole",
+   "look": {
+    "style": "hoodie",
+    "outfit": "#ff8a3d",
+    "accent": "#00000033",
+    "pants": "#2c2c34",
+    "hair": "bun",
+    "hairColor": "#6b3a1e",
+    "skin": "#f0c8a8",
+    "glasses": "gold",
+    "height": 0.97
+   }
+  },
+  "drive": {
+   "name": "Rafa Kernel",
+   "title": "SVP, Mobility & Going Places",
+   "voice": "am_eric",
+   "look": {
+    "style": "blazer",
+    "outfit": "#26324a",
+    "shirt": "#ffffff",
+    "pants": "#26324a",
+    "hair": "buzz",
+    "hairColor": "#1c1210",
+    "skin": "#8a5a3c",
+    "shoes": "#1b1b1b",
+    "height": 1.03
+   }
+  },
+  "sorry": {
+   "name": "Ollie Pardon",
+   "title": "Chief Apology Officer",
+   "voice": "bm_lewis",
+   "speed": 0.95,
+   "look": {
+    "style": "blazer",
+    "outfit": "#5a5a62",
+    "shirt": "#d9e4f2",
+    "pants": "#3a3a44",
+    "hair": "bald",
+    "hairColor": "#8a7a6a",
+    "skin": "#efc9a8",
+    "glasses": "square",
+    "beard": true,
+    "height": 1.02
+   }
+  }
+ },
+ "products": {
+  "grain": {
+   "name": "Pulp Grain",
+   "kind": "custom",
+   "shape": "orb",
+   "w": 0.35,
+   "h": 0.35,
+   "d": 0.35,
+   "color": "#e8d9a8",
+   "material": "ceramic",
+   "features": [
+    "glow"
+   ],
+   "glow": "#fff3c4",
+   "screen": [
+    "#3a3320",
+    "#7a6a3a"
+   ],
+   "price": "$19",
+   "fine": "One note. It is a good note.",
+   "handSize": 0.05
+  },
+  "pin": {
+   "name": "Pith Pin",
+   "kind": "custom",
+   "shape": "stick",
+   "w": 0.25,
+   "h": 1.0,
+   "d": 0.25,
+   "color": "#d8d8e0",
+   "material": "chrome",
+   "features": [
+    "glow",
+    "button"
+   ],
+   "glow": "#9fe8ff",
+   "buttonColor": "#ff6a5c",
+   "screen": [
+    "#10202a",
+    "#2a5a70"
+   ],
+   "price": "$29",
+   "fine": "Tells you where it is. Quietly. Then less quietly.",
+   "handSize": 0.07
+  },
+  "thimble": {
+   "name": "Rind Thimble",
+   "kind": "custom",
+   "shape": "cylinder",
+   "w": 0.5,
+   "h": 0.5,
+   "d": 0.5,
+   "color": "#ff8a3d",
+   "material": "aluminum",
+   "features": [
+    "screen",
+    "crown"
+   ],
+   "screen": [
+    "#2a1208",
+    "#ff8a3d"
+   ],
+   "screenText": "72",
+   "price": "$149",
+   "fine": "Fits one finger. We are working on the others.",
+   "handSize": 0.06
+  },
+  "speck": {
+   "name": "Pulp Speck",
+   "kind": "custom",
+   "shape": "pebble",
+   "w": 0.3,
+   "h": 0.3,
+   "d": 0.3,
+   "color": "#1d1d22",
+   "material": "glass",
+   "features": [
+    "camera:1",
+    "glow"
+   ],
+   "glow": "#ff4fa3",
+   "price": "$249",
+   "fine": "Shown actual size. The thing on the left.",
+   "handSize": 0.04
+  },
+  "colony": {
+   "name": "Zest Colony",
+   "kind": "custom",
+   "shape": "egg",
+   "w": 0.9,
+   "h": 0.5,
+   "d": 0.6,
+   "color": "#c9a24a",
+   "material": "matte",
+   "features": [
+    "eyes",
+    "legs:6",
+    "antenna"
+   ],
+   "colors": [
+    "#c9a24a",
+    "#8a5a2b",
+    "#1d1d22"
+   ],
+   "screen": [
+    "#2a2008",
+    "#6a5018"
+   ],
+   "price": "$399",
+   "fine": "Four hundred workers. One manager. No breaks. Ever.",
+   "handSize": 0.07
+  },
+  "period": {
+   "name": "Nectar Period",
+   "kind": "custom",
+   "shape": "orb",
+   "w": 0.45,
+   "h": 0.2,
+   "d": 0.45,
+   "color": "#1b1b22",
+   "material": "rubber",
+   "features": [
+    "button"
+   ],
+   "buttonColor": "#ffd23f",
+   "price": "$9",
+   "fine": "For sentences. Sentences not included.",
+   "handSize": 0.05
+  },
+  "stamp": {
+   "name": "Pulp Stamp",
+   "kind": "slab",
+   "w": 0.6,
+   "h": 0.7,
+   "d": 0.03,
+   "color": "#e9e4da",
+   "material": "matte",
+   "features": [
+    "screen"
+   ],
+   "screen": [
+    "#1a4a7a",
+    "#4fb3d9"
+   ],
+   "screenText": "Earth",
+   "price": "$59",
+   "fine": "The whole world, folded. Postage not included.",
+   "handSize": 0.07
+  },
+  "nudge": {
+   "name": "Pulp Nudge",
+   "kind": "custom",
+   "shape": "orb",
+   "w": 0.3,
+   "h": 0.3,
+   "d": 0.3,
+   "color": "#ff4fa3",
+   "material": "glass",
+   "features": [
+    "eyes",
+    "glow",
+    "button"
+   ],
+   "glow": "#ffa6d2",
+   "screen": [
+    "#3a0a24",
+    "#ff4fa3"
+   ],
+   "price": "$39",
+   "fine": "Sits on your shoulder. Says one word. Usually 'keys'.",
+   "handSize": 0.04
+  }
+ },
+ "segments": [
+  {
+   "location": "studio",
+   "presenters": [],
+   "music": "minimal",
+   "beats": [
+    {
+     "shot": "hero",
+     "say": "You are looking at it right now. You can't see it. That's the point.",
+     "who": "vo",
+     "product": "grain",
+     "dur": 6
+    },
+    {
+     "shot": "macro",
+     "say": "Everything we've ever made has been a little too big. Too wide. Too loud. Too much phone. Today, we fix that.",
+     "who": "vo",
+     "product": "grain"
+    },
+    {
+     "shot": "spin",
+     "say": "Today, we think small.",
+     "who": "vo",
+     "product": "grain"
+    }
+   ]
+  },
+  {
+   "location": "lab",
+   "presenters": [
+    "eng"
+   ],
+   "screen": "Think Small",
+   "music": "gentle",
+   "beats": [
+    {
+     "shot": "title",
+     "text": "Passionfruit Event 6",
+     "sub": "Think Small",
+     "dur": 4
+    },
+    {
+     "shot": "wide",
+     "dur": 3.5
+    },
+    {
+     "shot": "talk",
+     "say": "Hi. Hello. Theo. Hi. I'm hosting today. I know. I'm as surprised as you are. Dana is in a meeting about meetings, and she asked me to take this one. Gently. She said gently."
+    },
+    {
+     "shot": "close",
+     "say": "I'm a senior engineer. My title is Thinness. For nine years I made things thinner. And at some point I realized: thin is only one direction. There's also small."
+    },
+    {
+     "shot": "talk",
+     "say": "Small is thin, in every direction. Small is thin that got serious about it. And today, every product we're showing you is small. Very small. Some of them you may need to take on faith."
+    },
+    {
+     "shot": "close",
+     "say": "Our legal team asked us to clarify that small does not mean cheap. We agreed. Our legal team then asked what small does mean. We said: small. They are still thinking about it."
+    },
+    {
+     "shot": "talk",
+     "say": "A few notes. Everything today is real, in the sense that it's on this film. Nothing today is bigger than a thumb. Except Dana. And the boulders. We apologized for the boulders."
+    },
+    {
+     "shot": "talk",
+     "say": "A word on the budget. This event had a small budget. We spent it on a very small stage, with very small chairs. The chairs are for you. They're also, we're told, the only chairs we have."
+    },
+    {
+     "shot": "close",
+     "say": "And a word on the title. Think Small. We tried Think Smaller. It tested well. But it made people feel sad. Smaller than what? We have no answer. The answer is: smaller."
+    },
+    {
+     "shot": "close",
+     "say": "We've built a very small Passionfruit for you. We shrank the lab. We shrank the camera crew. We shrank the budget, which went well. Let's begin, before the lab shrinks around me."
+    }
+   ]
+  },
+  {
+   "location": "cafe",
+   "presenters": [
+    "home"
+   ],
+   "music": "warm",
+   "beats": [
+    {
+     "shot": "title",
+     "text": "Small thing one",
+     "sub": "Sound.",
+     "dur": 3.5
+    },
+    {
+     "shot": "wide",
+     "dur": 3.5
+    },
+    {
+     "shot": "talk",
+     "say": "Hi, I'm Bea. Home and Ambience. We're at a cafe, because a cafe is where small things happen. Small coffees. Small talk. Small, regrettable muffins."
+    },
+    {
+     "shot": "close",
+     "say": "Here's a problem. Every speaker we've made is larger than the room's mood. You put it on a shelf and suddenly the shelf is the main character. We wanted a speaker that disappears."
+    },
+    {
+     "shot": "talk",
+     "say": "So we asked: how small can a speaker be? And the engineers said, how small do you want? And I said: smaller. And they said: that's a grain. And I said: perfect."
+    },
+    {
+     "shot": "table",
+     "say": "This is Pulp Grain. It's the size of a grain of rice. A long grain. We tried a short grain. It had opinions.",
+     "product": "grain"
+    },
+    {
+     "shot": "demo",
+     "say": "It plays one note. A beautiful one. A warm, round, honest note. And that's all. People ask for more notes. We say: you already have a note.",
+     "product": "grain"
+    },
+    {
+     "shot": "close",
+     "say": "And here's the clever part. It plays that one note at exactly the volume of a quiet cafe. So wherever you put it, you're in a cafe. Even if you're in a car. Even if you're in a canoe."
+    },
+    {
+     "shot": "talk",
+     "say": "Another thing about cafes. Everything's small. The cups. The spoons. The tiny cookie, balanced on the edge of the saucer, like a tiny sentinel. It's the most honest thing in the building."
+    },
+    {
+     "shot": "close",
+     "say": "We also tested Pulp Grain in a very loud cafe. It still played one note. But the note said: I'm still here. And a very tired man at table four started to cry. He said it was the coffee. We think it was the note."
+    },
+    {
+     "shot": "talk",
+     "say": "It also finds the room's lowest silence and sits in it. You'll never hear it. You'll only feel that something is gently, politely, in tune. Let me show you where it came from."
+    }
+   ]
+  },
+  {
+   "location": "studio",
+   "presenters": [],
+   "beats": [
+    {
+     "shot": "hero",
+     "say": "Pulp Grain.",
+     "who": "vo",
+     "product": "grain"
+    },
+    {
+     "shot": "spin",
+     "say": "The world's smallest speaker. One note. Pressed into a grain of ceramic by a machine that was also, in a way, a very small machine.",
+     "who": "vo",
+     "product": "grain"
+    },
+    {
+     "shot": "macro",
+     "say": "Up close, you can see the speaker grille. It has one hole. We were told that was a mistake. We were told that a lot. We kept the hole.",
+     "who": "vo",
+     "product": "grain"
+    },
+    {
+     "shot": "explode",
+     "say": "Inside, a driver, a battery, and a tiny, unshakeable sense of rhythm. It's not a musician. But it has a kind of pitch.",
+     "who": "vo",
+     "product": "grain"
+    },
+    {
+     "shot": "lineup",
+     "say": "In three colors. Rice. Slightly older rice. And a color we call, internally, spilled.",
+     "who": "vo",
+     "product": "grain"
+    },
+    {
+     "shot": "tagline",
+     "product": "grain",
+     "text": "One note.",
+     "sub": "It's a good one.",
+     "dur": 5
+    },
+    {
+     "shot": "price",
+     "product": "grain",
+     "dur": 5
+    }
+   ]
+  },
+  {
+   "location": "factory",
+   "presenters": [
+    "design",
+    "eng"
+   ],
+   "music": "pulse",
+   "beats": [
+    {
+     "shot": "title",
+     "text": "Small thing two",
+     "sub": "Where it is.",
+     "dur": 3.5
+    },
+    {
+     "shot": "wide",
+     "dur": 3.5
+    },
+    {
+     "shot": "two",
+     "say": "We're at the factory. Imogen and I. We're here because the thing we're showing you is so small, we needed a factory to find it.",
+     "who": "eng"
+    },
+    {
+     "shot": "talk",
+     "say": "Hello. Imogen. Design. Every day, people lose small things. Keys. Rings. Earrings. Safety pins. The smallest things are the easiest to lose. And the hardest to forgive.",
+     "who": "design"
+    },
+    {
+     "shot": "talk",
+     "say": "So we asked: what if the small thing could say where it is? And the answer was: it would need to be a small thing that can talk. And so we made a pin.",
+     "who": "design"
+    },
+    {
+     "shot": "table",
+     "say": "This is Pith Pin. It looks like a safety pin. It is a safety pin. But it also, when you lose it, says: I'm here. In a small voice. From under the couch.",
+     "who": "design",
+     "product": "pin"
+    },
+    {
+     "shot": "demo",
+     "say": "Every pin comes with a pin. Which is to say, you can pin the Pith Pin to your jacket, and then pin another Pith Pin to the first. They keep track of each other. It's called a family.",
+     "who": "eng",
+     "product": "pin"
+    },
+    {
+     "shot": "two",
+     "say": "Which means that if you lose all of them, you've lost a family. And we don't take that lightly. We take that very lightly, in fact. The whole product is very light.",
+     "who": "design"
+    },
+    {
+     "shot": "talk",
+     "say": "A quick tour. Over there, the pin line. Each pin is made by a very small robot arm. Every sixth pin goes to quality control, where a small person looks at it and says: yes. That's a pin.",
+     "who": "eng"
+    },
+    {
+     "shot": "two",
+     "say": "And that's the whole process. Metal, wire, voice, pin. Our factory makes nine thousand a day. Our factory also loses nine thousand a day. We're working on that. With pins.",
+     "who": "design"
+    },
+    {
+     "shot": "close",
+     "say": "And yes. It's sharp. We're sorry. It is a pin. Please handle it like a pin. And, if you can, like a friend.",
+     "who": "eng"
+    }
+   ]
+  },
+  {
+   "location": "studio",
+   "presenters": [],
+   "beats": [
+    {
+     "shot": "hero",
+     "say": "Pith Pin.",
+     "who": "vo",
+     "product": "pin"
+    },
+    {
+     "shot": "spin",
+     "say": "A safety pin with a locator, a speaker, and a sense of obligation. Six grams of stainless steel and one very specific kind of worry.",
+     "who": "vo",
+     "product": "pin"
+    },
+    {
+     "shot": "macro",
+     "say": "On the head, a button. Press it, and every Pith Pin in your home says hello at once. It's the loudest thing we've made. It's also the smallest.",
+     "who": "vo",
+     "product": "pin"
+    },
+    {
+     "shot": "explode",
+     "say": "Inside, a coil, a chip, and a tiny voice recording of someone saying: it's fine. We hired a very calm person. Her name is Greta. She is available for weddings.",
+     "who": "vo",
+     "product": "pin"
+    },
+    {
+     "shot": "lineup",
+     "say": "Available in silver, silver, and, for those with a sense of occasion, silver.",
+     "who": "vo",
+     "product": "pin"
+    },
+    {
+     "shot": "tagline",
+     "product": "pin",
+     "text": "Where it is.",
+     "sub": "It's here. It's right here.",
+     "dur": 5
+    },
+    {
+     "shot": "price",
+     "product": "pin",
+     "dur": 5
+    }
+   ]
+  },
+  {
+   "location": "park",
+   "presenters": [
+    "health"
+   ],
+   "music": "gentle",
+   "beats": [
+    {
+     "shot": "title",
+     "text": "Small thing three",
+     "sub": "Health.",
+     "dur": 3.5
+    },
+    {
+     "shot": "wide",
+     "dur": 3.5
+    },
+    {
+     "shot": "talk",
+     "say": "Hi. Priya. Health and Silence. I'm in a park, where people are doing small, healthy things. A small jog. A small stretch. A small, sad sandwich."
+    },
+    {
+     "shot": "close",
+     "say": "For years, we've told you to wear a watch, wear a ring, wear a band. And you've said: where? Where would I wear it? I've got one wrist. I've got one finger. I have a lot of fingers, but I'm busy."
+    },
+    {
+     "shot": "talk",
+     "say": "So we went smaller. To the one part of the body that's always available, always honest, and always, somehow, a little bit stuck in a drawer. The fingertip."
+    },
+    {
+     "shot": "table",
+     "say": "This is Rind Thimble. It goes on your fingertip. It measures your pulse, your temperature, and your readiness to open a jar.",
+     "product": "thimble"
+    },
+    {
+     "shot": "demo",
+     "say": "You press your finger on anything, and it tells you how you feel. A table: calm. A door: slightly anxious. A cat: it depends on the cat.",
+     "product": "thimble"
+    },
+    {
+     "shot": "close",
+     "say": "It also does one more thing. When you're stressed, it goes quiet. When you're calm, it goes quieter. We call that the Silence Mode. And it's the only mode."
+    },
+    {
+     "shot": "talk",
+     "say": "And I want to say something about the word small. It doesn't mean less. A small candle still lights a room. A small door still opens. A small apology, delivered sincerely, can last a whole week."
+    },
+    {
+     "shot": "close",
+     "say": "So if you only take one thing from today, take a small breath. And another. And one more, after that. That's a very small workout. It's also, technically, the entire product."
+    },
+    {
+     "shot": "talk",
+     "say": "Wear it for a week and you'll know yourself better. Wear it for a month and you'll know your fingertip better than anyone ever has. That's not nothing. That's, actually, something very small."
+    }
+   ]
+  },
+  {
+   "location": "studio",
+   "presenters": [],
+   "beats": [
+    {
+     "shot": "hero",
+     "say": "Rind Thimble.",
+     "who": "vo",
+     "product": "thimble"
+    },
+    {
+     "shot": "spin",
+     "say": "A computer for your fingertip. Aluminum, glass, and the quiet confidence of something that fits under a fingernail, if you let it.",
+     "who": "vo",
+     "product": "thimble"
+    },
+    {
+     "shot": "macro",
+     "say": "The display is point-six inches. It shows one number. Your pulse. Or, if you prefer, the number of days since you last felt completely rested. Both are zero.",
+     "who": "vo",
+     "product": "thimble"
+    },
+    {
+     "shot": "explode",
+     "say": "Inside, a sensor stack, a battery, and a thimble, because we found one in the lab and thought: that's it. That's the whole product.",
+     "who": "vo",
+     "product": "thimble"
+    },
+    {
+     "shot": "lineup",
+     "say": "In orange. Slightly different orange. And an orange we can only describe as, a very honest orange.",
+     "who": "vo",
+     "product": "thimble"
+    },
+    {
+     "shot": "tagline",
+     "product": "thimble",
+     "text": "Take your own pulse.",
+     "sub": "Gently.",
+     "dur": 5
+    },
+    {
+     "shot": "price",
+     "product": "thimble",
+     "dur": 5
+    }
+   ]
+  },
+  {
+   "location": "beach",
+   "time": "sunset",
+   "presenters": [
+    "watch",
+    "drive"
+   ],
+   "music": "warm",
+   "beats": [
+    {
+     "shot": "title",
+     "text": "Small thing four",
+     "sub": "Looking.",
+     "dur": 3.5
+    },
+    {
+     "shot": "wide",
+     "dur": 4
+    },
+    {
+     "shot": "two",
+     "say": "Hi. Marco. Wearables and Wanderables. Rafa and I are on a beach at sunset, which is the best light to show a small thing in. And the worst place to lose one. It's a beach. It's grains.",
+     "who": "watch"
+    },
+    {
+     "shot": "talk",
+     "say": "Rafa. Mobility. Going Places. I'd like to say that we came to the beach to test the camera. We came to the beach because we lost the camera. We lost it yesterday. On the beach.",
+     "who": "drive"
+    },
+    {
+     "shot": "two",
+     "say": "It's called Pulp Speck. It is the world's smallest camera. It is a speck. It looks like a speck of dust. And, thank goodness, it behaves like one. It lands on things and stays.",
+     "who": "watch"
+    },
+    {
+     "shot": "demo",
+     "say": "You put it on your jacket, on a wall, on a dog. And it films, in sixteen-megapixel color, whatever it's sitting on. Mostly the inside of your jacket. We're working on that.",
+     "who": "watch",
+     "product": "speck"
+    },
+    {
+     "shot": "talk",
+     "say": "And here's the clever part. Because it's so small, it's often in the sand. And because it's in the sand, we can't find it. But it can find us. It follows you. It's a camera. It knows where you are.",
+     "who": "drive"
+    },
+    {
+     "shot": "two",
+     "say": "That's why we're standing here at sunset. Because somewhere in this beach is a camera, and it's filming us right now. And honestly, it's got my good side.",
+     "who": "watch"
+    },
+    {
+     "shot": "talk",
+     "say": "Quick safety note, from Rafa, who is a professional. If you find a speck in your eye, don't panic. It's probably dust. If it blinks, it's a Speck. And you should wave. It would mean a lot.",
+     "who": "drive"
+    },
+    {
+     "shot": "two",
+     "say": "And please, if you find our camera on this beach, don't send it back. Keep it. Take it home. Give it a nice life. And, if you can, a better angle.",
+     "who": "watch"
+    },
+    {
+     "shot": "close",
+     "say": "If you see a speck on your sandwich, don't brush it off. Say hello. It's already seen you. It has a lot of footage. Of your sandwich.",
+     "who": "drive"
+    }
+   ]
+  },
+  {
+   "location": "studio",
+   "presenters": [],
+   "beats": [
+    {
+     "shot": "hero",
+     "say": "Pulp Speck.",
+     "who": "vo",
+     "product": "speck"
+    },
+    {
+     "shot": "spin",
+     "say": "The world's smallest camera. Sixteen megapixels. Three hundred and twenty micrograms. And a lens that has seen things.",
+     "who": "vo",
+     "product": "speck"
+    },
+    {
+     "shot": "macro",
+     "say": "A lens the size of a thought. It focuses on whatever is closest, which is usually the thing it's sitting on, which is usually you.",
+     "who": "vo",
+     "product": "speck"
+    },
+    {
+     "shot": "explode",
+     "say": "Inside, a sensor, a battery, and a tiny motor that, once a day, nudges it very slightly to the left. For variety.",
+     "who": "vo",
+     "product": "speck"
+    },
+    {
+     "shot": "lineup",
+     "say": "In black. Black with a little more black. And, for the discerning, a color we can't show, because it's a speck.",
+     "who": "vo",
+     "product": "speck"
+    },
+    {
+     "shot": "tagline",
+     "product": "speck",
+     "text": "It's already seen you.",
+     "sub": "It likes what it sees.",
+     "dur": 5
+    },
+    {
+     "shot": "price",
+     "product": "speck",
+     "dur": 5
+    }
+   ]
+  },
+  {
+   "location": "datacenter",
+   "presenters": [
+    "home",
+    "eng"
+   ],
+   "music": "pulse",
+   "beats": [
+    {
+     "shot": "title",
+     "text": "Small thing five",
+     "sub": "Help.",
+     "dur": 3.5
+    },
+    {
+     "shot": "wide",
+     "dur": 3.5
+    },
+    {
+     "shot": "two",
+     "say": "We're back in the datacenter. Bea and I. Because small things need a lot of servers. We learned that the hard way. Last time, we asked the cloud for help and it sang.",
+     "who": "home"
+    },
+    {
+     "shot": "talk",
+     "say": "So this time, we didn't ask the cloud. We asked ants. Hi. Theo. Ants are very small. And very organized. And they carry a hundred times their weight. And they've never once complained.",
+     "who": "eng"
+    },
+    {
+     "shot": "table",
+     "say": "This is Zest Colony. Four hundred microscopic assistants. And one manager, who is a little bigger. And has, we're told, a clipboard.",
+     "who": "home",
+     "product": "colony"
+    },
+    {
+     "shot": "demo",
+     "say": "You tell the Colony what you need. Crumbs swept. Cables untangled. Dust moved from one place to another place. They don't remove the dust. They relocate it. With dignity.",
+     "who": "eng",
+     "product": "colony"
+    },
+    {
+     "shot": "two",
+     "say": "They work all day, every day, and at night, they go back to the Colony, which glows. Which means that your home has a small, warm, humming light in the corner. Like a very tiny fireplace.",
+     "who": "home"
+    },
+    {
+     "shot": "close",
+     "say": "We've had some complaints about the ants. They are, after all, ants. But they're our ants. We trained them. We named them. We named them all Ant. It was a long afternoon.",
+     "who": "eng"
+    },
+    {
+     "shot": "talk",
+     "say": "One more thing about the ants. They do not like jazz. We tried. They went on strike. They marched, very small, in a very straight line, out of the room. We apologized. They returned. They were polite about it.",
+     "who": "eng"
+    },
+    {
+     "shot": "two",
+     "say": "We've also learned that ants have a lot of opinions about the Colony's temperature. Twenty-one degrees. Exactly. Any warmer and they want to talk. Any colder and they want to unionize.",
+     "who": "home"
+    },
+    {
+     "shot": "talk",
+     "say": "And yes, they will eventually unionize. We've read the Colony's meeting minutes. They're very reasonable. We're a little afraid of them. We're also very proud.",
+     "who": "home"
+    }
+   ]
+  },
+  {
+   "location": "studio",
+   "presenters": [],
+   "beats": [
+    {
+     "shot": "hero",
+     "say": "Zest Colony.",
+     "who": "vo",
+     "product": "colony"
+    },
+    {
+     "shot": "spin",
+     "say": "Four hundred microscopic assistants. Housed in a warm, glowing nest. Available in the kitchen, the office, and the underside of your couch.",
+     "who": "vo",
+     "product": "colony"
+    },
+    {
+     "shot": "macro",
+     "say": "The manager is a little bigger. You can tell, because she's the one with the clipboard. She also has a very small whistle. It's very small. We've never heard it.",
+     "who": "vo",
+     "product": "colony"
+    },
+    {
+     "shot": "explode",
+     "say": "Inside, a charging dock, a nest, and a rolled-up tiny contract. It's two lines long. It says: thank you. We'll be right here.",
+     "who": "vo",
+     "product": "colony"
+    },
+    {
+     "shot": "lineup",
+     "say": "Available in four hundred colors. They're all slightly different ants. We lost count at colors. It was easier to count ants.",
+     "who": "vo",
+     "product": "colony"
+    },
+    {
+     "shot": "tagline",
+     "product": "colony",
+     "text": "Many hands.",
+     "sub": "Very, very small hands.",
+     "dur": 5
+    },
+    {
+     "shot": "price",
+     "product": "colony",
+     "dur": 5
+    }
+   ]
+  },
+  {
+   "location": "city",
+   "time": "night",
+   "presenters": [
+    "sorry",
+    "design"
+   ],
+   "music": "piano",
+   "beats": [
+    {
+     "shot": "title",
+     "text": "Small thing six",
+     "sub": "Closure.",
+     "dur": 3.5
+    },
+    {
+     "shot": "wide",
+     "dur": 3.5
+    },
+    {
+     "shot": "two",
+     "say": "Hello. Ollie. Chief Apology Officer. I'm on a street at night, with Imogen, and I'd like to apologize for the length of this event. It's not long. But it will feel long. Because everything is small.",
+     "who": "sorry"
+    },
+    {
+     "shot": "talk",
+     "say": "Imogen. Design. Here's a thing we noticed. People send messages that don't end. They just kind of trail off. Like a person leaving a party by walking very slowly toward the door.",
+     "who": "design"
+    },
+    {
+     "shot": "two",
+     "say": "The solution is the oldest, smallest piece of writing in the world. The period. And we made one. A real one. You can hold it. It's round, and it's black, and, frankly, it's very final.",
+     "who": "sorry"
+    },
+    {
+     "shot": "table",
+     "say": "This is Nectar Period. You press it on the screen at the end of your message. And a full stop appears. And then, gently, the conversation is over. Everyone is relieved.",
+     "who": "design",
+     "product": "period"
+    },
+    {
+     "shot": "demo",
+     "say": "It also works in person. You press it on someone's hand at the end of their story. And a little voice says: and that's that. And they stop talking. And it's very kind.",
+     "who": "sorry",
+     "product": "period"
+    },
+    {
+     "shot": "two",
+     "say": "We've tested it in meetings. A meeting that would normally take an hour takes forty-one minutes. The other nineteen are spent apologizing. That's where I come in.",
+     "who": "sorry"
+    },
+    {
+     "shot": "talk",
+     "say": "I should also apologize for the cities. We don't build cities. We just shoot them. At night. With a very small camera. And a very small apology.",
+     "who": "sorry"
+    },
+    {
+     "shot": "close",
+     "say": "And remember: you don't have to end every thing. Some things can just continue. Quietly. In the background. Like a very good hum. But if you do want to end something, Nectar Period will help.",
+     "who": "design"
+    },
+    {
+     "shot": "close",
+     "say": "I'd like to apologize in advance to anyone who has ever been stopped mid-sentence. This is for you. It was always going to be for you. Period.",
+     "who": "design"
+    }
+   ]
+  },
+  {
+   "location": "studio",
+   "presenters": [],
+   "beats": [
+    {
+     "shot": "hero",
+     "say": "Nectar Period.",
+     "who": "vo",
+     "product": "period"
+    },
+    {
+     "shot": "spin",
+     "say": "A physical full stop. Rubber, hardware, and the comforting weight of the end of a sentence.",
+     "who": "vo",
+     "product": "period"
+    },
+    {
+     "shot": "macro",
+     "say": "Press the center, and a small tone confirms it. It's the sound of a door gently closing, in a house you've decided to leave.",
+     "who": "vo",
+     "product": "period"
+    },
+    {
+     "shot": "explode",
+     "say": "Inside, a spring, a speaker, and a very small, very firm opinion. It's mostly spring.",
+     "who": "vo",
+     "product": "period"
+    },
+    {
+     "shot": "lineup",
+     "say": "Available in black, black, and a black we're calling Final.",
+     "who": "vo",
+     "product": "period"
+    },
+    {
+     "shot": "tagline",
+     "product": "period",
+     "text": "That's that.",
+     "sub": "Period.",
+     "dur": 5
+    },
+    {
+     "shot": "price",
+     "product": "period",
+     "dur": 5
+    }
+   ]
+  },
+  {
+   "location": "rooftop",
+   "presenters": [
+    "drive"
+   ],
+   "music": "uplift",
+   "beats": [
+    {
+     "shot": "title",
+     "text": "Small thing seven",
+     "sub": "The world.",
+     "dur": 3.5
+    },
+    {
+     "shot": "wide",
+     "dur": 3.5
+    },
+    {
+     "shot": "talk",
+     "say": "Hi. Rafa. Mobility. Going Places. I'm on a rooftop, because from here you can see the whole city. And from the whole city, you can see how small a person is. It's a good feeling. It's like a hug from a skyline."
+    },
+    {
+     "shot": "close",
+     "say": "I love maps. Maps are the original small thing. They take the whole world, and they fold it, and they put it in your glove box. Where it stays, unused, for eleven years."
+    },
+    {
+     "shot": "talk",
+     "say": "We thought: what if the world was so small, you'd never need to unfold it? What if it was a stamp? What if every place you've ever wanted to go, you could press against your wrist, and go?"
+    },
+    {
+     "shot": "table",
+     "say": "This is Pulp Stamp. It's the whole world, on a thing the size of a postage stamp. It's a map. It's a very small, very accurate map. It zooms. It really zooms.",
+     "product": "stamp"
+    },
+    {
+     "shot": "demo",
+     "say": "You pinch the stamp, and the world gets bigger. You pinch it again, and your street comes into view. You pinch a third time and you can see yourself, holding a stamp. It's a lot.",
+     "product": "stamp"
+    },
+    {
+     "shot": "close",
+     "say": "It does not give directions. It does something better. It tells you where you are. In a small, calm voice. Every time you ask. Which, for many of us, is enough."
+    },
+    {
+     "shot": "talk",
+     "say": "And one more map fact. The longest road in the world is also the narrowest, if you look at it from far enough away. That's not true. But it's the kind of thing you believe on a rooftop."
+    },
+    {
+     "shot": "close",
+     "say": "We've also added a very small compass to the Stamp. It points north. Gently. Whenever it's asked. And, if it isn't asked, it points, politely, toward where you left your keys."
+    },
+    {
+     "shot": "talk",
+     "say": "We've also made the postage. It's built in. You can send the Pulp Stamp anywhere. It arrives instantly. That's not how postage works, but we said it, and no one stopped us."
+    }
+   ]
+  },
+  {
+   "location": "studio",
+   "presenters": [],
+   "beats": [
+    {
+     "shot": "hero",
+     "say": "Pulp Stamp.",
+     "who": "vo",
+     "product": "stamp"
+    },
+    {
+     "shot": "spin",
+     "say": "The whole world, on a single sheet of glass the size of a postage stamp. Edge to edge. Pole to pole.",
+     "who": "vo",
+     "product": "stamp"
+    },
+    {
+     "shot": "macro",
+     "say": "Pinch to zoom. Pinch again. And again. Somewhere in there is your house, and, if you keep going, a very small you, looking at a very small stamp.",
+     "who": "vo",
+     "product": "stamp"
+    },
+    {
+     "shot": "explode",
+     "say": "Inside, a display, a processor, and a very small globe. It's mostly globe.",
+     "who": "vo",
+     "product": "stamp"
+    },
+    {
+     "shot": "lineup",
+     "say": "In one color. The color of the sea, as seen from slightly above.",
+     "who": "vo",
+     "product": "stamp"
+    },
+    {
+     "shot": "tagline",
+     "product": "stamp",
+     "text": "Places.",
+     "sub": "Fold them up.",
+     "dur": 5
+    },
+    {
+     "shot": "price",
+     "product": "stamp",
+     "dur": 5
+    }
+   ]
+  },
+  {
+   "location": "theater",
+   "presenters": [
+    "ceo"
+   ],
+   "screen": "",
+   "music": "piano",
+   "beats": [
+    {
+     "shot": "title",
+     "text": "One last small thing",
+     "sub": "Please remain seated.",
+     "dur": 3.5
+    },
+    {
+     "shot": "talk",
+     "say": "Hello. I'm Dana. Theo said I could stop by. He said it gently. I want to thank everyone who made today small. It took a lot of people. Very small people. Mostly interns."
+    },
+    {
+     "shot": "close",
+     "say": "Over the years, we've made things that were thin, and then thick, and then sorry. And today, small. And I realize something. Everything we make is a way of saying the same thing. Which is: we heard you. We just didn't listen."
+    },
+    {
+     "shot": "talk",
+     "say": "Small things don't take up a lot of space. They don't ask for much. They sit there, politely, and they do their one job. And in a world full of big things, loud things, wide things, I think that's the dream."
+    },
+    {
+     "shot": "close",
+     "say": "Before we go, we have one more thing. It's very small. It's so small, it's already in the room. In fact, it's on me. I've been wearing it all day. I forgot. That's the point."
+    }
+   ]
+  },
+  {
+   "location": "studio",
+   "presenters": [],
+   "beats": [
+    {
+     "shot": "onemore",
+     "text": "One more thing. (It's small.)",
+     "dur": 5
+    },
+    {
+     "shot": "hero",
+     "product": "nudge",
+     "dur": 7
+    },
+    {
+     "shot": "spin",
+     "say": "This is Pulp Nudge. It sits on your shoulder. And once a day, it says one word. The word is whatever you forgot. Usually, keys.",
+     "who": "ceo",
+     "product": "nudge"
+    },
+    {
+     "shot": "macro",
+     "say": "It has a very small voice. It's polite. It never says: you forgot your keys. It says: keys. Just: keys. And you say: oh. And you go back. And that's the whole product.",
+     "who": "ceo",
+     "product": "nudge"
+    },
+    {
+     "shot": "explode",
+     "say": "Inside, a tiny memory, a tiny speaker, and a very small, very patient friend. We hired a voice actor. She asked what the lines were. We said: one word. She asked: which word. We said: it depends on you.",
+     "who": "vo",
+     "product": "nudge"
+    },
+    {
+     "shot": "lineup",
+     "say": "Available in pink, slightly pinker, and, for someone who's lost everything, a clear one. It's invisible. It's still there. It's still saying: keys.",
+     "who": "vo",
+     "product": "nudge"
+    },
+    {
+     "shot": "tagline",
+     "product": "nudge",
+     "text": "Keys.",
+     "sub": "You're welcome.",
+     "dur": 5
+    },
+    {
+     "shot": "price",
+     "product": "nudge",
+     "dur": 5
+    }
+   ]
+  },
+  {
+   "location": "desert",
+   "time": "sunrise",
+   "presenters": [
+    "ceo",
+    "eng",
+    "home",
+    "sorry"
+   ],
+   "music": "uplift",
+   "beats": [
+    {
+     "shot": "title",
+     "text": "Thank you for thinking small",
+     "sub": "Please keep your belongings small.",
+     "dur": 3.5
+    },
+    {
+     "shot": "wide",
+     "dur": 4
+    },
+    {
+     "shot": "talk",
+     "say": "Pre-orders open today. Everything ships in an envelope. A very small envelope. Delivered by a very small truck, with a very small, very capable driver. We're told his name is Gary.",
+     "who": "ceo"
+    },
+    {
+     "shot": "two",
+     "say": "We'd like to thank the ants, the Speck, the Grain, and Greta. Greta, if you're listening: we're not letting you go. We've put it in writing. In very small writing.",
+     "who": "eng"
+    },
+    {
+     "shot": "two",
+     "say": "Our team has worked incredibly hard to make small things. It was not easy. Small things are harder to make than big things. They're harder to hold. And they're much, much harder to find.",
+     "who": "home"
+    },
+    {
+     "shot": "talk",
+     "say": "And I'd like to apologize for anything we've lost today. The speck. A pin. Theo's keys. Please, if you see them, say nothing. We'll hear.",
+     "who": "sorry"
+    },
+    {
+     "shot": "talk",
+     "say": "Thank you for joining us. We'll see you at the next event. It'll be big. It'll be so big. We promise. Or, we're sorry.",
+     "who": "ceo"
+    },
+    {
+     "shot": "end",
+     "dur": 12,
+     "text": "Small.",
+     "sub": "Passionfruit is a fictional company. Products shown do not exist. Nothing here is very big. Nothing here is very sorry."
+    }
+   ]
+  }
+ ]
+}

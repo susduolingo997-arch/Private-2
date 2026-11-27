@@ -1,0 +1,142 @@
+name: Render PASSIONFRUIT event
+
+# Renders PASSIONFRUIT Event 6 ("Think Small") with the PASSIONFRUIT engine (canon/passionfruit-engine, a copy of the
+# engine from the passionfruit repo): Kokoro narration + audio, 20 parallel render parts, concat, then a 480p copy goes
+# into docs/media/pf-e6.mp4 and the Pages site is rebuilt.
+# Starts when .github/triggers/pf6 changes on the branch (new workflows cannot be dispatched by hand until they are on
+# the default branch), or manually.
+on:
+  push:
+    branches: ["ccr-a2104a91-0ijgt3"]
+    paths: [".github/triggers/pf6"]
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+env:
+  E: canon/passionfruit-engine
+  D: canon/passionfruit-engine/passionfruit/event6
+
+jobs:
+  audio:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: ${{ github.ref_name }}
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - uses: actions/cache@v4
+        with:
+          path: /tmp/v
+          key: kokoro-v1
+      - run: pip install numpy pillow soundfile kokoro-onnx
+      - name: Kokoro model
+        run: |
+          mkdir -p /tmp/v && cd /tmp/v && [ -s kokoro.onnx ] && exit 0
+          B=https://github.com/thewh1teagle/kokoro-onnx/releases/download/model-files-v1.0
+          curl -sSL -o kokoro.onnx $B/kokoro-v1.0.int8.onnx && curl -sSL -o voices.bin $B/voices-v1.0.bin
+      - name: Narration and audio
+        run: cd $E/passionfruit && python3 narration.py event6 /tmp/v && python3 audio.py event6
+      - uses: actions/upload-artifact@v4
+        with:
+          name: audio-pf6
+          path: |
+            ${{ env.D }}/build/*.wav
+            ${{ env.D }}/build/*.json
+
+  render:
+    needs: audio
+    runs-on: ubuntu-latest
+    timeout-minutes: 120
+    strategy:
+      fail-fast: false
+      matrix:
+        part: [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19]
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: ${{ github.ref_name }}
+      - uses: actions/download-artifact@v4
+        with:
+          name: audio-pf6
+          path: ${{ env.D }}/build/
+      - uses: actions/cache@v4
+        with:
+          path: ~/.cache/ms-playwright
+          key: pw-chromium-v1
+      - uses: actions/cache@v4
+        with:
+          path: ~/ffmpeg-bin
+          key: ffmpeg-static-v1
+      - run: |
+          if [ ! -x ~/ffmpeg-bin/ffmpeg ]; then mkdir -p ~/ffmpeg-bin && curl -sSL https://johnvansickle.com/ffmpeg/releases/ffmpeg-release-amd64-static.tar.xz | tar xJ --strip-components=1 -C ~/ffmpeg-bin; fi
+          echo "$HOME/ffmpeg-bin" >> $GITHUB_PATH
+      - name: three + chromium
+        run: cd $E && npm i three playwright-core && npx playwright install --with-deps chromium
+      - name: Render this part
+        run: |
+          export CHROME_PATH=$(ls -d ~/.cache/ms-playwright/chromium-*/chrome-linux*/chrome | head -1)
+          P=${{ matrix.part }}; cd $D
+          read a b < <(jq -r --argjson p $P '.duration as $d | "\($d*$p/20) \($d*($p+1)/20)"' build/timeline.json)
+          PAGE="passionfruit/index.html?ev=6" node ../../letsplay/render.mjs $a $b part$P.mp4 24
+      - uses: actions/upload-artifact@v4
+        with:
+          name: part-pf6-${{ matrix.part }}
+          path: ${{ env.D }}/part${{ matrix.part }}.mp4
+
+  publish:
+    needs: render
+    runs-on: ubuntu-latest
+    concurrency:
+      group: site-media
+      cancel-in-progress: false
+    env:
+      BRANCH: ${{ github.ref_name }}
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: ${{ github.ref_name }}
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - run: pip install pyyaml numpy
+      - uses: actions/download-artifact@v4
+        with:
+          pattern: part-pf6-*
+          path: parts
+          merge-multiple: true
+      - uses: actions/download-artifact@v4
+        with:
+          name: audio-pf6
+          path: audio
+      - uses: actions/cache@v4
+        with:
+          path: ~/ffmpeg-bin
+          key: ffmpeg-static-v1
+      - run: |
+          if [ ! -x ~/ffmpeg-bin/ffmpeg ]; then mkdir -p ~/ffmpeg-bin && curl -sSL https://johnvansickle.com/ffmpeg/releases/ffmpeg-release-amd64-static.tar.xz | tar xJ --strip-components=1 -C ~/ffmpeg-bin; fi
+          echo "$HOME/ffmpeg-bin" >> $GITHUB_PATH
+      - name: Concat and encode 480p
+        run: |
+          for i in $(seq 0 19); do echo "file 'parts/part$i.mp4'"; done > list.txt
+          ffmpeg -y -loglevel error -f concat -safe 0 -i list.txt -i audio/audio.wav -map 0:v -map 1:a -c:v copy -c:a aac -b:a 192k -shortest full.mp4
+          mkdir -p docs/media
+          ffmpeg -y -loglevel error -i full.mp4 -vf "scale=-2:480,format=yuv420p" -c:v libx264 -profile:v main -level 4.0 -preset slow -crf 30 \
+                 -c:a aac -b:a 96k -ac 2 -movflags +faststart docs/media/pf-e6.mp4
+          ls -la docs/media
+      - name: Rebuild the site and push
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          for i in 1 2 3 4 5; do
+            git fetch origin "$BRANCH" && git reset --hard "origin/$BRANCH"
+            python -m engine universe build --out docs --pages
+            git add docs
+            git commit -m "Site: host PASSIONFRUIT Event 6 at 480p" || exit 0
+            git push origin "HEAD:$BRANCH" && exit 0
+            sleep $((i * 8))
+          done
+          exit 1
