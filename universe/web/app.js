@@ -68,6 +68,7 @@
 
   function player(v) {
     const c = chan[v.channel];
+    if (v.src && /^https?:/.test(v.src)) return `<div class="player"><video controls preload="metadata" poster="${esc(v.thumb_img || "")}" src="${esc(v.src)}"></video></div>`;
     if (v.link) return `<div class="player ext" style="--c:${esc(c.color)}"><div class="fake">
       <h2>${esc(v.title.split(" - ").pop())}</h2><p>${esc(v.description.split("\n")[0])}</p>
       <a class="go" href="${esc(v.link)}" target="_blank" rel="noopener">&#9654; Watch the full ${clock(v.duration)} film</a>
@@ -108,7 +109,7 @@
       <div class="desc"><b>${stats(v)}${v.status === "live" ? "" : " &middot; " + esc(v.status)}${ph(v)}</b>${esc(v.description)}
         ${v.cast.length ? `<div class="cast">${v.cast.map((p) => person[p]).filter(Boolean).map((p) =>
           `<a href="#/people">${dot(p)} ${esc(p.name)}</a>`).join("")}</div>` : ""}
-        ${related.length ? `<div class="univ"><b>In this universe</b>${related.map((m) =>
+        ${v.link && v.src ? `<div class="univ"><a href="${esc(v.link)}" target="_blank" rel="noopener">&#8599; Release page (download)</a></div>` : ""}${related.length ? `<div class="univ"><b>In this universe</b>${related.map((m) =>
           `<a href="#/watch/${esc(m.id)}">&#8627; ${esc(m.channel_name)}: ${esc(m.title.split("|")[0])}</a>`).join("")}</div>` : ""}
       </div>
       <div class="comments"><h3>${comments.length} Comments</h3>

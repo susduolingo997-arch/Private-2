@@ -149,6 +149,8 @@ def enrich(u, media_dir, art_dir=ART_DIR):
             d["target"] = ep.get("target_seconds")
         if v.get("link"):  # published elsewhere (e.g. a GitHub release): the site links out
             d["status"], d["link"] = "external", v["link"]
+            if v.get("play"):  # a direct mp4 URL (release asset): the watch page plays it inline
+                d["status"], d["src"] = "live", v["play"]
         elif v.get("embed"):  # a self-contained player page: plays as-is
             d["status"], d["embed_src"] = "live", "embeds/" + os.path.basename(v["embed"])
         elif _media_file(v, media_dir):
@@ -162,7 +164,7 @@ def enrich(u, media_dir, art_dir=ART_DIR):
     return out
 
 
-def build_site(out_dir=SITE_DIR, universe_path=UNIVERSE_FILE):
+def build_site(out_dir=SITE_DIR, universe_path=UNIVERSE_FILE, pages=False):
     u = load(universe_path)
     os.makedirs(os.path.join(out_dir, "media"), exist_ok=True)
     for name in os.listdir(WEB_DIR):
@@ -174,6 +176,13 @@ def build_site(out_dir=SITE_DIR, universe_path=UNIVERSE_FILE):
     # data.js (not fetch) so the site works straight from file:// with no server.
     with open(os.path.join(out_dir, "data.js"), "w", encoding="utf-8") as f:
         f.write("window.UNIVERSE = " + json.dumps(data, indent=1) + ";\n")
+    if pages:  # GitHub Pages: a complete HTML document (standards mode) instead of the artifact fragment
+        ip = os.path.join(out_dir, "index.html")
+        body = open(ip, encoding="utf-8").read()
+        with open(ip, "w", encoding="utf-8") as f:
+            f.write('<!doctype html>\n<html lang="en"><head><meta charset="utf-8">'
+                    '<meta name="viewport" content="width=device-width,initial-scale=1"></head><body>\n' + body + "\n</body></html>\n")
+        open(os.path.join(out_dir, ".nojekyll"), "w").close()
     return data
 
 

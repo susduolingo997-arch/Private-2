@@ -81,7 +81,15 @@ universe/embeds/           self-contained player pages (Channel 9 E01/E02)
   an embed with Playwright) and styles it per show; every character gets an avatar from the same 3D model, and every
   channel gets a logo and banner. It only re-renders what is missing (`--force`, `--only id ...`).
   Set `THREE_JS=/path/to/three.min.js` if the embeds' CDN is unreachable.
+* A video with `play: <mp4 url>` plays inline (the Shardwild and PASSIONFRUIT release files); `link:` is the release page.
 * To add a show: add a channel, its characters, and videos in `universe.yaml`.
+
+### Publish on GitHub Pages
+The built site is committed in `docs/`. In the repo: **Settings -> Pages -> Build and deployment -> Deploy from a branch**,
+pick this branch and the **/docs** folder. The site then lives at `https://<owner>.github.io/<repo>/`.
+Rebuild after changing `universe/`: `python -m engine universe build --out docs --pages`.
+Engine-rendered episodes become playable on the site once their render has published a release (see `Render episode`);
+point the video's `play:` at the release asset.
 
 ## Voices
 

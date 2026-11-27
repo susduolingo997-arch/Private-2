@@ -138,7 +138,7 @@ def cmd_universe(a):
             made = thumbs.build_art(universe.load(), only=only, force=a.force)
             print(f"art: {len(made)} files written under universe/art/")
         elif a.action == "build":
-            d = universe.build_site(a.out)
+            d = universe.build_site(a.out, pages=a.pages)
             live = sum(v["status"] == "live" for v in d["videos"])
             print(f"site -> {os.path.join(a.out, 'index.html')}  ({len(d['videos'])} videos, {live} playable)")
         else:
@@ -193,6 +193,7 @@ def main(argv=None):
     p.add_argument("action", choices=["check", "art", "build", "publish"])
     p.add_argument("--only", nargs="*", help="art: only these video/character/channel ids")
     p.add_argument("--force", action="store_true", help="art: re-render even if the file exists")
+    p.add_argument("--pages", action="store_true", help="build: emit a complete HTML page for GitHub Pages (use with --out docs)")
     p.add_argument("--out", default=universe.SITE_DIR, help="site directory (default: site/)")
     p.add_argument("--build", default="build", help="where rendered mp4s are (publish)")
     p.set_defaults(fn=cmd_universe)

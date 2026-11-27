@@ -309,6 +309,7 @@ videos:
     channel: passionfruit
     title: "PASSIONFRUIT Event 1 - Juicier Than Ever"
     link: https://github.com/susduolingo997-arch/private/releases/tag/pf-1.0
+    play: https://github.com/susduolingo997-arch/private/releases/download/pf-1.0/passionfruit_event1.mp4
     duration: 1206
     published: 2026-10-12
     views: 6900000
@@ -321,6 +322,7 @@ videos:
     channel: passionfruit
     title: "PASSIONFRUIT Event 2 - Peel the Future"
     link: https://github.com/susduolingo997-arch/private/releases/tag/pf-2.0
+    play: https://github.com/susduolingo997-arch/private/releases/download/pf-2.0/passionfruit_event2.mp4
     duration: 1368
     published: 2026-10-11
     views: 7400000
@@ -333,6 +335,7 @@ videos:
     channel: passionfruit
     title: "PASSIONFRUIT Event 3 - Ripe for Change"
     link: https://github.com/susduolingo997-arch/private/releases/tag/pf-3.0
+    play: https://github.com/susduolingo997-arch/private/releases/download/pf-3.0/passionfruit_event3.mp4
     duration: 1362
     published: 2026-10-11
     views: 7900000
@@ -345,6 +348,7 @@ videos:
     channel: passionfruit
     title: "PASSIONFRUIT Event 4 - Go Further"
     link: https://github.com/susduolingo997-arch/private/releases/tag/pf-4.0
+    play: https://github.com/susduolingo997-arch/private/releases/download/pf-4.0/passionfruit_event4.mp4
     duration: 1302
     published: 2026-10-11
     views: 6900000
@@ -357,6 +361,7 @@ videos:
     channel: passionfruit
     title: "PASSIONFRUIT Event 5 - We're Sorry"
     link: https://github.com/susduolingo997-arch/private/releases/tag/pf-5.0
+    play: https://github.com/susduolingo997-arch/private/releases/download/pf-5.0/passionfruit_event5.mp4
     duration: 1377
     published: 2026-11-25
     views: 12600000
@@ -385,6 +390,7 @@ videos:
     channel: pixelpanic
     title: "Shardwild Ep 1: The House | Completely Normal Survival Playthrough"
     link: https://github.com/susduolingo997-arch/private/releases/tag/v1.0
+    play: https://github.com/susduolingo997-arch/private/releases/download/v1.0/shardwild_letsplay_web.mp4
     duration: 292
     published: 2026-10-04
     views: 4105000
@@ -397,6 +403,7 @@ videos:
     channel: pixelpanic
     title: "Shardwild Ep 2: The Fortress | Completely Normal Survival Playthrough"
     link: https://github.com/susduolingo997-arch/private/releases/tag/v2.0
+    play: https://github.com/susduolingo997-arch/private/releases/download/v2.0/shardwild_ep2_web.mp4
     duration: 292
     published: 2026-10-04
     views: 4010000
@@ -409,6 +416,7 @@ videos:
     channel: pixelpanic
     title: "Shardwild Ep 3: The Boat | Completely Normal Survival Playthrough"
     link: https://github.com/susduolingo997-arch/private/releases/tag/v3.0
+    play: https://github.com/susduolingo997-arch/private/releases/download/v3.0/shardwild_ep3_web.mp4
     duration: 292
     published: 2026-10-04
     views: 3915000
@@ -421,6 +429,7 @@ videos:
     channel: pixelpanic
     title: "Shardwild Ep 4: The Sky | Completely Normal Survival Playthrough"
     link: https://github.com/susduolingo997-arch/private/releases/tag/v4.0
+    play: https://github.com/susduolingo997-arch/private/releases/download/v4.0/shardwild_ep4_web.mp4
     duration: 292
     published: 2026-10-04
     views: 3820000
@@ -433,6 +442,7 @@ videos:
     channel: pixelpanic
     title: "Shardwild Ep 5: Underground | Completely Normal Survival Playthrough"
     link: https://github.com/susduolingo997-arch/private/releases/tag/v5.0
+    play: https://github.com/susduolingo997-arch/private/releases/download/v5.0/shardwild_ep5_web.mp4
     duration: 292
     published: 2026-10-05
     views: 3725000
@@ -445,6 +455,7 @@ videos:
     channel: pixelpanic
     title: "Shardwild Ep 6: The Volcano | Completely Normal Survival Playthrough"
     link: https://github.com/susduolingo997-arch/private/releases/tag/v6.0
+    play: https://github.com/susduolingo997-arch/private/releases/download/v6.0/shardwild_ep6_web.mp4
     duration: 292
     published: 2026-10-05
     views: 3630000
@@ -457,6 +468,7 @@ videos:
     channel: pixelpanic
     title: "Shardwild Ep 7: The Iceberg | Completely Normal Survival Playthrough"
     link: https://github.com/susduolingo997-arch/private/releases/tag/v7.0
+    play: https://github.com/susduolingo997-arch/private/releases/download/v7.0/shardwild_ep7_web.mp4
     duration: 292
     published: 2026-10-05
     views: 3535000
@@ -469,6 +481,7 @@ videos:
     channel: pixelpanic
     title: "Shardwild Ep 8: Bloop Quits?! | Completely Normal Survival Playthrough"
     link: https://github.com/susduolingo997-arch/private/releases/tag/v8.0
+    play: https://github.com/susduolingo997-arch/private/releases/download/v8.0/shardwild_ep8_web.mp4
     duration: 292
     published: 2026-10-06
     views: 3440000
@@ -481,6 +494,7 @@ videos:
     channel: pixelpanic
     title: "Shardwild Ep 9: The Rival | Completely Normal Survival Playthrough"
     link: https://github.com/susduolingo997-arch/private/releases/tag/v9.0
+    play: https://github.com/susduolingo997-arch/private/releases/download/v9.0/shardwild_ep9_web.mp4
     duration: 292
     published: 2026-10-06
     views: 3345000
@@ -493,6 +507,7 @@ videos:
     channel: pixelpanic
     title: "Shardwild Ep 10: Space?! | Completely Normal Survival Playthrough"
     link: https://github.com/susduolingo997-arch/private/releases/tag/v10.0
+    play: https://github.com/susduolingo997-arch/private/releases/download/v10.0/shardwild_ep10_web.mp4
     duration: 292
     published: 2026-10-06
     views: 3250000
@@ -505,6 +520,7 @@ videos:
     channel: pixelpanic
     title: "Shardwild Ep 11: The Heist | Completely Normal Survival Playthrough"
     link: https://github.com/susduolingo997-arch/private/releases/tag/v11.0
+    play: https://github.com/susduolingo997-arch/private/releases/download/v11.0/shardwild_ep11_web.mp4
     duration: 292
     published: 2026-10-06
     views: 3155000
@@ -517,6 +533,7 @@ videos:
     channel: pixelpanic
     title: "Shardwild Ep 12: The Birthday | Completely Normal Survival Playthrough"
     link: https://github.com/susduolingo997-arch/private/releases/tag/v12.0
+    play: https://github.com/susduolingo997-arch/private/releases/download/v12.0/shardwild_ep12_web.mp4
     duration: 292
     published: 2026-10-07
     views: 3060000
@@ -529,6 +546,7 @@ videos:
     channel: pixelpanic
     title: "Shardwild Ep 13: The Grand Race | Completely Normal Survival Playthrough"
     link: https://github.com/susduolingo997-arch/private/releases/tag/v13.0
+    play: https://github.com/susduolingo997-arch/private/releases/download/v13.0/shardwild_ep13_web.mp4
     duration: 292
     published: 2026-10-07
     views: 2965000
@@ -541,6 +559,7 @@ videos:
     channel: pixelpanic
     title: "Shardwild Ep 14: The Haunted Mine | Completely Normal Survival Playthrough"
     link: https://github.com/susduolingo997-arch/private/releases/tag/v14.0
+    play: https://github.com/susduolingo997-arch/private/releases/download/v14.0/shardwild_ep14_web.mp4
     duration: 292
     published: 2026-10-07
     views: 2870000
@@ -553,6 +572,7 @@ videos:
     channel: pixelpanic
     title: "Shardwild Ep 15: The Talent Show | Completely Normal Survival Playthrough"
     link: https://github.com/susduolingo997-arch/private/releases/tag/v15.0
+    play: https://github.com/susduolingo997-arch/private/releases/download/v15.0/shardwild_ep15_web.mp4
     duration: 292
     published: 2026-10-08
     views: 2775000
@@ -565,6 +585,7 @@ videos:
     channel: pixelpanic
     title: "Shardwild Ep 16: It Worked?! | Completely Normal Survival Playthrough"
     link: https://github.com/susduolingo997-arch/private/releases/tag/v16.0
+    play: https://github.com/susduolingo997-arch/private/releases/download/v16.0/shardwild_ep16_web.mp4
     duration: 292
     published: 2026-10-08
     views: 2680000
@@ -577,6 +598,7 @@ videos:
     channel: pixelpanic
     title: "Shardwild Ep 17: The Time Machine | Completely Normal Survival Playthrough"
     link: https://github.com/susduolingo997-arch/private/releases/tag/v17.0
+    play: https://github.com/susduolingo997-arch/private/releases/download/v17.0/shardwild_ep17_web.mp4
     duration: 292
     published: 2026-10-08
     views: 2585000
@@ -589,6 +611,7 @@ videos:
     channel: pixelpanic
     title: "Shardwild Ep 18: The Shrink Ray | Completely Normal Survival Playthrough"
     link: https://github.com/susduolingo997-arch/private/releases/tag/v18.0
+    play: https://github.com/susduolingo997-arch/private/releases/download/v18.0/shardwild_ep18_web.mp4
     duration: 292
     published: 2026-10-08
     views: 2490000
@@ -601,6 +624,7 @@ videos:
     channel: pixelpanic
     title: "Shardwild Ep 19: The Treasure Map | Completely Normal Survival Playthrough"
     link: https://github.com/susduolingo997-arch/private/releases/tag/v19.0
+    play: https://github.com/susduolingo997-arch/private/releases/download/v19.0/shardwild_ep19_web.mp4
     duration: 292
     published: 2026-10-09
     views: 2395000
@@ -613,6 +637,7 @@ videos:
     channel: pixelpanic
     title: "Shardwild Ep 20: The Time Machine (Again) | Completely Normal Survival Playthrough"
     link: https://github.com/susduolingo997-arch/private/releases/tag/v20.0
+    play: https://github.com/susduolingo997-arch/private/releases/download/v20.0/shardwild_ep20_web.mp4
     duration: 292
     published: 2026-10-09
     views: 2300000
@@ -625,6 +650,7 @@ videos:
     channel: pixelpanic
     title: "Shardwild Ep 21: Three of Me | Completely Normal Survival Playthrough"
     link: https://github.com/susduolingo997-arch/private/releases/tag/v21.0
+    play: https://github.com/susduolingo997-arch/private/releases/download/v21.0/shardwild_ep21_web.mp4
     duration: 292
     published: 2026-10-09
     views: 2205000
@@ -637,6 +663,7 @@ videos:
     channel: pixelpanic
     title: "Shardwild Ep 22: The Ghost Train | Completely Normal Survival Playthrough"
     link: https://github.com/susduolingo997-arch/private/releases/tag/v22.0
+    play: https://github.com/susduolingo997-arch/private/releases/download/v22.0/shardwild_ep22_web.mp4
     duration: 292
     published: 2026-10-10
     views: 2110000
@@ -649,6 +676,7 @@ videos:
     channel: pixelpanic
     title: "Shardwild Ep 23: The Bake-Off | Completely Normal Survival Playthrough"
     link: https://github.com/susduolingo997-arch/private/releases/tag/v23.0
+    play: https://github.com/susduolingo997-arch/private/releases/download/v23.0/shardwild_ep23_web.mp4
     duration: 292
     published: 2026-10-10
     views: 2015000
@@ -661,6 +689,7 @@ videos:
     channel: pixelpanic
     title: "Shardwild Ep 24: The Lighthouse | Completely Normal Survival Playthrough"
     link: https://github.com/susduolingo997-arch/private/releases/tag/v24.0
+    play: https://github.com/susduolingo997-arch/private/releases/download/v24.0/shardwild_ep24_web.mp4
     duration: 292
     published: 2026-10-10
     views: 1920000
@@ -673,6 +702,7 @@ videos:
     channel: pixelpanic
     title: "Shardwild Ep 25: The Snow Globe | Completely Normal Survival Playthrough"
     link: https://github.com/susduolingo997-arch/private/releases/tag/v25.0
+    play: https://github.com/susduolingo997-arch/private/releases/download/v25.0/shardwild_ep25_web.mp4
     duration: 292
     published: 2026-10-10
     views: 1825000
@@ -685,6 +715,7 @@ videos:
     channel: pixelpanic
     title: "Shardwild Ep 26: The Museum | Completely Normal Survival Playthrough"
     link: https://github.com/susduolingo997-arch/private/releases/tag/v26.0
+    play: https://github.com/susduolingo997-arch/private/releases/download/v26.0/shardwild_ep26_web.mp4
     duration: 292
     published: 2026-10-11
     views: 1730000
@@ -697,6 +728,7 @@ videos:
     channel: pixelpanic
     title: "Shardwild Ep 27: The Road Trip | Completely Normal Survival Playthrough"
     link: https://github.com/susduolingo997-arch/private/releases/tag/v27.0
+    play: https://github.com/susduolingo997-arch/private/releases/download/v27.0/shardwild_ep27_web.mp4
     duration: 292
     published: 2026-10-11
     views: 1635000
@@ -709,6 +741,7 @@ videos:
     channel: pixelpanic
     title: "Shardwild Ep 28: The Dragon Egg | Completely Normal Survival Playthrough"
     link: https://github.com/susduolingo997-arch/private/releases/tag/v28.0
+    play: https://github.com/susduolingo997-arch/private/releases/download/v28.0/shardwild_ep28_web.mp4
     duration: 292
     published: 2026-10-11
     views: 1540000
@@ -721,6 +754,7 @@ videos:
     channel: pixelpanic
     title: "Shardwild Ep 29: The Carnival | Completely Normal Survival Playthrough"
     link: https://github.com/susduolingo997-arch/private/releases/tag/v29.0
+    play: https://github.com/susduolingo997-arch/private/releases/download/v29.0/shardwild_ep29_web.mp4
     duration: 292
     published: 2026-10-12
     views: 1445000
@@ -733,6 +767,7 @@ videos:
     channel: pixelpanic
     title: "Shardwild Ep 30: The Submarine | Completely Normal Survival Playthrough"
     link: https://github.com/susduolingo997-arch/private/releases/tag/v30.0
+    play: https://github.com/susduolingo997-arch/private/releases/download/v30.0/shardwild_ep30_web.mp4
     duration: 292
     published: 2026-10-12
     views: 1350000
@@ -745,6 +780,7 @@ videos:
     channel: pixelpanic
     title: "Shardwild Ep 31: The Mountain | Completely Normal Survival Playthrough"
     link: https://github.com/susduolingo997-arch/private/releases/tag/v31.0
+    play: https://github.com/susduolingo997-arch/private/releases/download/v31.0/shardwild_ep31_web.mp4
     duration: 292
     published: 2026-10-12
     views: 1255000
@@ -757,6 +793,7 @@ videos:
     channel: pixelpanic
     title: "Shardwild Ep 32: The Pizza Run | Completely Normal Survival Playthrough"
     link: https://github.com/susduolingo997-arch/private/releases/tag/v32.0
+    play: https://github.com/susduolingo997-arch/private/releases/download/v32.0/shardwild_ep32_web.mp4
     duration: 292
     published: 2026-10-13
     views: 1160000
