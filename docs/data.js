@@ -1298,7 +1298,8 @@ window.UNIVERSE = {
    "comments": [],
    "tags": [],
    "thumb_img": "art/thumbs/pf-e6.jpg",
-   "status": "scripted",
+   "status": "live",
+   "src": "media/pf-e6.mp4",
    "channel_name": "PASSIONFRUIT"
   },
   {
