@@ -114,8 +114,18 @@ def load(path=UNIVERSE_FILE):
 
 
 def _media_file(v, media_dir):
-    p = os.path.join(media_dir, v["id"] + ".mp4")
-    return p if os.path.exists(p) else None
+    """docs/media/<video id>.mp4, or <episode id>.mp4 (what the render workflow writes)."""
+    names = [v["id"]]
+    if v.get("episode"):
+        try:
+            names.append(schema.load(os.path.join(ROOT, v["episode"]))["id"])
+        except Exception:
+            pass
+    for n in names:
+        p = os.path.join(media_dir, n + ".mp4")
+        if os.path.exists(p):
+            return p
+    return None
 
 
 def _art(kind, i, art_dir, ext):
@@ -154,7 +164,7 @@ def enrich(u, media_dir, art_dir=ART_DIR):
         elif v.get("embed"):  # a self-contained player page: plays as-is
             d["status"], d["embed_src"] = "live", "embeds/" + os.path.basename(v["embed"])
         elif _media_file(v, media_dir):
-            d["status"], d["src"] = "live", f"media/{v['id']}.mp4"
+            d["status"], d["src"] = "live", "media/" + os.path.basename(_media_file(v, media_dir))
         elif v.get("episode") or v.get("script"):
             d["status"] = "scripted"
         else:

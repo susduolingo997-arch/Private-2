@@ -1,0 +1,71 @@
+name: Site media
+
+# Makes a 480p copy of a rendered episode, stores it in docs/media/ and rebuilds the Pages site (docs/) so the
+# episode plays on the site itself (GitHub serves release files as downloads, which many browsers will not play).
+#   Run by "Render episode" after a published render, or manually with the render run's id.
+on:
+  workflow_dispatch:
+    inputs:
+      run_id:
+        description: Id of the "Render episode" run that holds the episode-<id> artifact
+        required: true
+      episode_id:
+        description: Episode id (e.g. s01e01, n9s01e03)
+        required: true
+  workflow_call:
+    inputs:
+      run_id:
+        type: string
+        required: true
+      episode_id:
+        type: string
+        required: true
+
+permissions:
+  contents: write
+  actions: read
+
+concurrency:
+  group: site-media
+  cancel-in-progress: false
+
+jobs:
+  publish:
+    runs-on: ubuntu-24.04
+    env:
+      ID: ${{ inputs.episode_id }}
+      BRANCH: ${{ github.ref_name }}
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: ${{ github.ref_name }}
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - run: sudo apt-get update && sudo apt-get install -y ffmpeg
+      - run: pip install pyyaml numpy
+      - uses: actions/download-artifact@v4
+        with:
+          name: episode-${{ inputs.episode_id }}
+          path: in
+          run-id: ${{ inputs.run_id }}
+          github-token: ${{ secrets.GITHUB_TOKEN }}
+      - name: Encode 480p
+        run: |
+          mkdir -p docs/media
+          ffmpeg -y -v error -i "in/${ID}.mp4" -vf scale=-2:480 -c:v libx264 -preset slow -crf 30 \
+                 -c:a aac -b:a 96k -movflags +faststart "docs/media/${ID}.mp4"
+          ls -la docs/media
+      - name: Rebuild the site and push
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          for i in 1 2 3 4 5; do
+            git fetch origin "$BRANCH" && git reset --hard "origin/$BRANCH"   # untracked docs/media/*.mp4 survives
+            python -m engine universe build --out docs --pages
+            git add docs
+            git commit -m "Site: host ${ID} at 480p" || exit 0
+            git push origin "HEAD:$BRANCH" && exit 0
+            sleep $((i * 6))
+          done
+          exit 1

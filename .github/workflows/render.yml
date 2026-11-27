@@ -163,3 +163,15 @@ jobs:
           else
             gh release create "$TAG" "$file" --title "$EP" --notes "$notes" $TARGET
           fi
+
+  site-media:
+    # Manual runs on a branch with "publish": also host a 480p copy on the Pages site (docs/media).
+    if: github.event_name == 'workflow_dispatch' && inputs.publish && !inputs.preview
+    needs: [plan, assemble]
+    permissions:
+      contents: write
+      actions: read
+    uses: ./.github/workflows/site-media.yml
+    with:
+      run_id: ${{ github.run_id }}
+      episode_id: ${{ needs.plan.outputs.episode_id }}
