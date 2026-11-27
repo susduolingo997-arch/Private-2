@@ -1,14 +1,16 @@
 name: Site media (release videos)
 
-# Downloads each video that universe.yaml plays from a release (Shardwild, PASSIONFRUIT), shrinks it to a small
-# 360p copy and stores it in docs/media/, so it plays from the Pages site itself. Release downloads are served as
-# generic files that many browsers will not play inline.
+# Stores small copies of videos in docs/media/ so they play from the Pages site itself (release downloads are
+# served as generic files that many browsers will not play inline):
+#   - videos universe.yaml plays from a release (Shardwild, PASSIONFRUIT), shrunk to 360p
+#   - finished engine episodes (release ep-<episode id> in this repo), shrunk to 480p
+# Starts when .github/triggers/media changes on the branch (new workflows cannot be dispatched by hand until they are
+# on the default branch), or manually.
 on:
+  push:
+    branches: ["ccr-a2104a91-0ijgt3"]
+    paths: [".github/triggers/media"]
   workflow_dispatch:
-    inputs:
-      height:
-        description: Output height in pixels
-        default: "360"
 
 permissions:
   contents: write
@@ -33,12 +35,24 @@ jobs:
       - id: m
         run: |
           python - <<'PY'
-          import json, os, yaml
+          import json, os, subprocess, yaml
           u = yaml.safe_load(open("universe/universe.yaml"))
-          ids = [v["id"] for v in u["videos"] if v.get("play") and not os.path.exists(f"docs/media/{v['id']}.mp4")]
-          print(len(ids), "videos to encode")
-          open(os.environ["GITHUB_OUTPUT"], "a").write("ids=" + json.dumps(ids) + "\n")
+          items = []
+          for v in u["videos"]:
+              if v.get("play") and not os.path.exists(f"docs/media/{v['id']}.mp4"):
+                  items.append({"name": v["id"], "src": v["play"], "h": "360"})
+              elif v.get("episode"):
+                  eid = yaml.safe_load(open(v["episode"]))["id"]
+                  tag = "ep-" + eid
+                  have = subprocess.run(["gh", "release", "view", tag], capture_output=True).returncode == 0
+                  if have and not os.path.exists(f"docs/media/{eid}.mp4"):
+                      items.append({"name": eid, "src": "gh:" + tag + ":" + eid + ".mp4", "h": "480"})
+          print(len(items), "videos to encode:", [i["name"] for i in items])
+          open(os.environ["GITHUB_OUTPUT"], "a").write("ids=" + json.dumps(items) + "\n")
           PY
+        env:
+          GH_TOKEN: ${{ github.token }}
+          GH_REPO: ${{ github.repository }}
 
   encode:
     needs: matrix
@@ -48,7 +62,7 @@ jobs:
       fail-fast: false
       max-parallel: 10
       matrix:
-        id: ${{ fromJSON(needs.matrix.outputs.ids) }}
+        item: ${{ fromJSON(needs.matrix.outputs.ids) }}
     steps:
       - uses: actions/checkout@v4
         with:
@@ -56,23 +70,27 @@ jobs:
       - uses: actions/setup-python@v5
         with:
           python-version: "3.12"
-      - run: pip install pyyaml
       - name: Download, shrink
         env:
-          ID: ${{ matrix.id }}
-          H: ${{ inputs.height }}
+          ID: ${{ matrix.item.name }}
+          SRC: ${{ matrix.item.src }}
+          H: ${{ matrix.item.h }}
+          GH_TOKEN: ${{ github.token }}
+          GH_REPO: ${{ github.repository }}
         run: |
-          URL=$(python -c "import yaml,sys; u=yaml.safe_load(open('universe/universe.yaml')); print(next(v['play'] for v in u['videos'] if v['id']==sys.argv[1]))" "$ID")
-          echo "$URL"
-          curl -sSL --retry 3 --fail -o in.mp4 "$URL"
+          case "$SRC" in
+            gh:*) TAG=$(echo "$SRC" | cut -d: -f2); FILE=$(echo "$SRC" | cut -d: -f3)
+                  gh release download "$TAG" -p "$FILE" -O in.mp4 ;;
+            *)    curl -sSL --retry 3 --fail -o in.mp4 "$SRC" ;;
+          esac
           mkdir -p out
           ffmpeg -y -v error -i in.mp4 -vf "scale=-2:${H}" -c:v libx264 -preset veryfast -crf 32 \
                  -c:a aac -b:a 64k -movflags +faststart "out/${ID}.mp4"
           ls -la out
       - uses: actions/upload-artifact@v4
         with:
-          name: media-${{ matrix.id }}
-          path: out/${{ matrix.id }}.mp4
+          name: media-${{ matrix.item.name }}
+          path: out/${{ matrix.item.name }}.mp4
           retention-days: 3
 
   publish:
