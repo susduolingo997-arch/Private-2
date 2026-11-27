@@ -132,6 +132,11 @@ def cmd_universe(a):
                   f"{len(u['videos'])} videos")
             if ph:
                 print(f"  {len(ph)} placeholder entries to rewrite: {', '.join(ph)}")
+        elif a.action == "art":
+            from . import thumbs
+            only = set(a.only) if a.only else None
+            made = thumbs.build_art(universe.load(), only=only, force=a.force)
+            print(f"art: {len(made)} files written under universe/art/")
         elif a.action == "build":
             d = universe.build_site(a.out)
             live = sum(v["status"] == "live" for v in d["videos"])
@@ -185,7 +190,9 @@ def main(argv=None):
     p.set_defaults(fn=cmd_build)
 
     p = sub.add_parser("universe", help="the shared universe + fake video site (universe/universe.yaml)")
-    p.add_argument("action", choices=["check", "build", "publish"])
+    p.add_argument("action", choices=["check", "art", "build", "publish"])
+    p.add_argument("--only", nargs="*", help="art: only these video/character/channel ids")
+    p.add_argument("--force", action="store_true", help="art: re-render even if the file exists")
     p.add_argument("--out", default=universe.SITE_DIR, help="site directory (default: site/)")
     p.add_argument("--build", default="build", help="where rendered mp4s are (publish)")
     p.set_defaults(fn=cmd_universe)

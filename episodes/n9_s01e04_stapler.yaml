@@ -1,0 +1,179 @@
+# CHANNEL 9 - S01E04 "The Stapler Standoff (LIVE)"
+# A hostage situation at a corporate paintball day. The hostage is a tie. The captor is a stapler. Channel 9 is on the scene.
+id: n9s01e04
+title: The Stapler Standoff
+show: news
+music: news
+target_seconds: 600
+fps: 24
+resolution: [1280, 720]
+
+scenes:
+  - id: cold_open
+    set: newsroom
+    cast: {martin: anchor_l, sarah: anchor_r, david: weather}
+    beats:
+      - {act: 3, cam: wide, ui: [{kind: headline, text: "LIVE: THE STAPLER STANDOFF", at: 0.3, dur: 5}, {kind: ticker, text: "OFFICE MANAGER HELD BY TIE  +++  POLICE ON SCENE  +++  PAINT EVERYWHERE", at: 0.3}], sfx: [{name: warn, at: 0.3}]}
+      - {say: martin, text: "Good evening. We are interrupting our regular programming. I am Martin Miller, and this is Channel 9, live, with a developing situation.", cam: martin}
+      - {say: sarah, text: "I am Sarah Collins. We are receiving reports of a hostage situation at a downtown office. The hostage is an office manager. The captor is a stapler.", cam: sarah}
+      - {say: martin, text: "Sarah, I want to be clear for our viewers. We are saying a stapler."}
+      - {say: sarah, text: "Martin, I have said it three times to my producer, and I have said it with a straight face. It is a stapler. It has a tie."}
+      - {say: david, text: "In weather, it is going to be nice. And in this office, it is going to be tense. David Storm, at the wall, in solidarity.", cam: david}
+      - {say: martin, text: "Thank you, David. Stay with us. We are going live to the scene."}
+
+  - id: title
+    set: black
+    beats:
+      - {card: "CHANNEL 9", sub: "EVENING NEWS  -  S01E04  -  THE STAPLER STANDOFF", dur: 5, sfx: [boom]}
+
+  - id: live_scene
+    set: office
+    cast: {emma: front, npc_sergeant: left, npc_gary: {at: desk, face: 0}, npc_stapler: {at: desk, face: 0}}
+    beats:
+      - {act: 3, cam: wide, ui: [{kind: lower, text: "EMMA PARKER|LIVE. Inside the cordon. Do not ask how.", at: 0.3, dur: 3.5}, {kind: ticker, text: "SERGEANT: 'WE ARE TALKING TO THE STAPLER'  +++  GARY: 'I AM FINE'", at: 0.3}]}
+      - {say: emma, text: "Martin, I am inside the cordon. I have been given a hard hat, which is for my own safety, and also because I asked politely.", cam: emma}
+      - {say: emma, text: "In front of me, Gary, the office manager, is attached by his tie to a stapler. He has been there for an hour. He is pink, from an earlier paintball incident."}
+      - {say: npc_gary, text: "Hello, Emma. I am fine. I am tied to a stapler. It is a Tuesday. These things happen.", cam: npc_gary, ui: [{kind: lower, text: "GARY|Office manager. Pink. Attached.", at: 0.2, dur: 3.5}]}
+      - {say: emma, text: "Gary, are you being treated well?"}
+      - {say: npc_gary, text: "The stapler is very polite. It is mostly sad. It does not do any shouting. It sighs a lot. It has not asked for any money."}
+      - {say: emma, text: "What does it want?"}
+      - {say: npc_gary, text: "It wants to be seen. I think we have all been there, Emma. I think it is a very human thing to want."}
+      - {say: npc_sergeant, text: "I am Sergeant Wynn. We have a negotiator on the way. In the meantime, I would like everyone to stay calm and not point anything at the stapler.", cam: npc_sergeant, ui: [{kind: lower, text: "SGT. WYNN|Police. Fourteen years. First stapler.", at: 0.2, dur: 3.5}]}
+      - {say: emma, text: "Sergeant, has the stapler made any demands?"}
+      - {say: npc_sergeant, text: "It has said, and I am reading from my notes, quote, nobody ever asks me anything. That is the extent of the demands."}
+      - {say: emma, text: "That is a very reasonable demand."}
+      - {say: npc_sergeant, text: "It is the most reasonable demand I have heard all year. I do not know what to do. I trained for banks."}
+
+  - id: pfe_spokesperson
+    set: office
+    cast: {emma: front, marisol: right, tobias: lobby}
+    beats:
+      - {act: 3, cam: wide, ui: [{kind: lower, text: "EMMA PARKER|Outside the cordon. Speaking to the planners.", at: 0.3, dur: 3.5}, {kind: ticker, text: "MARIGOLD EVENTS: 'THIS WAS A TEAM BUILDING EVENT'", at: 0.3}]}
+      - {say: emma, text: "I am now speaking to the event planner behind today's corporate paintball day. Ma'am, can you tell us what happened?", cam: emma}
+      - {say: marisol, text: "Of course. I am Marisol Quinn from Marigold Events. We organised a team building day. It was going very well, until the stapler.", cam: marisol, ui: [{kind: lower, text: "MARISOL QUINN|Marigold Events, Lead Planner", at: 0.2, dur: 3.5}]}
+      - {say: emma, text: "Did you foresee a hostage situation?"}
+      - {say: marisol, text: "We did a risk assessment. It had thirty seven items. Stapler was not one of them. It was number thirty eight. We have since added it."}
+      - {say: emma, text: "And what is your team doing now?"}
+      - {say: marisol, text: "Tobias, my junior planner, is doing a lot of deep breathing. I am handling logistics. We have sent for snacks. It is a long afternoon. And we are still hoping for good reviews."}
+      - {say: tobias, text: "I am not okay! I have never seen a stapler cry! It had a little tear! It was a drop of ink!", cam: tobias, ui: [{kind: lower, text: "TOBIAS|Junior planner. Not okay.", at: 0.2, dur: 3.5}]}
+      - {say: marisol, text: "Tobias, you are on television."}
+      - {say: tobias, text: "I am so sorry. Hello, television. We will be right back with more balloons."}
+      - {say: emma, text: "Martin, a lot of emotions out here. Back to you.", cam: emma}
+
+  - id: station_manager
+    set: newsroom
+    cast: {martin: anchor_l, sarah: anchor_r, richard: door, kevin: cam}
+    beats:
+      - {act: 3, cam: wide, ui: [{kind: ticker, text: "STATION MANAGER: 'BIGGEST STORY IN CHANNEL 9 HISTORY'  +++  VIEWERS: 4,300", at: 0.2}], acts: [{who: richard, do: walk_to, to: center, dur: 2}], sfx: [{name: boom, at: 0.3}]}
+      - {say: richard, text: "Martin! Sarah! Do you know how many people are watching a stapler?", cam: richard, ui: [{kind: lower, text: "RICHARD WILSON|Station Manager. Thrilled.", at: 0.2, dur: 3.5}]}
+      - {say: martin, text: "Forty-seven, sir?", cam: martin}
+      - {say: richard, text: "Four thousand three hundred! The stapler has more viewers than the weather!"}
+      - {say: sarah, text: "David is standing right there.", cam: sarah}
+      - {say: richard, text: "I did not mean it as an insult! I meant it as a miracle! Kevin! Zoom in on the stapler!"}
+      - {say: kevin, text: "I cannot zoom in. I am in the kitchen. The kitchen has a stapler too.", cam: kevin}
+      - {say: sarah, text: "Kevin, which stapler is on air?"}
+      - {say: kevin, text: "I think... the good one? I think it is the good one."}
+      - {say: martin, text: "We stand with both staplers.", cam: martin}
+      - {say: richard, text: "Superb! Give it energy! Give it passion! And somebody get a camera on that tie!", acts: [{who: richard, do: walk_to, to: door, dur: 2}]}
+  - id: negotiation
+    set: office
+    cast: {emma: right, kyle: left, npc_gary: {at: desk, face: 0}, npc_stapler: {at: desk, face: 0}, dave: front}
+    beats:
+      - {act: 3, cam: wide, ui: [{kind: lower, text: "EMMA PARKER|LIVE. The negotiation begins.", at: 0.3, dur: 3.5}, {kind: ticker, text: "NEGOTIATOR: 'A FRIEND OF THE FAMILY'  +++  STAPLER: 'I AM OUT OF STAPLES'", at: 0.3}]}
+      - {say: emma, text: "Martin, a man in a blue hoodie has stepped forward. He says he is a friend of the family. He says he has seen three seasons of a hostage show.", cam: emma}
+      - {say: kyle, text: "Hello, stapler. I am Kyle. I understand you are upset.", cam: kyle}
+      - {say: npc_stapler, text: "I have been quiet for six years. Nobody ever asks me anything.", pitch: 78, cam: npc_stapler}
+      - {say: kyle, text: "I am asking you. What do you need?"}
+      - {say: npc_stapler, text: "I am out of staples. I have been out for eight months. They keep pressing me. It is just a click.", pitch: 78}
+      - {say: emma, text: "Martin, I can report that the stapler has said it is out of staples. I did not expect to ever say that sentence in my career.", cam: emma}
+      - {say: dave, text: "I have staples. I have a very large box. It is five thousand. It is the nice one.", cam: dave}
+      - {say: npc_stapler, text: "Nobody has ever bought me the nice one.", pitch: 78, cam: npc_stapler}
+      - {act: 4, cam: wide, sfx: [{name: ding, at: 1.5}], ui: [{kind: achievement, text: "Stapler Surrendered, Live On Air", at: 1.5, dur: 3.5}], acts: [{who: npc_gary, do: jump, delay: 1.5, dur: 2}]}
+      - {say: npc_gary, text: "My tie! It is free! I am free! I would like to thank everyone, and especially the stapler. It really was not so bad.", cam: npc_gary}
+      - {say: emma, text: "Martin, the standoff is over. The hostage is free. The captor has been refilled. It is the happiest ending a stapler has ever had.", cam: emma}
+
+  - id: outside_crowd
+    set: street
+    cast: {emma: queue_mid, npc_witness: queue_front, npc_karen: queue_back, npc_coworker: {at: left, face: 0}}
+    beats:
+      - {act: 3, cam: wide, ui: [{kind: lower, text: "EMMA PARKER|Outside the building. Among the crowd.", at: 0.3, dur: 3.5}, {kind: ticker, text: "CROWD OF 200 GATHERS  +++  SOME BRING SNACKS  +++  ONE BRINGS A STAPLER (CONFISCATED)", at: 0.3}]}
+      - {say: emma, text: "A crowd has gathered outside the building. I am speaking to a witness. Sir, why are you here?", cam: emma}
+      - {say: npc_witness, text: "I heard there was a stapler with a hostage. I could not believe it. I had to come and see. I have never seen a stapler in danger. Or a stapler in power.", cam: npc_witness, ui: [{kind: lower, text: "WITNESS|Came for the stapler", at: 0.2, dur: 3.5}]}
+      - {say: emma, text: "Madam, you look familiar."}
+      - {say: npc_karen, text: "I was in the sneaker queue. I have followed your coverage for three weeks. I have brought my dog, Receipt. He is very supportive of the stapler.", cam: npc_karen, ui: [{kind: lower, text: "KAREN|Veteran of the queue. Still camping.", at: 0.2, dur: 3.5}]}
+      - {say: emma, text: "Is it true you have been camping outside every story we have covered?"}
+      - {say: npc_karen, text: "It is the only way to stay informed. I am also a very good source. I have been right about seventy percent of the time."}
+      - {say: emma, text: "I am now going to speak with a colleague of the stapler's. Ma'am, what can you tell us about it?", cam: emma}
+      - {say: npc_coworker, text: "It is a Swingline from the year twenty nineteen. It has been on Gary's desk the whole time. It has always been a bit quiet. But it has always been there for us.", cam: npc_coworker, ui: [{kind: lower, text: "COWORKER|Sat next to the stapler for six years", at: 0.2, dur: 3.5}]}
+      - {say: emma, text: "Did you notice any warning signs?"}
+      - {say: npc_coworker, text: "It started to click more. I thought it was the weather. I thought it was a draught. I did not realise it was a cry for help."}
+      - {say: emma, text: "That is very moving. I think a lot of people at home are going to look at their staplers differently tonight.", cam: emma}
+      - {say: npc_coworker, text: "I am going to buy it a card. It is going to be a very big card."}
+
+  - id: pam_reaction
+    set: newsroom
+    cast: {martin: anchor_l, sarah: anchor_r}
+    beats:
+      - {act: 3, cam: wide, ui: [{kind: ticker, text: "ANCHORS REACT: 'WE ARE EMOTIONAL'", at: 0.2}]}
+      - {say: martin, text: "Sarah, I have to say, as an anchor, I have covered a lot of stories. Fires, floods, elections, a sneaker drop. I have never been moved by a stapler.", cam: martin}
+      - {say: sarah, text: "Martin, I also was moved. I cried a little during the part where Gary said thank you. I would like it noted that I was wearing a tie.", cam: sarah}
+      - {say: martin, text: "I noticed. It was a very nice tie."}
+      - {say: sarah, text: "I took it off after the segment. I felt it was the safest option."}
+      - {say: martin, text: "That is the most responsible thing you have done all week."}
+
+  - id: ad_break
+    set: black
+    cast: {npc_announcer: center}
+    beats:
+      - {card: "THE FOLLOWING IS A PAID ANNOUNCEMENT", sub: "Marigold Events", dur: 3.5, sfx: [whoosh]}
+      - {say: npc_announcer, text: "Marigold Events. We plan weddings, galas, product launches, and the occasional corporate hostage situation. Our planners are very trained, very calm, and very much on a break right now.", cam: black}
+      - {say: npc_announcer, text: "Call today, and receive a free consultation, a free balloon, and a free emergency exit. Marigold Events. Events so good, they are slightly illegal."}
+      - {card: "MARIGOLD EVENTS", sub: "Per my last email.", dur: 3.5, sfx: [ding]}
+
+  - id: viewer_mail
+    set: newsroom
+    cast: {martin: anchor_l, sarah: anchor_r}
+    beats:
+      - {card: "VIEWER MAIL", sub: "You wrote. We read. Mostly.", dur: 3.5, sfx: [whoosh]}
+      - {act: 3, cam: wide, ui: [{kind: ticker, text: "VIEWER MAIL: WE HAVE RECEIVED 40,000 LETTERS ABOUT THE STAPLER", at: 0.2}]}
+      - {say: martin, text: "First letter. From a Mister Gary, who writes: Thank you for the coverage. My tie is fine. I would like to thank the stapler. It has since asked to be called Steve.", cam: martin}
+      - {say: sarah, text: "That is lovely, Gary. Steve is a good name. It has the energy of a stapler that has been refilled.", cam: sarah}
+      - {say: martin, text: "Next. From Greg, who writes: I do not know what is happening, but I support the stapler."}
+      - {say: sarah, text: "Greg, you are a good man. Keep punching the wall. We are all behind you."}
+      - {say: martin, text: "And finally, from Receipt, the dog, who writes: Woof woof."}
+      - {say: sarah, text: "Receipt, we agree. It was a very good day."}
+
+  - id: weather_sports
+    set: newsroom
+    cast: {martin: anchor_l, david: weather}
+    beats:
+      - {act: 3, cam: wide, ui: [{kind: ticker, text: "WEATHER: NICE  +++  SPORTS: PAINTBALL LEAGUE TO REVIEW AIMBOT RULES", at: 0.2}]}
+      - {say: martin, text: "And now the weather and sports, with David.", cam: martin}
+      - {say: david, text: "Thank you, Martin. In weather, it is going to be nice. There is a small chance of paint. I would say about two percent. It is a very specific kind of rain.", cam: david}
+      - {say: martin, text: "And in sports?"}
+      - {say: david, text: "The paintball league has announced that it is going to review the rules on aimbot. A spokesman said they did not know there was a cheat for it. They had assumed it was just a very good player."}
+      - {say: martin, text: "Does the league suspect anyone?"}
+      - {say: david, text: "They suspect a man in an orange hoodie. They do not have any evidence. But they have a very good feeling. And a lot of pink people."}
+      - {say: martin, text: "Thank you, David."}
+      - {say: david, text: "In other news, the hill continues to win. We have asked it for an interview. It has not said anything. It is a very powerful hill."}
+
+  - id: gerald_update
+    set: street
+    cast: {emma: left, npc_gerald: {at: curb, face: 0}, npc_gnome: {at: [-9, 2.5], face: 0}}
+    beats:
+      - {card: "GNOME WATCH", sub: "Day two at the bus stop.", dur: 3.5, sfx: [whoosh]}
+      - {act: 3, cam: wide, ui: [{kind: ticker, text: "GNOME WATCH: GERALD STILL AT BUS STOP  +++  STAPLER STORY 'NOT ABOUT GERALD'", at: 0.2}], acts: [{who: npc_gnome, do: shrink, by: 0.35, dur: 0.2}]}
+      - {say: emma, text: "Martin, the gnome has not moved. Neither has the man. The bus has not arrived. It is a very still story.", cam: emma}
+      - {say: npc_gerald, text: "I heard about the stapler. I am very happy for it. It is a good day to be refilled. Nice weather today.", cam: npc_gerald}
+      - {say: emma, text: "Has the bus arrived?"}
+      - {say: npc_gerald, text: "Not yet. But the gnome says it is close. It has not said anything. But I can tell."}
+  - id: signoff
+    set: newsroom
+    cast: {martin: anchor_l, sarah: anchor_r, david: weather}
+    beats:
+      - {act: 3, cam: wide, ui: [{kind: ticker, text: "GOOD NIGHT  +++  CHANNEL 9  +++  BE KIND TO YOUR STAPLER", at: 0.2}]}
+      - {say: martin, text: "That is all for tonight. I am Martin Miller.", cam: martin}
+      - {say: sarah, text: "I am Sarah Collins. I am going to buy a very nice stapler.", cam: sarah}
+      - {say: david, text: "I am David Storm. I am going to put some staples in my wall.", cam: david}
+      - {say: martin, text: "Good night, and say thank you to the things that hold you together."}
+      - {card: "NEXT TIME ON CHANNEL 9", sub: "S01E05  -  THE LANDLORD ARRIVES  (TWICE)", dur: 6}

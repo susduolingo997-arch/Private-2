@@ -1,0 +1,172 @@
+# CHANNEL 9 - S01E05 "Local Tenant Has Two Landlords"
+# A man spawned a landlord. Now there are two. The rent is under review. Both landlords agree on nothing.
+id: n9s01e05
+title: Local Tenant Has Two Landlords
+show: news
+music: news
+target_seconds: 600
+fps: 24
+resolution: [1280, 720]
+
+scenes:
+  - id: cold_open
+    set: newsroom
+    cast: {martin: anchor_l, sarah: anchor_r, david: weather}
+    beats:
+      - {act: 3, cam: wide, ui: [{kind: ticker, text: "TONIGHT: LOCAL TENANT HAS TWO LANDLORDS  +++  RENT 'UNDER REVIEW' BY BOTH  +++  LANDLORD MOVES INTO COUCH", at: 0.2}]}
+      - {say: martin, text: "Good evening. I am Martin Miller, and this is Channel 9 Evening News. Tonight, the rental market gets a little bit crowded.", cam: martin}
+      - {say: sarah, text: "I am Sarah Collins. A local man has two landlords, and neither of them will admit it. We have the story.", cam: sarah}
+      - {say: martin, text: "Also tonight, we ask whether a landlord can be a roommate. The housing authority says yes. The housing authority was not asked."}
+      - {say: david, text: "In weather, it is nice. In real estate, it is beige. David Storm, at the wall, which I rent.", cam: david}
+      - {say: martin, text: "You rent the wall, David?"}
+      - {say: david, text: "I have a very good arrangement with the wall. It is a long term lease. It is mostly silence."}
+
+  - id: title
+    set: black
+    beats:
+      - {card: "CHANNEL 9", sub: "EVENING NEWS  -  S01E05  -  LOCAL TENANT HAS TWO LANDLORDS", dur: 5, sfx: [boom]}
+
+  - id: top_story
+    set: newsroom
+    cast: {martin: anchor_l, sarah: anchor_r}
+    beats:
+      - {act: 3, cam: wide, ui: [{kind: headline, text: "TWO LANDLORDS. ONE TENANT.", at: 0.3, dur: 5}, {kind: ticker, text: "RENT NOW $1,300  +++  THEN $400  +++  NOBODY KNOWS WHY", at: 0.3}], sfx: [{name: warn, at: 0.3}]}
+      - {say: martin, text: "Our top story. A man called Dave, who has been in the news before, now has two landlords. One of them appears to be a copy.", cam: martin}
+      - {say: sarah, text: "Martin, I want to be careful. I am a professional. I have been told that the second landlord appeared out of thin air, in the living room, holding a clipboard.", cam: sarah}
+      - {say: martin, text: "A clipboard is a very serious thing."}
+      - {say: sarah, text: "It is the most serious thing in a landlord's life, Martin. It is their sword. It is also, I have been told, their pillow."}
+      - {say: martin, text: "How did this happen?"}
+      - {say: sarah, text: "We believe the tenant used a cheat code. He typed spawn landlord. We have no way of confirming what that means. But it did produce a landlord."}
+      - {say: martin, text: "Has anyone in authority commented?"}
+      - {say: sarah, text: "The housing authority said, and I quote: we are aware of the situation. We are not going to do anything. It is a very busy week."}
+
+  - id: apartment_visit
+    set: apartment
+    cast: {emma: front, dave: left, npc_pruitt: right, npc_landlord_copy: {at: couch, face: 0}}
+    beats:
+      - {act: 3, cam: wide, ui: [{kind: lower, text: "EMMA PARKER|Inside the apartment. Invited.", at: 0.3, dur: 3.5}, {kind: ticker, text: "DAVE'S APARTMENT: ONE TENANT, TWO LANDLORDS, THREE OPINIONS ON CARPET", at: 0.3}]}
+      - {say: emma, text: "I am inside the apartment, where I am seeing something that, frankly, I did not expect. Two men who look identical, in matching sweaters, holding two clipboards. Sir, which one of you is the original?", cam: emma}
+      - {say: npc_pruitt, text: "I am. I am Mister Pruitt. I have been the landlord for twenty three years. I have a lanyard. It is a very good lanyard.", cam: npc_pruitt, ui: [{kind: lower, text: "MR. PRUITT|Landlord. The original. Lanyard.", at: 0.2, dur: 3.5}]}
+      - {say: npc_landlord_copy, text: "I am also a landlord. I have been a landlord for one week. I have a clipboard. It came with me. I have opinions about the carpet.", cam: npc_landlord_copy, ui: [{kind: lower, text: "LANDLORD (COPY)|Landlord. Very new. Beige carpet.", at: 0.2, dur: 3.5}]}
+      - {say: emma, text: "Can you tell the difference between each other?"}
+      - {say: npc_pruitt, text: "He has my sweater. He has my face. He does not have my pigeon.", cam: npc_pruitt}
+      - {say: npc_landlord_copy, text: "I have a feeling that I do not need a pigeon. I have a couch."}
+      - {say: emma, text: "Dave, how are you holding up?", cam: dave}
+      - {say: dave, text: "I am fine! I am fine. I am sharing my home with a landlord. It is a new kind of arrangement. We have a rota for the shower.", cam: dave, ui: [{kind: lower, text: "DAVE|Tenant. Both landlords' tenant.", at: 0.2, dur: 3.5}]}
+      - {say: emma, text: "What about the rent?"}
+      - {say: dave, text: "It is four hundred dollars. It started at nine hundred, and it went up to thirteen hundred, and then it came down. I am not sure how. I think it was the pizza."}
+      - {say: emma, text: "Martin, the pizza strikes again. The pizza has now solved two stories. Back to you.", cam: emma}
+
+  - id: station_manager
+    set: newsroom
+    cast: {martin: anchor_l, sarah: anchor_r, richard: door, kevin: cam}
+    beats:
+      - {act: 3, cam: wide, ui: [{kind: ticker, text: "STATION MANAGER: 'DOUBLE THE LANDLORDS, DOUBLE THE VIEWERS'  +++  VIEWERS: 94", at: 0.2}], acts: [{who: richard, do: walk_to, to: center, dur: 2}], sfx: [{name: boom, at: 0.3}]}
+      - {say: richard, text: "Martin! Sarah! I have news! Our viewers have doubled!", cam: richard, ui: [{kind: lower, text: "RICHARD WILSON|Station Manager", at: 0.2, dur: 3.5}]}
+      - {say: martin, text: "To ninety-four, sir?", cam: martin}
+      - {say: richard, text: "Ninety-four! It is because of the two landlords! Two landlords, two households, two televisions!"}
+      - {say: sarah, text: "Richard, both landlords live in the same apartment. They share a television.", cam: sarah}
+      - {say: richard, text: "Then they are watching at double the intensity! Kevin! Get me a shot of both of them!"}
+      - {say: kevin, text: "I got one. I think it is the original. Or the other one. They both wave exactly the same.", cam: kevin}
+      - {say: martin, text: "Which one is on screen, Kevin?", cam: martin}
+      - {say: kevin, text: "It is the landlord, Martin. It is just the landlord."}
+      - {say: richard, text: "Superb! More energy! More landlords!", acts: [{who: richard, do: walk_to, to: door, dur: 2}]}
+  - id: ad_break
+    set: black
+    cast: {npc_announcer: center}
+    beats:
+      - {card: "THE FOLLOWING IS A PAID ANNOUNCEMENT", sub: "Landlord Insurance", dur: 3.5, sfx: [whoosh]}
+      - {say: npc_announcer, text: "Do you own a landlord? Do you rent a landlord? Are you being rented by a landlord? You need Landlord Insurance, from Beige Mutual. We cover duplicate landlords, ghost landlords, and landlords who have been spawned in your living room.", cam: black}
+      - {say: npc_announcer, text: "Call today for a free quote, a free clipboard, and a free carpet in a colour of your choice, as long as it is beige. Beige Mutual. We are not very exciting. We are very covered."}
+      - {card: "BEIGE MUTUAL", sub: "Cover for the carpet you did not choose.", dur: 3.5, sfx: [ding]}
+
+  - id: field_street
+    set: street
+    cast: {emma: queue_mid, npc_neighbor: queue_front, npc_neighbor_two: queue_back}
+    beats:
+      - {act: 3, cam: wide, ui: [{kind: lower, text: "EMMA PARKER|Outside the building. Asking the neighbours.", at: 0.3, dur: 3.5}, {kind: ticker, text: "NEIGHBOURS REPORT 'DOUBLE KNOCKING' AND 'SYNCHRONISED SIGHING'", at: 0.3}]}
+      - {say: emma, text: "I am outside the building, where the neighbours have been very patient. Madam, what have you noticed?", cam: emma}
+      - {say: npc_neighbor, text: "Two landlords. Everyone has been getting two knocks on the door. At the same time. In perfect rhythm. It is very unsettling.", cam: npc_neighbor, ui: [{kind: lower, text: "NEIGHBOUR|Floor four. Heard knocking.", at: 0.2, dur: 3.5}]}
+      - {say: emma, text: "Have you been asked for rent twice?"}
+      - {say: npc_neighbor, text: "I have been asked three times. One of them was a pigeon."}
+      - {say: emma, text: "Sir, what about you?", cam: emma}
+      - {say: npc_neighbor_two, text: "I think it is great. I have been trying to get my landlord to fix a pipe for two years. Now there are two of them. They have been arguing about whose job it is. The pipe has been fixed by accident.", cam: npc_neighbor_two, ui: [{kind: lower, text: "NEIGHBOUR|Floor two. Pipe fixed.", at: 0.2, dur: 3.5}]}
+      - {say: emma, text: "So competition among landlords is good for tenants?"}
+      - {say: npc_neighbor_two, text: "It is the best thing that has ever happened to this building. I have asked if they can both be spawned again. I would like a third. For the roof."}
+      - {say: emma, text: "Martin, the market has spoken. The people want more landlords.", cam: emma}
+
+  - id: consumer
+    set: newsroom
+    cast: {martin: anchor_l, david: weather}
+    beats:
+      - {card: "NINE ON YOUR SIDE", sub: "Consumer advice. Mostly advice.", dur: 3.5, sfx: [whoosh]}
+      - {act: 3, cam: wide, ui: [{kind: ticker, text: "NINE ON YOUR SIDE: HOW TO SPOT A DUPLICATE LANDLORD", at: 0.2}]}
+      - {say: martin, text: "It is time for Nine on Your Side. David, we have a special guide tonight. How to tell if your landlord has been duplicated.", cam: martin}
+      - {say: david, text: "Thank you, Martin. It is a very important topic. First, check the clipboard. If there are two clipboards, you have two landlords. If there is one clipboard and it is very, very full, you have one landlord with a lot to say.", cam: david}
+      - {say: martin, text: "What is the second sign?"}
+      - {say: david, text: "Check the sweater. A real landlord has a sweater with a small stain. A duplicate landlord has a sweater with a small stain in exactly the same place. It is called a mirror stain."}
+      - {say: martin, text: "And the third?"}
+      - {say: david, text: "Listen to their laugh. A real landlord laughs once, at your expense. A copy will laugh twice, once for you and once for the original. It is a very unsettling sound."}
+      - {say: martin, text: "What should a tenant do, if they find themselves with two?"}
+      - {say: david, text: "Offer them a pizza. Offer them a seat. And ask them, very politely, to work it out between themselves. It is the oldest trick in the lease."}
+      - {say: martin, text: "Thank you, David. That is Nine on Your Side."}
+      - {say: david, text: "It is a pleasure, Martin. I am going to go and stand at the wall. It is my only landlord. And it has never raised the rent."}
+
+  - id: sports
+    set: newsroom
+    cast: {martin: anchor_l, david: weather}
+    beats:
+      - {act: 3, cam: wide, ui: [{kind: ticker, text: "SPORTS: THE HILL LOSES ITS FIRST GAME  +++  OFFICIALS 'SHOCKED'", at: 0.2}]}
+      - {say: martin, text: "And now sports. David, I understand there has been a big result.", cam: martin}
+      - {say: david, text: "There has, Martin. The hill has lost. It lost to a landlord. A landlord in a sweater walked up the hill, and it did not roll back down.", cam: david}
+      - {say: martin, text: "Is that allowed?"}
+      - {say: david, text: "It is the first time in the history of the sport. The hill has now released a statement. It says nothing. It is very still. It is taking it very hard."}
+      - {say: martin, text: "What does this mean for the league?"}
+      - {say: david, text: "It means that everything is possible. It means that a hill can be beaten by a man with a clipboard. It is the most inspiring thing I have seen since the pizza."}
+
+  - id: viewer_mail
+    set: newsroom
+    cast: {martin: anchor_l, sarah: anchor_r}
+    beats:
+      - {card: "VIEWER MAIL", sub: "You wrote. We read. A landlord also wrote.", dur: 3.5, sfx: [whoosh]}
+      - {act: 3, cam: wide, ui: [{kind: ticker, text: "VIEWER MAIL: PLEASE KEEP LETTERS TO 3 PAGES OR LESS. THE LANDLORD IS LISTENING.", at: 0.2}]}
+      - {say: martin, text: "Our first letter is from a Mister Pruitt, who writes: Dear Channel 9. I would like to say, for the record, that I am the real landlord. Please print this in large letters.", cam: martin}
+      - {say: sarah, text: "Mister Pruitt, we have printed it in very large letters. They are on the wall behind David.", cam: sarah}
+      - {say: martin, text: "The next letter is also from a Mister Pruitt. It says: Dear Channel 9. I would like to say, for the record, that I am the real landlord."}
+      - {say: sarah, text: "That is the same letter. In a very similar handwriting. Martin, I think we have one landlord, who has written twice."}
+      - {say: martin, text: "Or two, who have written once each. We will not choose a side."}
+      - {say: sarah, text: "The final letter is from Dave, who writes: Please send help. They are splitting the couch. I do not have a couch. They have been so kind. I am so confused."}
+      - {say: martin, text: "Dave, we are with you. We will send a pizza."}
+
+  - id: weather
+    set: newsroom
+    cast: {martin: anchor_l, david: weather}
+    beats:
+      - {act: 3, cam: wide, ui: [{kind: ticker, text: "WEATHER: NICE  +++  RENT: 40% CHANCE OF REDUCTION", at: 0.2}]}
+      - {say: martin, text: "And now the weather. David?", cam: martin}
+      - {say: david, text: "Thank you, Martin. Tomorrow will be nice. There is a forty percent chance that your rent will go down, and a sixty percent chance that it will go back up. That is the economy.", cam: david}
+      - {say: martin, text: "What should tenants do?"}
+      - {say: david, text: "Tenants should be nice. Landlords should be nicer. And everyone should buy a pizza. It is a very simple forecast. I would like to apologise for how simple it is."}
+      - {say: martin, text: "It is the simplest forecast of the year."}
+      - {say: david, text: "I have been preparing it for a month. I wanted it to be good. And I am proud of it. I am at the wall, and I am proud."}
+
+  - id: gerald_update
+    set: street
+    cast: {emma: left, npc_gerald: {at: curb, face: 0}, npc_gnome: {at: [-9, 2.5], face: 0}}
+    beats:
+      - {card: "GNOME WATCH", sub: "A bus was sighted. It was a van.", dur: 3.5, sfx: [whoosh]}
+      - {act: 3, cam: wide, ui: [{kind: ticker, text: "GNOME WATCH: A BUS WAS SIGHTED  +++  IT WAS A VAN  +++  GNOME UNMOVED", at: 0.2}], acts: [{who: npc_gnome, do: shrink, by: 0.35, dur: 0.2}]}
+      - {say: emma, text: "Martin, a bus was sighted at the Main Street stop today. It was a van. It had a picture of a bus on the side.", cam: emma}
+      - {say: npc_gerald, text: "I got very excited. It did not stop. But it was the closest thing to a bus I have seen all year.", cam: npc_gerald}
+      - {say: emma, text: "And the gnome?"}
+      - {say: npc_gerald, text: "It did not react. But I think it was hopeful. A van is a bus that has not yet decided. Nice weather today."}
+  - id: signoff
+    set: newsroom
+    cast: {martin: anchor_l, sarah: anchor_r, david: weather}
+    beats:
+      - {act: 3, cam: wide, ui: [{kind: ticker, text: "GOOD NIGHT  +++  CHANNEL 9  +++  CHECK YOUR LEASE. TWICE.", at: 0.2}]}
+      - {say: martin, text: "That is all for tonight. I am Martin Miller.", cam: martin}
+      - {say: sarah, text: "I am Sarah Collins. I am going to go and read my lease.", cam: sarah}
+      - {say: david, text: "I am David Storm. I am going to thank my wall.", cam: david}
+      - {say: martin, text: "Good night, and may your landlord be one of one."}
+      - {card: "NEXT TIME ON CHANNEL 9", sub: "S01E06  -  ANNIVERSARY GALA  (BLACK TIE)", dur: 6}

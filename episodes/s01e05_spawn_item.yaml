@@ -1,0 +1,180 @@
+# IRL BUT CHEATS - S01E05 "Spawn Item"
+# Dave cannot pay rent. Dave spawns a landlord to talk to. Dave now has two. There is no delete key.
+id: s01e05
+title: Spawn Item
+target_seconds: 600
+fps: 24
+resolution: [1280, 720]
+
+scenes:
+  # ------------------------------------------------------------------ 1. cold open
+  - id: cold_open
+    set: apartment
+    cast: {dave: couch, kyle: right}
+    beats:
+      - {act: 3, cam: wide, hp: "100", ui: [{kind: chat, text: "[SERVER] The rent is due today. Dave knows. Dave has always known.", at: 0.4, dur: 4}], acts: [{who: dave, do: shake, amt: 0.05}]}
+      - {say: dave, text: "Kyle, the landlord has been calling me for three days, and I have been letting it ring.", cam: dave}
+      - {say: kyle, text: "Why are you not picking up? You live in the apartment. He knows where you are."}
+      - {say: dave, text: "If I do not pick up, it is not real. It is a rule of the universe."}
+      - {say: kyle, text: "It is not a rule of the universe. It is a rule of avoidance. How much is the rent?"}
+      - {say: dave, text: "Nine hundred dollars. I have four dollars and a coupon for a free bagel that I have not been able to use."}
+      - {say: kyle, text: "You still have the coupon? I thought it expired."}
+      - {say: dave, text: "It was extended by a very kind clerk who has since moved to Spain."}
+      - {act: 3, cam: wide, sfx: [{name: error, at: 0.4}], ui: [{kind: chat, text: "[LANDLORD] Dave. I know you are in there. I can hear the television.", at: 0.3, dur: 4}]}
+      - {say: kyle, text: "That is a text message, and also a threat."}
+      - {say: dave, text: "I need to talk to him face to face. I need to be charming. I have a plan.", cam: dave}
+      - {say: kyle, text: "What is the plan?"}
+      - {say: dave, text: "I am going to use the console to make the landlord more reasonable."}
+      - {say: kyle, text: "That is not a thing the console does. Dave, please read the list before you type."}
+      - {say: dave, text: "I have read the list. It says spawn item. I am going to spawn the landlord, in my living room, so I can talk to him on my own terms."}
+      - {say: kyle, text: "He is already coming. You do not need to spawn him. You are going to have two."}
+      - {say: dave, text: "Nobody has ever been upset with a second helping of landlord."}
+
+  - id: title
+    set: black
+    beats:
+      - {card: "IRL BUT CHEATS", sub: "S01E05  -  SPAWN ITEM", dur: 5, sfx: [boom]}
+
+  # ------------------------------------------------------------------ 3. the spawn
+  - id: spawn
+    set: apartment
+    cast: {dave: center, kyle: right}
+    beats:
+      - {act: 3, cam: dave, sfx: [{name: chime, at: 1.2}], ui: [{kind: console, text: "> spawn landlord", at: 0.3, dur: 1.6}, {kind: system, text: "CHEAT ACTIVATED: spawn landlord", at: 1.6, dur: 3}]}
+      - {act: 4, cam: wide, sfx: [{name: glitch, at: 0.4}, {name: pop, at: 1.2}], acts: [{who: kyle, do: shake, amt: 0.08}], ui: [{kind: chat, text: "[SERVER] A Landlord has joined the apartment.", at: 1.2, dur: 3.5}]}
+      - {act: 3, cam: wide, ui: [{kind: achievement, text: "Spawned Something Terrifying", at: 0.6, dur: 3.5}], sfx: [{name: ding, at: 0.6}]}
+
+  - id: copy_arrives
+    set: apartment
+    cast: {dave: left, kyle: far_right, npc_landlord_copy: {at: center, face: 0}}
+    beats:
+      - {say: npc_landlord_copy, text: "Hello, tenant. I am your landlord. I am a landlord. I have so many opinions about the carpet.", cam: npc_landlord_copy}
+      - {say: dave, text: "Hi. I am Dave. I think there has been a small misunderstanding. I called you here to talk about the rent.", cam: dave}
+      - {say: npc_landlord_copy, text: "I do not know anything about the rent. I was born four seconds ago. I know three things. I am a landlord, the carpet is beige, and I am deeply unsatisfied."}
+      - {say: kyle, text: "Dave, I need you to look at me. This is a landlord that you have made out of thin air, and it has a very strong opinion.", cam: kyle}
+      - {say: dave, text: "It is a good landlord. It has not asked me for money yet."}
+      - {say: npc_landlord_copy, text: "Dave. Dave, please. I would like to inspect the apartment. I have a clipboard. It came with me.", cam: npc_landlord_copy}
+      - {act: 4, cam: follow, follow: npc_landlord_copy, acts: [{who: npc_landlord_copy, do: walk_to, to: window, dur: 3}, {who: npc_landlord_copy, do: shake, delay: 3, amt: 0.05}], ui: [{kind: chat, text: "[LANDLORD COPY] Hmm. Hmm. Hmmmmm.", at: 3.2, dur: 3}]}
+      - {say: npc_landlord_copy, text: "There is a crack in the window. There is a crack in the floor. There is a crack in your future. I am writing this down."}
+      - {say: dave, text: "I did not know my future had a crack in it.", cam: dave}
+      - {say: kyle, text: "Dave. The real landlord is going to come through that door in about one minute, and he is going to see this."}
+      - {say: dave, text: "Okay. It is simple. I will delete it. How do I delete a landlord?", cam: dave}
+      - {say: kyle, text: "I do not think you can. I have seen the list. There is spawn, and there is not an opposite of spawn."}
+      - {say: dave, text: "There is always an opposite of spawn! It is called delete! It is on every keyboard!"}
+      - {say: kyle, text: "It is not on yours. It is not on any of the keyboards that matter.", cam: kyle}
+
+  # ------------------------------------------------------------------ 4. delete attempts
+  - id: delete_attempts
+    set: apartment
+    cast: {dave: left, kyle: far_right, npc_landlord_copy: {at: window, face: 0}}
+    beats:
+      - {card: "DAVE TRIES TO UN-SPAWN THE LANDLORD", sub: "Attempt 1 of 4", dur: 4, sfx: [whoosh]}
+      - {act: 4, cam: dave, sfx: [{name: error, at: 2.0}], ui: [{kind: console, text: "> delete landlord", at: 0.3, dur: 1.6}, {kind: system, text: "Unknown command: delete.", at: 2.0, dur: 3}]}
+      - {card: "ATTEMPT 2 OF 4", sub: "Dave tries to be polite", dur: 3, sfx: [whoosh]}
+      - {act: 4, cam: dave, sfx: [{name: error, at: 2.0}], ui: [{kind: console, text: "> please remove landlord", at: 0.3, dur: 1.8}, {kind: system, text: "Politeness is not a command.", at: 2.2, dur: 3}]}
+      - {say: npc_landlord_copy, text: "Was that about me? I have very good hearing. I heard the word remove. I have documented it.", cam: npc_landlord_copy}
+      - {card: "ATTEMPT 3 OF 4", sub: "Dave tries to un-spawn it with a pizza", dur: 3, sfx: [whoosh]}
+      - {act: 5, cam: wide, sfx: [{name: pop, at: 1.0}], acts: [{who: dave, do: spawn, item: pizza, n: 3, to: center, spread: 1.5, delay: 1.0, dur: 2}], ui: [{kind: console, text: "> spawn pizza (to distract)", at: 0.3, dur: 1.6}]}
+      - {say: npc_landlord_copy, text: "Is that a pizza? I accept. I am a landlord who loves pizza. I am going to be a landlord who eats pizza on your carpet."}
+      - {say: kyle, text: "That made it worse. You gave it a hobby.", cam: kyle}
+      - {say: dave, text: "Everyone has a hobby! It is healthy!", cam: dave}
+      - {card: "ATTEMPT 4 OF 4", sub: "Dave asks nicely, in a letter", dur: 3, sfx: [whoosh]}
+      - {say: dave, text: "Dear Landlord. I hope this letter finds you. I would like you to leave. Sincerely, your tenant, who is also your creator.", cam: dave}
+      - {say: npc_landlord_copy, text: "I do not accept letters from tenants. I only accept rent. And pizza.", cam: npc_landlord_copy}
+      - {act: 3, cam: wide, sfx: [{name: pop, at: 0.5}], ui: [{kind: chat, text: "[SERVER] Someone is knocking at the door.", at: 0.3, dur: 3}]}
+      - {say: kyle, text: "That is the real one."}
+      - {say: dave, text: "Hide the pizza! Hide the other landlord! Hide me!", cam: dave}
+
+  # ------------------------------------------------------------------ 5. the real landlord
+  - id: two_landlords
+    set: apartment
+    cast: {dave: left, kyle: far_right, npc_landlord_copy: {at: center, face: 0}, npc_pruitt: {at: door, face: 0}}
+    beats:
+      - {act: 3, cam: wide, hp: "60", sfx: [{name: boom, at: 0.3}], ui: [{kind: chat, text: "[SERVER] Mister Pruitt has entered the apartment. He is the real landlord.", at: 0.3, dur: 4}], acts: [{who: npc_pruitt, do: walk_to, to: right, dur: 2}]}
+      - {say: npc_pruitt, text: "Dave. I have called you four times. I have emailed you twice. I have sent a carrier pigeon. The pigeon is very upset with you.", cam: npc_pruitt}
+      - {say: dave, text: "Mister Pruitt! What a surprise. I was just thinking about rent. And also not thinking about rent."}
+      - {say: npc_pruitt, text: "Who is that man by the window?", cam: wide}
+      - {say: npc_landlord_copy, text: "I am the landlord.", cam: npc_landlord_copy}
+      - {say: npc_pruitt, text: "I am the landlord. I have been the landlord for twenty three years. I have a lanyard.", cam: npc_pruitt}
+      - {say: npc_landlord_copy, text: "I have a clipboard. I have more authority than a lanyard.", cam: npc_landlord_copy}
+      - {say: kyle, text: "Please, everyone, let us not make this a conflict between two landlords.", cam: kyle}
+      - {say: npc_pruitt, text: "He looks like me. He has my sweater. He has my face. Why does he have my face, Dave?", cam: npc_pruitt}
+      - {say: dave, text: "It is a family resemblance. He is a cousin. A second cousin. From the landlord side."}
+      - {say: npc_landlord_copy, text: "I am from the clipboard side of the family. I am not a cousin. I am a replacement.", cam: npc_landlord_copy}
+      - {say: npc_pruitt, text: "A replacement? I have been replaced? I have never missed a monthly payment in my life. I am the one who collects them!"}
+      - {act: 4, cam: two, sfx: [{name: warn, at: 0.5}], acts: [{who: npc_pruitt, do: shake, amt: 0.12}, {who: npc_landlord_copy, do: shake, amt: 0.12}], ui: [{kind: chat, text: "[SERVER] Two landlords are staring at each other.", at: 0.3, dur: 3.5}]}
+      - {say: npc_landlord_copy, text: "Tenant. I would like to raise the rent by one hundred dollars.", cam: npc_landlord_copy}
+      - {say: npc_pruitt, text: "Excuse me, I would like to raise it by two hundred.", cam: npc_pruitt}
+      - {say: npc_landlord_copy, text: "Three hundred. For the pizza."}
+      - {say: npc_pruitt, text: "Four hundred. For the pigeon."}
+      - {say: dave, text: "Kyle! They are bidding against each other! In the wrong direction!", cam: dave}
+      - {say: kyle, text: "They are having an auction. Dave, that is the worst thing that can happen to a tenant.", cam: kyle}
+      - {act: 4, cam: dave, sfx: [{name: error, at: 0.5}], ui: [{kind: system, text: "Rent is now $1,300 per month. Dave owes it twice.", at: 0.5, dur: 4}], acts: [{who: dave, do: flop, delay: 1.0, dur: 2}]}
+
+  # ------------------------------------------------------------------ 6. the admin
+  - id: admin
+    set: apartment
+    cast: {dave: left, kyle: far_right, admin: window, npc_landlord_copy: {at: center, face: 0}, npc_pruitt: {at: right, face: 0}}
+    beats:
+      - {act: 3, cam: wide, sfx: [{name: glitch, at: 1.0}, {name: boom, at: 1.8}], acts: [{who: admin, do: appear, delay: 1.0}], ui: [{kind: admin, text: "NOTICE: Two landlords is one landlord over the legal limit.", at: 1.2, dur: 4.5}]}
+      - {say: admin, text: "I am a plant. A very quiet plant. I am only here because someone said the word landlord. It is the scariest word I know.", cam: admin}
+      - {say: npc_pruitt, text: "Who is that? Is that a plant?", cam: npc_pruitt}
+      - {say: admin, text: "I am a plant, and I am on the lease. It is in the fine print. I have been a tenant here since before Dave."}
+      - {say: dave, text: "Admin, I cannot delete the landlord. Why is there no delete key?", cam: dave}
+      - {say: admin, text: "Because everything has a cost. If you could delete things, you would delete a lot of things you would regret. You would delete a person. You would delete yourself. You are a dramatic person, Dave.", cam: admin}
+      - {say: dave, text: "I would only delete the landlord. And maybe the mold."}
+      - {say: admin, text: "The mold is load bearing. It is holding the wall up. I have checked."}
+      - {say: npc_landlord_copy, text: "I like him. He has strong values. He would make an excellent tenant."}
+      - {say: npc_pruitt, text: "He is not a tenant. He is a copy of me.", cam: npc_pruitt}
+      - {say: admin, text: "If you cannot delete a landlord, you can only hold a meeting. There is a mediator on the console. It is called Greg.", cam: admin}
+      - {say: dave, text: "Greg is on the console?"}
+      - {say: admin, text: "No. I am joking. Greg is busy punching a wall. But a mediation is a very good idea. Let them talk. They are the same person, so they will agree on everything."}
+      - {say: kyle, text: "That is not how people work.", cam: kyle}
+      - {say: admin, text: "It is how landlords work. They disagree about nothing except the amount.", cam: admin}
+
+  # ------------------------------------------------------------------ 7. the deal
+  - id: deal
+    set: apartment
+    cast: {dave: left, kyle: far_right, npc_landlord_copy: {at: center, face: 0}, npc_pruitt: {at: right, face: 0}}
+    beats:
+      - {loading: "Tip: Mediation takes a long time. Landlords take longer.", dur: 5}
+      - {act: 3, cam: wide, hp: "60", ui: [{kind: chat, text: "[SERVER] Mediation, hour two. Everyone has had a snack.", at: 0.4, dur: 3.5}]}
+      - {say: npc_pruitt, text: "I have had a thought. If there are two of us, we could split the building. I take the north half. You take the south half.", cam: npc_pruitt}
+      - {say: npc_landlord_copy, text: "I do not know what a building is. But I will take the half with the better carpet.", cam: npc_landlord_copy}
+      - {say: npc_pruitt, text: "Both halves have the same carpet. It is beige."}
+      - {say: npc_landlord_copy, text: "Then I will take the half that is not beige. It is my right as a landlord."}
+      - {say: dave, text: "Would you consider, as a compromise, not charging any rent at all?", cam: dave}
+      - {say: npc_pruitt, text: "No."}
+      - {say: npc_landlord_copy, text: "No. But I will make it a little less. In exchange for one favour."}
+      - {say: dave, text: "What favour?"}
+      - {say: npc_landlord_copy, text: "I want to live here. I am a landlord who has nowhere to go. I was born in your living room. I would like the couch.", cam: npc_landlord_copy}
+      - {say: npc_pruitt, text: "He is going to move in? That is unprecedented. I have never had a tenant with a landlord living in the apartment.", cam: npc_pruitt}
+      - {say: kyle, text: "Dave, this is the most successful negotiation you have ever had. You got a discount in exchange for a roommate that is your landlord.", cam: kyle}
+      - {say: dave, text: "It is a new kind of arrangement. It is called a landlord roommate.", cam: dave}
+      - {say: npc_pruitt, text: "I will take the rent down to four hundred. It is the best offer I have ever made. I do not know what has come over me. It must be the pizza."}
+      - {act: 4, cam: wide, sfx: [{name: ding, at: 1.0}], acts: [{who: dave, do: jump, delay: 1.0, dur: 3}], ui: [{kind: achievement, text: "Rent Reduced By Rival Landlord", at: 1.0, dur: 3.5}]}
+      - {say: dave, text: "Mister Pruitt, I have four dollars. Does that cover the first week?", cam: dave}
+      - {say: npc_pruitt, text: "It covers a banana. But I will take the coupon for the bagel."}
+      - {say: dave, text: "The coupon is the last thing I have!"}
+      - {say: npc_landlord_copy, text: "It is the price of freedom, tenant. I charge a lot less than a bagel.", cam: npc_landlord_copy}
+
+  # ------------------------------------------------------------------ 8. epilogue
+  - id: epilogue
+    set: apartment
+    cast: {dave: left, kyle: right, npc_landlord_copy: {at: couch, face: 0}}
+    beats:
+      - {card: "ONE WEEK LATER", sub: "The landlord is still on the couch.", dur: 4, sfx: [whoosh]}
+      - {act: 3, cam: wide, hp: "100", ui: [{kind: chat, text: "[SERVER] The landlord copy is now watching television.", at: 0.4, dur: 3.5}]}
+      - {say: dave, text: "How is the couch?", cam: dave}
+      - {say: npc_landlord_copy, text: "It is very beige. I have inspected it four times. It is acceptable.", cam: npc_landlord_copy}
+      - {say: kyle, text: "I want to make sure you know that you have a landlord who is also a roommate, and he is a perfect copy of a real person.", cam: kyle}
+      - {say: dave, text: "I have a landlord in my apartment, and the other landlord is happy with me. It is a win for everyone."}
+      - {say: npc_landlord_copy, text: "Nice weather today."}
+      - {say: kyle, text: "He said the line. He is an NPC now. This is the most Dave thing that has ever happened."}
+      - {say: dave, text: "I have learned something about myself this week. I do not like to delete things. I like to keep them. Even the bad ones. Even the ones with clipboards.", cam: dave}
+      - {say: kyle, text: "Dave.", cam: kyle}
+
+  - id: next_time
+    set: black
+    beats:
+      - {card: "NEXT TIME", sub: "S01E06  -  FLY (PREMIUM)", dur: 6}

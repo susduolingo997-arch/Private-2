@@ -7,6 +7,7 @@ from engine import audio, cast, overlay, plan as planner, schema, sets
 
 ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 EPISODES = sorted(glob.glob(os.path.join(ROOT, "episodes", "*.yaml")))
+NOCLIP = os.path.join(ROOT, "episodes", "s01e01_noclip.yaml")  # the game-HUD reference episode
 
 
 def mini(beats, **kw):
@@ -44,7 +45,7 @@ class SchemaTests(unittest.TestCase):
 
 class PlanTests(unittest.TestCase):
     def setUp(self):
-        self.ep = schema.load(EPISODES[0])
+        self.ep = schema.load(NOCLIP)
         self.plan = planner.build_plan(self.ep, estimate=True)
 
     def test_beats_are_contiguous_and_shards_cover_every_frame(self):
@@ -63,8 +64,9 @@ class PlanTests(unittest.TestCase):
             for b in sc["beats"]:
                 if b["kind"] == "say":
                     words = len(b["text"].split())
+                    # voices differ (cast.KV_RATE); no line may be shorter than a fast reader would need
                     self.assertGreaterEqual((b["f1"] - b["f0"]) / self.plan["fps"],
-                                            words / schema.WORDS_PER_SEC)
+                                            words / (schema.WORDS_PER_SEC * 2.0))
 
     def test_cheat_beat_emits_console_and_toast(self):
         kinds = {e["kind"] for e in self.plan["events"]}
@@ -73,7 +75,7 @@ class PlanTests(unittest.TestCase):
 
 class OutputTests(unittest.TestCase):
     def test_overlay_and_audio_build(self):
-        ep = schema.load(EPISODES[0])
+        ep = schema.load(NOCLIP)
         plan = planner.build_plan(ep, estimate=True)
         with tempfile.TemporaryDirectory() as d:
             ass = overlay.build_ass(plan, os.path.join(d, "o.ass"))
@@ -93,9 +95,6 @@ class OutputTests(unittest.TestCase):
         for name, s in sets.SETS.items():
             self.assertIn("center", s["marks"], name)
 
-
-if __name__ == "__main__":
-    unittest.main()
 
 
 class UniverseTests(unittest.TestCase):
@@ -129,3 +128,44 @@ class UniverseTests(unittest.TestCase):
         with tempfile.TemporaryDirectory() as b, tempfile.TemporaryDirectory() as s:
             open(os.path.join(b, "s01e01.mp4"), "wb").write(b"x")
             self.assertEqual(universe.publish(b, s), ["irl-s01e01"])
+
+    def test_every_episode_is_in_the_universe_and_every_video_has_art(self):
+        from engine import universe
+        u = universe.load()
+        linked = {v["episode"] for v in u["videos"] if v.get("episode")}
+        for path in EPISODES:
+            self.assertIn(os.path.relpath(path, ROOT), linked, path + " is not a video in universe.yaml")
+        for ch in u["channels"]:
+            self.assertEqual(sum(v["channel"] == ch["id"] for v in u["videos"]), 5, ch["id"])
+        with tempfile.TemporaryDirectory() as d:
+            data = universe.build_site(d)
+            for v in data["videos"]:
+                self.assertTrue(v["thumb_img"], v["id"] + " has no thumbnail (python -m engine universe art)")
+            for p in data["characters"] + data["channels"]:
+                self.assertTrue(p["avatar"], p["id"] + " has no avatar")
+            emb = [v for v in data["videos"] if v.get("embed_src")]
+            self.assertTrue(emb and all(v["status"] == "live" for v in emb))
+            self.assertTrue(os.path.exists(os.path.join(d, emb[0]["embed_src"])))
+
+    def test_estimate_tracks_cast_voices(self):
+        # a slow voice must estimate longer than a fast one for the same words
+        ep = lambda who: dict(id="t", title="T", scenes=[dict(id="a", set="newsroom", cast={who: "center"},
+                              beats=[{"say": who, "text": "one two three four five six seven eight nine ten"}])])
+        slow = planner.build_plan(_prep(ep("sarah")), estimate=True)
+        fast = planner.build_plan(_prep(ep("emma")), estimate=True)
+        self.assertGreater(slow["seconds"], fast["seconds"])
+
+
+def _prep(ep):
+    schema.validate(ep)
+    ep.setdefault("fps", 24)
+    ep.setdefault("resolution", [1280, 720])
+    for s in ep["scenes"]:
+        s["cast"] = s.get("cast") or {}
+        for i, b in enumerate(s["beats"]):
+            b["kind"], b["index"] = schema.beat_kind(b), i
+    return ep
+
+
+if __name__ == "__main__":
+    unittest.main()

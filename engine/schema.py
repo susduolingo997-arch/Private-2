@@ -27,11 +27,13 @@ VERBS = {
     "jump", "shake", "spin", "grow", "shrink", "teleport", "face", "appear",
     "vanish", "wave", "spawn", "vehicle", "launch",
 }
-UI_KINDS = {"console", "system", "achievement", "admin", "chat"}
+UI_KINDS = {"console", "system", "achievement", "admin", "chat",
+            "lower", "ticker", "headline"}  # lower/ticker/headline: news + events graphics
+SHOWS = ("irl", "news", "events")
 SFX = {"chime", "error", "pop", "fall", "ding", "whoosh", "boom", "glitch", "warn", "crowd"}
 DEFAULT_DUR = {"act": 2.0, "cheat": 3.0, "loading": 4.0, "card": 3.0}
 SAY_PAD = 0.45
-WORDS_PER_SEC = 2.6  # only used when no TTS audio is available
+WORDS_PER_SEC = 3.06  # at 170 wpm; calibrated against Kokoro. Only used for --estimate
 
 
 class EpisodeError(Exception):
@@ -101,7 +103,7 @@ def validate(ep, path="<episode>"):
                 if not b.get("text"):
                     errs.append(f"{bw}: say needs text")
             cam = b.get("cam")
-            if cam and cam not in sets.CAMS:
+            if cam and cam not in sets.CAMS and not sets.is_char_cam(cam):
                 errs.append(f"{bw}: unknown cam {cam!r}")
             for item in _aslist(b.get("sfx") or []):
                 nm = item.get("name") if isinstance(item, dict) else item
@@ -122,6 +124,10 @@ def validate(ep, path="<episode>"):
                     errs.append(f"{bw}: bad ui event {u!r}")
             if kind == "cheat" and not b.get("cheat"):
                 errs.append(f"{bw}: cheat needs a code")
+    if ep.get("show", "irl") not in SHOWS:
+        errs.append(f"{path}: show must be one of {SHOWS}")
+    if ep.get("music", "arcade") not in ("arcade", "news", "party"):
+        errs.append(f"{path}: music must be arcade, news or party")
     if errs:
         raise EpisodeError(errs)
 

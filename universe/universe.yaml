@@ -2,10 +2,10 @@
 #
 # Everything the site shows comes from this file. To add a show: add a channel, add its
 # characters, add videos. To link a video to a renderable script, set `episode:` to a file
-# in episodes/. Entries marked `placeholder: true` are stand-ins invented by the scaffold:
-# rewrite them (or delete them) to match your real canon, then drop the flag.
+# in episodes/. `thumb:` describes the hero shot Blender renders for the thumbnail.
 #
 #   python -m engine universe check     validate the whole universe
+#   python -m engine universe art       (re)render thumbnails, avatars and banners (needs Blender)
 #   python -m engine universe build     write site/  (open site/index.html, no server needed)
 #   python -m engine universe publish   copy rendered mp4s into site/media/
 
@@ -16,57 +16,100 @@ site:
   today: 2026-11-27
 
 # ---------------------------------------------------------------- channels
+# banner: the Blender hero shot behind the channel banner. logo: which hand-drawn logo (engine/thumbs.py).
 channels:
   - id: irl-but-cheats
     name: IRL BUT CHEATS
     handle: "@irlbutcheats"
     color: "#f2a33a"
     subs: 1840000
+    logo: console
+    banner: {set: apartment, cast: {dave: center, kyle: right, admin: window}, cam: wide, acts: [{who: admin, do: appear, delay: 0}], at: 6}
     about: >
       Dave discovers that real life has a developer console. He is not qualified to use it.
       A very badly funny animated series. New episodes whenever the Admin allows it.
-    links: [Greg's Wall-Punching Channel (not real)]
 
-  - id: passion-fruit-events
-    name: Passion Fruit Events
-    handle: "@passionfruitevents"
-    color: "#ff4fa3"
+  - id: channel-9
+    name: Channel 9
+    handle: "@channel9"
+    color: "#1d3f8f"
+    subs: 5210000
+    logo: nine
+    banner: {set: newsroom, cast: {martin: anchor_l, sarah: anchor_r, david: weather}, cam: wide, at: 6}
+    about: >
+      Channel 9 Evening News. The most trusted name in Channel 9. Live, local, and played completely
+      straight, even when the story is a sandwich. Martin Miller and Sarah Collins anchor; David Storm
+      has the weather; Emma Parker is outside; Kevin Brooks is somewhere with a camera.
+
+  - id: marigold-events
+    name: Marigold Events
+    handle: "@marigoldevents"
+    color: "#ff9f1c"
     subs: 392000
-    placeholder: true
+    logo: flower
+    banner: {set: ballroom, cast: {marisol: center, tobias: left, kyle: right}, cam: wide, acts: [{who: tobias, do: jump, dur: 1.5}], at: 8}
     about: >
       Events so good they are slightly illegal. Weddings, launches, drops and galas,
-      planned by people who say "per my last email" out loud.
+      planned by people who say "per my last email" out loud. One year in business. Zero fountains.
+      (Not to be confused with PASSIONFRUIT, which is a company. This is a planner.)
 
-  - id: news-channel-9
-    name: News Channel 9
-    handle: "@newschannel9"
-    color: "#2b7de9"
-    subs: 5210000
-    placeholder: true
+  - id: passionfruit
+    name: PASSIONFRUIT
+    handle: "@passionfruit"
+    color: "#8e2de2"
+    subs: 9800000
+    logo: fruit
+    banner: {set: black, cast: {npc_dana: center}, cam: npc_dana, at: 8, shift: 0}
     about: >
-      Live. Local. Mostly accurate. Covering everything that happens in town, including
-      the things that should not be able to happen.
+      The annual-ish PASSIONFRUIT keynote. New products, bold claims, and one more thing.
+      Phones one side thin, chips that make you calmer, and a car that only drives to the store for passionfruit.
+      Every event runs about twenty minutes. Please remain seated.
+
 
 # ---------------------------------------------------------------- characters
 # Everyone lives in the same world, so anyone can show up in anyone's video, or in a comment.
-# `engine` links a person to a voice/model in engine/cast.py (dave, kyle, admin, npc_<name>).
+# `engine` links a person to the voice/model in engine/cast.py (a named cast member or npc_<name>);
+# the avatar is a Blender close-up of that exact model.
 characters:
-  - {id: dave,    name: Dave,           channel: irl-but-cheats,       color: "#f2a33a", engine: dave,  role: "Main character. Four dollars and a bagel coupon."}
-  - {id: kyle,    name: Kyle,           channel: irl-but-cheats,       color: "#4a90e2", engine: kyle,  role: "Deadpan best friend."}
-  - {id: admin,   name: The Admin,      channel: irl-but-cheats,       color: "#e03a3a", engine: admin, role: "Floating red crystal. Moderator. Pretends to be a plant."}
-  - {id: gerald,  name: Gerald,         channel: null,                 color: "#7fb7be", engine: npc_gerald, role: "Still waiting for a bus."}
-  - {id: greg,    name: Greg,           channel: null,                 color: "#b08968", engine: npc_greg,   role: "Punches a wall. Thriving."}
-  - {id: anchor,  name: Pam Ferreira,   channel: news-channel-9,        color: "#2b7de9", engine: npc_anchor, role: "Lead anchor, News Channel 9.", placeholder: true}
-  - {id: reporter,name: Duncan Okafor,  channel: news-channel-9,        color: "#4fb3a9", engine: npc_reporter, role: "Field reporter. Always outside.", placeholder: true}
-  - {id: planner, name: Marisol Quinn,  channel: passion-fruit-events,  color: "#ff4fa3", engine: npc_planner, role: "Lead planner at Passion Fruit Events.", placeholder: true}
+  - {id: dave,      name: Dave,            channel: irl-but-cheats,      color: "#f2a33a", engine: dave,  role: "Main character. Four dollars and a bagel coupon."}
+  - {id: kyle,      name: Kyle,            channel: irl-but-cheats,      color: "#4a90e2", engine: kyle,  role: "Deadpan best friend. Has a newsletter."}
+  - {id: admin,     name: The Admin,       channel: irl-but-cheats,      color: "#e03a3a", engine: admin, role: "Floating red crystal. Moderator. Insists it is a plant."}
+  - {id: gerald,    name: Gerald (Man),    channel: null,                color: "#7fb7be", engine: gerald, role: "Still waiting for a bus. There are several of us."}
+  - {id: greg,      name: Greg,            channel: null,                color: "#b08968", engine: greg,  role: "Punches walls. Thriving."}
+  - {id: pruitt,    name: Mr. Pruitt,      channel: null,                color: "#9aa5b1", engine: npc_pruitt, role: "Landlord. The original. Has a lanyard."}
+  - {id: landlord2, name: "Landlord (Copy)", channel: null,               color: "#8fb996", engine: npc_landlord_copy, role: "Landlord. Spawned. Has a better clipboard."}
+  - {id: gary,      name: Gary,            channel: null,                color: "#d4a373", engine: npc_gary, role: "Office manager. Survived a stapler. Pink."}
+  - {id: steve,     name: Steve,           channel: null,                color: "#7fb7be", engine: npc_stapler, role: "A stapler. Fully refilled.", shrink: 0.3}
+  - {id: karen,     name: Karen,           channel: null,                color: "#c9a0dc", engine: npc_karen, role: "Queue veteran. Owns a dog called Receipt."}
+  - {id: shack,     name: Mr. Shack,       channel: null,                color: "#b08968", engine: npc_owner, role: "Owns the Sneaker Shack. Has a sign."}
+  - {id: martin,    name: Martin Miller,   channel: channel-9,           color: "#7fb2ff", engine: martin, role: "Main anchor, Channel 9. Everything is grave. Everything."}
+  - {id: sarah,     name: Sarah Collins,   channel: channel-9,           color: "#ffb3c7", engine: sarah, role: "Co-anchor and producer. Says 'Martin.' a lot."}
+  - {id: david,     name: David Storm,     channel: channel-9,           color: "#9ef0c0", engine: david, role: "Chief weather presenter. The map is Iceland again."}
+  - {id: emma,      name: Emma Parker,     channel: channel-9,           color: "#ffd27a", engine: emma,  role: "Field reporter. Always in a car park."}
+  - {id: kevin,     name: Kevin Brooks,    channel: channel-9,           color: "#c9a7ff", engine: kevin, role: "Camera operator. Sometimes a chef. Pressed the big button."}
+  - {id: richard,   name: Richard Wilson,  channel: channel-9,           color: "#ff9a7a", engine: richard, role: "Station manager. Viewers: forty-seven. Demands energy."}
+  - {id: lindqvist, name: Prof. Lindqvist, channel: null,                color: "#9fe3da", engine: npc_professor, role: "Studies floors. And clocks. And, once, staplers."}
+  - {id: gnome,     name: Gerald (Gnome),  channel: null,                color: "#7fb7be", engine: npc_gnome, role: "Twelve inches of ceramic. Missing from Birchwood Lane. Found at a bus stop.", shrink: 0.35}
+  - {id: marisol,   name: Marisol Quinn,   channel: marigold-events, color: "#ff4fa3", engine: marisol, role: "Lead planner. Does not talk about the fountain."}
+  - {id: tobias,    name: Tobias,          channel: marigold-events, color: "#8e6bd6", engine: tobias, role: "Junior planner. Cries at weddings, galas and coats."}
+  - {id: dana,      name: Dana,            channel: passionfruit,        color: "#8e2de2", engine: npc_dana, role: "CEO of PASSIONFRUIT. Appears from an empty theater."}
+  - {id: rafa,      name: Rafa,            channel: passionfruit,        color: "#e8883a", engine: npc_rafa, role: "Host of Event 4 (Go Further)."}
+  - {id: bea,       name: Bea Nectarine,   channel: passionfruit,        color: "#ffd27a", engine: npc_bea,  role: "Home & Ambience. Introduced Pulp Ding."}
+  - {id: imogen,    name: Imogen,          channel: passionfruit,        color: "#c9a0dc", engine: npc_imogen, role: "Design. Apologised for designing loss, beautifully."}
+  - {id: pip,       name: Pip,             channel: passionfruit,        color: "#9ef0c0", engine: npc_pip,  role: "Home assistant that agrees with everything. Now a manager."}
+  - {id: nope,      name: Nope,            channel: passionfruit,        color: "#ff9a7a", engine: npc_nope, role: "Home assistant that disagrees with everything. Resigned in one word."}
+  - {id: ollie,     name: Ollie Pardon,    channel: passionfruit,        color: "#7fb2ff", engine: npc_ollie, role: "Chief Apology Officer."}
+  - {id: doug,      name: Doug,            channel: marigold-events, color: "#7fb7be", engine: npc_doug, role: "Security. Silent. Excellent."}
+  - {id: bjorn,     name: Bjorn,           channel: null,                color: "#9aa5b1", engine: npc_sculptor, role: "Ice sculptor. A nine is a six that gave up."}
+  - {id: priya,     name: Priya,           channel: null,                color: "#c9a0dc", engine: npc_bride, role: "Bride. Very high standards."}
+  - {id: oscar,     name: Oscar,           channel: null,                color: "#8fb996", engine: npc_groom, role: "Groom. Loves the plant."}
 
 # ---------------------------------------------------------------- videos
 # status is derived: `live` (an mp4 is in site/media), `scripted` (episode file exists),
-# otherwise `planned` (the site shows a "premieres soon" player).
-# mentions: ids of other videos this one refers to (shown as "In this universe" links).
-# comments: [{by: <character id or any name>, text, likes}]
+# otherwise `planned`. mentions: crossovers (shown as "In this universe" links, both ways).
+# thumb: {set, cast, cam, acts, at, text: [lines], hl: index of the yellow line, tag: sticker}
 videos:
-  # ---------------- IRL BUT CHEATS
+  # ================================================================ IRL BUT CHEATS
   - id: irl-s01e01
     channel: irl-but-cheats
     title: "I Found A Console In Real Life (Noclip) | IRL BUT CHEATS S01E01"
@@ -75,14 +118,15 @@ videos:
     views: 4120000
     likes: 301000
     cast: [dave, kyle, admin, greg]
+    thumb: {set: street, cast: {dave: shop_door, kyle: queue_front}, acts: [{who: dave, do: noclip_to, to: inside, dur: 1.0}], at: 14,   text: ["I FELL OUT", "OF THE WORLD"], hl: 1, tag: NOCLIP}
     description: |
       Dave tries to cut a sneaker line and falls out of the world.
       Admin warning 1 of 3.
       Cheats used: noclip, god, teleport, infinite_money, spawn
     comments:
-      - {by: kyle,  text: "Dave.", likes: 88000}
-      - {by: admin, text: "This is not a plant. Do not look at me.", likes: 41200}
-      - {by: greg,  text: "I was not asked about the wall. The wall is fine.", likes: 22800}
+      - {by: kyle,   text: "Dave.", likes: 88000}
+      - {by: admin,  text: "This is not a plant. Do not look at me.", likes: 41200}
+      - {by: greg,   text: "I was not asked about the wall. The wall is fine.", likes: 22800}
       - {by: gerald, text: "Does anyone know if the 9 is running late", likes: 9100}
 
   - id: irl-s01e02
@@ -93,7 +137,8 @@ videos:
     views: 3480000
     likes: 266000
     cast: [dave, kyle, admin, gerald, greg]
-    mentions: [n9-early-late]
+    mentions: []
+    thumb: {set: street, cast: {dave: queue_mid, kyle: right}, acts: [{who: dave, do: run_to, to: queue_front, dur: 1.2}], at: 14,   text: ["10X SPEED", "(BAD IDEA)"], hl: 0, tag: SPEEDHACK}
     description: |
       Eight minutes to reach a job interview. Dave arrives both early and late,
       becomes a pizza courier, and learns inner peace from a crystal that insists it is a plant.
@@ -105,87 +150,304 @@ videos:
   - id: irl-s01e03
     channel: irl-but-cheats
     title: "Time Scale | IRL BUT CHEATS S01E03"
+    episode: episodes/s01e03_timescale.yaml
     published: 2026-03-16
-    cast: [dave, kyle]
-    description: Slow motion makes the worst morning of Dave's life last a week. Kyle ages.
-    cheat: timescale 0.1
+    views: 2910000
+    likes: 240000
+    cast: [dave, kyle, gerald, admin]
+    mentions: [n9-s01e03]
+    thumb: {set: apartment, cast: {dave: center, kyle: right}, cam: two, acts: [{who: kyle, do: grow, by: 1.25, dur: 1}, {who: dave, do: tpose, dur: 1.5}], at: 30, text: ["KYLE AGED", "7 YEARS"], hl: 0, tag: TIME SCALE}
+    description: |
+      The bagel coupon expires at noon. Dave slows time. Kyle ages.
+      Cheat used: timescale 0.1
+    comments:
+      - {by: kyle,   text: "I would like it noted that I started a newsletter. It has four subscribers.", likes: 96000}
+      - {by: gerald, text: "He walked past my stop on Thursday. I am told it was a greeting.", likes: 54000}
+      - {by: dave,   text: "I got the bagel. It was a very good bagel. It took a week.", likes: 40100}
 
   - id: irl-s01e04
     channel: irl-but-cheats
-    title: "Aimbot | IRL BUT CHEATS S01E04"
+    title: "Aimbot Turned Paintball Into A Hostage Situation | IRL BUT CHEATS S01E04"
+    episode: episodes/s01e04_aimbot.yaml
     published: 2026-03-23
-    cast: [dave, kyle]
-    description: A friendly office paintball day turns into a hostage negotiation with a stapler.
-    cheat: aimbot
-    mentions: [pf-office-day]
+    views: 2640000
+    likes: 228000
+    cast: [dave, kyle, marisol, tobias, admin]
+    mentions: [mg-s01e02, n9-s01e04]
+    thumb: {set: office, cast: {dave: left, npc_gary: desk, npc_stapler: [1.8, 2.4]}, acts: [{who: npc_stapler, do: shrink, by: 0.35, dur: 0.2}, {who: npc_gary, do: shake, dur: 1.5}], at: 16,   text: ["THE STAPLER", "HAS A TIE"], hl: 1, tag: AIMBOT}
+    description: |
+      A friendly office paintball day turns into a hostage negotiation with a stapler.
+      Event planning by Marigold Events. Cheat used: aimbot
+    comments:
+      - {by: gary,    text: "I am still a little pink. I would like to thank Steve.", likes: 77200}
+      - {by: steve,   text: "click", likes: 61000}
+      - {by: marisol, text: "We do not ask. It is policy. Five stars.", likes: 32000}
 
   - id: irl-s01e05
     channel: irl-but-cheats
-    title: "Spawn Item | IRL BUT CHEATS S01E05"
+    title: "I Spawned A Landlord And Now I Have Two | IRL BUT CHEATS S01E05"
+    episode: episodes/s01e05_spawn_item.yaml
     published: 2026-03-30
-    cast: [dave, kyle, admin]
-    description: Dave tries to un-spawn something. There is no delete key.
-    cheat: spawn landlord
-
-  # ---------------- News Channel 9
-  - id: n9-sneaker-line
-    channel: news-channel-9
-    title: "BREAKING: Man Falls Out Of The World Outside Sneaker Shack"
-    published: 2026-03-02
-    views: 2210000
-    likes: 41000
-    placeholder: true
-    cast: [anchor, reporter, dave]
-    mentions: [irl-s01e01]
+    views: 2330000
+    likes: 214000
+    cast: [dave, kyle, admin, pruitt, landlord2]
+    mentions: [n9-s01e05]
+    thumb: {set: apartment, cast: {dave: center, npc_pruitt: left, npc_landlord_copy: right}, acts: [{who: dave, do: shake, amt: 0.1, dur: 1.5}], at: 20,   text: ["TWO", "LANDLORDS?!"], hl: 1, tag: SPAWN ITEM}
     description: |
-      Duncan Okafor is live outside the Sneaker Shack, where four hundred people witnessed a man
-      pass through the floor. Police say the sidewalk is "fine".
+      Dave cannot pay rent. Dave spawns a landlord to talk to. Dave now has two. There is no delete key.
+      Cheat used: spawn landlord
     comments:
-      - {by: dave, text: "Hi. Yes. That was me. It's fine.", likes: 66000}
-      - {by: kyle, text: "Dave.", likes: 30200}
+      - {by: pruitt,    text: "I am the real one. It is in the lanyard.", likes: 66000}
+      - {by: landlord2, text: "I am the real one. It is in the clipboard.", likes: 66000}
+      - {by: kyle,      text: "Dave.", likes: 59000}
 
-  - id: n9-early-late
-    channel: news-channel-9
-    title: "Local Man Arrives Both Early AND Late To Job Interview"
-    published: 2026-03-09
+  # ================================================================ CHANNEL 9
+  # e01 and e02 are the original Channel 9 episodes (self-contained pages in universe/embeds/).
+  - id: n9-s01e01
+    channel: channel-9
+    title: "Breaking News: Gnome Missing, Baskets Gone, Sandwich Found | Channel 9 Evening News S01E01"
+    embed: universe/embeds/n9-s01e01.html
+    duration: 600
+    published: 2026-02-23
     views: 1180000
-    likes: 22000
-    placeholder: true
-    cast: [anchor, dave]
-    mentions: [irl-s01e02]
-    description: "Experts are baffled. The interviewer says he was hired retroactively. Weather next."
+    likes: 52000
+    cast: [martin, sarah, david, emma, kevin, richard, gnome]
+    thumb: {capture: {embed: universe/embeds/n9-s01e01.html, at: 40}, text: ["GNOME", "MISSING"], hl: 1, tag: BREAKING, style: news}
+    description: |
+      Gerald the garden gnome has vanished from Birchwood Lane. Greenway Supermarket has run out of baskets.
+      A sandwich has been found in Riverside Park. Viewers: forty-seven (up from thirty-one).
+    comments:
+      - {by: martin, text: "Gerald, if you're watching... come home.", likes: 91000}
+      - {by: sarah,  text: "Martin, it's a gnome. It can't watch.", likes: 88000}
+      - {by: richard, text: "FORTY-SEVEN! RECORD!", likes: 44000}
 
-  - id: n9-gerald
-    channel: news-channel-9
-    title: "Gerald Update: Still Waiting For The Bus (Day 214)"
-    published: 2026-09-14
+  - id: n9-s01e02
+    channel: channel-9
+    title: "The Energy Episode (Contains Random Screaming) | Channel 9 Evening News S01E02"
+    embed: universe/embeds/n9-s01e02.html
+    duration: 600
+    published: 2026-03-02
+    views: 1530000
+    likes: 71000
+    cast: [martin, sarah, david, emma, kevin, richard]
+    thumb: {capture: {embed: universe/embeds/n9-s01e02.html, at: 40}, text: ["MORE", "ENERGY!"], hl: 0, tag: "EPISODE 2", style: news}
+    description: |
+      Management has asked for more energy. The town hall clock is one minute fast. A duck uses a crossing.
+      Kevin makes toast in a microwave. Eleven complaints: a new record.
+    comments:
+      - {by: richard, text: "ENERGY! I said ENERGY!", likes: 77000}
+      - {by: sarah,   text: "I'm a journalist, Richard.", likes: 70000}
+      - {by: kevin,   text: "It beeped. I didn't know it was going to beep.", likes: 52000}
+
+  - id: n9-s01e03
+    channel: channel-9
+    title: "The Longest Week: Man Still Crossing Street (Day 6) | Channel 9 Evening News S01E03"
+    episode: episodes/n9_s01e03_longest_week.yaml
+    published: 2026-03-21
     views: 3900000
     likes: 140000
-    placeholder: true
-    cast: [anchor, reporter, gerald]
-    description: "Our longest running story. The bus is reportedly 'close'."
+    cast: [martin, sarah, david, emma, kevin, richard, dave, kyle, gerald, gnome]
+    mentions: [irl-s01e03]
+    thumb: {set: street, cast: {emma: queue_mid, dave: queue_front, kyle: curb}, cam: wide, acts: [{who: kyle, do: grow, by: 1.2, dur: 1}], at: 18, text: ["DAY 6:", "STILL CROSSING"], hl: 1, tag: SPECIAL REPORT, style: news}
+    description: "A man crosses one street in six days. His friend ages seven years. The Bagel Barn clerk has not been home since Tuesday. Viewers: sixty-one. Plus: Gnome Watch."
     comments:
-      - {by: gerald, text: "It is close.", likes: 98000}
+      - {by: kyle,    text: "I am thirty five now. I would like a nap.", likes: 98000}
+      - {by: richard, text: "SIXTY-ONE!", likes: 61000}
 
-  # ---------------- Passion Fruit Events
-  - id: pf-sneaker-drop
-    channel: passion-fruit-events
-    title: "How We Planned A 400-Person Sneaker Drop (And Lost One Guest To The Floor)"
+  - id: n9-s01e04
+    channel: channel-9
+    title: "LIVE: The Stapler Standoff | Channel 9 Evening News S01E04"
+    episode: episodes/n9_s01e04_stapler.yaml
+    published: 2026-03-23
+    views: 6400000
+    likes: 310000
+    cast: [martin, sarah, david, emma, kevin, richard, marisol, tobias, gary, steve, kyle, dave]
+    mentions: [irl-s01e04, mg-s01e02]
+    thumb: {set: office, cast: {emma: right, npc_gary: desk, npc_stapler: [1.8, 2.4]}, cam: two, acts: [{who: npc_stapler, do: shrink, by: 0.35, dur: 0.2}], at: 16, text: ["STAPLER", "STANDOFF"], hl: 0, tag: LIVE, style: news}
+    description: "An office manager is held by his tie. The captor is a stapler. Channel 9 is on the scene. Viewers: four thousand three hundred. Our most watched broadcast of the year."
+    comments:
+      - {by: steve,   text: "click click click", likes: 190000}
+      - {by: gary,    text: "I am free. I am so free.", likes: 120000}
+      - {by: richard, text: "FOUR THOUSAND THREE HUNDRED!", likes: 99000}
+
+  - id: n9-s01e05
+    channel: channel-9
+    title: "Local Tenant Has TWO Landlords (Rent Under Review) | Channel 9 Evening News S01E05"
+    episode: episodes/n9_s01e05_two_landlords.yaml
+    published: 2026-03-30
+    views: 1760000
+    likes: 61000
+    cast: [martin, sarah, david, emma, kevin, richard, dave, pruitt, landlord2, gerald, gnome]
+    mentions: [irl-s01e05]
+    thumb: {set: apartment, cast: {emma: front, npc_pruitt: left, npc_landlord_copy: right}, cam: wide, acts: [], at: 14, text: ["TWO", "LANDLORDS"], hl: 1, tag: BREAKING, style: news}
+    description: "A man spawned a landlord. Now there are two. The rent is under review by both. Plus: how to spot a duplicate landlord, and the hill loses its first game."
+    comments:
+      - {by: pruitt,  text: "I would like to say, for the record, that I am the real landlord.", likes: 40000}
+      - {by: david,   text: "Nice weather.", likes: 33000}
+
+  # ================================================================ PASSIONFRUIT
+  # The five real events. Each is a ~22 minute film published as a GitHub release (pf-N.0); the site links to it.
+  - id: pf-e1
+    channel: passionfruit
+    title: "PASSIONFRUIT Event 1 - Juicier Than Ever"
+    link: https://github.com/susduolingo997-arch/private/releases/tag/pf-1.0
+    duration: 1206
+    published: 2026-04-14
+    views: 8200000
+    likes: 410000
+    cast: [dana, pip]
+    thumb: {plain: true, tag: "EVENT 1", text: ["JUICIER", "THAN EVER"], hl: 1, style: keynote}
+    description: |
+      The first PASSIONFRUIT event. Pulp Phone 1 arrives. It has one side. Pip agrees with everything.
+      A phone-shaped Pebble does nothing, beautifully.
+    comments:
+      - {by: pip,  text: "Yes.", likes: 120000}
+      - {by: dana, text: "We are very proud of the one side.", likes: 88000}
+
+  - id: pf-e2
+    channel: passionfruit
+    title: "PASSIONFRUIT Event 2 - Peel the Future"
+    link: https://github.com/susduolingo997-arch/private/releases/tag/pf-2.0
+    duration: 1368
+    published: 2026-05-19
+    views: 7400000
+    likes: 380000
+    cast: [dana, bea, pip, nope]
+    thumb: {plain: true, tag: "EVENT 2", text: ["PEEL THE", "FUTURE"], hl: 1, style: keynote}
+    description: |
+      Pulp Phone 2 has a second side. Nine cameras. A chip that makes you calmer about slow apps.
+      Nope disagrees with everything. Seeds Air earbuds fly to your ear; one landed in Portugal.
+      One more thing: a 400 kg Pebble Pro Max.
+    comments:
+      - {by: nope, text: "No.", likes: 140000}
+      - {by: bea,  text: "Please enjoy the ambience.", likes: 66000}
+
+  - id: pf-e3
+    channel: passionfruit
+    title: "PASSIONFRUIT Event 3 - Ripe for Change"
+    link: https://github.com/susduolingo997-arch/private/releases/tag/pf-3.0
+    duration: 1362
+    published: 2026-07-14
+    views: 7900000
+    likes: 402000
+    cast: [dana, bea]
+    thumb: {plain: true, tag: "EVENT 3", text: ["RIPE FOR", "CHANGE"], hl: 1, style: keynote}
+    description: |
+      A phone whose edge becomes a third screen showing only good news. A one-button remote that says "fine".
+      A mood-sensing kettle. One more thing: a one-seat car that can only drive to the store for passionfruit.
+    comments:
+      - {by: dana, text: "It is fine.", likes: 91000}
+
+  - id: pf-e4
+    channel: passionfruit
+    title: "PASSIONFRUIT Event 4 - Go Further"
+    link: https://github.com/susduolingo997-arch/private/releases/tag/pf-4.0
+    duration: 1302
+    published: 2026-09-15
+    views: 6900000
+    likes: 350000
+    cast: [rafa, dana]
+    thumb: {plain: true, tag: "EVENT 4", text: ["GO", "FURTHER"], hl: 1, style: keynote}
+    description: |
+      A world tour hosted by Rafa. A beach test where every product is thrown into the sea.
+      A store that cannot be closed because it has no lock. One more thing: Pulp Orbit, a personal satellite.
+      It finds the earbud from Event 2.
+    comments:
+      - {by: rafa, text: "Departing in 3... 2... 1...", likes: 77000}
+
+  - id: pf-e5
+    channel: passionfruit
+    title: "PASSIONFRUIT Event 5 - We're Sorry"
+    link: https://github.com/susduolingo997-arch/private/releases/tag/pf-5.0
+    duration: 1377
+    published: 2026-11-24
+    views: 12600000
+    likes: 870000
+    cast: [ollie, bea, imogen, pip, nope, dana]
+    thumb: {plain: true, tag: "EVENT 5", text: ["WE'RE", "SORRY"], hl: 1, style: keynote}
+    description: |
+      The first apology event. Ollie Pardon, Chief Apology Officer, apologises for everything. Apologies so far: 7.5.
+      Each apology leads straight into a new product. One more thing: Pulp Phone 1 Thick.
+    comments:
+      - {by: ollie, text: "Sorry this was twenty-two minutes long.", likes: 400000}
+      - {by: nope,  text: "I quit. No.", likes: 250000}
+      - {by: pip,   text: "I approved a phone for dogs.", likes: 120000}
+
+  # ================================================================ MARIGOLD EVENTS
+  - id: mg-s01e01
+    channel: marigold-events
+    title: "How We Planned A 400-Person Sneaker Drop (And Lost One Guest To The Floor) | Marigold Events S01E01"
+    episode: episodes/mg_s01e01_sneaker_drop.yaml
     published: 2026-03-20
     views: 640000
     likes: 28000
-    placeholder: true
-    cast: [planner]
-    mentions: [irl-s01e01, n9-sneaker-line]
-    description: "Crowd control, queue psychology, and what to do when a guest leaves through the floor."
+    cast: [marisol, tobias, shack, karen, doug, dave]
+    mentions: [irl-s01e01]
+    thumb: {set: street, cast: {marisol: left, tobias: right, npc_doug: shop_door}, cam: wide, acts: [{who: tobias, do: shake, amt: 0.1, dur: 1.5}], at: 16, text: ["400 GUESTS,", "1 FLOOR"], hl: 1, tag: S01E01, style: events}
+    description: "Crowd control, queue psychology, twelve porta potties, and what to do when a guest leaves through the floor (the Silver Lining Protocol)."
+    comments:
+      - {by: doug,    text: "...", likes: 51000}
+      - {by: karen,   text: "Receipt gave it five stars. Woof.", likes: 30000}
+      - {by: marisol, text: "We do not ask. It is policy.", likes: 22000}
 
-  - id: pf-office-day
-    channel: passion-fruit-events
-    title: "Corporate Paintball Day: Full Event Recap"
+  - id: mg-s01e02
+    channel: marigold-events
+    title: "Corporate Paintball Day: Full Event Recap (Including The Stapler Incident) | Marigold Events S01E02"
+    episode: episodes/mg_s01e02_paintball.yaml
     published: 2026-03-24
-    views: 210000
-    likes: 9000
-    placeholder: true
-    cast: [planner]
-    mentions: [irl-s01e04]
-    description: "We have been asked to stop saying 'stapler incident'. This is a recap of the stapler incident."
+    views: 1210000
+    likes: 59000
+    cast: [marisol, tobias, gary, steve, dave, kyle, emma]
+    mentions: [irl-s01e04, n9-s01e04]
+    thumb: {set: office, cast: {marisol: front, tobias: left, npc_gary: desk}, cam: wide, acts: [{who: marisol, do: wave, dur: 1.5}], at: 16, text: ["ITEM 38:", "THE STAPLER"], hl: 1, tag: S01E02, style: events}
+    description: "We have been asked to stop saying 'stapler incident'. This is a recap of the stapler incident. Includes the full 37 item risk assessment."
+    comments:
+      - {by: tobias, text: "I cried. I would like that on the record.", likes: 29000}
+      - {by: gary,   text: "Five stars. And a stapler.", likes: 24000}
+
+  - id: mg-s01e03
+    channel: marigold-events
+    title: "The Wedding Of The Year (A Bus Stop Was Built) | Marigold Events S01E03"
+    episode: episodes/mg_s01e03_wedding.yaml
+    published: 2026-05-02
+    views: 880000
+    likes: 47000
+    cast: [marisol, tobias, priya, oscar, greg, kyle, admin, gerald]
+    thumb: {set: garden, cast: {npc_bride: aisle_mid, npc_groom: altar, greg: right, admin: left}, cam: wide, acts: [{who: greg, do: shake, amt: 0.15, dur: 1.5}], at: 16, text: ["A BUS STOP", "AT A WEDDING"], hl: 0, tag: S01E03, style: events}
+    description: "A garden wedding. The best man punches walls. The uncle cannot leave a bus stop. The centrepiece is a very dedicated plant."
+    comments:
+      - {by: greg,   text: "I did not punch the arch. I punched the cake. It was a good cake.", likes: 36000}
+      - {by: gerald, text: "I was invited. I sat at the bench. Nice weather.", likes: 31000}
+      - {by: admin,  text: "A very expensive fern. That is all.", likes: 25000}
+
+  - id: mg-s01e04
+    channel: marigold-events
+    title: "We Planned Channel 9's 20th Anniversary Gala (The Nine Melted) | Marigold Events S01E04"
+    episode: episodes/mg_s01e04_gala.yaml
+    published: 2026-06-13
+    views: 1530000
+    likes: 82000
+    cast: [marisol, tobias, richard, martin, emma, david, lindqvist, bjorn, dave, kyle, admin]
+    mentions: [n9-s01e02]
+    thumb: {set: ballroom, cast: {marisol: front, tobias: left, npc_sculptor: right}, cam: wide, acts: [{who: tobias, do: shake, amt: 0.12, dur: 1.5}], at: 16, text: ["THE NINE", "MELTED"], hl: 1, tag: S01E04, style: events}
+    description: "Four hundred guests. A live broadcast. An ice sculpture of the number nine. A very warm ballroom. A blackout, and a pizza nobody ordered."
+    comments:
+      - {by: richard, text: "I screamed. For energy.", likes: 64000}
+      - {by: bjorn,  text: "A nine is a six that gave up.", likes: 41000}
+      - {by: david,  text: "Nice.", likes: 18000}
+
+  - id: mg-s01e05
+    channel: marigold-events
+    title: "SEASON FINALE: Our Own Anniversary Party (The Bus Arrives) | Marigold Events S01E05"
+    episode: episodes/mg_s01e05_finale.yaml
+    published: 2026-11-14
+    views: 2740000
+    likes: 190000
+    cast: [marisol, tobias, dave, kyle, admin, gerald, greg, martin, emma, david, pruitt, landlord2, gary, steve, karen, shack]
+    mentions: [mg-s01e03, mg-s01e04, irl-s01e05, n9-s01e03]
+    thumb: {set: ballroom, cast: {marisol: center, tobias: left, dave: right, kyle: far_right}, cam: wide, acts: [{who: marisol, do: jump, dur: 1.5}, {who: tobias, do: jump, dur: 1.5}], at: 18, text: ["THE BUS", "ARRIVED"], hl: 1, tag: FINALE, style: events}
+    description: "One year of Marigold Events. Everyone in the universe is invited. Gerald gets his bus. Marisol faces the fountain. Per my last email, this is the finale."
+    comments:
+      - {by: gerald, text: "It was lovely. I will wait for the next one.", likes: 150000}
+      - {by: marisol, text: "I am in the fountain. I am so happy.", likes: 120000}
+      - {by: kyle,   text: "Dave.", likes: 99000}

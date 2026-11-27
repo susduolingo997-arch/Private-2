@@ -1,0 +1,193 @@
+# IRL BUT CHEATS - S01E03 "Time Scale"
+# The bagel coupon expires at noon. Dave slows time. Time, as it turns out, was not the part that slowed.
+id: s01e03
+title: Time Scale
+target_seconds: 600
+fps: 24
+resolution: [1280, 720]
+
+scenes:
+  # ------------------------------------------------------------------ 1. cold open
+  - id: cold_open
+    set: apartment
+    cast: {dave: couch, kyle: right}
+    beats:
+      - {act: 3, cam: wide, hp: "100", ui: [{kind: chat, text: "[SERVER] It is 11:41 AM. Dave has made no progress.", at: 0.4, dur: 3.5}]}
+      - {say: dave, text: "Kyle. The bagel coupon expires at noon.", cam: dave}
+      - {say: kyle, text: "It is eleven forty one. The bagel place is twenty minutes away."}
+      - {say: dave, text: "So I need to be there in nineteen minutes."}
+      - {say: kyle, text: "You need to be there in nineteen minutes, and you are still in your pajamas, and you are still on the couch."}
+      - {say: dave, text: "That is a lot of problems for one morning.", acts: [{who: dave, do: walk_to, to: center}]}
+      - {say: kyle, text: "What is on the coupon, exactly?"}
+      - {say: dave, text: "One free bagel with any purchase of a bagel."}
+      - {say: kyle, text: "So it is a coupon for buying a bagel."}
+      - {say: dave, text: "It is a coupon for the feeling of buying a bagel for free."}
+      - {say: kyle, text: "I am worried about you, but I will help. What do you need?"}
+      - {say: dave, text: "More time. I need more time.", cam: dave}
+      - {act: 3, cam: dave, sfx: [{name: chime, at: 1.2}], ui: [{kind: console, text: "> timescale 0.1", at: 0.3, dur: 1.6}, {kind: system, text: "CHEAT ACTIVATED: timescale 0.1", at: 1.6, dur: 3}]}
+      - {say: kyle, text: "Did that do anything? Nothing looks different."}
+      - {say: dave, text: "Everything feels exactly the same.", speed: 90, pitch: 28}
+      - {say: kyle, text: "Why do you sound like that?"}
+      - {say: dave, text: "Like what? I sound normal. You sound like a chipmunk.", speed: 85, pitch: 28}
+      - {say: kyle, text: "Dave, I think the slow part is you."}
+
+  - id: title
+    set: black
+    beats:
+      - {card: "IRL BUT CHEATS", sub: "S01E03  -  TIME SCALE", dur: 5, sfx: [boom]}
+
+  # ------------------------------------------------------------------ 3. the morning
+  - id: morning
+    set: apartment
+    cast: {dave: center, kyle: right}
+    beats:
+      - {act: 3, cam: wide, ui: [{kind: chat, text: "[SERVER] Dave is now running at 10% speed.", at: 0.4, dur: 3.5}]}
+      - {say: kyle, text: "Okay. Okay. You took four minutes to blink. Can you walk?"}
+      - {say: dave, text: "Watch me walk. It will be very impressive.", speed: 85, pitch: 28, acts: [{who: dave, do: walk_to, to: door, dur: 9}]}
+      - {act: 5, cam: kyle, acts: [{who: kyle, do: shake, amt: 0.04}]}
+      - {say: kyle, text: "You have moved one inch. It has been forty seconds."}
+      - {say: dave, text: "I am doing my best. Please hold the door. Please hold the door.", speed: 85, pitch: 28}
+      - {say: kyle, text: "I cannot hold a door that you have not reached. The door is a long way away."}
+      - {card: "DAY 1", sub: "Dave has found his left shoe.", dur: 4, sfx: [whoosh]}
+      - {say: kyle, text: "It is Tuesday. You have found your left shoe. I have made some calls.", cam: kyle, ui: [{kind: chat, text: "[SERVER] Kyle brought a snack.", at: 0.4, dur: 3}]}
+      - {say: dave, text: "Where is my right shoe?", speed: 85, pitch: 28, cam: dave}
+      - {say: kyle, text: "It is on your foot, Dave. It has been on your foot since this morning."}
+      - {say: dave, text: "That explains why it is so comfortable.", speed: 85, pitch: 28}
+      - {card: "DAY 2", sub: "Dave has located the door.", dur: 4, sfx: [whoosh]}
+      - {say: kyle, text: "I have started a newsletter about this. I have four subscribers. Three of them are Gerald.", cam: kyle}
+      - {say: dave, text: "Is Gerald okay?", speed: 85, pitch: 28}
+      - {say: kyle, text: "Gerald is thriving. He says the bus is also running slowly today."}
+      - {say: dave, text: "Did you say something? I think I heard a word. I am still waiting for the second half.", speed: 85, pitch: 28, cam: dave}
+      - {say: kyle, text: "I said, are you comfortable? It was three hours ago. I have since moved on to other topics."}
+      - {say: dave, text: "I will respond when I am ready. It is going to be a very good response.", speed: 85, pitch: 28}
+      - {say: kyle, text: "I have time. I have so much time. This is the most time I have ever had."}
+      - {card: "DAY 3", sub: "Kyle has stopped shaving. For efficiency.", dur: 4, sfx: [whoosh]}
+      - {say: kyle, text: "I have been awake for three days. I have talked to a plant. Dave, the plant is red.", cam: kyle, ui: [{kind: chat, text: "[SERVER] Kyle has not slept.", at: 0.4, dur: 3}]}
+      - {say: dave, text: "I have opened the door. It was a very emotional experience.", speed: 85, pitch: 28}
+      - {say: kyle, text: "Dave, I need you to hurry. My beard has gotten a bit long."}
+      - {say: dave, text: "Your voice is a little bit lower.", speed: 85, pitch: 28}
+      - {say: kyle, text: "Everyone ages normally. You are the one who is going slowly. I am just going at the speed of life."}
+
+  # ------------------------------------------------------------------ 4. the street
+  - id: street
+    set: street
+    cast:
+      dave: far_left
+      kyle: left
+      npc_gerald: {at: curb, face: 0}
+    beats:
+      - {card: "DAY 4", sub: "Dave has entered the street.", dur: 4, sfx: [whoosh]}
+      - {act: 4, cam: wide, hp: "99", acts: [{who: dave, do: walk_to, to: queue_back, dur: 14}], ui: [{kind: chat, text: "[SERVER] A bird flew past Dave at what he describes as 'a normal speed'.", at: 0.5, dur: 4}]}
+      - {say: kyle, text: "Dave! You are on the street! The shop is just across from us. It is a six minute walk. At your speed, that is a week.", cam: kyle, pitch: 22}
+      - {say: dave, text: "A week is fine. Coupons do not expire on week days.", speed: 85, pitch: 28, cam: dave}
+      - {say: kyle, text: "Dave, the coupon expires at noon today. Today. This noon.", pitch: 22}
+      - {say: npc_gerald, text: "Nice weather today.", cam: wide}
+      - {say: dave, text: "Hello Gerald. Are you waiting for the bus?", speed: 85, pitch: 28, cam: two}
+      - {say: npc_gerald, text: "Yes. Though I have noticed you are moving very slowly. Are you also waiting?"}
+      - {say: dave, text: "I am waiting for noon. It does not look like it is coming.", speed: 85, pitch: 28}
+      - {say: npc_gerald, text: "I have been waiting for the bus for two hundred days. Time is a flat circle. Nice weather today."}
+      - {act: 4, cam: wide, sfx: [{name: ding, at: 1.0}], ui: [{kind: achievement, text: "Slow Walker Of The Year", at: 1.0, dur: 3.5}], acts: [{who: dave, do: walk_to, to: queue_mid, dur: 14}]}
+      - {card: "DAY 5", sub: "It has started to rain. For everyone but Dave.", dur: 4, sfx: [whoosh]}
+      - {say: kyle, text: "I have got a lot of grey hair now. I have been giving it a lot of thought. You should have bought a clock instead.", cam: kyle, pitch: 20, ui: [{kind: chat, text: "[SERVER] Kyle is now 34 (was 28).", at: 0.4, dur: 3.5}]}
+      - {say: dave, text: "A clock would have been cheaper than a bagel.", speed: 85, pitch: 28, cam: dave}
+      - {say: kyle, text: "It would. It would have also been on time.", pitch: 20}
+      - {say: dave, text: "Do not make this about the bagel.", speed: 85, pitch: 28}
+      - {say: kyle, text: "It is all about the bagel, Dave. It is the only thing it has ever been about.", pitch: 20}
+      - {act: 4, cam: follow, follow: dave, acts: [{who: dave, do: walk_to, to: queue_front, dur: 15}]}
+      - {card: "DAY 6", sub: "Dave has reached the shop. He has not yet reached the door.", dur: 4, sfx: [whoosh]}
+
+  # ------------------------------------------------------------------ 4b. meanwhile, on the news
+  - id: news_cutaway
+    set: newsroom
+    cast: {martin: anchor_l, sarah: anchor_r}
+    beats:
+      - {card: "MEANWHILE, ON CHANNEL 9", sub: "Live. Local. Slightly confused.", dur: 4, sfx: [whoosh]}
+      - {act: 3, cam: wide, ui: [{kind: ticker, text: "LOCAL MAN CROSSES STREET IN SIX DAYS  +++  WITNESSES SAY HE WAS 'NOT RUNNING'", at: 0.2}]}
+      - {say: martin, text: "Good morning, and welcome to Channel 9. I am Martin Miller.", cam: martin}
+      - {say: sarah, text: "And I am Sarah Collins. We have a developing story about a man who is crossing a street.", cam: sarah}
+      - {say: martin, text: "That does not sound like news, Sarah."}
+      - {say: sarah, text: "Martin, he has been crossing it since Tuesday. It is now Saturday."}
+      - {say: martin, text: "That is a long street."}
+      - {say: sarah, text: "It is a normal street. The man is the problem. Witnesses say he is moving at one tenth of the speed of everyone else."}
+      - {say: martin, text: "Is he okay? Is he in distress?", ui: [{kind: lower, text: "SARAH COLLINS|Field reporter, outside, as always", at: 0.1, dur: 3.5}]}
+      - {say: sarah, text: "He appears very calm. He is being followed by a friend who has aged noticeably and a gentleman called Gerald, who is waiting for a bus."}
+      - {say: martin, text: "Has the bus arrived?"}
+      - {say: sarah, text: "Martin, the bus is never going to arrive. We have covered this."}
+      - {say: martin, text: "Thank you, Sarah. We will check in on the man later this week. Or next week. It depends on the man."}
+
+  # ------------------------------------------------------------------ 5. the shop
+  - id: shop
+    set: street
+    cast:
+      dave: shop_door
+      kyle: queue_front
+      npc_clerk: {at: inside, face: 0}
+    beats:
+      - {act: 3, cam: wide, hp: "98", ui: [{kind: chat, text: "[SERVER] Dave arrived at 11:59 AM (Day 6).", at: 0.4, dur: 3.5}]}
+      - {say: npc_clerk, text: "Welcome to the Bagel Barn. What can I get started for you?", cam: npc_clerk}
+      - {say: dave, text: "I would like one bagel. And I have a coupon.", speed: 85, pitch: 28, cam: dave}
+      - {say: npc_clerk, text: "It is going to take me a moment to hear all of that, sir."}
+      - {say: kyle, text: "He has been saying hello for the last four minutes. You can hear it if you listen closely.", cam: kyle, pitch: 20}
+      - {say: npc_clerk, text: "I will tell you what, the coupon has a very small print. Let me read it."}
+      - {say: npc_clerk, text: "Free bagel with any purchase of a bagel. Valid until noon, on Tuesday. Today is Monday."}
+      - {say: dave, text: "Monday is after Tuesday?", speed: 85, pitch: 28, cam: dave}
+      - {say: npc_clerk, text: "Next Monday. It has been six days. I am sorry. I am also very tired. I have been working here since your first hello."}
+      - {act: 4, cam: dave, sfx: [{name: error, at: 1.0}], ui: [{kind: system, text: "Coupon expired. (Technically, six days ago.)", at: 1.0, dur: 3.5}]}
+      - {say: kyle, text: "I want you to know that I am very proud of you for walking. Not for this. But for walking.", cam: kyle, pitch: 20}
+      - {say: dave, text: "I have failed the bagel. And the bagel has failed me.", speed: 85, pitch: 28, cam: dave}
+      - {say: npc_clerk, text: "I can give you a bagel for four dollars."}
+      - {say: dave, text: "I have exactly four dollars.", speed: 85, pitch: 28}
+      - {say: npc_clerk, text: "Fantastic. A bagel is four dollars fifty."}
+      - {say: kyle, text: "I will cover it. I have been saving for emergencies. I did not expect this one to be a bagel.", pitch: 20}
+      - {act: 4, cam: wide, sfx: [{name: ding, at: 1.0}], ui: [{kind: achievement, text: "Bought A Bagel Slowly", at: 1.0, dur: 3.5}], acts: [{who: dave, do: jump, delay: 1.0, dur: 3}]}
+
+  # ------------------------------------------------------------------ 6. the fix
+  - id: fix
+    set: apartment
+    cast: {dave: center, kyle: right, admin: window}
+    beats:
+      - {card: "DAY 7", sub: "Back at the apartment. Kyle has a lot to say.", dur: 4, sfx: [whoosh]}
+      - {act: 3, cam: wide, hp: "100", ui: [{kind: chat, text: "[SERVER] Kyle is now 41 (was 28).", at: 0.4, dur: 3.5}]}
+      - {say: kyle, text: "I have so many questions. How do we turn this off? How do we turn this off before I need a cane?", cam: kyle, pitch: 18}
+      - {say: dave, text: "I will type timescale one. It is the standard speed.", speed: 85, pitch: 28, cam: dave}
+      - {act: 4, cam: dave, sfx: [{name: chime, at: 1.5}], ui: [{kind: console, text: "> timescale 1", at: 0.3, dur: 1.7}, {kind: system, text: "ERROR: timescale applies to nearest person.", at: 2.0, dur: 3.5}], acts: [{who: kyle, do: shake, delay: 2.0, amt: 0.1}]}
+      - {say: kyle, text: "What does that mean? What is the nearest person doing?", pitch: 18}
+      - {say: dave, text: "Kyle, I am afraid you are the nearest person."}
+      - {act: 4, cam: kyle, sfx: [{name: glitch, at: 0.5}], acts: [{who: kyle, do: tpose, delay: 0.5, dur: 3}], ui: [{kind: system, text: "Kyle is now running at 10% speed.", at: 0.5, dur: 3.5}]}
+      - {act: 3, cam: wide, sfx: [{name: glitch, at: 1.0}, {name: boom, at: 1.8}], acts: [{who: admin, do: appear, delay: 1.0}], ui: [{kind: admin, text: "NOTICE: Timescale reassigned to the wrong person. This is a courtesy, not a warning.", at: 1.2, dur: 4.5}]}
+      - {say: admin, text: "I am a plant. A plant that is not going to say anything about this.", cam: admin}
+      - {say: dave, text: "Admin! Can you fix it?"}
+      - {say: admin, text: "Time is not a variable I can edit. I am a bored crystal. Also a plant. In this economy, I have to be flexible."}
+      - {say: dave, text: "So Kyle is going to be like that forever?"}
+      - {say: admin, text: "Until the cheat expires. It is set to expire in a week. Or, from his point of view, seventy days."}
+      - {say: dave, text: "Seventy days of Kyle in slow motion?", cam: dave}
+      - {say: admin, text: "I would use the time to be nice to him. I have heard he has a very good newsletter.", cam: admin}
+      - {act: 3, cam: kyle, acts: [{who: kyle, do: shake, amt: 0.03}]}
+      - {say: kyle, text: "Dave.", speed: 85, pitch: 28, cam: kyle}
+      - {act: 4, cam: wide, sfx: [{name: ding, at: 1.0}], ui: [{kind: achievement, text: "Kyle Is Now A Fridge Magnet", at: 1.0, dur: 3.5}]}
+
+  # ------------------------------------------------------------------ 7. epilogue
+  - id: epilogue
+    set: apartment
+    cast: {dave: left, kyle: right}
+    beats:
+      - {loading: "Tip: A watched pot never boils. A slow friend never apologises.", dur: 5}
+      - {act: 3, cam: wide, ui: [{kind: chat, text: "[SERVER] Two days later. Kyle is mid-sentence.", at: 0.4, dur: 3.5}]}
+      - {say: dave, text: "How are you feeling today, Kyle?", cam: dave}
+      - {say: kyle, text: "Hel. Lo. Da. Ve.", speed: 85, pitch: 20, cam: kyle}
+      - {say: dave, text: "I have made you a bagel. It is a very good bagel."}
+      - {say: kyle, text: "Thank. You. I. Will. Eat. It. Next. Week.", speed: 85, pitch: 20}
+      - {say: dave, text: "I made a calendar for you. It has one square.", cam: dave}
+      - {say: kyle, text: "I. Love. It.", speed: 85, pitch: 20, cam: kyle}
+      - {say: dave, text: "Do you want to watch something? I will put it on slow motion. That way it will be at your speed."}
+      - {say: kyle, text: "That. Is. The. Nicest. Thing.", speed: 85, pitch: 20}
+      - {say: dave, text: "I have also been practicing my slow talking. So we can have a conversation at the same speed. How is this?", cam: dave, speed: 85, pitch: 28}
+      - {say: kyle, text: "Very. Good. I. Am. Moved.", speed: 85, pitch: 20, cam: kyle}
+      - {say: dave, text: "It is a lot of effort to be nice to someone. I am starting to see why people do not do it.", cam: dave}
+      - {say: kyle, text: "Dave.", speed: 85, pitch: 20, cam: kyle}
+      - {act: 3, cam: wide, acts: [{who: dave, do: wave}]}
+
+  - id: next_time
+    set: black
+    beats:
+      - {card: "NEXT TIME", sub: "S01E04  -  AIMBOT  (DO NOT)", dur: 6}

@@ -477,13 +477,13 @@ def mean(vs):
 def pick_cam(beat, ctx, prev):
     c = beat.get("cam")
     if not c:
-        if beat["kind"] == "say" and beat["say"] in sets.CHAR_CAMS and beat["say"] in ctx.actors:
+        if beat["kind"] == "say" and beat["say"] in ctx.actors:
             c = beat["say"]
         elif beat["kind"] in ("loading", "card"):
             c = "black"
         else:
             c = prev or "wide"
-    if c in sets.CHAR_CAMS and c not in ctx.actors:
+    if sets.is_char_cam(c) and c not in ctx.actors:
         c = "two" if "dave" in ctx.actors else "wide"
     if beat["kind"] in ("loading", "card"):
         c = "black"
@@ -501,15 +501,19 @@ def follow_who(beat, ctx):
 
 def frame_camera(cam, beat, ctx, preset, fps):
     f0, f1 = beat["f0"], beat["f1"]
-    off, lens = sets.CAMS[preset]
+    if beat.get("shot"):  # explicit camera (used for thumbnails): {loc: [x,y,z], look: [x,y,z], lens}
+        sh = beat["shot"]
+        cam.shoot(f0, tuple(sh["loc"]), tuple(sh["look"]), sh.get("lens", 35))
+        return
+    off, lens = sets.cam_preset(preset)
     if preset == "black":
         cam.shoot(f0, (0, 0, -300), (0, 10, -300), lens)
         return
     shake = bool(beat.get("shake") or beat.get("lag"))
-    dynamic = preset in sets.CHAR_CAMS or preset in ("two", "follow")
+    dynamic = sets.is_char_cam(preset) or preset in ("two", "follow")
 
     def focus(f):
-        if preset in sets.CHAR_CAMS:
+        if sets.is_char_cam(preset):
             return ctx.actors[preset].at(f) + Vector((0, 0, 1.5))
         if preset == "follow":
             return ctx.actors[follow_who(beat, ctx)].at(f) + Vector((0, 0, 1.3))
@@ -553,7 +557,7 @@ def build(plan, scene_idx, preview):
     sh.show_cavity = False
     scene.display.render_aa = "FXAA"
     world = bpy.data.worlds.new("W")
-    world.color = lin(s["bg"])[:3]
+    world.color = lin(sc.get("bg") or s["bg"])[:3]
     scene.world = world
 
     for shape, name, loc, dim, col in s["props"]:

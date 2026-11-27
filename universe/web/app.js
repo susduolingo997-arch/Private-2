@@ -24,12 +24,15 @@
     return Math.round(d / 365) + " years ago";
   };
   const initials = (n) => n.split(/\s+/).map((w) => w[0]).join("").slice(0, 2).toUpperCase();
-  const dot = (o, cls = "") => `<span class="dot ${cls}" style="background:${esc(o.color)}">${esc(initials(o.name))}</span>`;
+  const dot = (o, cls = "") => o.avatar
+    ? `<img class="dot ${cls}" src="${esc(o.avatar)}" alt="${esc(o.name)}" loading="lazy">`
+    : `<span class="dot ${cls}" style="background:${esc(o.color)}">${esc(initials(o.name))}</span>`;
   const ph = (o) => (o.placeholder ? `<span class="ph" title="Placeholder: edit universe/universe.yaml">draft canon</span>` : "");
 
   function thumb(v) {
     const len = v.duration ? `<span class="len">${clock(v.duration)}</span>` : "";
-    const badge = v.status === "live" ? "" : v.status === "scripted" ? `<span class="badge soon">SCRIPTED</span>` : `<span class="badge soon">PREMIERES SOON</span>`;
+    const badge = v.status === "live" || v.status === "external" ? "" : v.status === "scripted" ? `<span class="badge soon">SCRIPTED</span>` : `<span class="badge soon">PREMIERES SOON</span>`;
+    if (v.thumb_img) return `<div class="thumb img" style="--c:${esc(chan[v.channel].color)}"><img src="${esc(v.thumb_img)}" alt="" loading="lazy">${badge}${len}</div>`;
     return `<div class="thumb" style="--c:${esc(chan[v.channel].color)}">${badge}<b>${esc(v.title.split("|")[0])}</b>${len}</div>`;
   }
   function stats(v) {
@@ -65,6 +68,11 @@
 
   function player(v) {
     const c = chan[v.channel];
+    if (v.link) return `<div class="player ext" style="--c:${esc(c.color)}"><div class="fake">
+      <h2>${esc(v.title.split(" - ").pop())}</h2><p>${esc(v.description.split("\n")[0])}</p>
+      <a class="go" href="${esc(v.link)}" target="_blank" rel="noopener">&#9654; Watch the full ${clock(v.duration)} film</a>
+      <p style="margin-top:14px;font-size:12px;opacity:.65">Published as a release. Opens in a new tab.</p></div></div>`;
+    if (v.embed_src) return `<div class="player embed"><iframe src="${esc(v.embed_src)}" title="${esc(v.title)}" allow="autoplay; fullscreen" allowfullscreen></iframe></div>`;
     if (v.status === "live") return `<div class="player"><video controls autoplay src="${esc(v.src)}"></video></div>`;
     const msg = v.status === "scripted"
       ? "Script is written. Render it with the engine, then run <code>python -m engine universe publish</code>."
@@ -128,7 +136,7 @@
     if (tab === "about") body = `<div class="desc"><b>About</b>${esc(c.about.trim())}<br><br>${esc(c.handle)} &middot; ${num(c.subs)} subscribers &middot; ${vids.length} videos</div>`;
     else if (tab === "cast") body = `<div class="people">${U.characters.filter((p) => p.channel === id).map(personCard).join("") || '<div class="empty">No cast listed.</div>'}</div>`;
     else body = vids.length ? `<div class="grid">${vids.map(card).join("")}</div>` : `<div class="empty">No videos yet.</div>`;
-    return `<div class="banner" style="--c:${esc(c.color)}"></div>
+    return `<div class="banner" style="--c:${esc(c.color)}${c.banner_img ? `;background-image:url('${esc(c.banner_img)}');background-size:cover;background-position:center` : ""}"></div>
       <div class="chead">${dot(c, "big")}<div class="grow"><h1>${esc(c.name)}${ph(c)}</h1>
         <div class="sub">${esc(c.handle)} &middot; ${num(c.subs)} subscribers &middot; ${vids.length} videos</div>
         <div class="sub" style="max-width:640px;margin-top:6px">${esc(c.about.trim().slice(0, 140))}&hellip;</div></div>

@@ -3,7 +3,7 @@ import wave
 
 import numpy as np
 
-SR = 22050
+SR = 24000
 
 
 def _t(d):
@@ -60,15 +60,29 @@ def make_sfx(name):
     raise KeyError(name)
 
 
-def music(seconds):
-    """C-minor arpeggio + bass at 112 bpm. Quiet, loops."""
-    beat = 60 / 112 / 2
-    notes = [261.6, 311.1, 392.0, 311.1, 233.1, 293.7, 349.2, 293.7,
-             207.7, 261.6, 311.1, 261.6, 196.0, 233.1, 293.7, 233.1]
-    bass = [65.4, 65.4, 58.3, 58.3, 51.9, 51.9, 49.0, 49.0]
+_BEDS = {
+    # style: (bpm, arpeggio notes, bass notes (one per 2 arp notes), arp volume)
+    "arcade": (112, [261.6, 311.1, 392.0, 311.1, 233.1, 293.7, 349.2, 293.7,
+                     207.7, 261.6, 311.1, 261.6, 196.0, 233.1, 293.7, 233.1],
+               [65.4, 65.4, 58.3, 58.3, 51.9, 51.9, 49.0, 49.0], .045),
+    # News Channel 9: driving, urgent, repeated pulse
+    "news": (132, [220.0, 220.0, 329.6, 220.0, 220.0, 329.6, 392.0, 329.6,
+                   196.0, 196.0, 293.7, 196.0, 174.6, 174.6, 261.6, 174.6],
+             [55.0, 55.0, 49.0, 49.0, 43.7, 43.7, 49.0, 49.0], .05),
+    # Marigold Events: bright major bounce
+    "party": (124, [392.0, 493.9, 587.3, 493.9, 440.0, 523.3, 659.3, 523.3,
+                    349.2, 440.0, 523.3, 440.0, 392.0, 493.9, 587.3, 784.0],
+              [98.0, 98.0, 110.0, 110.0, 87.3, 87.3, 98.0, 98.0], .04),
+}
+
+
+def music(seconds, style="arcade"):
+    """Quiet chiptune bed (arpeggio + bass), looped. One flavour per show."""
+    bpm, notes, bass, vol = _BEDS[style]
+    beat = 60 / bpm / 2
     bar = []
     for i, f in enumerate(notes):
-        bar.append(_env(_sq(f, beat, .045), 3) + _env(_sine(bass[i // 2], beat, .08), 1.5))
+        bar.append(_env(_sq(f, beat, vol), 3) + _env(_sine(bass[i // 2], beat, .08), 1.5))
     loop = np.concatenate(bar)
     return np.tile(loop, int(seconds * SR / len(loop)) + 1)[: int(seconds * SR)]
 
@@ -92,7 +106,7 @@ def _add(master, x, t, gain=1.0):
 
 def mix(plan, out_path):
     master = np.zeros(int(plan["seconds"] * SR) + SR, dtype=np.float32)
-    _add(master, music(plan["seconds"]), 0, 1.0)
+    _add(master, music(plan["seconds"], plan.get("music", "arcade")), 0, 1.0)
     cache = {}
     for s in plan["sfx"]:
         cache.setdefault(s["name"], make_sfx(s["name"]))

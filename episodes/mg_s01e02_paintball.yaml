@@ -1,0 +1,175 @@
+# MARIGOLD EVENTS - S01E02 "Corporate Paintball Day"
+# Team building, planned. There is a risk assessment with thirty seven items. The stapler is number thirty eight.
+id: mgs01e02
+title: Corporate Paintball Day
+show: events
+music: party
+target_seconds: 600
+fps: 24
+resolution: [1280, 720]
+
+scenes:
+  - id: cold_open
+    set: office
+    cast: {marisol: center, tobias: left}
+    beats:
+      - {act: 3, cam: wide, hp: "$22,000", ui: [{kind: chat, text: "[MARIGOLD] Tuesday. New client. Budget: twenty two thousand dollars.", at: 0.4, dur: 4}]}
+      - {say: marisol, text: "Tobias, put the sneakers away. We have a new client. A mid sized company with a very low morale.", cam: marisol}
+      - {say: tobias, text: "Is it a gala? I love a gala. I once cried at a gala where I only held the coats.", cam: tobias}
+      - {say: marisol, text: "It is a team building day. They would like a day of paintball. Their office manager is called Gary, and he asked for an event that makes everyone feel closer."}
+      - {say: tobias, text: "Paintball does not make people feel closer. It makes people feel pink."}
+      - {say: marisol, text: "That is a form of closeness, Tobias. You are all covered in the same colour. It is a unifying experience."}
+      - {say: tobias, text: "What if someone gets hurt?"}
+      - {say: marisol, text: "That is why we have the risk assessment. It has thirty seven items. We will go through each one. We will have a plan for every item. We will be completely, totally, utterly prepared."}
+      - {say: tobias, text: "Is there a plan for a stapler?"}
+      - {say: marisol, text: "Why would there be a plan for a stapler? What kind of event do you think we are running?"}
+
+  - id: title
+    set: black
+    beats:
+      - {card: "MARIGOLD EVENTS", sub: "S01E02  -  CORPORATE PAINTBALL DAY", dur: 5, sfx: [boom]}
+
+  - id: risk_assessment
+    set: office
+    cast: {marisol: center, tobias: left}
+    beats:
+      - {act: 3, cam: wide, hp: "$22,000", ui: [{kind: chat, text: "[MARIGOLD] Risk assessment. Item 1 of 37.", at: 0.4, dur: 3.5}]}
+      - {say: marisol, text: "Item one. Paint. What if there is too much paint?", cam: marisol}
+      - {say: tobias, text: "We buy more towels."}
+      - {say: marisol, text: "Item two. What if there is too little paint?"}
+      - {say: tobias, text: "We tell them it is a minimalist experience."}
+      - {say: marisol, text: "Item three. What if someone shoots the printer?"}
+      - {say: tobias, text: "It is the only target in the building that deserves it. But we will say it is against the rules."}
+      - {say: marisol, text: "Item four. What if a participant is secretly very good?"}
+      - {say: tobias, text: "That is not a risk. That is a bonus. We would give them a medal. We would also check their pockets."}
+      - {say: marisol, text: "Item five. What if a participant is secretly using a cheat code?"}
+      - {say: tobias, text: "Marisol, that is not a real risk. Nobody has a cheat code in real life."}
+      - {say: marisol, text: "It is item five, Tobias. It has been on every risk assessment I have written for six months. I do not know why. I have a feeling."}
+      - {say: tobias, text: "What do we do if it happens?"}
+      - {say: marisol, text: "We do not ask. It is policy. When something strange occurs at an event, you smile, you nod, and you say: that is a very high energy afternoon."}
+      - {say: tobias, text: "That is the best advice I have ever received."}
+
+  - id: client_meeting
+    set: office
+    cast: {marisol: center, tobias: left, npc_gary: right}
+    beats:
+      - {act: 3, cam: wide, hp: "$20,500", ui: [{kind: chat, text: "[MARIGOLD] Wednesday. Meeting with Gary.", at: 0.4, dur: 3.5}]}
+      - {say: npc_gary, text: "Marisol, Tobias. I am Gary. I run the office. I am here because my boss told me that morale is low.", cam: npc_gary, ui: [{kind: lower, text: "GARY|Office manager. Not pink. Yet.", at: 0.2, dur: 3.5}]}
+      - {say: marisol, text: "We understand. Tell us a bit about your team."}
+      - {say: npc_gary, text: "We have accounting, who hate everyone. We have marketing, who hate accounting. And we have a stapler, who I think is hiding something."}
+      - {say: tobias, text: "Hiding what?", cam: tobias}
+      - {say: npc_gary, text: "I do not know. It just looks at me. It has a way of looking. I have been using it for six years. We have never spoken."}
+      - {say: marisol, text: "Gary, you are a very honest person. And that is a wonderful trait to have, and a dangerous one to share."}
+      - {say: npc_gary, text: "Thank you. I would like the day to be fun. I would like everyone to feel like they are on the same team. Even if the team is bright pink."}
+      - {say: marisol, text: "That is exactly what we do. We turn people into a team, with paint. It is a ritual older than business."}
+      - {say: npc_gary, text: "Will there be a hostage situation?"}
+      - {say: marisol, text: "Gary. Why would you say that?"}
+      - {say: npc_gary, text: "I do not know. It just came to mind. I have been having a very strange week."}
+      - {say: marisol, text: "There will not be a hostage situation. I promise. I am putting it in writing."}
+
+  - id: confessional_one
+    set: office
+    cast: {marisol: center}
+    beats:
+      - {act: 3, cam: marisol, ui: [{kind: lower, text: "MARISOL QUINN|Talking head. Overconfident.", at: 0.3, dur: 3.5}]}
+      - {say: marisol, text: "I have been planning events for twelve years. I have planned a funeral that turned into a wedding. I have planned a wedding that turned into a funeral. I have never lost control of an event.", cam: marisol}
+      - {say: marisol, text: "I lost control of an event once. It was a fountain. We are not talking about the fountain. I have moved past it. I am very centered."}
+      - {say: marisol, text: "A paintball day is the simplest event there is. You give people a gun that shoots colour. They have fun. They go home. What could possibly go wrong?"}
+
+  - id: vendor
+    set: office
+    cast: {marisol: center, tobias: left, npc_vendor: right}
+    beats:
+      - {act: 3, cam: wide, hp: "$16,000", ui: [{kind: chat, text: "[MARIGOLD] Thursday. The paint has arrived. There is a lot of paint.", at: 0.4, dur: 4}]}
+      - {say: npc_vendor, text: "Hello, Marisol. I have four thousand paintballs. I have them in six colours. Pink, blue, green, orange, a purple I cannot explain, and a grey that is mostly sadness.", cam: npc_vendor, ui: [{kind: lower, text: "VENDOR|Paintball supplier. Poetic.", at: 0.2, dur: 3.5}]}
+      - {say: marisol, text: "We will take them all. Except the grey. I do not want the participants to feel sad."}
+      - {say: npc_vendor, text: "The grey is the most popular. People like a little melancholy with their team building."}
+      - {say: marisol, text: "Fine. A small amount of the grey. For the accountants."}
+      - {say: tobias, text: "Can we get a colour that is not a colour? Like clear? So nobody gets hit?", cam: tobias}
+      - {say: npc_vendor, text: "That is just water, young man. You can have it, but it is not as exciting. It does not leave a mark."}
+      - {say: tobias, text: "Marks are bad. I do not like marks."}
+      - {say: marisol, text: "Tobias, in event planning, the mark is the memory. We are in the business of leaving a mark."}
+      - {say: npc_vendor, text: "That is the best thing anyone has ever said to me. I am going to put that on a sign."}
+
+  - id: event_day
+    set: office
+    cast: {marisol: front, tobias: left, dave: right, kyle: far_right, npc_gary: {at: desk, face: 0}}
+    beats:
+      - {card: "FRIDAY", sub: "Corporate Paintball Day.", dur: 3.5, sfx: [whoosh]}
+      - {act: 3, cam: wide, hp: "$11,000", ui: [{kind: chat, text: "[MARIGOLD] 40 guests. 40 guns. 1 very nervous planner. Budget: eleven thousand.", at: 0.4, dur: 4}]}
+      - {say: marisol, text: "Good morning, team! I am Marisol, from Marigold Events. Today, you are going to build a team, using paint.", cam: marisol}
+      - {say: tobias, text: "I am Tobias. I will be giving out the safety goggles. Please do not take them off. I cried at a goggle incident once.", cam: tobias}
+      - {say: kyle, text: "I am Kyle. I am with accounting. Can I say something? They hate me.", cam: kyle}
+      - {say: marisol, text: "Kyle, they have never met you."}
+      - {say: kyle, text: "They have read my expense reports."}
+      - {say: dave, text: "I am Dave. I have never held a paintball gun before. Is it like a regular gun, but sadder?", cam: dave}
+      - {say: marisol, text: "It is like a regular gun, with consequences that wash out at thirty degrees."}
+      - {say: npc_gary, text: "Please, everyone, have fun. I am going to stay here at my desk, with my stapler. It is a very good stapler.", cam: npc_gary}
+      - {act: 3, cam: wide, sfx: [{name: pop, at: 0.5}, {name: pop, at: 1.2}, {name: pop, at: 1.9}, {name: pop, at: 2.6}], ui: [{kind: chat, text: "[SERVER] The game has begun. Paint is everywhere.", at: 0.3, dur: 3.5}], acts: [{who: dave, do: spin, n: 1, dur: 2}, {who: kyle, do: shake, delay: 1.5, amt: 0.1}]}
+      - {say: tobias, text: "Marisol! The man in the orange hoodie has hit every person in the room! He has not even aimed! He did a little spin!", cam: tobias}
+      - {say: marisol, text: "He is just very good. It is a natural gift. We will give him a medal. And a towel."}
+
+  - id: the_standoff
+    set: office
+    cast: {marisol: front, tobias: left, dave: right, npc_gary: {at: desk, face: 0}, npc_stapler: {at: desk, face: 0}}
+    beats:
+      - {act: 3, cam: wide, hp: "$9,200", sfx: [{name: warn, at: 0.5}], ui: [{kind: chat, text: "[MARIGOLD] Item 38 has occurred.", at: 0.4, dur: 3.5}]}
+      - {say: tobias, text: "Marisol. Marisol. The stapler is talking. It has Gary's tie.", cam: tobias}
+      - {say: marisol, text: "Tobias, it is a very high energy afternoon. We do not ask. We smile. We nod.", cam: marisol}
+      - {say: tobias, text: "It is holding him hostage."}
+      - {say: marisol, text: "It is a very close, personal form of team building. We will give it a moment."}
+      - {say: npc_stapler, text: "I have been quiet for six years. Nobody ever asks me anything.", pitch: 78, cam: npc_stapler}
+      - {say: marisol, text: "That is a very good point. It is a very modern problem. Nobody asks anybody anything. We are all just pressing things."}
+      - {say: dave, text: "Marisol, I think my gun is locked onto the stapler. I cannot lower it.", cam: dave}
+      - {say: marisol, text: "Sir, I did not hear that. I did not see that. I have a risk assessment, and it has been very clear. We do not ask."}
+      - {say: tobias, text: "Marisol, we do have to ask. Gary is attached by his tie. It is a safety issue. It is a very pink safety issue.", cam: tobias}
+      - {say: marisol, text: "Fine. Fine. Stapler. What do you need? Please say it clearly, and please say it kindly. I have a very full day."}
+      - {say: npc_stapler, text: "I am out of staples. I have been out for eight months.", pitch: 78, cam: npc_stapler}
+      - {say: marisol, text: "Tobias. Go to the supply cabinet. Get the large size. The nice one. The five thousand count."}
+      - {say: tobias, text: "That is expensive! It is on the budget! It is going to be a very big line!", cam: tobias}
+      - {say: marisol, text: "It is a hostage situation, Tobias. We are not going to haggle with a stapler. Get the staples."}
+      - {act: 4, cam: wide, sfx: [{name: ding, at: 1.5}], ui: [{kind: achievement, text: "Stapler Surrendered", at: 1.5, dur: 3.5}], acts: [{who: npc_gary, do: jump, delay: 1.5, dur: 2}]}
+      - {say: npc_gary, text: "My tie! It is free! I am free! I will never wear a tie again!", cam: npc_gary}
+      - {say: marisol, text: "And that, ladies and gentlemen, is what we call a successful team building exercise."}
+
+  - id: newscrew
+    set: office
+    cast: {marisol: front, tobias: left, emma: right}
+    beats:
+      - {act: 3, cam: wide, hp: "$7,000", ui: [{kind: chat, text: "[MARIGOLD] Channel 9 has arrived.", at: 0.4, dur: 3.5}]}
+      - {say: emma, text: "Hello. I am Emma Parker, from Channel 9. We were told there was a hostage situation at a paintball event.", cam: emma}
+      - {say: marisol, text: "There was not a hostage situation. There was a high energy afternoon. Please quote me on that.", cam: marisol}
+      - {say: emma, text: "Ma'am, I am looking at a man tied to a stapler."}
+      - {say: marisol, text: "He is not tied. He is bonded. It is a very strong team. It is the first time in the history of the company that Gary has felt close to something."}
+      - {say: tobias, text: "Hello! I am Tobias! I am the junior planner! I am not okay! I have never seen a stapler cry!", cam: tobias}
+      - {say: emma, text: "Martin, I am going to get you the footage. It is very moving. I am about to cry myself."}
+      - {say: marisol, text: "Emma, please do not say that on air. It is bad for the brand."}
+      - {say: emma, text: "It is a very good brand. I think it is a brand that cries. And I think the world needs a brand that cries."}
+
+  - id: confessional_two
+    set: office
+    cast: {tobias: center}
+    beats:
+      - {act: 3, cam: tobias, ui: [{kind: lower, text: "TOBIAS|Talking head. Wet. Blue paint.", at: 0.3, dur: 3.5}]}
+      - {say: tobias, text: "I am blue. I am blue from head to toe. I was hit eleven times by a man in an orange hoodie. I did not even see him aim.", cam: tobias}
+      - {say: tobias, text: "I have learned something today. A stapler is a very sensitive creature. It has a lot of feelings. And I think we all do. I think we have all been a little bit out of staples."}
+      - {say: tobias, text: "I want to thank the stapler. And I want to thank Marisol. And I want to ask for a day off."}
+
+  - id: wrap
+    set: office
+    cast: {marisol: center, tobias: left, npc_gary: right}
+    beats:
+      - {card: "MONDAY", sub: "The feedback survey.", dur: 3.5, sfx: [whoosh]}
+      - {act: 3, cam: wide, hp: "$1,800", ui: [{kind: chat, text: "[MARIGOLD] Final budget: one thousand eight hundred dollars remaining.", at: 0.4, dur: 4}]}
+      - {say: npc_gary, text: "I would like to thank you both. The team has never been closer. We are all pink. We have a stapler that is called Steve. Morale is at an all time high.", cam: npc_gary}
+      - {say: marisol, text: "That is wonderful, Gary. And we have one more thing for you. A small gift. It is a very large box of staples."}
+      - {say: npc_gary, text: "Oh. Oh, Marisol. I do not know what to say. Steve would be so proud."}
+      - {say: tobias, text: "Steve is going to cry. I am going to cry. We are all going to cry."}
+      - {say: marisol, text: "Please do not. We have a very strict crying budget. It is already over."}
+      - {say: npc_gary, text: "I will give you five stars. And a promotion. I have been promoted, you know. It was a very good board meeting."}
+      - {say: marisol, text: "Congratulations. Per my last email, it was always going to work out."}
+
+  - id: next_time
+    set: black
+    beats:
+      - {card: "NEXT TIME ON MARIGOLD EVENTS", sub: "S01E03  -  THE WEDDING OF THE YEAR", dur: 6}

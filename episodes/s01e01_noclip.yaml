@@ -139,6 +139,14 @@ scenes:
       - {say: kyle, text: "And a bagel coupon."}
       - {say: dave, text: "The bagel coupon is not legal tender."}
       - {say: kyle, text: "Not yet."}
+      - {say: dave, text: "Is there a list of rules? There has to be a list of rules."}
+      - {say: kyle, text: "Is there a tab that says terms and conditions?"}
+      - {act: 3, cam: dave, ui: [{kind: console, text: "> terms", at: 0.3, dur: 1.5}, {kind: system, text: "By existing you already agreed. Thanks!", at: 1.5, dur: 3}], sfx: [{name: error, at: 1.5}]}
+      - {say: dave, text: "I agreed to something. When did I agree to something?"}
+      - {say: kyle, text: "Probably when you were born. Everyone clicks accept on that one."}
+      - {say: dave, text: "Nobody read it to me!"}
+      - {say: kyle, text: "Dave. You were a baby. You could not read."}
+      - {say: dave, text: "That is exactly my point."}
 
   # ------------------------------------------------------------------ 5c. cheat montage
   - id: cheat_montage

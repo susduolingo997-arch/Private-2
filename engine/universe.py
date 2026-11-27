@@ -17,6 +17,8 @@ ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 UNIVERSE_FILE = os.path.join(ROOT, "universe", "universe.yaml")
 WEB_DIR = os.path.join(ROOT, "universe", "web")
 SITE_DIR = os.path.join(ROOT, "site")
+ART_DIR = os.path.join(ROOT, "universe", "art")
+EMBED_DIR = os.path.join(ROOT, "universe", "embeds")
 
 
 class UniverseError(Exception):
@@ -81,6 +83,13 @@ def validate(u):
         for cm in v.get("comments") or []:
             if not cm.get("text"):
                 errs.append(f"{w}: comment without text")
+        if sum(bool(v.get(k)) for k in ("episode", "embed", "link")) > 1:
+            errs.append(f"{w}: use only one of episode / embed / link")
+        if v.get("link") and not str(v["link"]).startswith("https://"):
+            errs.append(f"{w}: link must be an https:// URL")
+        emb = v.get("embed")
+        if emb and not os.path.exists(os.path.join(ROOT, emb)):
+            errs.append(f"{w}: embed file {emb!r} does not exist")
         ep = v.get("episode")
         if ep:
             path = os.path.join(ROOT, ep)
@@ -107,15 +116,21 @@ def _media_file(v, media_dir):
     return p if os.path.exists(p) else None
 
 
-def enrich(u, media_dir):
+def _art(kind, i, art_dir, ext):
+    return f"art/{kind}/{i}.{ext}" if os.path.exists(os.path.join(art_dir, kind, f"{i}.{ext}")) else None
+
+
+def enrich(u, media_dir, art_dir=ART_DIR):
     """Add derived fields (status, duration, media path, channel/person lookups) for the site."""
     chans = {c["id"]: c for c in u["channels"]}
     out = {"site": dict(u["site"], today=_date(u["site"].get("today", ""))),
            "channels": [], "characters": [], "videos": []}
     for c in u["channels"]:
-        out["channels"].append(dict(c, subs=c.get("subs", 0), links=c.get("links", [])))
+        out["channels"].append(dict(c, subs=c.get("subs", 0), links=c.get("links", []),
+                                    avatar=_art("avatars", c["id"], art_dir, "png"),
+                                    banner_img=_art("banners", c["id"], art_dir, "jpg")))
     for p in u["characters"]:
-        out["characters"].append(dict(p))
+        out["characters"].append(dict(p, avatar=_art("avatars", p["id"], art_dir, "png")))
     for v in u["videos"]:
         d = dict(v, published=_date(v["published"]))
         d.setdefault("views", 0)
@@ -124,12 +139,17 @@ def enrich(u, media_dir):
         d["mentions"] = v.get("mentions") or []
         d["comments"] = v.get("comments") or []
         d["tags"] = v.get("tags") or []
-        d["duration"] = None
+        d["duration"] = v.get("duration")
+        d["thumb_img"] = _art("thumbs", v["id"], art_dir, "jpg")
         if v.get("episode"):
             ep = schema.load(os.path.join(ROOT, v["episode"]))
             d["duration"] = round(planner.build_plan(ep, estimate=True)["seconds"])
             d["target"] = ep.get("target_seconds")
-        if _media_file(v, media_dir):
+        if v.get("link"):  # published elsewhere (e.g. a GitHub release): the site links out
+            d["status"], d["link"] = "external", v["link"]
+        elif v.get("embed"):  # a self-contained player page: plays as-is
+            d["status"], d["embed_src"] = "live", "embeds/" + os.path.basename(v["embed"])
+        elif _media_file(v, media_dir):
             d["status"], d["src"] = "live", f"media/{v['id']}.mp4"
         elif v.get("episode"):
             d["status"] = "scripted"
@@ -145,6 +165,9 @@ def build_site(out_dir=SITE_DIR, universe_path=UNIVERSE_FILE):
     os.makedirs(os.path.join(out_dir, "media"), exist_ok=True)
     for name in os.listdir(WEB_DIR):
         shutil.copy2(os.path.join(WEB_DIR, name), os.path.join(out_dir, name))
+    for src, dst in ((ART_DIR, "art"), (EMBED_DIR, "embeds")):
+        if os.path.isdir(src):
+            shutil.copytree(src, os.path.join(out_dir, dst), dirs_exist_ok=True)
     data = enrich(u, os.path.join(out_dir, "media"))
     # data.js (not fetch) so the site works straight from file:// with no server.
     with open(os.path.join(out_dir, "data.js"), "w", encoding="utf-8") as f:

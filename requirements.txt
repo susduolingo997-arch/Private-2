@@ -1,2 +1,5 @@
 pyyaml>=6.0
 numpy>=1.26
+kokoro-onnx>=0.4.9   # neural TTS (falls back to espeak-ng if missing)
+soundfile>=0.12
+Pillow>=10.0         # thumbnails/avatars/banners (python -m engine universe art)

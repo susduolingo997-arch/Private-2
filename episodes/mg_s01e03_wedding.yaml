@@ -1,0 +1,157 @@
+# MARIGOLD EVENTS - S01E03 "The Wedding Of The Year"
+# A garden wedding. The best man punches walls. The uncle cannot leave a bus stop. The centrepiece is a very dedicated plant.
+id: mgs01e03
+title: The Wedding Of The Year
+show: events
+music: party
+target_seconds: 600
+fps: 24
+resolution: [1280, 720]
+
+scenes:
+  - id: cold_open
+    set: office
+    cast: {marisol: center, tobias: left, npc_bride: right, npc_groom: far_right}
+    beats:
+      - {act: 3, cam: wide, hp: "$60,000", ui: [{kind: chat, text: "[MARIGOLD] Monday. A wedding. Budget: sixty thousand dollars.", at: 0.4, dur: 4}]}
+      - {say: marisol, text: "Priya, Oscar, welcome. I am Marisol, this is Tobias, and we are Marigold Events. We are going to make your wedding unforgettable.", cam: marisol}
+      - {say: npc_bride, text: "Thank you. I am Priya. I have very high standards, and a very large family, and a fairly small amount of patience.", cam: npc_bride, ui: [{kind: lower, text: "PRIYA|The bride. Very prepared.", at: 0.2, dur: 3.5}]}
+      - {say: npc_groom, text: "And I am Oscar. I have no standards, no opinions, and no idea what a centrepiece is. I just want to be married.", cam: npc_groom, ui: [{kind: lower, text: "OSCAR|The groom. Calm. Possibly sedated.", at: 0.2, dur: 3.5}]}
+      - {say: tobias, text: "That is so beautiful. I am already crying. I am sorry. It is a lot of love for a Monday.", cam: tobias}
+      - {say: marisol, text: "Tobias, we have not even looked at the guest list."}
+      - {say: npc_bride, text: "The guest list is a bit complicated. We have two hundred guests. One of them is a plant. One of them is a man who is waiting for a bus. And one of them is my cousin's friend Greg, who punches walls."}
+      - {say: marisol, text: "That is a very normal guest list. We have seen worse. We have seen a groom's ex. We have seen a very large goose."}
+      - {say: npc_groom, text: "I would like the theme to be marigold. It is the only flower I know. It is orange all the way through, and it is a bit bitter. Like me."}
+      - {say: marisol, text: "Oscar, that is the most self aware thing a groom has ever said in this office. We have a theme."}
+
+  - id: title
+    set: black
+    beats:
+      - {card: "MARIGOLD EVENTS", sub: "S01E03  -  THE WEDDING OF THE YEAR", dur: 5, sfx: [boom]}
+
+  - id: guest_list
+    set: office
+    cast: {marisol: center, tobias: left}
+    beats:
+      - {act: 3, cam: wide, hp: "$52,000", ui: [{kind: chat, text: "[MARIGOLD] Tuesday. The seating chart.", at: 0.4, dur: 3.5}]}
+      - {say: tobias, text: "Marisol, I have a problem with the seating chart. Table four has an uncle, a goose, and a person who was banned from the last wedding.", cam: tobias}
+      - {say: marisol, text: "Remove the goose. Geese are very emotional. They do not do well at tables."}
+      - {say: tobias, text: "The goose is a family friend. His name is Gerald. Not the bus Gerald. A different Gerald. It is a very common name."}
+      - {say: marisol, text: "Fine. Keep the goose. Seat him next to the banned person. They have a lot in common."}
+      - {say: tobias, text: "What about Greg? He is the best man. He is very large, and he has a habit of punching walls."}
+      - {say: marisol, text: "We will put him in the garden. There are no walls in the garden. He will be perfectly safe."}
+      - {say: tobias, text: "What if he punches the tent?"}
+      - {say: marisol, text: "A tent is not a wall. It is a very soft opinion. He can punch a tent all day."}
+      - {say: tobias, text: "And the plant? The bride says there is a plant that must be at every table."}
+      - {say: marisol, text: "That is a very strange request. But it is a client request. Order twelve very nice plants. And one very dedicated one for the head table."}
+      - {say: tobias, text: "Which one is the dedicated one?"}
+      - {say: marisol, text: "I will know it when I see it. Probably it will be red. And probably it will be floating."}
+
+  - id: confessional_one
+    set: office
+    cast: {marisol: center}
+    beats:
+      - {act: 3, cam: marisol, ui: [{kind: lower, text: "MARISOL QUINN|Talking head. A very serious latte.", at: 0.3, dur: 3.5}]}
+      - {say: marisol, text: "A wedding is the Olympics of event planning. It has the pressure, the crowd, and the unreasonable expectation that everything will go perfectly. And then, somewhere, a cousin gets very drunk and gives a speech about a boat.", cam: marisol}
+      - {say: marisol, text: "I love weddings. I do not love them for the romance. I love them because they are a very large logistics problem, with a lot of cake. And with a lot of tears. Mostly Tobias's."}
+      - {say: marisol, text: "This one is going to be perfect. I have a binder. I have a timeline. I have a backup timeline. And I have a backup for the backup, which is a man named Doug who does not talk."}
+
+  - id: the_bus_stop
+    set: garden
+    cast: {tobias: left, marisol: right, npc_gerald: {at: far_right, face: 0}}
+    beats:
+      - {card: "FRIDAY", sub: "The day before the wedding.", dur: 3.5, sfx: [whoosh]}
+      - {act: 3, cam: wide, hp: "$21,500", ui: [{kind: chat, text: "[MARIGOLD] Setup. The uncle has arrived. He is not sitting down.", at: 0.4, dur: 4}]}
+      - {say: tobias, text: "Marisol, the groom's uncle is here. He says his name is Gerald. He says he cannot come in. He says he is waiting for a bus.", cam: tobias}
+      - {say: marisol, text: "Where is he waiting?"}
+      - {say: tobias, text: "On the road outside the garden. There is no bus stop. He has just been standing there, looking down the road."}
+      - {say: npc_gerald, text: "I am Gerald. I am waiting for a bus. I will attend the wedding as soon as it arrives. I have a very nice suit.", cam: npc_gerald, ui: [{kind: lower, text: "GERALD|Groom's uncle. Still waiting.", at: 0.2, dur: 3.5}]}
+      - {say: marisol, text: "Gerald, the wedding is in the garden. We can send a car. We can send a very nice car."}
+      - {say: npc_gerald, text: "I appreciate it. But I cannot leave the stop. The bus does not know where I have gone. If I leave, it will arrive, and I will not be there."}
+      - {say: marisol, text: "I understand. I once waited for a florist for nine hours. I did not leave. It was the best bouquet of my life."}
+      - {say: npc_gerald, text: "That is the right attitude. Nice weather today."}
+      - {say: marisol, text: "Tobias. We have a solution. We are going to build a bus stop. In the garden. Right by the aisle."}
+      - {say: tobias, text: "A bus stop? In a garden? That is not in the budget."}
+      - {say: marisol, text: "It is a very small bus stop. It is a bench, a sign, and a piece of paper that says Route Nine. We will tell him it is a stop for the wedding bus."}
+      - {say: npc_gerald, text: "Is there a wedding bus?"}
+      - {say: marisol, text: "There is, now. It is a very exclusive route. It stops here and nowhere else."}
+      - {say: npc_gerald, text: "That is the nicest thing anyone has ever done for me. I accept. I will sit on the bench."}
+      - {act: 4, cam: wide, sfx: [{name: ding, at: 1.0}], ui: [{kind: achievement, text: "Built A Bus Stop For A Wedding", at: 1.0, dur: 3.5}], acts: [{who: npc_gerald, do: walk_to, to: far_right, dur: 2}]}
+
+  - id: the_wedding_day
+    set: garden
+    cast: {marisol: front, tobias: left, npc_bride: aisle_far, npc_groom: altar, greg: right, kyle: seat_l, admin: aisle_mid, npc_nana: seat_r}
+    beats:
+      - {card: "SATURDAY", sub: "The wedding of the year.", dur: 3.5, sfx: [whoosh]}
+      - {act: 3, cam: wide, hp: "$9,800", ui: [{kind: chat, text: "[MARIGOLD] 200 guests. 1 plant. 1 bus stop. 1 very tall best man.", at: 0.4, dur: 4}]}
+      - {say: tobias, text: "Marisol, everything is in place. The guests are seated. The flowers are out. The plant at the head table is a very, very strange plant.", cam: tobias}
+      - {say: marisol, text: "It is the dedicated one. I will handle it."}
+      - {say: admin, text: "I am a plant. I am a very expensive fern. I have been hired to sit at a head table and be quiet.", cam: admin}
+      - {say: marisol, text: "That is exactly right. You are a plant, you are a fern, and you are not ruining my wedding."}
+      - {say: admin, text: "I have never ruined a wedding. I have only ever observed one. It is a very quiet hobby."}
+      - {say: greg, text: "Hello. I am Greg. I am the best man. I would like to confirm that I will not punch the arch.", cam: greg, ui: [{kind: lower, text: "GREG|Best man. Wall specialist.", at: 0.2, dur: 3.5}]}
+      - {say: marisol, text: "Greg, that is a very good promise. I will hold you to it."}
+      - {say: greg, text: "I have been working on it. I have a stress ball. It is shaped like a wall. I have been punching it for three weeks."}
+      - {say: kyle, text: "I am a guest. I am here as the plus one of nobody. I am here because I was told there would be cake.", cam: kyle}
+      - {say: npc_nana, text: "I am the bride's nana. I would like the soup to be warm and the music to be quiet.", cam: npc_nana, ui: [{kind: lower, text: "NANA|The bride's grandmother. Always right.", at: 0.2, dur: 3.5}]}
+      - {say: marisol, text: "Nana, the soup is perfect. The music is a string quartet. They have been told to play very softly."}
+      - {say: npc_nana, text: "Good. I am a very difficult woman. But I am very well dressed."}
+
+  - id: ceremony
+    set: garden
+    cast: {marisol: front, tobias: left, npc_bride: aisle_mid, npc_groom: altar, greg: altar, admin: seat_l, npc_gerald: {at: far_right, face: 0}}
+    beats:
+      - {act: 3, cam: wide, sfx: [{name: chime, at: 0.5}], ui: [{kind: chat, text: "[MARIGOLD] The ceremony begins.", at: 0.4, dur: 3.5}], acts: [{who: npc_bride, do: walk_to, to: altar, dur: 4}]}
+      - {say: tobias, text: "She looks so beautiful. I am going to cry. I am going to cry so hard.", cam: tobias}
+      - {say: marisol, text: "Tobias, you may cry quietly. Into a napkin."}
+      - {say: npc_groom, text: "Priya. I want to say something. I know I am not good with words. But I would like you to know, you are my favourite person. And I love your plant.", cam: npc_groom}
+      - {say: npc_bride, text: "Oscar. I love you. And I love the plant. And I love that you have remembered the plant.", cam: npc_bride}
+      - {say: greg, text: "I have a speech. It is very short. It is only one line. Take care of each other. And do not punch walls.", cam: greg}
+      - {act: 4, cam: greg, sfx: [{name: boom, at: 2.0}], acts: [{who: greg, do: shake, delay: 1.5, amt: 0.16}], ui: [{kind: chat, text: "[GREG] ...I am doing so well.", at: 1.8, dur: 3}]}
+      - {say: marisol, text: "He has not punched the arch. I am so proud. I am prouder of that than of anything I have done this year.", cam: marisol}
+      - {say: admin, text: "This is a notice, not a warning. You are all extremely happy. Please continue.", cam: admin}
+      - {say: npc_groom, text: "Who said that?"}
+      - {say: marisol, text: "It is a plant. It is a very dedicated plant. We do not ask."}
+      - {say: npc_bride, text: "I do. I do. I do. I do."}
+      - {say: npc_groom, text: "I do too. Sorry. I got excited."}
+      - {act: 4, cam: wide, sfx: [{name: ding, at: 1.0}, {name: crowd, at: 1.0}], ui: [{kind: achievement, text: "Married, Under Budget (Barely)", at: 1.0, dur: 3.5}], acts: [{who: npc_groom, do: jump, delay: 1.0, dur: 2}, {who: npc_bride, do: jump, delay: 1.0, dur: 2}]}
+      - {say: npc_gerald, text: "Nice weather today. A lovely service. I am going to stay for the bus.", cam: npc_gerald}
+
+  - id: reception
+    set: garden
+    cast: {marisol: front, tobias: left, npc_bride: right, npc_groom: center, greg: far_right, kyle: seat_l, admin: bar}
+    beats:
+      - {act: 3, cam: wide, hp: "$3,900", sfx: [{name: crowd, at: 0.3}], ui: [{kind: chat, text: "[MARIGOLD] The reception. Cake. Speeches. A goose.", at: 0.4, dur: 4}]}
+      - {say: kyle, text: "I want to tell you, as a guest, that this is the best wedding I have ever attended. There is cake. There is soup. And there is a bus stop.", cam: kyle}
+      - {say: tobias, text: "Kyle, thank you. I am going to cry again. I have cried eleven times today. I have counted.", cam: tobias}
+      - {say: kyle, text: "Is Dave here? I thought he would come."}
+      - {say: marisol, text: "Dave? Who is Dave?"}
+      - {say: kyle, text: "He is a friend. He is a man in an orange hoodie. He is probably stuck somewhere. Or in a wall. Or in a different wedding."}
+      - {say: marisol, text: "We do not ask. We have a very good policy."}
+      - {say: npc_bride, text: "Marisol, I want to thank you. This is the best day of my life. I did not know a wedding could have a bus stop.", cam: npc_bride}
+      - {say: marisol, text: "Priya, that is why we do it. We make the impossible into a very reasonable line item."}
+      - {say: npc_groom, text: "I would like to give you a tip. I would like to give you all of my money. Is that appropriate?"}
+      - {say: marisol, text: "It is a lovely gesture. But it is not necessary. We take cards, and we take a very detailed review."}
+      - {say: greg, text: "I would like to say that I did not punch anything today. I would also like to say that I want to punch something very badly right now. In a good way.", cam: greg}
+      - {say: marisol, text: "Greg, there is a very large cake. It is made of fondant. You may punch the cake."}
+      - {act: 4, cam: greg, sfx: [{name: pop, at: 1.0}, {name: boom, at: 1.2}], acts: [{who: greg, do: spin, delay: 1.0, n: 1, dur: 1.5}], ui: [{kind: chat, text: "[GREG] Thank you. It was a very good cake.", at: 1.8, dur: 3}]}
+
+  - id: wrap
+    set: office
+    cast: {marisol: center, tobias: left}
+    beats:
+      - {card: "MONDAY", sub: "The invoice.", dur: 3.5, sfx: [whoosh]}
+      - {act: 3, cam: wide, hp: "$400", ui: [{kind: chat, text: "[MARIGOLD] Final budget: four hundred dollars. And one bus stop.", at: 0.4, dur: 4}]}
+      - {say: tobias, text: "Marisol, we did it. We had a wedding, a bus stop, a very dedicated plant, and nobody punched anything. The couple left a five star review.", cam: tobias}
+      - {say: marisol, text: "Tobias, I want to say that I am very proud of you. You cried only eleven times. It is a personal best.", cam: marisol}
+      - {say: tobias, text: "I cried at the part where the plant said that they were happy. I think it was the best line of the whole wedding."}
+      - {say: marisol, text: "It was a very emotional plant. We have a lot of respect for it. We are going to send it a card."}
+      - {say: tobias, text: "What are we doing next?"}
+      - {say: marisol, text: "A gala. News Channel 9 has an anniversary. They want a party for four hundred people, a live broadcast, and an ice sculpture of the number nine."}
+      - {say: tobias, text: "Oh no. That is very big."}
+      - {say: marisol, text: "It is a very big number. It is the biggest nine we have ever done. Per my last email, we are going to be in a lot of trouble."}
+
+  - id: next_time
+    set: black
+    beats:
+      - {card: "NEXT TIME ON MARIGOLD EVENTS", sub: "S01E04  -  THE NEWS CHANNEL 9 ANNIVERSARY GALA", dur: 6}

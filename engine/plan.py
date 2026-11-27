@@ -1,7 +1,7 @@
 """Turn an episode into a render plan: frame ranges, audio, overlay events, shards."""
 import random
 
-from . import schema, tts
+from . import cast, schema, tts
 
 CHUNK_FRAMES = 1200  # 50 s at 24 fps per render job
 
@@ -23,7 +23,7 @@ def build_plan(ep, audio_dir=None, estimate=False):
                 if use_tts:
                     wav, secs = tts.synth(b["say"], b["text"], audio_dir, b.get("speed"), b.get("pitch"))
                 else:
-                    secs = len(b["text"].split()) / schema.WORDS_PER_SEC * 170.0 / float(b.get("speed") or 170)
+                    secs = len(b["text"].split()) / schema.WORDS_PER_SEC * 170.0 / float(b.get("speed") or cast.get(b["say"])["speed"]) * cast.KV_RATE.get(cast.get(b["say"]).get("kv"), 1.0)
                 dur = max(float(b.get("dur", 0)), secs + schema.SAY_PAD)
             else:
                 dur = float(b.get("dur", schema.DEFAULT_DUR[kind]))
@@ -35,7 +35,7 @@ def build_plan(ep, audio_dir=None, estimate=False):
             beats.append(rb)
             _beat_events(b, kind, wav, t0, t1, events, audio, sfx, lag)
             local += frames
-        scenes.append(dict(index=si, id=s["id"], set=s["set"], cast=s["cast"],
+        scenes.append(dict(index=si, id=s["id"], set=s["set"], cast=s["cast"], bg=s.get("bg"),
                            frames=local, g0=g, beats=beats))
         for ci, start in enumerate(range(0, local, CHUNK_FRAMES)):
             shards.append(dict(id=f"s{si:02d}_c{ci:02d}", scene=si, start=start,
@@ -44,7 +44,7 @@ def build_plan(ep, audio_dir=None, estimate=False):
 
     events.extend(_fps_events(g / fps, lag, ep["id"]))
     return dict(id=ep["id"], title=ep["title"], fps=fps, resolution=ep["resolution"],
-                total_frames=g, seconds=g / fps, scenes=scenes, shards=shards,
+                total_frames=g, seconds=g / fps, music=ep.get("music", "arcade"), show=ep.get("show", "irl"), scenes=scenes, shards=shards,
                 events=sorted(events, key=lambda e: e["t0"]), audio=audio, sfx=sfx)
 
 

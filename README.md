@@ -10,7 +10,7 @@ animation, no editing software. Push a script, get an mp4.
 ```
 episodes/s01e01_noclip.yaml          the script (dialogue, actions, cheats, UI popups)
         |
-        v   python -m engine plan        espeak-ng voices, exact timing, audio mix,
+        v   python -m engine plan        Kokoro voices, exact timing, audio mix,
         |                                game-UI overlay, split into ~50 s render shards
         v   python -m engine render      Blender Workbench, one shard per CI job (parallel)
         |
@@ -54,26 +54,50 @@ and the GitHub runners ship, and what this was developed against.
 
 ## The universe (every show, one fake video site)
 
-All shows share one world and live on one fake video site, **ViewTube**. News Channel 9 can report
-on what Dave did, Passion Fruit Events can plan the sneaker drop, and Gerald can comment on all of it.
+All shows share one world and live on one fake video site, **ViewTube**. Channel 9 can report on what Dave did,
+Marigold Events can plan the paintball day, and Gerald can comment on all of it. Four channels, five videos each:
+
+| Channel | What it is | Videos |
+|---|---|---|
+| **IRL BUT CHEATS** | Dave, Kyle and the Admin (this repo's 3D engine) | `episodes/s01e0N_*.yaml` |
+| **Channel 9** | Evening news: Martin, Sarah, David, Emma, Kevin, Richard. E01 + E02 are the original standalone pages (`universe/embeds/`), E03-E05 are engine episodes | `episodes/n9_*.yaml` + embeds |
+| **PASSIONFRUIT** | The keynote events (Pulp Phone and friends). Already published as releases in the PASSIONFRUIT repo, so the site links out (`link:`) | 5 external videos |
+| **Marigold Events** | Marisol and Tobias plan events (a wedding, a gala, a stapler) | `episodes/mg_*.yaml` |
 
 ```
 universe/universe.yaml     channels, shared characters, every video (+ crossover links, in-world comments)
 universe/web/              the site (plain HTML/JS/CSS, no dependencies)
+universe/art/              thumbnails, avatars, banners (generated, committed)
+universe/embeds/           self-contained player pages (Channel 9 E01/E02)
+        |  python -m engine universe art        -> Blender hero frames + Pillow styling -> universe/art/
         |  python -m engine universe build      -> site/index.html (open it; no server needed)
         |  python -m engine universe publish    -> copy rendered mp4s into site/media/, rebuild
 ```
 
 * `universe check` validates the whole world (unknown channel/character, dangling `mentions`, bad episode files).
-* A video with `episode: episodes/xxx.yaml` is linked to a render script. Status is derived:
-  **planned** (no script) -> **scripted** (script exists) -> **live** (mp4 in `site/media/`, plays in the player).
+* A video is **one of**: `episode:` (engine script), `embed:` (a standalone player page, plays in an iframe) or
+  `link:` (published elsewhere, e.g. a GitHub release). Engine episodes go **planned -> scripted -> live** (mp4 in `site/media/`).
 * `mentions: [other-video-id]` makes crossovers show up under "In this universe" on both videos.
-* Site features: home grid with channel chips, watch page with player/likes/subscribe/comments (yours are
-  saved in your browser), channel pages (videos/cast/about), search, a universe timeline, and a cast list.
-* Entries marked `placeholder: true` were invented by the scaffold (Passion Fruit Events, News Channel 9 and
-  their people/videos). Rewrite them to your real canon and remove the flag.
-* To add a show: add a channel, its characters, and videos in `universe.yaml`. Characters link to engine
-  voices through `engine:` (`dave`, `kyle`, `admin`, or any `npc_<name>`).
+* **Art for everything.** `universe art` renders a Blender frame of each video's `thumb:` shot (or captures a frame of
+  an embed with Playwright) and styles it per show; every character gets an avatar from the same 3D model, and every
+  channel gets a logo and banner. It only re-renders what is missing (`--force`, `--only id ...`).
+  Set `THREE_JS=/path/to/three.min.js` if the embeds' CDN is unreachable.
+* To add a show: add a channel, its characters, and videos in `universe.yaml`.
+
+## Voices
+
+Dialogue is spoken by **Kokoro** (a small neural TTS model, runs on CPU; about 3 minutes per episode). The model
+(325 MB) downloads once to `~/.cache/irl-engine` (override with `KOKORO_DIR`). Each cast member has a Kokoro voice
+(`kv`) in `engine/cast.py`; the Admin gets a metallic echo, news staff a broadcast EQ, and `speed`/`pitch` on a line
+still work. If Kokoro is not installed or cannot download, it falls back to espeak-ng.
+`--estimate` uses a calibrated words-per-second model (`schema.WORDS_PER_SEC`, `cast.KV_RATE`); the render workflow
+measures the real audio and enforces 10 minutes +/- 5 %.
+
+## Show looks
+
+Set `show:` and `music:` at the top of an episode: `irl` (game HUD, default), `news` (CHANNEL 9 bug, LIVE, scrolling
+`ticker`, `lower` thirds, `headline` banners; `hp:` becomes VIEWERS) or `events` (`hp:` becomes BUDGET, `lower` thirds).
+Music beds: `arcade`, `news`, `party`. New sets: `newsroom`, `ballroom`, `garden`. Any character can be a camera: `cam: martin`.
 
 ## Writing an episode
 
@@ -107,7 +131,7 @@ On `say` beats, `speed` (words per minute, default ~170) and `pitch` override th
 * **cam**: `wide two dave kyle admin low top follow black`. Default: close-up of the speaker.
 * **acts** (`who`, `do`, optional `to`, `dur`, `delay`): `idle walk_to run_to noclip_to fall tpose flop stand jump shake spin grow shrink teleport face appear vanish wave spawn vehicle launch`.
   `spawn` takes `item` (`pizza coin cash cube sneaker`), `n`, `to`, `spread`.
-* **ui** (`kind`, `text`, `at`, `dur`): `console system achievement admin chat`.
+* **ui** (`kind`, `text`, `at`, `dur`): `console system achievement admin chat lower ticker headline`.
 * **sfx**: names or `{name, at}`: `chime error pop fall ding whoosh boom glitch warn crowd`.
 * Characters: `dave`, `kyle`, `admin`, and any `npc_<anything>` (a different voice and colour is derived from the name).
 * Marks (named floor positions) per set live in `engine/sets.py`.
@@ -125,7 +149,7 @@ engine/audio.py           dialogue + synthesised sfx + chiptune bed -> mix.wav
 engine/overlay.py         burn-in game UI as an ASS subtitle file
 engine/blender_render.py  runs inside Blender: scene builder + renderer
 engine/cast.py, sets.py   characters, locations, camera presets (data)
-universe/, engine/universe.py  shared universe + fake video site
+universe/, engine/universe.py, engine/thumbs.py  shared universe, fake video site, art
 docs/series_bible.md      cast, rules, running gags, season 1 slate
 ```
 

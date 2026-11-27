@@ -1,0 +1,186 @@
+# CHANNEL 9 - S01E03 "The Longest Week"
+# A man crosses one street in six days. His friend ages seven years. The newsroom runs out of coffee.
+id: n9s01e03
+title: The Longest Week
+show: news
+music: news
+target_seconds: 600
+fps: 24
+resolution: [1280, 720]
+
+scenes:
+  - id: cold_open
+    set: newsroom
+    cast: {martin: anchor_l, sarah: anchor_r, david: weather}
+    beats:
+      - {act: 3, cam: wide, ui: [{kind: ticker, text: "DAY SIX: MAN STILL CROSSING STREET  +++  FRIEND NOW 'VERY MUCH OLDER'  +++  BAGEL BARN STAFF ASK FOR HELP", at: 0.2}]}
+      - {say: martin, text: "Good evening. I am Martin Miller, and this is Channel 9 Evening News. It is Saturday, and a man is still crossing the street.", cam: martin}
+      - {say: sarah, text: "I am Sarah Collins. We have been covering this story since Tuesday, and I would like it noted that I have aged a little bit as well.", cam: sarah}
+      - {say: martin, text: "You look the same, Sarah."}
+      - {say: sarah, text: "That is the thing, Martin. I feel that I should not."}
+      - {say: david, text: "In weather, it is nice, and it has been nice all week. I would like to apologise to anyone who wanted a change. David Storm, at the wall.", cam: david}
+      - {say: martin, text: "Thank you, David. Stay with us. It is going to be a long one."}
+
+  - id: title
+    set: black
+    beats:
+      - {card: "CHANNEL 9", sub: "EVENING NEWS  -  S01E03  -  THE LONGEST WEEK", dur: 5, sfx: [boom]}
+
+  - id: week_recap
+    set: newsroom
+    cast: {martin: anchor_l, sarah: anchor_r}
+    beats:
+      - {act: 3, cam: wide, ui: [{kind: headline, text: "THE LONGEST WEEK: A RECAP", at: 0.3, dur: 5}, {kind: ticker, text: "TUESDAY: MAN STARTS WALKING  +++  SATURDAY: MAN IS ON THE SAME STREET", at: 0.3}], sfx: [{name: warn, at: 0.3}]}
+      - {say: martin, text: "Let us begin with a recap, for viewers who have just joined us, and for viewers who have been here since the beginning and have lost track of time.", cam: martin}
+      - {say: sarah, text: "On Tuesday, a man named Dave began walking to the Bagel Barn, to use a coupon that expired at noon. He is walking at one tenth of the normal speed.", cam: sarah}
+      - {card: "TUESDAY", sub: "Dave leaves the apartment. It takes forty minutes. He is very proud.", dur: 3.5, sfx: [whoosh]}
+      - {say: martin, text: "On Wednesday, he reached the front door of his building, which a witness described as, quote, a moment of great dignity."}
+      - {card: "THURSDAY", sub: "Dave finds the street. The street finds him.", dur: 3.5, sfx: [whoosh]}
+      - {say: sarah, text: "On Thursday, he began to cross the street. The street was very quiet. The traffic stopped out of respect, and also because he was in the way."}
+      - {card: "SATURDAY", sub: "Dave arrives at the Bagel Barn. The Bagel Barn is waiting.", dur: 3.5, sfx: [whoosh]}
+      - {say: martin, text: "And on Saturday, he reached the shop. He had been using the same coupon, which expired six days earlier."}
+      - {say: sarah, text: "Which is why we are here, Martin. Because no man has ever walked that slowly toward something that was already gone."}
+
+  - id: field_street
+    set: street
+    cast: {emma: queue_mid, dave: queue_front, kyle: left, npc_gerald: {at: curb, face: 0}}
+    beats:
+      - {act: 3, cam: wide, ui: [{kind: lower, text: "EMMA PARKER|On the street. Day six.", at: 0.3, dur: 3.5}, {kind: ticker, text: "FRIEND OF MAN: 'I HAVE LEARNED SO MUCH ABOUT PATIENCE'", at: 0.3}], acts: [{who: dave, do: walk_to, to: shop_door, dur: 12}]}
+      - {say: emma, text: "I am here with the friend of the man. Sir, you have been with him the whole time?", cam: emma}
+      - {say: kyle, text: "Yes. I am Kyle. I have been with him since Tuesday. I have not shaved. I have started a newsletter. I have four subscribers.", cam: kyle, pitch: 20, ui: [{kind: lower, text: "KYLE|Friend. Beard. Newsletter.", at: 0.2, dur: 3.5}]}
+      - {say: emma, text: "Is it true you have aged?"}
+      - {say: kyle, text: "I am thirty five now. I was twenty eight on Tuesday. I would like it noted that I have learned the names of all the pigeons.", pitch: 20}
+      - {say: emma, text: "What is the most difficult part of this?"}
+      - {say: kyle, text: "The not knowing. I do not know if he is going to make it. I do not know if I am going to make it. I know that my knees hurt.", pitch: 20}
+      - {say: emma, text: "Dave, can you hear me?", cam: dave}
+      - {say: dave, text: "Hello. Emma. It is nice to meet you. I am almost at the bagel.", speed: 85, pitch: 28}
+      - {say: emma, text: "Martin, that sentence took us forty seconds. I have learned to use the time to think about my life.", cam: emma}
+      - {say: npc_gerald, text: "Nice weather today. I have been listening to him say hello since Wednesday. It has been the best conversation I have had all year.", cam: npc_gerald, ui: [{kind: lower, text: "GERALD|Still waiting. Now with a view.", at: 0.2, dur: 3.5}]}
+      - {say: emma, text: "Gerald, the bus has not yet arrived. Is it appropriate to say that the man and the bus have something in common?"}
+      - {say: npc_gerald, text: "They are both very slow. And they are both going to arrive. It is the hope that holds it all together."}
+
+  - id: bagel_barn
+    set: street
+    cast: {emma: shop_door, npc_clerk: {at: inside, face: 0}}
+    beats:
+      - {act: 3, cam: wide, ui: [{kind: lower, text: "EMMA PARKER|Bagel Barn. A very long wait.", at: 0.3, dur: 3.5}, {kind: ticker, text: "BAGEL BARN CLERK 'HAS BEEN ON SHIFT SINCE TUESDAY'", at: 0.3}]}
+      - {say: emma, text: "I am at the Bagel Barn, where the clerk has been waiting for the man since the first hello. Sir, how are you?", cam: emma}
+      - {say: npc_clerk, text: "I am tired. I have been on shift for six days. I am sorry. The man began to say good morning on Tuesday, and I do not want to be rude, so I have been listening ever since.", cam: npc_clerk, ui: [{kind: lower, text: "CLERK|Bagel Barn. Six days into a hello.", at: 0.2, dur: 3.5}]}
+      - {say: emma, text: "That is a long greeting."}
+      - {say: npc_clerk, text: "It is a good greeting. It has a lovely intro. But I am afraid I have fallen asleep standing up twice."}
+      - {say: emma, text: "What are your thoughts on the coupon?"}
+      - {say: npc_clerk, text: "I think it is a very small piece of paper to cause so much emotion. But I will honour it, in my heart. Not in the till."}
+      - {say: emma, text: "I think a lot of people at home will feel that. Thank you, sir.", cam: emma}
+
+  - id: station_manager
+    set: newsroom
+    cast: {martin: anchor_l, sarah: anchor_r, richard: door, kevin: cam}
+    beats:
+      - {act: 3, cam: wide, ui: [{kind: ticker, text: "STATION MANAGER: 'VIEWERS ARE UP 30%*'  +++  *FOURTEEN PEOPLE", at: 0.2}], acts: [{who: richard, do: walk_to, to: center, dur: 2}], sfx: [{name: boom, at: 0.3}]}
+      - {say: richard, text: "Stop the broadcast! Stop everything!", cam: richard, ui: [{kind: lower, text: "RICHARD WILSON|Station Manager", at: 0.2, dur: 3.5}]}
+      - {say: sarah, text: "Richard, we are live.", cam: sarah}
+      - {say: richard, text: "Good! Let the town hear it! Channel 9 has achieved a record audience of sixty-one!"}
+      - {say: martin, text: "Sixty-one viewers, sir?", cam: martin}
+      - {say: richard, text: "Up from forty-seven! That is a thirty percent increase! Bigger than any network on Earth, by percentage!"}
+      - {say: sarah, text: "Richard, fourteen of those are the man crossing the street. He has been watching on a very small phone."}
+      - {say: richard, text: "Then he is our most loyal viewer! Kevin! Get the man a mug!"}
+      - {say: kevin, text: "Which man? The slow one or the old one?", cam: kevin}
+      - {say: richard, text: "Both! Martin, the confetti!"}
+      - {say: martin, text: "Hooray.", cam: martin}
+      - {say: sarah, text: "Richard. You are in the shot."}
+      - {say: richard, text: "I AM the shot! Thank you, town!", acts: [{who: richard, do: walk_to, to: door, dur: 2}]}
+  - id: viewer_mail
+    set: newsroom
+    cast: {martin: anchor_l, sarah: anchor_r}
+    beats:
+      - {card: "VIEWER MAIL", sub: "You wrote. We read. Slowly.", dur: 3.5, sfx: [whoosh]}
+      - {act: 3, cam: wide, ui: [{kind: ticker, text: "VIEWER MAIL: PLEASE SEND LETTERS. WE HAVE A LOT OF TIME.", at: 0.2}]}
+      - {say: martin, text: "First letter. From a Mister Pruitt, who writes: Dear Channel 9. I am a landlord. Can you tell me where my tenant is?", cam: martin}
+      - {say: sarah, text: "Mister Pruitt, he is crossing a street. He will be back for the rent. At some point. We would estimate by the end of the month.", cam: sarah}
+      - {say: martin, text: "Next. From Accounting, who writes: Dear Channel 9. We are worried about the man's friend. He has a lot of hair now. Is that normal?"}
+      - {say: sarah, text: "Accounting, it is not normal. It is a lot. We recommend a trim, and a nap."}
+      - {say: martin, text: "And finally, from a Greg, who writes: I am punching a wall. It is going well."}
+      - {say: sarah, text: "Greg, we are proud of you. Keep the wall in your heart."}
+      - {say: martin, text: "That is all the mail. We would like to thank everyone for writing. We read every letter. We understand about forty percent."}
+
+  - id: sports
+    set: newsroom
+    cast: {martin: anchor_l, david: weather}
+    beats:
+      - {act: 3, cam: wide, ui: [{kind: ticker, text: "SPORTS: SLOWEST MARATHON EVER RECORDED  +++  OFFICIALS 'NOT SURE IT COUNTS'", at: 0.2}]}
+      - {say: martin, text: "And now sports. David, what is the big story?", cam: martin}
+      - {say: david, text: "Martin, there is a marathon. It was run by Dave. It was twenty six point two miles, and it took him one week, and it was the length of one street.", cam: david}
+      - {say: martin, text: "Was it a marathon, if it was only a street?"}
+      - {say: david, text: "The officials have said that it does not qualify. But I would argue that it is the most emotional marathon in the history of the sport. There was a lot of heart. And a lot of standing."}
+      - {say: martin, text: "Did he win?"}
+      - {say: david, text: "He did not win. There was no race. But everyone clapped at the end. I did not clap. I was at the wall."}
+      - {say: martin, text: "Thank you, David. In other sports, the hill remains unbeaten."}
+      - {say: david, text: "The hill is a champion. I cannot say anything more. I am a little bit afraid of it."}
+
+  - id: ad_break
+    set: black
+    cast: {npc_announcer: center}
+    beats:
+      - {card: "THE FOLLOWING IS A PAID ANNOUNCEMENT", sub: "Bagel Barn", dur: 3.5, sfx: [whoosh]}
+      - {say: npc_announcer, text: "Bagel Barn. Where every bagel is hand rolled, hand baked, and handed over slowly. Our new coupon offer: one free bagel with the purchase of one bagel, valid until noon, on a day we have not decided.", cam: black}
+      - {say: npc_announcer, text: "Terms and conditions apply. Coupons do not extend. Staff may fall asleep. Bagel Barn. We are doing our best."}
+      - {card: "BAGEL BARN", sub: "Open early. Open late. Open for a very long hello.", dur: 3.5, sfx: [ding]}
+
+  - id: traffic
+    set: newsroom
+    cast: {martin: anchor_l, david: weather}
+    beats:
+      - {act: 3, cam: wide, ui: [{kind: ticker, text: "TRAFFIC: ONE LANE CLOSED  +++  CAUSE: ONE MAN  +++  DELAYS: SIX DAYS", at: 0.2}]}
+      - {say: martin, text: "And now traffic. David, you are doing traffic as well?", cam: martin}
+      - {say: david, text: "Martin, I do traffic, weather, sports, the crossword, and the office plants. It is a lot. I get a very small bonus.", cam: david}
+      - {say: martin, text: "How are the roads?"}
+      - {say: david, text: "The roads are very clear. Everywhere except Main Street, where one man is blocking everything. He is a very polite blockage."}
+      - {say: martin, text: "How long are the delays?"}
+      - {say: david, text: "They are six days. If you are driving, I recommend you take another street. If you are walking, I recommend you take another life."}
+      - {say: martin, text: "Thank you, David. Gerald says a lot of things."}
+      - {say: david, text: "He is a man of hope, Martin. And that is a wonderful thing to be, on a Saturday."}
+
+  - id: duncan_desk
+    set: newsroom
+    cast: {martin: anchor_l, sarah: anchor_r}
+    beats:
+      - {act: 3, cam: wide, ui: [{kind: ticker, text: "DUNCAN OKAFOR: 'I HAVE BEEN OUTSIDE FOR SIX DAYS'", at: 0.2}]}
+      - {say: martin, text: "Sarah, you are back at the desk. You look exhausted.", cam: martin}
+      - {say: sarah, text: "Martin, I have not slept. I have followed a man across a road for six days. I have eaten nothing but vending machine crackers and the occasional bagel crumb.", cam: sarah}
+      - {say: martin, text: "What have you learned?"}
+      - {say: sarah, text: "That time is a very thin thing. And that if you stand next to something slow for long enough, you start to move slowly too. I have been talking very slowly all afternoon."}
+      - {say: martin, text: "I did notice that. It was very relaxing."}
+
+  - id: weather
+    set: newsroom
+    cast: {martin: anchor_l, david: weather}
+    beats:
+      - {act: 3, cam: wide, ui: [{kind: ticker, text: "WEATHER: SUNNY  +++  MORNING: VERY LONG  +++  AFTERNOON: SURPRISINGLY BRIEF", at: 0.2}]}
+      - {say: martin, text: "And now the weather. David?", cam: martin}
+      - {say: david, text: "Martin, tomorrow will be nice. I am very sure about this. It is a morning that is going to start early and end quickly. That is all I can say about it.", cam: david}
+      - {say: martin, text: "What should people wear?"}
+      - {say: david, text: "Something comfortable. Something you can stand in for a week. I would recommend soft shoes and a light jacket, and a very patient attitude."}
+      - {say: martin, text: "Thank you, David. That is a lot of wisdom for a weather segment."}
+      - {say: david, text: "I have been standing at this wall for six days, Martin. I have had a lot of time to think."}
+
+  - id: gerald_update
+    set: street
+    cast: {emma: left, npc_gerald: {at: curb, face: 0}, npc_gnome: {at: [-9, 2.5], face: 0}}
+    beats:
+      - {card: "GNOME WATCH", sub: "Gerald is still missing. Probably.", dur: 3.5, sfx: [whoosh]}
+      - {act: 3, cam: wide, ui: [{kind: ticker, text: "GNOME WATCH: CERAMIC GNOME SPOTTED AT MAIN STREET BUS STOP  +++  GERALD (GNOME) NEXT TO GERALD (MAN)", at: 0.2}], acts: [{who: npc_gnome, do: shrink, by: 0.35, dur: 0.2}]}
+      - {say: emma, text: "Martin, I am at the Main Street bus stop, where a twelve inch ceramic gnome has been spotted. Witnesses believe it is Gerald, the gnome missing from Birchwood Lane.", cam: emma}
+      - {say: npc_gerald, text: "I am also Gerald. I am a man. I am waiting for a bus. There are several of us.", cam: npc_gerald, ui: [{kind: lower, text: "GERALD (MAN)|Waiting for a bus", at: 0.2, dur: 3.5}]}
+      - {say: emma, text: "Sir, do you know the gnome?"}
+      - {say: npc_gerald, text: "We have not spoken. But it has been very good company. Nice weather today."}
+      - {say: emma, text: "Martin, the gnome has not commented. I am told it is not expected to."}
+  - id: signoff
+    set: newsroom
+    cast: {martin: anchor_l, sarah: anchor_r, david: weather}
+    beats:
+      - {act: 3, cam: wide, ui: [{kind: ticker, text: "GOOD NIGHT  +++  CHANNEL 9  +++  A WEEK OF SERVICE, ONE MORNING AT A TIME", at: 0.2}]}
+      - {say: martin, text: "That is all for tonight. I am Martin Miller.", cam: martin}
+      - {say: sarah, text: "I am Sarah Collins. I am going to sleep for a day.", cam: sarah}
+      - {say: david, text: "I am David Storm. I am going to touch the wall one more time.", cam: david}
+      - {say: martin, text: "Good night, and take your time."}
+      - {card: "NEXT TIME ON CHANNEL 9", sub: "S01E04  -  THE STAPLER STANDOFF  (LIVE)", dur: 6}

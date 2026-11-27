@@ -1,0 +1,202 @@
+# IRL BUT CHEATS - S01E04 "Aimbot"
+# Corporate Paintball Day, planned by Marigold Events. Dave cannot aim. Dave can now not miss. Both are worse.
+id: s01e04
+title: Aimbot
+target_seconds: 600
+fps: 24
+resolution: [1280, 720]
+
+scenes:
+  # ------------------------------------------------------------------ 1. cold open
+  - id: cold_open
+    set: office
+    cast: {marisol: front, dave: left, kyle: right, npc_gary: {at: desk, face: 0}}
+    beats:
+      - {act: 3, cam: wide, hp: "100", ui: [{kind: chat, text: "[SERVER] Corporate Paintball Day. Hosted by Marigold Events.", at: 0.4, dur: 4}]}
+      - {say: marisol, text: "Good morning, team! I am Marisol from Marigold Events, and I will be your event planner today.", cam: marisol}
+      - {say: npc_gary, text: "I am Gary. I run the office. I did not ask for this."}
+      - {say: marisol, text: "Gary, you did. It is in the budget. It is called team building."}
+      - {say: npc_gary, text: "I thought it was a typo for team billing."}
+      - {say: marisol, text: "Today's rules are simple. Paint stays on the clothes. Clothes stay on the people. Nobody paintballs the printer."}
+      - {say: dave, text: "Why would anyone paintball the printer?", cam: dave}
+      - {say: kyle, text: "Because it is the only target that has ever deserved it."}
+      - {say: marisol, text: "Dave, you are on Gary's team. Kyle, you are with the accounting department."}
+      - {say: kyle, text: "Accounting? They hate me."}
+      - {say: marisol, text: "They have never met you."}
+      - {say: kyle, text: "They have read my expense reports."}
+      - {say: dave, text: "I have never held a paintball gun before. Is it like a regular gun, but sadder?", cam: dave}
+      - {say: marisol, text: "It is like a regular gun, but with consequences that wash out at thirty degrees."}
+      - {say: npc_gary, text: "Dave, how good are you at sports?"}
+      - {say: dave, text: "I once lost an argument with a swing."}
+      - {say: npc_gary, text: "Fantastic. You will be our secret weapon."}
+
+  - id: title
+    set: black
+    beats:
+      - {card: "IRL BUT CHEATS", sub: "S01E04  -  AIMBOT", dur: 5, sfx: [boom]}
+
+  # ------------------------------------------------------------------ 3. the game
+  - id: the_game
+    set: office
+    cast: {dave: left, kyle: far_right, marisol: door, npc_gary: desk}
+    beats:
+      - {act: 3, cam: wide, ui: [{kind: chat, text: "[SERVER] Round one. Dave is hiding behind a fern.", at: 0.4, dur: 3.5}], acts: [{who: dave, do: walk_to, to: plant, dur: 2}]}
+      - {say: dave, text: "Okay, okay. I am a professional. I have watched a documentary about snipers.", cam: dave}
+      - {say: kyle, text: "Dave, I can see you. You are behind a very small fern.", cam: kyle}
+      - {say: dave, text: "It is a Ficus. It is a very brave Ficus."}
+      - {act: 3, cam: dave, ui: [{kind: chat, text: "[DAVE] I will not hit anyone. I will not hit anyone. I will not hit anyone.", at: 0.3, dur: 3}], acts: [{who: dave, do: shake, amt: 0.06}]}
+      - {say: dave, text: "What if I just typed in a little something to help me out? It is a team sport. Teams help each other."}
+      - {act: 3, cam: dave, sfx: [{name: chime, at: 1.2}], ui: [{kind: console, text: "> aimbot", at: 0.3, dur: 1.6}, {kind: system, text: "CHEAT ACTIVATED: aimbot", at: 1.6, dur: 3}]}
+      - {act: 4, cam: wide, sfx: [{name: pop, at: 0.5}, {name: pop, at: 1.2}, {name: pop, at: 1.9}], acts: [{who: dave, do: spin, n: 1, dur: 2}], ui: [{kind: chat, text: "[SERVER] Dave eliminated Accounting (all of Accounting).", at: 0.3, dur: 3.5}]}
+      - {say: kyle, text: "Dave! You just hit three people behind a wall!", cam: kyle}
+      - {say: dave, text: "I did not even aim! The gun aimed itself! It is an amazing gun!", cam: dave}
+      - {say: marisol, text: "Dave, that is a perfect score. Fifty out of fifty. You hit everyone in the building.", cam: marisol}
+      - {say: dave, text: "Even the people on the roof?"}
+      - {say: marisol, text: "We are all on the roof now. It is not the original plan. It is a very good rooftop experience."}
+      - {act: 4, cam: wide, sfx: [{name: ding, at: 1.0}], ui: [{kind: achievement, text: "Headshot Nobody Asked For", at: 1.0, dur: 3.5}], acts: [{who: dave, do: jump, delay: 1.0, dur: 3}]}
+      - {say: npc_gary, text: "Dave. You have hit me eleven times. I am bright pink.", cam: npc_gary}
+      - {say: dave, text: "It is a flattering colour on you."}
+      - {say: npc_gary, text: "I have a board meeting in an hour."}
+      - {say: dave, text: "They are going to love it.", cam: dave}
+      - {say: marisol, text: "For the record, Marigold Events has now stopped keeping score. Our insurance asked us to."}
+
+  # ------------------------------------------------------------------ 3b. aimbot montage
+  - id: montage
+    set: office
+    cast: {dave: center, kyle: left, marisol: door}
+    beats:
+      - {card: "A COMPLETELY FAIR ROUND TWO", sub: "Dave uses aimbot for team spirit", dur: 4, sfx: [whoosh]}
+      - {act: 4, cam: dave, sfx: [{name: pop, at: 0.8}, {name: pop, at: 1.6}], acts: [{who: dave, do: spin, n: 2}], ui: [{kind: chat, text: "[DAVE] hit the exit sign (accidentally)", at: 0.2, dur: 3}]}
+      - {act: 4, cam: wide, sfx: [{name: pop, at: 0.8}, {name: boom, at: 1.8}], acts: [{who: dave, do: jump, delay: 1, dur: 2}], ui: [{kind: chat, text: "[DAVE] hit the vending machine (it dispensed a coffee)", at: 0.2, dur: 3.5}]}
+      - {act: 4, cam: kyle, sfx: [{name: pop, at: 0.8}], acts: [{who: kyle, do: shake, amt: 0.1}], ui: [{kind: chat, text: "[DAVE] hit Kyle (he is fine, he says)", at: 0.2, dur: 3}]}
+      - {say: kyle, text: "I am a wet blue smear now. I have been a smear since eleven. I am just going to stay a smear.", cam: kyle}
+      - {say: dave, text: "I did not mean to hit you. It is the gun. It is the gun that likes you.", cam: dave}
+      - {say: kyle, text: "I have heard that excuse from people who have been hit by golf balls."}
+      - {say: marisol, text: "For legal reasons, I must remind everyone that this event is fully insured and the paint is made of water, food colouring, and a very small amount of regret.", cam: marisol}
+      - {act: 4, cam: wide, sfx: [{name: ding, at: 1.0}], ui: [{kind: achievement, text: "One Shot, One Everything", at: 1.0, dur: 3.5}], acts: [{who: dave, do: spin, n: 3, dur: 3}]}
+      - {say: dave, text: "I think I am becoming very good at this. Is this what it feels like to be good at something?", cam: dave}
+      - {say: kyle, text: "It is what it feels like to be good at something using a cheat. It is different. It is a lot more guilt.", cam: kyle}
+      - {say: dave, text: "I am okay with the guilt. It is very manageable. It is mostly paint."}
+
+  # ------------------------------------------------------------------ 4. the bug
+  - id: the_bug
+    set: office
+    cast: {dave: front, kyle: left, npc_gary: {at: desk, face: 0}, npc_stapler: {at: desk, face: 0}, tobias: lobby}
+    beats:
+      - {act: 3, cam: wide, hp: "88", sfx: [{name: glitch, at: 0.5}], ui: [{kind: system, text: "WARNING: aimbot has locked onto nearest target.", at: 0.5, dur: 3.5}]}
+      - {say: dave, text: "Kyle. I cannot turn my gun away. It keeps pointing at Gary's desk.", cam: dave, acts: [{who: dave, do: shake, amt: 0.08}]}
+      - {say: kyle, text: "What is on Gary's desk?"}
+      - {say: dave, text: "A stapler."}
+      - {say: kyle, text: "Why is your gun aimed at a stapler?"}
+      - {say: dave, text: "The aimbot has decided it is the biggest threat in the room."}
+      - {say: kyle, text: "It is a stapler, Dave. It is not a threat."}
+      - {say: npc_gary, text: "Please do not point things at my stapler. It is very sensitive.", cam: npc_gary}
+      - {say: dave, text: "Gary, you do not understand. I cannot stop. My arm will not go down. It is locked in. Everything else is blurry."}
+      - {say: npc_gary, text: "That is how I feel after lunch."}
+      - {act: 3, cam: wide, sfx: [{name: whoosh, at: 0.5}], acts: [{who: tobias, do: run_to, to: front, dur: 2}], ui: [{kind: lower, text: "TOBIAS|Marigold Events, Junior Planner, Crying", at: 0.4, dur: 3.5}]}
+      - {say: tobias, text: "Hello! Is everything okay in here? I just got a call that someone in the office is in a standoff?", cam: tobias}
+      - {say: kyle, text: "It is a standoff with a stapler."}
+      - {say: tobias, text: "Is the stapler armed?"}
+      - {say: kyle, text: "It has a lot of staples."}
+      - {say: tobias, text: "I did not train for this. I trained for balloons."}
+      - {say: npc_stapler, text: "I have been quiet for six years. Nobody ever asks me anything.", pitch: 78, cam: npc_stapler}
+      - {say: dave, text: "Kyle. The stapler is talking.", cam: dave}
+      - {say: kyle, text: "The stapler is talking. We are all very calm.", cam: kyle}
+      - {say: npc_stapler, text: "I have Gary's tie. I am not letting go.", pitch: 78, cam: npc_stapler}
+      - {act: 3, cam: npc_gary, sfx: [{name: error, at: 0.4}], acts: [{who: npc_gary, do: shake, amt: 0.1}], ui: [{kind: chat, text: "[SERVER] Gary is attached to the stapler by his tie.", at: 0.3, dur: 3.5}]}
+      - {say: npc_gary, text: "It is a hostage situation. I am the hostage. My tie is the hostage.", cam: npc_gary}
+      - {say: dave, text: "I cannot shoot! I cannot shoot because I will hit Gary! I cannot lower my gun because it is locked!", cam: dave}
+      - {say: kyle, text: "I want everyone to remain calm. We are all professionals. Gary is attached to a stapler by his tie, and we are going to treat that like a regular Tuesday."}
+      - {say: npc_gary, text: "It is a Friday. I have been attached for quite some time. I have missed two calls and a lunch.", cam: npc_gary}
+      - {say: kyle, text: "Okay. We need a negotiator.", cam: kyle}
+      - {say: tobias, text: "I will do it! I have taken an online course on difficult conversations!"}
+      - {say: kyle, text: "Tobias, no. You cried at a cake."}
+      - {say: tobias, text: "It was a very beautiful cake."}
+
+  # ------------------------------------------------------------------ 5. the negotiation
+  - id: negotiation
+    set: office
+    cast: {dave: front, kyle: left, npc_gary: {at: desk, face: 0}, npc_stapler: {at: desk, face: 0}, admin: plant}
+    beats:
+      - {loading: "Tip: Negotiators are trained to say 'I hear you.' Staplers have not heard anything since 2019.", dur: 5}
+      - {act: 3, cam: wide, hp: "75", ui: [{kind: chat, text: "[SERVER] Kyle has volunteered to negotiate. He is not good at this.", at: 0.4, dur: 3.5}], acts: [{who: kyle, do: walk_to, to: center, dur: 2}]}
+      - {say: kyle, text: "Hello. I am Kyle. I am a trained professional. I have seen three seasons of a hostage show. What do you want?", cam: kyle}
+      - {say: npc_gary, text: "He has not seen the third season."}
+      - {say: npc_stapler, text: "I want to be seen.", pitch: 78, cam: npc_stapler}
+      - {say: kyle, text: "I see you. I see you very clearly. You are black and silver and you are holding a tie."}
+      - {say: npc_stapler, text: "Nobody sees me. They just use me. They press me. They do not even say thank you.", pitch: 78}
+      - {say: kyle, text: "What if we say thank you now? Gary, say thank you."}
+      - {say: npc_gary, text: "Thank you, stapler.", cam: npc_gary}
+      - {say: npc_stapler, text: "You do not mean it. You are just saying it because of the tie.", pitch: 78, cam: npc_stapler}
+      - {say: npc_gary, text: "I do mean it. A little. The tie is mostly a factor."}
+      - {say: dave, text: "Kyle, my arm is shaking. I think the aimbot is getting angry.", cam: dave}
+      - {act: 3, cam: dave, sfx: [{name: warn, at: 0.5}], acts: [{who: dave, do: shake, amt: 0.14}], ui: [{kind: system, text: "aimbot: Target will not surrender. Escalating.", at: 0.5, dur: 3}]}
+      - {act: 3, cam: wide, sfx: [{name: glitch, at: 0.5}, {name: boom, at: 1.5}], acts: [{who: admin, do: appear, delay: 1.0}], ui: [{kind: admin, text: "NOTICE: Dave is aiming at a stapler. I did not need to see this.", at: 1.0, dur: 4}]}
+      - {say: admin, text: "I am an office plant. Please carry on. I am just a plant that has been watching since two thousand nineteen.", cam: admin}
+      - {say: kyle, text: "Admin! We could use help!"}
+      - {say: admin, text: "I do not do negotiations. I do a lot of silence. Ask the stapler what it needs."}
+      - {say: kyle, text: "Stapler. What do you need?", cam: kyle}
+      - {say: npc_stapler, text: "I am out of staples.", pitch: 78, cam: npc_stapler}
+      - {say: kyle, text: "You are out of staples?"}
+      - {say: npc_stapler, text: "I have been out for eight months. Everyone keeps pressing me. It is just a click. A little empty click.", pitch: 78}
+      - {act: 4, cam: npc_stapler, sfx: [{name: pop, at: 0.8}], ui: [{kind: chat, text: "[SERVER] Click. Click. Click.", at: 0.5, dur: 3}]}
+      - {say: dave, text: "Oh no. That is the saddest thing I have ever heard.", cam: dave}
+      - {say: kyle, text: "Dave, spawn a box of staples."}
+      - {say: dave, text: "I cannot! Aimbot is the only cheat I am allowed to run at a time!"}
+      - {say: kyle, text: "Then use the supply cabinet like a normal person."}
+      - {say: dave, text: "I would have to put down the gun."}
+      - {say: kyle, text: "Dave. Everyone is waiting."}
+      - {act: 5, cam: follow, follow: dave, acts: [{who: dave, do: walk_to, to: door, dur: 2.5}, {who: dave, do: spawn, item: cube, n: 6, to: desk, spread: 1.5, delay: 2.5, dur: 2}], sfx: [{name: pop, at: 3.0}], ui: [{kind: chat, text: "[DAVE] staples (physical box, from cabinet)", at: 0.3, dur: 3.5}]}
+      - {say: npc_stapler, text: "Is that a whole box?", pitch: 78, cam: npc_stapler}
+      - {say: dave, text: "It is five thousand staples. It is the large size. It is the nice one."}
+      - {say: npc_stapler, text: "Nobody has ever bought me the nice one.", pitch: 78}
+      - {act: 4, cam: npc_gary, sfx: [{name: ding, at: 1.5}], acts: [{who: npc_gary, do: jump, delay: 1.5, dur: 2}], ui: [{kind: achievement, text: "Stapler Surrendered", at: 1.5, dur: 3.5}]}
+      - {say: npc_gary, text: "My tie! My tie is free! I am free! I will never wear a tie again!", cam: npc_gary}
+
+  # ------------------------------------------------------------------ 6. the cleanup
+  - id: cleanup
+    set: office
+    cast: {dave: front, kyle: left, marisol: door, npc_gary: desk}
+    beats:
+      - {act: 3, cam: wide, hp: "100", ui: [{kind: chat, text: "[SERVER] The standoff has ended. Nobody was hit. Except everyone.", at: 0.4, dur: 4}]}
+      - {say: marisol, text: "Well. That is the first time we have had a hostage situation at a Marigold Event. It is a real milestone.", cam: marisol}
+      - {say: dave, text: "I am so sorry, Marisol. I should not have brought a cheat to your event.", cam: dave}
+      - {say: marisol, text: "What cheat? I do not know what you mean. We just had a very high energy afternoon."}
+      - {say: kyle, text: "She is not going to ask. That is professionalism."}
+      - {say: marisol, text: "I have been planning events for twelve years. I have seen a groom fall into a fountain. I know when not to ask."}
+      - {say: dave, text: "Aimbot is still on. I do not know how to turn it off.", cam: dave}
+      - {say: kyle, text: "Type aimbot off."}
+      - {act: 4, cam: dave, sfx: [{name: chime, at: 1.5}], ui: [{kind: console, text: "> aimbot off", at: 0.3, dur: 1.7}, {kind: system, text: "aimbot disabled. Previous aim restored (it was bad).", at: 2.0, dur: 3.5}]}
+      - {say: dave, text: "Okay. It is off. Watch this. I am going to hit that cup.", cam: dave}
+      - {act: 4, cam: wide, sfx: [{name: pop, at: 1.0}, {name: error, at: 2.0}], acts: [{who: dave, do: flop, delay: 1.5, dur: 2}], ui: [{kind: chat, text: "[SERVER] Dave shot himself. In the foot. The other foot.", at: 1.5, dur: 3.5}]}
+      - {say: kyle, text: "You missed the cup. You hit yourself."}
+      - {say: dave, text: "That is a lot more like me."}
+      - {say: npc_gary, text: "I would like to thank everyone for a team building event I will never forget. I am still pink.", cam: npc_gary}
+      - {say: marisol, text: "We will send you a survey. It will be very polite."}
+      - {say: npc_gary, text: "I will give it five stars. And a stapler. I will give it a nice stapler."}
+      - {say: dave, text: "Dave out.", cam: dave}
+      - {say: kyle, text: "Dave.", cam: kyle}
+
+  # ------------------------------------------------------------------ 6b. board meeting
+  - id: board
+    set: office
+    cast: {npc_gary: desk, npc_director: {at: right, face: 0}, npc_chair: {at: left, face: 0}}
+    beats:
+      - {card: "ONE HOUR LATER", sub: "The board meeting. Gary is pink.", dur: 3.5, sfx: [whoosh]}
+      - {act: 3, cam: wide, ui: [{kind: chat, text: "[SERVER] Quarterly board meeting. Gary is wet.", at: 0.4, dur: 3.5}]}
+      - {say: npc_chair, text: "Gary, thank you for joining. I am going to ask a very simple question. Why are you pink?", cam: npc_chair}
+      - {say: npc_gary, text: "It was a team building exercise. I was a hostage.", cam: npc_gary}
+      - {say: npc_director, text: "A hostage of whom?", cam: npc_director}
+      - {say: npc_gary, text: "A stapler. It had my tie. It was very sad. I think it was going through something."}
+      - {say: npc_chair, text: "Is this going to be in the quarterly report?"}
+      - {say: npc_gary, text: "It is the quarterly report. I have attached a photo."}
+      - {say: npc_director, text: "The numbers are up forty percent. Why?", cam: npc_director}
+      - {say: npc_gary, text: "Morale. Everyone had so much fun that nobody has taken a sick day. They are all afraid to miss the next paintball event."}
+      - {say: npc_chair, text: "Gary, I want you to hear this clearly. You are getting a promotion, and you are never allowed to wear that tie again."}
+      - {say: npc_gary, text: "Sir, I am not even allowed to wear a tie. I was never going to wear a tie again. I have been sworn off them.", cam: npc_gary}
+      - {act: 3, cam: wide, sfx: [{name: ding, at: 0.8}], ui: [{kind: achievement, text: "Promoted By Accident", at: 0.8, dur: 3.5}]}
+
+  - id: next_time
+    set: black
+    beats:
+      - {card: "NEXT TIME", sub: "S01E05  -  SPAWN ITEM  (DO NOT)", dur: 6}

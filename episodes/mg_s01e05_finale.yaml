@@ -1,0 +1,155 @@
+# MARIGOLD EVENTS - S01E05 "Season Finale: Our Own Anniversary"
+# Marisol and Tobias throw a party for themselves. Everyone in the universe is invited. The bus arrives. The fountain is faced.
+id: mgs01e05
+title: Season Finale - Our Own Anniversary
+show: events
+music: party
+target_seconds: 600
+fps: 24
+resolution: [1280, 720]
+
+scenes:
+  - id: cold_open
+    set: office
+    cast: {marisol: center, tobias: left}
+    beats:
+      - {act: 3, cam: wide, hp: "$0", ui: [{kind: chat, text: "[MARIGOLD] Monday. Our own anniversary. Budget: zero dollars.", at: 0.4, dur: 4}]}
+      - {say: marisol, text: "Tobias, I have been looking at the calendar. It has been one year since Marigold Events opened its doors.", cam: marisol}
+      - {say: tobias, text: "One whole year? That is so beautiful. I am going to cry. I have been working here for twelve months and I have only cried about three hundred times.", cam: tobias}
+      - {say: marisol, text: "We should have a party. A proper party. For ourselves. It has never been done. We have always planned parties for other people."}
+      - {say: tobias, text: "What is our budget?"}
+      - {say: marisol, text: "Zero. It is zero dollars. We are over budget on everything. We are over budget on the budget. But I have a plan."}
+      - {say: tobias, text: "What is the plan?"}
+      - {say: marisol, text: "We invite everyone. Every client. Every guest. Every plant. Every landlord. We ask them each to bring one thing. We call it a potluck. It is the oldest trick in the business."}
+      - {say: tobias, text: "A potluck is just asking people to pay for the party."}
+      - {say: marisol, text: "Tobias, it is called community. We are building community. It is on the vision board."}
+      - {say: tobias, text: "Is there a vision board?"}
+      - {say: marisol, text: "There is now. It is a napkin. It has one word on it. It says: Please."}
+
+  - id: title
+    set: black
+    beats:
+      - {card: "MARIGOLD EVENTS", sub: "S01E05  -  SEASON FINALE  -  OUR OWN ANNIVERSARY", dur: 5, sfx: [boom]}
+
+  - id: invitations
+    set: office
+    cast: {marisol: center, tobias: left, npc_phone: right}
+    beats:
+      - {act: 3, cam: wide, hp: "$0", ui: [{kind: chat, text: "[MARIGOLD] Tuesday. Sending invitations. By phone. Because email is dead.", at: 0.4, dur: 4}]}
+      - {say: marisol, text: "Tobias, you take the first half of the list. I will take the second. Let us start with the Sneaker Shack.", cam: marisol}
+      - {say: npc_phone, text: "Hello, this is Mister Shack. Please do not fall.", cam: npc_phone, ui: [{kind: lower, text: "MR. SHACK|On the phone. Wary.", at: 0.2, dur: 3.5}]}
+      - {say: tobias, text: "Mister Shack! It is Tobias from Marigold Events! We would like to invite you to our anniversary party! It is on Saturday! Please bring a pair of sneakers!"}
+      - {say: npc_phone, text: "I will bring forty pairs. They will not fit anyone. It is the thing I am best known for."}
+      - {say: marisol, text: "Great. Next. Channel 9. Martin Miller, please."}
+      - {say: npc_phone, text: "Martin here. I would be delighted. I will bring a camera, a very small stapler, and a feeling of professional tension."}
+      - {say: tobias, text: "That is so kind. I am crying. I am sorry. I will see you there."}
+      - {say: tobias, text: "Marisol, there is one more guest. Gerald. He cannot leave the bus stop. How do we invite him?", cam: tobias}
+      - {say: marisol, text: "We build a bus stop. In the ballroom. It is going to be the centrepiece of the whole event."}
+
+  - id: confessional_one
+    set: office
+    cast: {marisol: center}
+    beats:
+      - {act: 3, cam: marisol, ui: [{kind: lower, text: "MARISOL QUINN|Talking head. The fountain, finally.", at: 0.3, dur: 3.5}]}
+      - {say: marisol, text: "I have said I do not talk about the fountain. Tonight, I am going to talk about the fountain. It is a story. It has a beginning, and a middle, and a very wet end.", cam: marisol}
+      - {say: marisol, text: "It was twelve years ago. It was my first wedding. It was in a courtyard, and it had a beautiful fountain in the middle. The groom wanted a photograph in front of it. I stepped back, to see the whole picture."}
+      - {say: marisol, text: "I stepped back too far. I fell into the fountain. I was holding the cake. The whole wedding party watched me float. And the groom said, very quietly, that it was the best part of the day."}
+      - {say: marisol, text: "I have never been in a fountain since. I have avoided every fountain. I have turned down three weddings because of a fountain. It is the only thing I am afraid of. Tonight, I have a plan."}
+
+  - id: guests
+    set: ballroom
+    cast: {marisol: front, tobias: left, martin: stage_l, emma: door, david: stage_r, npc_owner: right, npc_gary: center, npc_karen: far_right, greg: buffet}
+    beats:
+      - {act: 3, cam: wide, hp: "$0", sfx: [{name: crowd, at: 0.4}], ui: [{kind: chat, text: "[MARIGOLD] 7:00 PM. The guests are here. All of them.", at: 0.4, dur: 4}]}
+      - {say: martin, text: "Marisol, congratulations. I have brought a gift. It is a very small plaque. It says: Events So Good They Are Slightly Illegal. It is accurate, and it is a legal matter.", cam: martin}
+      - {say: emma, text: "I am inside again. It is a lot of pressure. But I have a gift too. It is a very good stapler. It is for Steve. It is a friend for him.", cam: emma}
+      - {say: npc_gary, text: "Thank you, Emma. Steve and the new stapler are going to be very close. They are already clicking in unison.", cam: npc_gary}
+      - {say: david, text: "I brought a weather report. It says: nice. It is a very large card. It has a wall on it. I painted it myself.", cam: david}
+      - {say: npc_owner, text: "I have brought forty pairs of Regret Orange. They are for everybody. They do not fit. But they go with everything.", cam: npc_owner}
+      - {say: npc_karen, text: "I have brought Receipt. He is wearing a tiny bow tie. He is going to give a toast. It is going to be one bark.", cam: npc_karen}
+      - {say: greg, text: "Hello. I am Greg. I have not punched anything all week. I would like to give my gift. It is a hug.", cam: greg}
+      - {say: marisol, text: "Greg, I accept the hug. Please be gentle. I am a very fragile woman. I have a very full schedule."}
+      - {act: 3, cam: wide, sfx: [{name: ding, at: 0.8}], ui: [{kind: achievement, text: "Everyone Came", at: 0.8, dur: 3.5}], acts: [{who: greg, do: jump, delay: 0.8, dur: 2}]}
+
+  - id: landlords
+    set: ballroom
+    cast: {marisol: front, tobias: left, npc_pruitt: far_left, npc_landlord_copy: far_right, dave: center}
+    beats:
+      - {act: 3, cam: wide, hp: "$0", ui: [{kind: chat, text: "[MARIGOLD] The two landlords have arrived. They are on opposite sides.", at: 0.4, dur: 4}]}
+      - {say: npc_pruitt, text: "Marisol, I have brought a gift. It is a very nice clipboard. It has a lanyard. It is the most generous thing I have ever given.", cam: npc_pruitt}
+      - {say: npc_landlord_copy, text: "I have brought a very nice clipboard as well. It is a better clipboard. It has more clips.", cam: npc_landlord_copy}
+      - {say: npc_pruitt, text: "It has the same number of clips."}
+      - {say: npc_landlord_copy, text: "Mine are a better kind of clip."}
+      - {say: dave, text: "Please, gentlemen. It is a party. Please do not raise anybody's rent.", cam: dave}
+      - {say: npc_pruitt, text: "Dave, I have a very important announcement. I have reduced your rent to three hundred. It is a gift."}
+      - {say: npc_landlord_copy, text: "And I have reduced it to two hundred. It is a better gift."}
+
+  - id: the_bus
+    set: street
+    cast: {tobias: left, npc_gerald: {at: curb, face: 0}, npc_driver: {at: edge, face: 0}}
+    beats:
+      - {act: 3, cam: wide, hp: "$0", ui: [{kind: chat, text: "[MARIGOLD] 8:30 PM. Outside the ballroom. At the bus stop.", at: 0.4, dur: 4}]}
+      - {say: npc_gerald, text: "Nice weather today. I have been waiting for a long time. I am very happy to be at the party, in spirit. I can hear the music from here.", cam: npc_gerald}
+      - {say: tobias, text: "Gerald, you could come inside. We have built a bus stop in the ballroom. It has a bench. It has a sign. It says Route Nine.", cam: tobias}
+      - {say: npc_gerald, text: "That is very kind, Tobias. But I think I will stay here. A bus knows where it is going. It does not know where I would go."}
+      - {act: 4, cam: wide, sfx: [{name: whoosh, at: 1.0}, {name: boom, at: 2.0}], ui: [{kind: chat, text: "[SERVER] Something very large is coming down the road.", at: 0.5, dur: 4}], acts: [{who: npc_driver, do: walk_to, to: curb, dur: 3}]}
+      - {say: npc_driver, text: "Route Nine. Charter service. I am looking for a Gerald. I have been driving for two hundred days. I took a wrong turn at a floor.", cam: npc_driver, ui: [{kind: lower, text: "DRIVER|Route Nine. Very late. Very sorry.", at: 0.2, dur: 3.5}]}
+      - {say: npc_gerald, text: "I am Gerald. I am waiting for a bus. Is that the bus?", cam: npc_gerald}
+      - {say: npc_driver, text: "It is the bus. It is a big yellow bus. It has been looking for you. I have a letter. It says: Gerald, we are very sorry. Please get on."}
+      - {say: npc_gerald, text: "I cannot believe it. After all this time. The bus. It is here. It is really here.", cam: npc_gerald}
+      - {say: tobias, text: "Gerald! You did it! You waited! I am going to cry. I am going to cry so much. I am so happy for you.", cam: tobias}
+      - {act: 4, cam: wide, sfx: [{name: ding, at: 1.0}, {name: chime, at: 1.5}], ui: [{kind: achievement, text: "The Bus Arrived", at: 1.0, dur: 4}], acts: [{who: npc_gerald, do: jump, delay: 1.0, dur: 2}]}
+      - {say: npc_gerald, text: "I think I will ride it once around the block. And then I will come back to the party. Nice weather today."}
+      - {say: npc_driver, text: "I will bring you back. It is a very short route. It is the shortest route in the city. It is just a circle."}
+
+  - id: toasts
+    set: ballroom
+    cast: {marisol: front, tobias: stage_l, martin: left, emma: right, david: stage_r, npc_gerald: door, dave: center, kyle: buffet}
+    beats:
+      - {act: 3, cam: wide, hp: "$0", sfx: [{name: crowd, at: 0.4}], ui: [{kind: chat, text: "[MARIGOLD] 9:00 PM. The toasts.", at: 0.4, dur: 3.5}]}
+      - {say: tobias, text: "I would like to say a few words. I wrote a speech. It is eleven pages long. I am going to read the first line, and then I am going to cry.", cam: tobias}
+      - {say: tobias, text: "A year ago, I was a very nervous person with a degree in nothing. Marisol gave me a job. She gave me a lanyard, and a latte, and a very clear instruction: do not ask. I have not asked ever since."}
+      - {say: tobias, text: "I have learned that an event is not about the food or the flowers. It is about the people who come. It is about the stapler and the groom and the guy who falls through the floor. It is about all of us. Thank you."}
+      - {say: martin, text: "Tobias, that was beautiful. On behalf of Channel 9, we would like to say: this is the best story we have ever covered. And we will cover it again, in about twenty years.", cam: martin}
+      - {say: kyle, text: "I would like to toast Dave. He is the reason I have a lot of stories. He is the reason I have grey hair. He is my best friend. To Dave.", cam: kyle}
+      - {say: dave, text: "Thank you, Kyle. I am going to cry. That is so kind. I have only ever wanted to be a normal man with a bagel coupon.", cam: dave}
+      - {say: kyle, text: "Dave.", cam: kyle}
+      - {say: marisol, text: "And now, I have something to say. It is the final toast. It is the most important one of the night.", cam: marisol}
+
+  - id: the_fountain
+    set: ballroom
+    cast: {marisol: front, tobias: left, dave: right, kyle: buffet, martin: stage_l}
+    beats:
+      - {act: 3, cam: marisol, ui: [{kind: lower, text: "MARISOL QUINN|Lead planner. About to do something brave.", at: 0.3, dur: 3.5}]}
+      - {say: marisol, text: "Twelve years ago, I fell into a fountain. It was the worst day of my career. It was the day I decided to be a perfect planner. Nothing would ever go wrong again.", cam: marisol}
+      - {say: marisol, text: "And then I met a man who fell through a floor. A woman who camped for fourteen days. A stapler who cried. A plant that said it was a plant. And I learned that nothing is perfect. And that is the whole point."}
+      - {say: tobias, text: "Marisol, what is that behind you?", cam: tobias}
+      - {act: 4, cam: wide, sfx: [{name: pop, at: 1.0}, {name: boom, at: 1.5}], acts: [{who: dave, do: spawn, item: cube, n: 1, to: center, delay: 1.0, dur: 1}], ui: [{kind: chat, text: "[DAVE] A small fountain. I had a gesture. It was a gift.", at: 1.2, dur: 4}]}
+      - {say: dave, text: "It is a fountain. I made it. I gestured. I am sorry. I am not sorry. It is a gift for you, Marisol.", cam: dave}
+      - {say: marisol, text: "Dave. You made me a fountain. Of all the cheats in the world. You made me a fountain."}
+      - {say: dave, text: "I thought you might need one. For closure. It is a very good fountain. It is made of lemonade."}
+      - {say: marisol, text: "Tobias, hold my latte."}
+      - {act: 5, cam: follow, follow: marisol, sfx: [{name: pop, at: 2.5}, {name: crowd, at: 2.8}], acts: [{who: marisol, do: walk_to, to: center, dur: 2.5}, {who: marisol, do: jump, delay: 2.5, dur: 2}], ui: [{kind: chat, text: "[MARISOL] I am in the fountain. I am so happy.", at: 2.8, dur: 4}]}
+      - {act: 4, cam: wide, sfx: [{name: ding, at: 1.0}, {name: crowd, at: 1.0}], ui: [{kind: achievement, text: "Faced The Fountain", at: 1.0, dur: 4}, {kind: chat, text: "[SERVER] The whole ballroom is cheering. Karen's dog is barking.", at: 1.5, dur: 4}], acts: [{who: tobias, do: jump, delay: 1.0, dur: 2}]}
+
+  - id: epilogue
+    set: ballroom
+    cast: {marisol: center, tobias: left, dave: right, kyle: buffet, npc_gerald: door}
+    beats:
+      - {act: 3, cam: wide, hp: "$0", ui: [{kind: chat, text: "[MARIGOLD] 11:00 PM. Everyone is wet. Everyone is happy.", at: 0.4, dur: 4}]}
+      - {say: npc_gerald, text: "I am back. The bus was lovely. It went around the block. It took ten minutes. I was very moved. And now I would like to go back to the stop. I think I would like to wait for the next one.", cam: npc_gerald}
+      - {say: tobias, text: "But Gerald, you got on the bus! You did it! Why would you wait for another?", cam: tobias}
+      - {say: npc_gerald, text: "Because the waiting is the best part. It is where I met all of you. Nice weather today."}
+      - {say: marisol, text: "Gerald, that is the most profound thing anyone has said all year. And I have heard a stapler say a lot of things.", cam: marisol}
+      - {say: tobias, text: "Marisol, what did we spend on the party?", cam: tobias}
+      - {say: marisol, text: "Nothing, Tobias. Absolutely nothing. It is the first event in the history of Marigold Events that has come in exactly on budget."}
+      - {say: tobias, text: "How is that possible?"}
+      - {say: marisol, text: "Because everyone brought something. It is called community. It is on the vision board. It is a napkin."}
+      - {say: kyle, text: "I would like to say, on behalf of everyone who has been in this universe for the last year, that it has been a very strange one. And I would like to thank you all. And I would like to say: Dave.", cam: kyle}
+      - {say: dave, text: "I did not do anything this time. I was just a guest.", cam: dave}
+      - {say: marisol, text: "Per my last email, Dave, you did a great deal. Thank you. I love you all. Now please get out of my fountain."}
+
+  - id: end
+    set: black
+    beats:
+      - {card: "THE END OF SEASON ONE", sub: "Marigold Events. Channel 9. IRL But Cheats. One universe.", dur: 6, sfx: [chime]}

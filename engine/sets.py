@@ -84,6 +84,75 @@ SETS = {
                    desk=(4, 4.2), door=(-11, 1), lobby=(-8, 2), plant=(9.5, 3),
                    far_left=(-10, -1), far_right=(10, -1)),
     ),
+    "newsroom": dict(
+        bg="#0b1226",
+        props=_room("#16264a", "#2a3550", 30, 16) + [
+            ("box", "desk", (0, 5, 0.55), (9, 1.8, 1.1), "#e9edf7"),
+            ("box", "desk_trim", (0, 4.05, 0.55), (9.2, 0.1, 1.0), "#2b7de9"),
+            ("box", "desk_top", (0, 5, 1.12), (9.4, 2.0, 0.08), "#10192e"),
+            ("box", "wall_screen_l", (-7, 9.3, 4.2), (5.5, 0.15, 3.2), "#46b3ff"),
+            ("box", "wall_screen_r", (7, 9.3, 4.2), (5.5, 0.15, 3.2), "#6a7bff"),
+            ("box", "logo_plate", (0, 9.3, 4.4), (4.0, 0.15, 4.0), "#ffffff"),
+            ("box", "logo_nine", (0, 9.1, 4.4), (2.4, 0.1, 3.0), "#2b7de9"),
+            ("box", "ticker", (0, 9.2, 1.1), (30, 0.15, 0.8), "#d32f2f"),
+            ("box", "weather_wall", (11, 8.4, 3.4), (7, 0.15, 4.4), "#27c24c"),
+            ("box", "cam_a", (-7, -2, 1.0), (1.4, 1.8, 1.0), "#222222"),
+            ("cyl", "cam_a_stand", (-7, -2, 0.4), (0.2, 0.2, 0.8), "#444444"),
+            ("box", "coffee", (3.5, 4.6, 1.3), (0.35, 0.35, 0.45), "#ffffff"),
+        ],
+        marks=dict(center=(0, 0), desk=(0, 3.0), anchor_l=(-2.2, 3.0), anchor_r=(2.2, 3.0),
+                   left=(-6, -1), right=(6, -1), front=(0, -4), weather=(11, 6.5), door=(-13, 1),
+                   far_left=(-11, -1), far_right=(11, -1), cam=(-7, -3.5)),
+    ),
+    "ballroom": dict(
+        bg="#1a0d1c",
+        props=_room("#5a2750", "#8b6b4a", 34, 18) + [
+            ("box", "stage", (0, 9, 0.45), (14, 3.4, 0.9), "#2a2a33"),
+            ("box", "stage_banner", (0, 10.3, 5.4), (10, 0.2, 1.8), "#ff4fa3"),
+            ("box", "banner_fruit", (0, 10.1, 5.4), (1.4, 0.15, 1.2), "#8e2de2"),
+            ("box", "curtain_l", (-8.4, 10.3, 3.5), (2.2, 0.3, 7), "#7b1e5b"),
+            ("box", "curtain_r", (8.4, 10.3, 3.5), (2.2, 0.3, 7), "#7b1e5b"),
+            ("cyl", "table_a", (-8, 3.5, 0.45), (2.4, 2.4, 0.9), "#f7f3ee"),
+            ("cyl", "table_b", (-3, 5.5, 0.45), (2.4, 2.4, 0.9), "#f7f3ee"),
+            ("cyl", "table_c", (3, 5.5, 0.45), (2.4, 2.4, 0.9), "#f7f3ee"),
+            ("cyl", "table_d", (8, 3.5, 0.45), (2.4, 2.4, 0.9), "#f7f3ee"),
+            ("sphere", "centrepiece_a", (-8, 3.5, 1.15), (0.7, 0.7, 0.7), "#ffd23f"),
+            ("sphere", "centrepiece_b", (3, 5.5, 1.15), (0.7, 0.7, 0.7), "#8e2de2"),
+            ("box", "buffet", (13.8, 1, 0.6), (1.6, 7.0, 1.2), "#d9c7a3"),
+            ("box", "dj", (-13.8, 1, 0.7), (1.8, 4.0, 1.4), "#111111"),
+            ("sphere", "balloon_a", (-4, 8, 5.3), (1.0, 1.0, 1.3), "#ff4fa3"),
+            ("sphere", "balloon_b", (4, 8, 5.7), (1.0, 1.0, 1.3), "#ffd23f"),
+            ("sphere", "balloon_c", (0, 7, 6.2), (1.0, 1.0, 1.3), "#8e2de2"),
+        ],
+        marks=dict(center=(0, 0), stage=(0, 8.5), stage_l=(-4, 8.5), stage_r=(4, 8.5),
+                   left=(-6, -1), right=(6, -1), front=(0, -4), door=(0, -6),
+                   table_a=(-8, 1.8), table_b=(-3, 3.8), table_c=(3, 3.8), table_d=(8, 1.8),
+                   buffet=(12, 1), dj=(-12, 1), far_left=(-12, -2), far_right=(12, -2)),
+    ),
+    "garden": dict(
+        bg="#8fd3ff",
+        props=[
+            ("box", "lawn", (0, 8, -0.15), (80, 40, 0.3), "#4f9d4f"),
+            ("box", "aisle", (0, 4, -0.05), (2.4, 14, 0.12), "#e9dcc3"),
+            ("cyl", "arch_l", (-1.8, 11, 1.7), (0.2, 0.2, 3.4), "#ffffff"),
+            ("cyl", "arch_r", (1.8, 11, 1.7), (0.2, 0.2, 3.4), "#ffffff"),
+            ("box", "arch_top", (0, 11, 3.5), (4.2, 0.3, 0.3), "#ffffff"),
+            ("sphere", "arch_fruit_a", (-1.8, 10.8, 3.2), (0.6, 0.6, 0.6), "#8e2de2"),
+            ("sphere", "arch_fruit_b", (1.8, 10.8, 3.2), (0.6, 0.6, 0.6), "#ffd23f"),
+            ("box", "chairs_l", (-3.6, 3, 0.45), (2.6, 9, 0.9), "#f1f1f1"),
+            ("box", "chairs_r", (3.6, 3, 0.45), (2.6, 9, 0.9), "#f1f1f1"),
+            ("box", "tent", (14, 8, 2.2), (8, 6, 4.4), "#fafafa"),
+            ("box", "tent_roof", (14, 8, 4.7), (8.8, 6.8, 0.6), "#ff4fa3"),
+            ("box", "bar", (12, 4.4, 0.6), (4, 1.0, 1.2), "#8a5a2b"),
+            ("cyl", "tree_a_trunk", (-14, 12, 2.0), (0.8, 0.8, 4.0), "#6b431d"),
+            ("sphere", "tree_a", (-14, 12, 5.2), (4.2, 4.2, 4.2), "#2e8b57"),
+            ("cyl", "tree_b_trunk", (-22, 16, 2.0), (0.8, 0.8, 4.0), "#6b431d"),
+            ("sphere", "tree_b", (-22, 16, 5.2), (4.6, 4.6, 4.6), "#3a9d5a"),
+        ],
+        marks=dict(center=(0, 0), altar=(0, 9.2), aisle_far=(0, 1), aisle_mid=(0, 5),
+                   left=(-6, -1), right=(6, -1), front=(0, -4), tent=(14, 4), bar=(12, 3),
+                   seat_l=(-3.6, 4), seat_r=(3.6, 4), far_left=(-14, 0), far_right=(14, 0)),
+    ),
     "void": dict(
         bg="#0a0a14",
         props=[("box", "void_floor", (0, 0, -0.2), (40, 40, 0.1), "#1c1c33"),
@@ -108,7 +177,16 @@ CAMS = {
     "follow": ((0.0, -10.0, 3.2), 32),
     "black": ((0.0, 0.0, 0.0), 35),
 }
-CHAR_CAMS = {"dave", "kyle", "admin"}
+
+
+def is_char_cam(name):
+    """Any character can be a camera target: cam: pam = close-up on Pam."""
+    from . import cast
+    return name not in ("wide", "two", "low", "top", "follow", "black") and cast.known(name)
+
+
+def cam_preset(name):
+    return CAMS.get(name) or CAMS["dave"]
 
 
 def mark(set_name, name):
