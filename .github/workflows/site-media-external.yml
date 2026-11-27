@@ -9,11 +9,12 @@ name: Site media (release videos)
 on:
   push:
     branches: ["ccr-a2104a91-0ijgt3"]
-    paths: [".github/triggers/media"]
+    paths: [".github/triggers/media", ".github/triggers/engine-media.txt"]
   workflow_dispatch:
 
 permissions:
   contents: write
+  actions: read
 
 concurrency:
   group: site-media
@@ -47,6 +48,14 @@ jobs:
                   have = subprocess.run(["gh", "release", "view", tag], capture_output=True).returncode == 0
                   if have and not os.path.exists(f"docs/media/{eid}.mp4"):
                       items.append({"name": eid, "src": "gh:" + tag + ":" + eid + ".mp4", "h": "480"})
+          # finished engine renders whose release step failed: "<render run id> <episode id>" per line
+          seen = {i["name"] for i in items}
+          if os.path.exists(".github/triggers/engine-media.txt"):
+              for line in open(".github/triggers/engine-media.txt"):
+                  parts = line.split()
+                  if len(parts) == 2 and parts[1] not in seen and not os.path.exists(f"docs/media/{parts[1]}.mp4"):
+                      items.append({"name": parts[1], "src": f"artifact:{parts[0]}:{parts[1]}", "h": "480"})
+                      seen.add(parts[1])
           print(len(items), "videos to encode:", [i["name"] for i in items])
           open(os.environ["GITHUB_OUTPUT"], "a").write("ids=" + json.dumps(items) + "\n")
           PY
@@ -80,6 +89,8 @@ jobs:
           GH_REPO: ${{ github.repository }}
         run: |
           case "$SRC" in
+            artifact:*) RUN=$(echo "$SRC" | cut -d: -f2); EID=$(echo "$SRC" | cut -d: -f3)
+                  gh run download "$RUN" -n "episode-$EID" -D dl && mv "dl/$EID.mp4" in.mp4 ;;
             gh:*) TAG=$(echo "$SRC" | cut -d: -f2); FILE=$(echo "$SRC" | cut -d: -f3)
                   gh release download "$TAG" -p "$FILE" -O in.mp4 ;;
             *)    curl -sSL --retry 3 --fail -o in.mp4 "$SRC" ;;
