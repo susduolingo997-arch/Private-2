@@ -1063,7 +1063,7 @@ window.UNIVERSE = {
    "link": "https://github.com/susduolingo997-arch/private/releases/tag/pf-1.0",
    "play": "https://github.com/susduolingo997-arch/private/releases/download/pf-1.0/passionfruit_event1.mp4",
    "duration": 1206,
-   "published": "2026-10-12",
+   "published": "2026-04-14",
    "views": 6900000,
    "likes": 345000,
    "cast": [
@@ -1102,7 +1102,7 @@ window.UNIVERSE = {
    "link": "https://github.com/susduolingo997-arch/private/releases/tag/pf-2.0",
    "play": "https://github.com/susduolingo997-arch/private/releases/download/pf-2.0/passionfruit_event2.mp4",
    "duration": 1368,
-   "published": "2026-10-11",
+   "published": "2026-05-19",
    "views": 7400000,
    "likes": 370000,
    "cast": [
@@ -1142,7 +1142,7 @@ window.UNIVERSE = {
    "link": "https://github.com/susduolingo997-arch/private/releases/tag/pf-3.0",
    "play": "https://github.com/susduolingo997-arch/private/releases/download/pf-3.0/passionfruit_event3.mp4",
    "duration": 1362,
-   "published": "2026-10-11",
+   "published": "2026-07-14",
    "views": 7900000,
    "likes": 395000,
    "cast": [
@@ -1183,7 +1183,7 @@ window.UNIVERSE = {
    "link": "https://github.com/susduolingo997-arch/private/releases/tag/pf-4.0",
    "play": "https://github.com/susduolingo997-arch/private/releases/download/pf-4.0/passionfruit_event4.mp4",
    "duration": 1302,
-   "published": "2026-10-11",
+   "published": "2026-09-15",
    "views": 6900000,
    "likes": 345000,
    "cast": [
