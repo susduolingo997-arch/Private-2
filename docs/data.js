@@ -1116,6 +1116,108 @@ window.UNIVERSE = {
    "channel_name": "Channel 9"
   },
   {
+   "id": "n9-s01e08",
+   "channel": "channel-9",
+   "title": "The Phone-In (Clock 4 Minutes Fast, Gerald Is A Cone) | Channel 9 Evening News S01E08",
+   "embed": "universe/embeds/n9-s01e08.html",
+   "duration": 600,
+   "published": "2026-11-28",
+   "views": 49,
+   "likes": 3,
+   "cast": [
+    "martin",
+    "sarah",
+    "david",
+    "emma",
+    "kevin",
+    "richard",
+    "gnome"
+   ],
+   "thumb": {
+    "capture": {
+     "embed": "universe/embeds/n9-s01e08.html",
+     "at": 40
+    },
+    "text": [
+     "LINES",
+     "ARE OPEN"
+    ],
+    "hl": 1,
+    "tag": "EPISODE 5",
+    "style": "news"
+   },
+   "description": "CHANNEL 9's first live phone-in. One line. The pizza place calls. The milk is in the car park. Gerald turns out to be a cone in a hat. Viewers: forty-nine.\n",
+   "comments": [
+    {
+     "by": "richard",
+     "text": "FIVE CALLS!!!",
+     "likes": 44
+    },
+    {
+     "by": "kevin",
+     "text": "hi mum",
+     "likes": 30
+    }
+   ],
+   "mentions": [],
+   "tags": [],
+   "thumb_img": "art/thumbs/n9-s01e08.jpg",
+   "status": "live",
+   "embed_src": "embeds/n9-s01e08.html",
+   "channel_name": "Channel 9"
+  },
+  {
+   "id": "n9-s01e09",
+   "channel": "channel-9",
+   "title": "The Anniversary Special (Brenda's Cake, Gerald's Hat) | Channel 9 Evening News S01E09",
+   "embed": "universe/embeds/n9-s01e09.html",
+   "duration": 600,
+   "published": "2026-11-28",
+   "views": 49,
+   "likes": 3,
+   "cast": [
+    "martin",
+    "sarah",
+    "david",
+    "emma",
+    "kevin",
+    "richard",
+    "gnome"
+   ],
+   "thumb": {
+    "capture": {
+     "embed": "universe/embeds/n9-s01e09.html",
+     "at": 40
+    },
+    "text": [
+     "8 MONTHS",
+     "OF NEWS"
+    ],
+    "hl": 1,
+    "tag": "EPISODE 6",
+    "style": "news"
+   },
+   "description": "Eight months of CHANNEL 9. Richard's sale cake says Happy Birthday Brenda. Kevin microwaves it into soup. The pigeon finds Gerald's hat. Viewers: FIFTY.\n",
+   "comments": [
+    {
+     "by": "richard",
+     "text": "HALF A HUNDRED!",
+     "likes": 44
+    },
+    {
+     "by": "kevin",
+     "text": "the cake is soup",
+     "likes": 30
+    }
+   ],
+   "mentions": [],
+   "tags": [],
+   "thumb_img": "art/thumbs/n9-s01e09.jpg",
+   "status": "live",
+   "embed_src": "embeds/n9-s01e09.html",
+   "channel_name": "Channel 9"
+  },
+  {
    "id": "pf-e1",
    "channel": "passionfruit",
    "title": "PASSIONFRUIT Event 1 - Juicier Than Ever",
