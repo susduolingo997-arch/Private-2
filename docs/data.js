@@ -410,6 +410,7 @@ window.UNIVERSE = {
    "duration": 565,
    "thumb_img": "art/thumbs/irl-s01e01.jpg",
    "target": 600,
+   "hd": "https://github.com/susduolingo997-arch/Private-2/releases/download/ep-s01e01/s01e01.mp4",
    "status": "live",
    "src": "media/s01e01.mp4",
    "channel_name": "IRL BUT CHEATS"
@@ -474,6 +475,7 @@ window.UNIVERSE = {
    "duration": 548,
    "thumb_img": "art/thumbs/irl-s01e02.jpg",
    "target": 600,
+   "hd": "https://github.com/susduolingo997-arch/Private-2/releases/download/ep-s01e02/s01e02.mp4",
    "status": "live",
    "src": "media/s01e02.mp4",
    "channel_name": "IRL BUT CHEATS"
@@ -545,6 +547,7 @@ window.UNIVERSE = {
    "duration": 603,
    "thumb_img": "art/thumbs/irl-s01e03.jpg",
    "target": 600,
+   "hd": "https://github.com/susduolingo997-arch/Private-2/releases/download/ep-s01e03/s01e03.mp4",
    "status": "live",
    "src": "media/s01e03.mp4",
    "channel_name": "IRL BUT CHEATS"
@@ -620,6 +623,7 @@ window.UNIVERSE = {
    "duration": 625,
    "thumb_img": "art/thumbs/irl-s01e04.jpg",
    "target": 600,
+   "hd": "https://github.com/susduolingo997-arch/Private-2/releases/download/ep-s01e04/s01e04.mp4",
    "status": "live",
    "src": "media/s01e04.mp4",
    "channel_name": "IRL BUT CHEATS"
@@ -687,8 +691,158 @@ window.UNIVERSE = {
    "duration": 636,
    "thumb_img": "art/thumbs/irl-s01e05.jpg",
    "target": 600,
+   "hd": "https://github.com/susduolingo997-arch/Private-2/releases/download/ep-s01e05/s01e05.mp4",
    "status": "live",
    "src": "media/s01e05.mp4",
+   "channel_name": "IRL BUT CHEATS"
+  },
+  {
+   "id": "irl-s01e06",
+   "channel": "irl-but-cheats",
+   "title": "I Paid My Last $4 For Premium Reality | IRL BUT CHEATS S01E06",
+   "episode": "episodes/s01e06_fly_premium.yaml",
+   "published": "2026-04-06",
+   "views": 2410000,
+   "likes": 221000,
+   "cast": [
+    "dave",
+    "kyle",
+    "admin",
+    "pruitt"
+   ],
+   "thumb": {
+    "set": "street",
+    "cast": {
+     "dave": "center",
+     "kyle": "right"
+    },
+    "acts": [
+     {
+      "who": "dave",
+      "do": "jump",
+      "dur": 1.5
+     }
+    ],
+    "at": 20,
+    "text": [
+     "I CAN",
+     "FLY?!"
+    ],
+    "hl": 1,
+    "tag": "FLY (PREMIUM)"
+   },
+   "description": "Fly is back in the console, with a little crown. It costs $4. Dave has exactly $4. Gravity is now a subscription.\nCheat used: fly (premium)\n",
+   "comments": [
+    {
+     "by": "kyle",
+     "text": "Four inches, Dave.",
+     "likes": 71000
+    }
+   ],
+   "mentions": [],
+   "tags": [],
+   "duration": 634,
+   "thumb_img": "art/thumbs/irl-s01e06.jpg",
+   "target": 600,
+   "hd": "https://github.com/susduolingo997-arch/Private-2/releases/download/ep-s01e06/s01e06.mp4",
+   "status": "scripted",
+   "channel_name": "IRL BUT CHEATS"
+  },
+  {
+   "id": "irl-s01e07",
+   "channel": "irl-but-cheats",
+   "title": "My Roommate Got The Console Too | IRL BUT CHEATS S01E07",
+   "episode": "episodes/s01e07_multiplayer.yaml",
+   "published": "2026-04-13",
+   "views": 2290000,
+   "likes": 209000,
+   "cast": [
+    "dave",
+    "kyle",
+    "admin"
+   ],
+   "thumb": {
+    "set": "apartment",
+    "cast": {
+     "dave": "left",
+     "kyle": "center"
+    },
+    "acts": [
+     {
+      "who": "kyle",
+      "do": "shake",
+      "amt": 0.1,
+      "dur": 1.5
+     }
+    ],
+    "at": 20,
+    "text": [
+     "MULTI",
+     "PLAYER"
+    ],
+    "hl": 1,
+    "tag": "MULTIPLAYER"
+   },
+   "description": "Kyle wakes up with the console on his phone. He reads the whole list. He fixes the street. Then he tries noclip.\nCheat used: clean, fix, noclip\n",
+   "comments": [
+    {
+     "by": "dave",
+     "text": "the pizza was a memory",
+     "likes": 64000
+    }
+   ],
+   "mentions": [],
+   "tags": [],
+   "duration": 633,
+   "thumb_img": "art/thumbs/irl-s01e07.jpg",
+   "target": 600,
+   "hd": "https://github.com/susduolingo997-arch/Private-2/releases/download/ep-s01e07/s01e07.mp4",
+   "status": "scripted",
+   "channel_name": "IRL BUT CHEATS"
+  },
+  {
+   "id": "irl-s01e08",
+   "channel": "irl-but-cheats",
+   "title": "I Pressed The Ban Button (Season Finale) | IRL BUT CHEATS S01E08",
+   "episode": "episodes/s01e08_ban_hammer.yaml",
+   "published": "2026-04-20",
+   "views": 3120000,
+   "likes": 302000,
+   "cast": [
+    "dave",
+    "kyle",
+    "admin"
+   ],
+   "thumb": {
+    "set": "street",
+    "cast": {
+     "dave": "center",
+     "kyle": "right",
+     "admin": "left"
+    },
+    "at": 20,
+    "text": [
+     "BAN",
+     "HAMMER"
+    ],
+    "hl": 1,
+    "tag": "SEASON FINALE"
+   },
+   "description": "Day six of no cheats. The ban button moves to the top of the list. Dave types \"ban nobody\". The closest match is everybody.\nCheat used: ban\n",
+   "comments": [
+    {
+     "by": "admin",
+     "text": "Thank you for the bug report.",
+     "likes": 120000
+    }
+   ],
+   "mentions": [],
+   "tags": [],
+   "duration": 610,
+   "thumb_img": "art/thumbs/irl-s01e08.jpg",
+   "target": 600,
+   "hd": "https://github.com/susduolingo997-arch/Private-2/releases/download/ep-s01e08/s01e08.mp4",
+   "status": "scripted",
    "channel_name": "IRL BUT CHEATS"
   },
   {
@@ -867,6 +1021,7 @@ window.UNIVERSE = {
    "duration": 613,
    "thumb_img": "art/thumbs/n9-s01e03.jpg",
    "target": 600,
+   "hd": "https://github.com/susduolingo997-arch/Private-2/releases/download/ep-n9s01e03/n9s01e03.mp4",
    "status": "live",
    "src": "media/n9s01e03.mp4",
    "channel_name": "Channel 9"
@@ -944,6 +1099,7 @@ window.UNIVERSE = {
    "duration": 602,
    "thumb_img": "art/thumbs/n9-s01e04.jpg",
    "target": 600,
+   "hd": "https://github.com/susduolingo997-arch/Private-2/releases/download/ep-n9s01e04/n9s01e04.mp4",
    "status": "live",
    "src": "media/n9s01e04.mp4",
    "channel_name": "Channel 9"
@@ -1007,6 +1163,7 @@ window.UNIVERSE = {
    "duration": 601,
    "thumb_img": "art/thumbs/n9-s01e05.jpg",
    "target": 600,
+   "hd": "https://github.com/susduolingo997-arch/Private-2/releases/download/ep-n9s01e05/n9s01e05.mp4",
    "status": "live",
    "src": "media/n9s01e05.mp4",
    "channel_name": "Channel 9"
@@ -1252,6 +1409,7 @@ window.UNIVERSE = {
    "comments": [],
    "tags": [],
    "thumb_img": "art/thumbs/pf-e1.jpg",
+   "hd": "https://github.com/susduolingo997-arch/private/releases/download/pf-1.0/passionfruit_event1.mp4",
    "status": "live",
    "src": "media/pf-e1.mp4",
    "channel_name": "PASSIONFRUIT"
@@ -1292,6 +1450,7 @@ window.UNIVERSE = {
    "comments": [],
    "tags": [],
    "thumb_img": "art/thumbs/pf-e2.jpg",
+   "hd": "https://github.com/susduolingo997-arch/private/releases/download/pf-2.0/passionfruit_event2.mp4",
    "status": "live",
    "src": "media/pf-e2.mp4",
    "channel_name": "PASSIONFRUIT"
@@ -1333,6 +1492,7 @@ window.UNIVERSE = {
    "comments": [],
    "tags": [],
    "thumb_img": "art/thumbs/pf-e3.jpg",
+   "hd": "https://github.com/susduolingo997-arch/private/releases/download/pf-3.0/passionfruit_event3.mp4",
    "status": "live",
    "src": "media/pf-e3.mp4",
    "channel_name": "PASSIONFRUIT"
@@ -1374,6 +1534,7 @@ window.UNIVERSE = {
    "comments": [],
    "tags": [],
    "thumb_img": "art/thumbs/pf-e4.jpg",
+   "hd": "https://github.com/susduolingo997-arch/private/releases/download/pf-4.0/passionfruit_event4.mp4",
    "status": "live",
    "src": "media/pf-e4.mp4",
    "channel_name": "PASSIONFRUIT"
@@ -1416,6 +1577,7 @@ window.UNIVERSE = {
    "comments": [],
    "tags": [],
    "thumb_img": "art/thumbs/pf-e5.jpg",
+   "hd": "https://github.com/susduolingo997-arch/private/releases/download/pf-5.0/passionfruit_event5.mp4",
    "status": "live",
    "src": "media/pf-e5.mp4",
    "channel_name": "PASSIONFRUIT"
@@ -1489,6 +1651,7 @@ window.UNIVERSE = {
    "comments": [],
    "tags": [],
    "thumb_img": "art/thumbs/sw-e1.jpg",
+   "hd": "https://github.com/susduolingo997-arch/private/releases/download/v1.0/shardwild_letsplay_web.mp4",
    "status": "live",
    "src": "media/sw-e1.mp4",
    "channel_name": "Pixelpanic"
@@ -1526,6 +1689,7 @@ window.UNIVERSE = {
    "comments": [],
    "tags": [],
    "thumb_img": "art/thumbs/sw-e2.jpg",
+   "hd": "https://github.com/susduolingo997-arch/private/releases/download/v2.0/shardwild_ep2_web.mp4",
    "status": "live",
    "src": "media/sw-e2.mp4",
    "channel_name": "Pixelpanic"
@@ -1563,6 +1727,7 @@ window.UNIVERSE = {
    "comments": [],
    "tags": [],
    "thumb_img": "art/thumbs/sw-e3.jpg",
+   "hd": "https://github.com/susduolingo997-arch/private/releases/download/v3.0/shardwild_ep3_web.mp4",
    "status": "live",
    "src": "media/sw-e3.mp4",
    "channel_name": "Pixelpanic"
@@ -1600,6 +1765,7 @@ window.UNIVERSE = {
    "comments": [],
    "tags": [],
    "thumb_img": "art/thumbs/sw-e4.jpg",
+   "hd": "https://github.com/susduolingo997-arch/private/releases/download/v4.0/shardwild_ep4_web.mp4",
    "status": "live",
    "src": "media/sw-e4.mp4",
    "channel_name": "Pixelpanic"
@@ -1637,6 +1803,7 @@ window.UNIVERSE = {
    "comments": [],
    "tags": [],
    "thumb_img": "art/thumbs/sw-e5.jpg",
+   "hd": "https://github.com/susduolingo997-arch/private/releases/download/v5.0/shardwild_ep5_web.mp4",
    "status": "live",
    "src": "media/sw-e5.mp4",
    "channel_name": "Pixelpanic"
@@ -1674,6 +1841,7 @@ window.UNIVERSE = {
    "comments": [],
    "tags": [],
    "thumb_img": "art/thumbs/sw-e6.jpg",
+   "hd": "https://github.com/susduolingo997-arch/private/releases/download/v6.0/shardwild_ep6_web.mp4",
    "status": "live",
    "src": "media/sw-e6.mp4",
    "channel_name": "Pixelpanic"
@@ -1711,6 +1879,7 @@ window.UNIVERSE = {
    "comments": [],
    "tags": [],
    "thumb_img": "art/thumbs/sw-e7.jpg",
+   "hd": "https://github.com/susduolingo997-arch/private/releases/download/v7.0/shardwild_ep7_web.mp4",
    "status": "live",
    "src": "media/sw-e7.mp4",
    "channel_name": "Pixelpanic"
@@ -1748,6 +1917,7 @@ window.UNIVERSE = {
    "comments": [],
    "tags": [],
    "thumb_img": "art/thumbs/sw-e8.jpg",
+   "hd": "https://github.com/susduolingo997-arch/private/releases/download/v8.0/shardwild_ep8_web.mp4",
    "status": "live",
    "src": "media/sw-e8.mp4",
    "channel_name": "Pixelpanic"
@@ -1785,6 +1955,7 @@ window.UNIVERSE = {
    "comments": [],
    "tags": [],
    "thumb_img": "art/thumbs/sw-e9.jpg",
+   "hd": "https://github.com/susduolingo997-arch/private/releases/download/v9.0/shardwild_ep9_web.mp4",
    "status": "live",
    "src": "media/sw-e9.mp4",
    "channel_name": "Pixelpanic"
@@ -1822,6 +1993,7 @@ window.UNIVERSE = {
    "comments": [],
    "tags": [],
    "thumb_img": "art/thumbs/sw-e10.jpg",
+   "hd": "https://github.com/susduolingo997-arch/private/releases/download/v10.0/shardwild_ep10_web.mp4",
    "status": "live",
    "src": "media/sw-e10.mp4",
    "channel_name": "Pixelpanic"
@@ -1859,6 +2031,7 @@ window.UNIVERSE = {
    "comments": [],
    "tags": [],
    "thumb_img": "art/thumbs/sw-e11.jpg",
+   "hd": "https://github.com/susduolingo997-arch/private/releases/download/v11.0/shardwild_ep11_web.mp4",
    "status": "live",
    "src": "media/sw-e11.mp4",
    "channel_name": "Pixelpanic"
@@ -1896,6 +2069,7 @@ window.UNIVERSE = {
    "comments": [],
    "tags": [],
    "thumb_img": "art/thumbs/sw-e12.jpg",
+   "hd": "https://github.com/susduolingo997-arch/private/releases/download/v12.0/shardwild_ep12_web.mp4",
    "status": "live",
    "src": "media/sw-e12.mp4",
    "channel_name": "Pixelpanic"
@@ -1933,6 +2107,7 @@ window.UNIVERSE = {
    "comments": [],
    "tags": [],
    "thumb_img": "art/thumbs/sw-e13.jpg",
+   "hd": "https://github.com/susduolingo997-arch/private/releases/download/v13.0/shardwild_ep13_web.mp4",
    "status": "live",
    "src": "media/sw-e13.mp4",
    "channel_name": "Pixelpanic"
@@ -1970,6 +2145,7 @@ window.UNIVERSE = {
    "comments": [],
    "tags": [],
    "thumb_img": "art/thumbs/sw-e14.jpg",
+   "hd": "https://github.com/susduolingo997-arch/private/releases/download/v14.0/shardwild_ep14_web.mp4",
    "status": "live",
    "src": "media/sw-e14.mp4",
    "channel_name": "Pixelpanic"
@@ -2007,6 +2183,7 @@ window.UNIVERSE = {
    "comments": [],
    "tags": [],
    "thumb_img": "art/thumbs/sw-e15.jpg",
+   "hd": "https://github.com/susduolingo997-arch/private/releases/download/v15.0/shardwild_ep15_web.mp4",
    "status": "live",
    "src": "media/sw-e15.mp4",
    "channel_name": "Pixelpanic"
@@ -2044,6 +2221,7 @@ window.UNIVERSE = {
    "comments": [],
    "tags": [],
    "thumb_img": "art/thumbs/sw-e16.jpg",
+   "hd": "https://github.com/susduolingo997-arch/private/releases/download/v16.0/shardwild_ep16_web.mp4",
    "status": "live",
    "src": "media/sw-e16.mp4",
    "channel_name": "Pixelpanic"
@@ -2081,6 +2259,7 @@ window.UNIVERSE = {
    "comments": [],
    "tags": [],
    "thumb_img": "art/thumbs/sw-e17.jpg",
+   "hd": "https://github.com/susduolingo997-arch/private/releases/download/v17.0/shardwild_ep17_web.mp4",
    "status": "live",
    "src": "media/sw-e17.mp4",
    "channel_name": "Pixelpanic"
@@ -2118,6 +2297,7 @@ window.UNIVERSE = {
    "comments": [],
    "tags": [],
    "thumb_img": "art/thumbs/sw-e18.jpg",
+   "hd": "https://github.com/susduolingo997-arch/private/releases/download/v18.0/shardwild_ep18_web.mp4",
    "status": "live",
    "src": "media/sw-e18.mp4",
    "channel_name": "Pixelpanic"
@@ -2155,6 +2335,7 @@ window.UNIVERSE = {
    "comments": [],
    "tags": [],
    "thumb_img": "art/thumbs/sw-e19.jpg",
+   "hd": "https://github.com/susduolingo997-arch/private/releases/download/v19.0/shardwild_ep19_web.mp4",
    "status": "live",
    "src": "media/sw-e19.mp4",
    "channel_name": "Pixelpanic"
@@ -2192,6 +2373,7 @@ window.UNIVERSE = {
    "comments": [],
    "tags": [],
    "thumb_img": "art/thumbs/sw-e20.jpg",
+   "hd": "https://github.com/susduolingo997-arch/private/releases/download/v20.0/shardwild_ep20_web.mp4",
    "status": "live",
    "src": "media/sw-e20.mp4",
    "channel_name": "Pixelpanic"
@@ -2229,6 +2411,7 @@ window.UNIVERSE = {
    "comments": [],
    "tags": [],
    "thumb_img": "art/thumbs/sw-e21.jpg",
+   "hd": "https://github.com/susduolingo997-arch/private/releases/download/v21.0/shardwild_ep21_web.mp4",
    "status": "live",
    "src": "media/sw-e21.mp4",
    "channel_name": "Pixelpanic"
@@ -2266,6 +2449,7 @@ window.UNIVERSE = {
    "comments": [],
    "tags": [],
    "thumb_img": "art/thumbs/sw-e22.jpg",
+   "hd": "https://github.com/susduolingo997-arch/private/releases/download/v22.0/shardwild_ep22_web.mp4",
    "status": "live",
    "src": "media/sw-e22.mp4",
    "channel_name": "Pixelpanic"
@@ -2303,6 +2487,7 @@ window.UNIVERSE = {
    "comments": [],
    "tags": [],
    "thumb_img": "art/thumbs/sw-e23.jpg",
+   "hd": "https://github.com/susduolingo997-arch/private/releases/download/v23.0/shardwild_ep23_web.mp4",
    "status": "live",
    "src": "media/sw-e23.mp4",
    "channel_name": "Pixelpanic"
@@ -2340,6 +2525,7 @@ window.UNIVERSE = {
    "comments": [],
    "tags": [],
    "thumb_img": "art/thumbs/sw-e24.jpg",
+   "hd": "https://github.com/susduolingo997-arch/private/releases/download/v24.0/shardwild_ep24_web.mp4",
    "status": "live",
    "src": "media/sw-e24.mp4",
    "channel_name": "Pixelpanic"
@@ -2377,6 +2563,7 @@ window.UNIVERSE = {
    "comments": [],
    "tags": [],
    "thumb_img": "art/thumbs/sw-e25.jpg",
+   "hd": "https://github.com/susduolingo997-arch/private/releases/download/v25.0/shardwild_ep25_web.mp4",
    "status": "live",
    "src": "media/sw-e25.mp4",
    "channel_name": "Pixelpanic"
@@ -2414,6 +2601,7 @@ window.UNIVERSE = {
    "comments": [],
    "tags": [],
    "thumb_img": "art/thumbs/sw-e26.jpg",
+   "hd": "https://github.com/susduolingo997-arch/private/releases/download/v26.0/shardwild_ep26_web.mp4",
    "status": "live",
    "src": "media/sw-e26.mp4",
    "channel_name": "Pixelpanic"
@@ -2451,6 +2639,7 @@ window.UNIVERSE = {
    "comments": [],
    "tags": [],
    "thumb_img": "art/thumbs/sw-e27.jpg",
+   "hd": "https://github.com/susduolingo997-arch/private/releases/download/v27.0/shardwild_ep27_web.mp4",
    "status": "live",
    "src": "media/sw-e27.mp4",
    "channel_name": "Pixelpanic"
@@ -2488,6 +2677,7 @@ window.UNIVERSE = {
    "comments": [],
    "tags": [],
    "thumb_img": "art/thumbs/sw-e28.jpg",
+   "hd": "https://github.com/susduolingo997-arch/private/releases/download/v28.0/shardwild_ep28_web.mp4",
    "status": "live",
    "src": "media/sw-e28.mp4",
    "channel_name": "Pixelpanic"
@@ -2525,6 +2715,7 @@ window.UNIVERSE = {
    "comments": [],
    "tags": [],
    "thumb_img": "art/thumbs/sw-e29.jpg",
+   "hd": "https://github.com/susduolingo997-arch/private/releases/download/v29.0/shardwild_ep29_web.mp4",
    "status": "live",
    "src": "media/sw-e29.mp4",
    "channel_name": "Pixelpanic"
@@ -2562,6 +2753,7 @@ window.UNIVERSE = {
    "comments": [],
    "tags": [],
    "thumb_img": "art/thumbs/sw-e30.jpg",
+   "hd": "https://github.com/susduolingo997-arch/private/releases/download/v30.0/shardwild_ep30_web.mp4",
    "status": "live",
    "src": "media/sw-e30.mp4",
    "channel_name": "Pixelpanic"
@@ -2599,6 +2791,7 @@ window.UNIVERSE = {
    "comments": [],
    "tags": [],
    "thumb_img": "art/thumbs/sw-e31.jpg",
+   "hd": "https://github.com/susduolingo997-arch/private/releases/download/v31.0/shardwild_ep31_web.mp4",
    "status": "live",
    "src": "media/sw-e31.mp4",
    "channel_name": "Pixelpanic"
@@ -2636,6 +2829,7 @@ window.UNIVERSE = {
    "comments": [],
    "tags": [],
    "thumb_img": "art/thumbs/sw-e32.jpg",
+   "hd": "https://github.com/susduolingo997-arch/private/releases/download/v32.0/shardwild_ep32_web.mp4",
    "status": "live",
    "src": "media/sw-e32.mp4",
    "channel_name": "Pixelpanic"

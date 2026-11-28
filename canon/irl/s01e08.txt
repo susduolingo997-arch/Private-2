@@ -1,0 +1,179 @@
+id: s01e08
+title: Ban Hammer
+= cold_open | apartment | {dave: couch, kyle: right}
+@ {act: 3, cam: wide, hp: "100", ui: [{kind: chat, text: "[SERVER] Day six of no cheats. Dave has not slept.", at: 0.4, dur: 4}]}
+kyle: Day six, Dave. Six whole days. No console. I am so proud of you.
+dave: I am shaking, Kyle. My thumbs are shaking. They keep typing noclip on the remote control.
+kyle: That is fine. The remote control can not noclip you anywhere.
+dave: I tried it on the toaster too. Nothing happened. Then the toast came out, and I cried a little bit.
+kyle: Why did you cry?
+dave: Because the toast took four minutes. Four minutes, Kyle. With speedhack it would have taken four seconds.
+kyle: That is how long toast takes for everybody. That is how long toast has always taken.
+dave: How do people live like this? Waiting for toast? Walking around walls?
+kyle: They just do. They have hobbies. They read books.
+dave: I tried to read a book. It did not have a console in it.
+kyle: One more day. Tomorrow is day seven, and then we are free. And then we use it carefully. With the fridge rules.
+dave: One more day. I can do one more day.
+@ {act: 3, cam: dave, sfx: [{name: chime, at: 0.8}], ui: [{kind: system, text: "You have 1 unread message from: ADMIN", at: 0.6, dur: 4}]}
+kyle: Do not open it.
+dave: It is from the Admin. It might be important.
+kyle: Dave, everything from the Admin is important. That is exactly why you do not open it on day six.
+dave: I am opening it.
+@ {act: 3, cam: dave, sfx: [{name: warn, at: 0.6}], ui: [{kind: admin, text: "The ban button has been moved to the top of the list. For testing.", at: 0.5, dur: 5}]}
+= title | black |
+@ {card: "IRL BUT CHEATS", sub: "S01E08  -  BAN HAMMER", dur: 5, sfx: [boom]}
+= the_button | apartment | {dave: center, kyle: right}
+dave: It is right there. At the top. Above noclip.
+kyle: Why would they put it at the top?
+dave: For testing, it says.
+kyle: Testing what? Testing whether you would press it?
+dave: I think so. I think the whole universe is a test, Kyle, and I am failing it.
+kyle: You are not failing. You are on day six. Close the app.
+dave: What does it even ban? It does not say. It just says ban, and then a little hammer.
+kyle: It does not matter what it bans. Rule five. Nobody touches it.
+dave: What if it bans rent? What if it bans the landlord? What if it bans toast taking four minutes?
+kyle: What if it bans you?
+dave: Why would a button ban the person who pressed it? That would be a terrible button.
+kyle: Dave. That is exactly what a ban button does.
+dave: I am just going to hover my thumb over it. I am not going to press. I am just going to see how it feels.
+kyle: Do not hover.
+dave: Hovering is not a command.
+@ {act: 4, cam: dave, sfx: [{name: glitch, at: 1.5}], ui: [{kind: console, text: "> ban", at: 0.4, dur: 1.4}, {kind: system, text: "Who would you like to ban?", at: 1.6, dur: 4}]}
+kyle: Dave! You typed it!
+dave: My thumb slipped. My thumb has been shaking for six days.
+kyle: Close it. Close it right now. Do not type a name.
+dave: It is asking me who. It is asking so politely.
+kyle: Nobody. You ban nobody. Type nobody.
+@ {act: 4, cam: dave, sfx: [{name: error, at: 1.6}, {name: boom, at: 2.6}], acts: [{who: kyle, do: shake, amt: 0.1, delay: 2.4}], ui: [{kind: console, text: "> ban nobody", at: 0.3, dur: 1.6}, {kind: system, text: "User 'nobody' not found. Banning closest match: everybody.", at: 1.6, dur: 5}]}
+= empty_street | street | {dave: left, kyle: right}
+@ {card: "TEN MINUTES LATER", sub: "Everybody has been banned.", dur: 4, sfx: [whoosh]}
+@ {act: 4, cam: wide, ui: [{kind: chat, text: "[SERVER] 4,812 players have been removed from the server.", at: 0.4, dur: 4.5}]}
+kyle: Dave. Where is everybody?
+dave: Banned. All of them. The baker. The pigeon. The lady who clapped.
+kyle: The bus is just driving around with no driver.
+dave: The bakery is open, and there is nobody inside. Just bread. So much bread.
+kyle: You banned the whole town.
+dave: I banned the closest match. That is not my fault. That is a search bug.
+kyle: Why are we still here?
+dave: I think you can not ban yourself by accident. You have to do it on purpose.
+kyle: So it is just us. Two people. In the whole world.
+dave: And the landlord copy. He was on the couch. He was not on the server. He was on the couch.
+@ {act: 3, cam: wide, sfx: [{name: pop, at: 1.0}], ui: [{kind: chat, text: "[SERVER] The landlord copy has rated the empty world four stars.", at: 0.6, dur: 4}]}
+= shop | street | {dave: center, kyle: right}
+dave: Kyle. Think about it. No queues. No rent. No one to complain about the awning.
+kyle: Dave, no.
+dave: We could have any bagel in the bakery. Any bagel we want. We could have a bagel buffet.
+kyle: We banned four thousand people, and you are thinking about bagels.
+dave: I am always thinking about bagels. It is the only constant in my life.
+kyle: We have to fix this. Is there an unban command?
+dave: Let me look. Unban. Unban. There is undo.
+kyle: Undo is perfect. Undo is exactly what we need.
+@ {act: 4, cam: dave, sfx: [{name: error, at: 1.4}], ui: [{kind: console, text: "> undo", at: 0.3, dur: 1.4}, {kind: system, text: "Undo is a PREMIUM MAX feature.", at: 1.5, dur: 4}]}
+dave: Of course it is.
+kyle: How much is Premium Max?
+dave: It does not say. It just says, you can not afford this.
+kyle: Fix town. Try fix town.
+@ {act: 4, cam: kyle, sfx: [{name: error, at: 1.4}], ui: [{kind: console, text: "> fix town", at: 0.3, dur: 1.4}, {kind: system, text: "Town is not broken. Town is empty. Those are different.", at: 1.5, dur: 4.5}]}
+kyle: Spawn people?
+dave: No. Rule one. And also, remember the landlord. If we spawn four thousand people, we get four thousand copies. They will all want crackers.
+kyle: There is only one way out of this.
+dave: I know.
+kyle: We have to call the Admin.
+dave: I was going to say bagels.
+= bagel_buffet | street | {dave: center, kyle: right}
+@ {act: 3, cam: wide, ui: [{kind: chat, text: "[SERVER] Dave is inside the empty bakery. Kyle is very disappointed.", at: 0.4, dur: 4}]}
+kyle: Dave, put the bagels down. We are waiting for the Admin. This is serious.
+dave: I am only holding three. One for me, one for you, and one for the Admin, as an apology.
+kyle: The Admin does not eat bagels.
+dave: You said the Admin does not eat lunch. You did not say anything about bagels. Bagels are not lunch. Bagels are a lifestyle.
+kyle: Do you hear that?
+dave: Hear what?
+kyle: Nothing. There is no sound at all. No cars. No birds. No people talking on their phones too loudly on the bus.
+dave: It is very peaceful. It is like the silence front on the Channel 9 weather.
+kyle: It is horrible. I miss the lady who clapped. I miss the baker shouting at us about walls.
+dave: I miss the pigeon. The pigeon was always there. It saw everything I did. It never judged me.
+kyle: It judged you a lot, Dave. You could see it in its eyes.
+dave: It was a loving judgement.
+kyle: This is the loneliest I have ever felt, and I am standing right next to you.
+dave: That is a very hurtful thing to say in front of the bagels.
+kyle: If the Admin does not come, what do we do? Live here forever? Two people and a landlord?
+dave: We could start our own town. I would be mayor. You would be in charge of the fridge rules.
+kyle: Nobody would vote for you.
+dave: There is nobody to vote at all. That is how I would win.
+= summon | street | {dave: center, kyle: right}
+kyle: How do you call the Admin? Is there a command?
+dave: The Admin always comes when I do something bad. So I guess we just do something bad.
+kyle: We banned an entire town. That is already the worst thing anyone has ever done.
+dave: Maybe they are on lunch.
+kyle: The Admin does not eat lunch.
+dave: Everyone eats lunch, Kyle. Even Admins. Especially Admins. They work very hard.
+kyle: Type report. Report a bug.
+@ {act: 4, cam: kyle, sfx: [{name: chime, at: 1.2}], ui: [{kind: console, text: "> report bug: we banned everyone by accident", at: 0.3, dur: 2.2}, {kind: system, text: "Report received. Estimated response time: 4 minutes.", at: 2.4, dur: 4}]}
+dave: Four minutes. The same as toast.
+kyle: We wait.
+@ {loading: "Tip: Waiting is a skill. Dave does not have it.", dur: 6}
+dave: Kyle. While we wait. I want to say something.
+kyle: Say it.
+dave: I am sorry. For the noclip. For the speedhack. For the time scale, the aimbot, the landlord, the flying, and the town.
+kyle: That is a long list.
+dave: It is the only list I have ever read all the way through.
+kyle: I forgive you. Mostly. Not for the cat flap.
+dave: The cat was impressed.
+= admin | street | {dave: center, kyle: right, admin: left}
+@ {act: 3, cam: wide, sfx: [{name: glitch, at: 1.0}, {name: boom, at: 1.8}], acts: [{who: admin, do: appear, delay: 1.0}], ui: [{kind: admin, text: "NOTICE: Somebody pressed the button.", at: 1.2, dur: 4.5}]}
+admin: Dave.
+dave: Hello. I am so sorry. Kyle wrote rules on the fridge. I broke rule five. I broke it with my thumb.
+admin: You banned four thousand, eight hundred and twelve people.
+kyle: By accident. It was a search bug. We reported it.
+admin: I read the report. It was the first bug report anyone has ever sent me. Six weeks, and nobody ever told me anything was broken.
+dave: Is that good?
+admin: It is the most useful thing either of you has ever done.
+kyle: So you will unban everybody?
+admin: Yes. Everybody comes back. They will not remember. They will think they took a very long blink.
+dave: Thank you. Thank you so much. I will never press another button.
+admin: That is the other thing. This is warning three of three, Dave.
+dave: Three of three.
+admin: You know what happens at three.
+kyle: Please. He has been trying. He did six days without cheating. He cried at toast.
+admin: I know. I watched. I watch everything.
+@ {act: 4, cam: dave, sfx: [{name: warn, at: 0.4}, {name: boom, at: 2.0}], acts: [{who: admin, do: shake, amt: 0.12, delay: 1.6}], ui: [{kind: admin, text: "The Admin is holding a very large hammer.", at: 0.4, dur: 4}]}
+admin: Dave. Your console is banned.
+dave: My console?
+admin: Not you. The console. You stay. Kyle stays. The cheats go.
+@ {act: 4, cam: wide, sfx: [{name: glitch, at: 0.6}, {name: boom, at: 1.4}], ui: [{kind: system, text: "CONSOLE: BANNED", at: 1.4, dur: 4}, {kind: achievement, text: "Season Complete", at: 3.4, dur: 3.5}]}
+dave: It is gone. The app is gone. There is only the weather now.
+kyle: Mine too.
+admin: Reality is free again. No premium. No subscriptions. Gravity is included.
+dave: Will we ever get it back?
+admin: Season two is not my department.
+@ {act: 3, cam: wide, sfx: [{name: pop, at: 1.0}], acts: [{who: admin, do: appear, delay: 0.6}], ui: [{kind: chat, text: "[SERVER] The Admin has left. 4,812 players have rejoined.", at: 1.0, dur: 4.5}]}
+= epilogue | apartment | {dave: couch, kyle: right, npc_landlord_copy: {at: center, face: 0}}
+@ {card: "ONE WEEK LATER", sub: "No cheats. Just toast.", dur: 4, sfx: [whoosh]}
+kyle: How is it, Dave? Life without the console?
+dave: Slow. Very slow. Toast takes four minutes. Walls are walls. The bus is late every day.
+kyle: And?
+dave: And I got a job. At the bakery. The baker said anyone who can fix an awning with their head can fix anything.
+kyle: Dave, that is amazing. You have a real job.
+dave: I get one free bagel every day. Forever. It is like premium, but real.
+kyle: And rent?
+dave: Paid. With bagel money. The first rent I have ever paid on the day it was due.
+kyle: I am so proud of you.
+dave: The landlord copy is still on the couch, though.
+kyle: He was not on the server. The Admin could not ban him.
+dave: He is family now. He gives very good advice about property.
+@ {act: 4, cam: wide, sfx: [{name: chime, at: 1.6}], acts: [{who: npc_landlord_copy, do: shake, amt: 0.04, dur: 2}], ui: [{kind: chat, text: "[LANDLORD COPY] Always read the lease.", at: 0.4, dur: 3.5}]}
+kyle: That is good advice, actually.
+dave: Kyle. Do you miss it? Even a little bit?
+kyle: Every day. Every single day.
+dave: Me too.
+kyle: Dave, do you remember the very first time? Noclip, through the bedroom wall?
+dave: I remember. I came out in the neighbour's bathroom. He was brushing his teeth. He did not say anything. He just kept brushing.
+kyle: That man still will not look at us in the hallway.
+dave: He nods. It is a respectful nod. It is the nod of a man who has seen things.
+kyle: Eight episodes, Dave. Eight disasters.
+dave: Eight adventures, Kyle.
+@ {act: 4, cam: dave, sfx: [{name: chime, at: 1.4}], ui: [{kind: system, text: "You have 1 unread message from: ???", at: 1.2, dur: 5}]}
+dave: Kyle.
+kyle: Do not open it.
+dave: I am going to open it.
+@ {card: "END OF SEASON ONE", sub: "IRL BUT CHEATS will return.", dur: 6, sfx: [boom]}

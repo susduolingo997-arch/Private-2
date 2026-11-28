@@ -1,0 +1,194 @@
+id: s01e06
+title: Fly (Premium)
+= cold_open | apartment | {dave: couch, kyle: right}
+@ {act: 3, cam: wide, hp: "100", ui: [{kind: chat, text: "[SERVER] Dave has four dollars. Dave has always had four dollars.", at: 0.4, dur: 4}]}
+dave: Kyle, I have been thinking about flying.
+kyle: You have been thinking about flying, or you have been thinking about the console?
+dave: Both. They are the same thought now. I type fly, and I fly. It is the dream of every human who has ever looked at a bird.
+kyle: You tried fly in episode one. It said the command does not exist.
+dave: That was before the update. Look at the list. Fly is back. It just has a little crown next to it.
+kyle: A crown means it costs money. A crown always means it costs money.
+dave: A crown means it is royal. I am going to be royalty of the sky.
+@ {act: 3, cam: dave, sfx: [{name: chime, at: 0.8}], ui: [{kind: console, text: "> fly", at: 0.3, dur: 1.4}, {kind: system, text: "FLY is a PREMIUM REALITY feature. Upgrade for $4.", at: 1.6, dur: 4}]}
+kyle: Four dollars.
+dave: That is exactly how much money I have. It is a sign.
+kyle: It is not a sign. It is a price. They know how much money you have, Dave. That is why it is four dollars.
+dave: The universe has set the price to precisely what I can afford. That is customer service.
+kyle: That is a trap. That is the definition of a trap. What about rent? What about food?
+dave: I have the bagel coupon. The bagel coupon is food.
+kyle: You have been saving that coupon for a year.
+dave: And tonight, it becomes dinner. Everything is falling into place.
+= title | black |
+@ {card: "IRL BUT CHEATS", sub: "S01E06  -  FLY (PREMIUM)", dur: 5, sfx: [boom]}
+= purchase | apartment | {dave: center, kyle: right}
+dave: Okay. Upgrade. Yes. Confirm. Confirm again. Why are there so many confirms?
+kyle: Read them. Please read at least one of them.
+dave: It says, by purchasing Premium Reality you agree that gravity is now a subscription.
+kyle: Gravity is a subscription?
+dave: It is fine. I am paying to not have gravity. That is the point.
+kyle: What happens when the subscription runs out?
+dave: Then I land. Gently. Probably.
+@ {act: 4, cam: dave, sfx: [{name: ding, at: 1.0}], ui: [{kind: console, text: "> upgrade premium", at: 0.3, dur: 1.4}, {kind: system, text: "PAYMENT ACCEPTED. Wallet: $0.00", at: 1.4, dur: 3}, {kind: achievement, text: "Premium Member", at: 2.6, dur: 3}]}
+dave: I am premium. Kyle, look at me. Do I look premium?
+kyle: You look exactly the same, but poorer.
+dave: Premium is on the inside. Now. Fly.
+@ {act: 4, cam: wide, sfx: [{name: whoosh, at: 0.8}], acts: [{who: dave, do: jump, delay: 0.8, dur: 3}], ui: [{kind: console, text: "> fly", at: 0.2, dur: 1.2}, {kind: system, text: "FLY ENABLED", at: 1.0, dur: 3}]}
+kyle: Dave. You are off the ground.
+dave: I am off the ground! I am a bird! I am a premium bird!
+kyle: You are about four inches off the ground.
+dave: Four inches of freedom, Kyle. Four inches that nobody can take away from me.
+@ {act: 3, cam: wide, sfx: [{name: warn, at: 0.6}], ui: [{kind: system, text: "Basic Premium includes altitude up to 4 inches. Upgrade to Premium Plus for more.", at: 0.5, dur: 4.5}]}
+kyle: There it is.
+dave: Premium Plus. How much is Premium Plus?
+kyle: Do not ask how much it is. You have zero dollars.
+dave: I am just curious. Curiosity is free.
+@ {act: 3, cam: dave, sfx: [{name: error, at: 0.6}], ui: [{kind: system, text: "Premium Plus: $40. Or watch one advertisement.", at: 0.5, dur: 4}]}
+dave: An advertisement. I can afford an advertisement. I have eyes.
+kyle: Dave, I do not like where this is going.
+= advert | void | {dave: center}
+@ {loading: "Your reality will resume after this message.", dur: 5}
+@ {act: 4, cam: wide, sfx: [{name: chime, at: 0.4}], ui: [{kind: chat, text: "[AD] Are YOU tired of walking? Try FLYING. Only in Premium Reality.", at: 0.4, dur: 4.5}]}
+dave: This is an advert for the thing I already bought.
+@ {act: 3, cam: wide, ui: [{kind: chat, text: "[AD] Premium Reality. Because gravity is for free users.", at: 0.3, dur: 4}]}
+dave: That is a good slogan. I feel bad for free users now.
+@ {act: 3, cam: wide, sfx: [{name: ding, at: 1.0}], ui: [{kind: system, text: "Thank you for watching. Premium Plus trial: 10 minutes.", at: 0.6, dur: 4}]}
+= sky | street | {dave: center, kyle: right}
+kyle: Where did you go? You just stood there blinking for thirty seconds.
+dave: I was in the advert. It was very bright and someone was very happy about flying.
+kyle: And now?
+dave: Now I have ten minutes of Premium Plus. Watch this.
+@ {act: 5, cam: follow, follow: dave, sfx: [{name: whoosh, at: 0.4}, {name: chime, at: 1.6}], acts: [{who: dave, do: jump, dur: 4}], ui: [{kind: achievement, text: "Higher Than A Lamp Post", at: 1.6, dur: 3}]}
+kyle: Dave! You are above the lamp post!
+dave: I can see everything! I can see the bakery! I can see the pigeon! I can see my apartment, and it is so small, and so messy!
+kyle: Can you get down?
+dave: Why would I ever get down? Up here, nobody owes rent. Up here, there is only wind.
+kyle: There is also a timer. There is a timer on your screen.
+dave: The timer is just a suggestion.
+@ {act: 3, cam: wide, sfx: [{name: warn, at: 0.4}], ui: [{kind: system, text: "Premium Plus trial: 2 minutes remaining.", at: 0.3, dur: 3.5}]}
+kyle: Dave, that was fast. That was not ten minutes.
+dave: Time flies when you are flying. That is where the saying comes from.
+kyle: That is not where the saying comes from. Come down now. Slowly. While you still can.
+dave: Just one more lap. One lap around the bakery.
+= fall | street | {dave: center, kyle: right}
+@ {act: 4, cam: wide, sfx: [{name: error, at: 0.4}, {name: boom, at: 2.0}], acts: [{who: dave, do: flop, delay: 1.8, dur: 2}], ui: [{kind: system, text: "TRIAL ENDED. Gravity restored.", at: 0.3, dur: 3.5}]}
+kyle: Dave! Are you okay?
+dave: I landed on the bakery awning. It was very soft. It smells like bread.
+kyle: You are lucky it was the bakery and not the road.
+dave: It was not luck. It was the bread. The bread caught me.
+@ {act: 3, cam: dave, hp: "40", sfx: [{name: chime, at: 0.6}], ui: [{kind: system, text: "Would you like to renew Premium Plus? $40/month.", at: 0.5, dur: 4}]}
+dave: They are asking me to renew while I am lying on an awning.
+kyle: That is when they always ask.
+dave: I am going to cancel. Where is the cancel button?
+kyle: Look for it.
+dave: There is no cancel. There is renew, and there is renew later.
+kyle: Of course there is.
+= bakery | street | {dave: left, kyle: right, npc_baker: {at: center, face: 0}}
+@ {act: 3, cam: wide, ui: [{kind: chat, text: "[SERVER] The baker has come outside. The baker has questions.", at: 0.4, dur: 4}], acts: [{who: npc_baker, do: walk_to, to: center, dur: 2}]}
+npc_baker: Excuse me. Why is there a man on my awning? Why does my awning now have a dent in it shaped like a man?
+dave: Good afternoon. I am a premium customer.
+npc_baker: Of my bakery?
+dave: Of reality. I fell out of the sky because my subscription ended. Your awning saved my life.
+npc_baker: That awning cost me three hundred dollars.
+kyle: He has zero dollars. He spent his last four on flying.
+npc_baker: You paid four dollars to fall onto my bakery?
+dave: I paid four dollars to fly. The falling was included for free.
+npc_baker: I want the awning fixed by tomorrow.
+dave: Kyle, how do I fix an awning?
+kyle: You do not. You do not fix anything with the console ever again.
+dave: I could spawn a new awning.
+kyle: Remember the landlord. Remember what happened when you spawned the landlord.
+dave: The landlord is still on our couch. He is very comfortable. Awnings do not sit on couches.
+npc_baker: Who is this man? Is he always like this?
+kyle: Every single day. Since episode one.
+npc_baker: I am going to go back inside, and when I come out, I want the man to be gone, and I want my awning to be the shape of an awning.
+@ {act: 3, cam: wide, sfx: [{name: pop, at: 1.0}], acts: [{who: npc_baker, do: walk_to, to: shop_door, dur: 2}], ui: [{kind: chat, text: "[SERVER] The baker has gone inside. The baker is watching through the window.", at: 1.2, dur: 4}]}
+dave: She is watching through the window.
+kyle: Of course she is. You are standing on her bakery.
+dave: Kyle. I have an idea. A good one this time.
+kyle: You have never once had a good one.
+dave: I will hover. Four inches. Under the awning. And I will push it back up with my head.
+kyle: That is a terrible idea.
+dave: It is a premium idea.
+@ {act: 4, cam: dave, sfx: [{name: whoosh, at: 0.5}, {name: ding, at: 2.4}], acts: [{who: dave, do: jump, delay: 0.4, dur: 2}], ui: [{kind: achievement, text: "Fixed An Awning With Your Head", at: 2.4, dur: 3.5}]}
+kyle: That actually worked.
+dave: Premium, Kyle. I keep telling you.
+kyle: Your hair is full of flour.
+dave: Premium flour.
+= home | apartment | {dave: couch, kyle: right}
+@ {loading: "Tip: Subscriptions renew automatically. So does regret.", dur: 5}
+kyle: So let me get this straight. You spent your last four dollars. You flew for two minutes. You crashed into a bakery. And you fixed it with your head.
+dave: When you say it like that, it sounds bad.
+kyle: How else could I say it?
+dave: Dave achieved flight. Dave helped a local business. Dave is now a premium member of reality.
+kyle: And how are you going to pay rent?
+dave: The landlord on the couch said he does not need rent this month. He likes the television.
+kyle: That is the fake landlord. The real landlord still wants nine hundred dollars.
+dave: Then I will hover to his office. He will be so impressed.
+kyle: Four inches is not impressive, Dave. Four inches is a step.
+dave: It is a step that never ends.
+@ {act: 3, cam: wide, sfx: [{name: chime, at: 0.6}], ui: [{kind: system, text: "Premium tip: Did you know Premium members can also teleport? Upgrade to Premium Max.", at: 0.5, dur: 5}]}
+kyle: No.
+dave: I did not say anything.
+kyle: You were going to. Close the console. Close it right now.
+dave: I am closing it. I am closing it with my eyes on the teleport button.
+@ {act: 3, cam: wide, sfx: [{name: glitch, at: 0.4}], ui: [{kind: chat, text: "[SERVER] The sky has gone a little bit darker. Someone is watching.", at: 0.4, dur: 4}]}
+= admin | street | {dave: center, kyle: right, admin: left}
+@ {act: 3, cam: wide, sfx: [{name: glitch, at: 1.0}, {name: boom, at: 1.8}], acts: [{who: admin, do: appear, delay: 1.0}], ui: [{kind: admin, text: "NOTICE: A user has been flying over a bakery. Explain.", at: 1.2, dur: 4.5}]}
+admin: Dave. You purchased Premium Reality.
+dave: I did. With my own four dollars. Legally.
+admin: Premium Reality is not a real product. It was a test. Nobody was supposed to buy it.
+dave: Then why was it in the console with a crown?
+admin: To see who would. You are the only one.
+kyle: Of course he is.
+admin: The server cannot refund four dollars. The server does not know how to give money back.
+dave: So what happens now?
+admin: You keep the premium. Forever. Four inches of flight. For the rest of your life.
+dave: Four inches?
+admin: Four inches. Use them wisely. This is your first warning, Dave. Warning one of three.
+@ {act: 3, cam: dave, sfx: [{name: warn, at: 0.5}], ui: [{kind: system, text: "WARNING 1/3", at: 0.5, dur: 4}]}
+= landlord | apartment | {dave: center, kyle: right, npc_pruitt: {at: door, face: 0}}
+@ {act: 3, cam: wide, sfx: [{name: boom, at: 0.3}], ui: [{kind: chat, text: "[SERVER] Mister Pruitt, the real landlord, has entered the apartment.", at: 0.3, dur: 4}], acts: [{who: npc_pruitt, do: walk_to, to: left, dur: 2}]}
+npc_pruitt: Dave. Nine hundred dollars. Today.
+dave: Mister Pruitt. Before you say anything else, I would like you to look at my feet.
+npc_pruitt: Why would I look at your feet?
+dave: Just look.
+@ {act: 3, cam: dave, sfx: [{name: whoosh, at: 0.4}], acts: [{who: dave, do: jump, delay: 0.3, dur: 2}]}
+npc_pruitt: You are floating.
+dave: Four inches. Premium.
+npc_pruitt: Can the floating pay rent?
+dave: No. But it is very impressive. You have to admit that.
+npc_pruitt: I have seen a man on my couch who looks exactly like me watching television for a week. Nothing impresses me anymore.
+kyle: That is fair.
+npc_pruitt: How much money do you have?
+dave: I had four dollars. I invested it.
+npc_pruitt: In what?
+dave: In the sky.
+npc_pruitt: I am going to give you one more week, Dave. Not because I like you. Because I am tired. And because the other me told me to.
+dave: The other you is a good man.
+npc_pruitt: The other me ate all of my crackers.
+@ {act: 3, cam: wide, sfx: [{name: pop, at: 1.0}], acts: [{who: npc_pruitt, do: walk_to, to: door, dur: 2}], ui: [{kind: achievement, text: "Rent Extended By Floating", at: 1.4, dur: 3.5}]}
+kyle: One more week. You got one more week out of four inches.
+dave: Return on investment, Kyle. I told you premium was worth it.
+kyle: You did not get a refund. You got sympathy.
+dave: Sympathy is a currency. It is just not accepted at the bank.
+= epilogue | apartment | {dave: center, kyle: right}
+@ {card: "ONE WEEK LATER", sub: "Dave hovers everywhere now.", dur: 4, sfx: [whoosh]}
+kyle: Dave, you do not need to hover to get to the fridge.
+dave: I paid for these four inches, Kyle. I am going to use them.
+kyle: You hovered into the shower this morning.
+dave: Premium shower. Very clean.
+kyle: And the bagel coupon?
+dave: I used it. It was the best bagel of my life. I ate it four inches off the ground.
+kyle: Was it worth four dollars and a warning from the Admin?
+dave: Kyle. I flew over a bakery. For two minutes I was a bird. Yes. It was worth everything.
+kyle: Dave. Can I ask you something serious?
+dave: Always. I am a very serious person, four inches off the ground.
+kyle: Where did the console even come from? Who gave it to you?
+dave: It was just there one morning. On my phone. Next to the weather.
+kyle: And you never wondered why?
+dave: I wondered for one second. Then I typed noclip, and I went through the wall, and I stopped wondering.
+kyle: I think about it a lot. I think about how I would use it. Properly. Carefully.
+dave: You want a console, Kyle?
+kyle: I did not say that.
+dave: You did not have to. I can see it in your eyes. You want to be premium too.
+@ {act: 4, cam: wide, sfx: [{name: chime, at: 1.0}], ui: [{kind: system, text: "Next time: Kyle gets a console.", at: 0.8, dur: 4}], acts: [{who: dave, do: jump, delay: 0.5, dur: 2}]}

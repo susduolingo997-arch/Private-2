@@ -1,0 +1,197 @@
+id: s01e07
+title: Multiplayer
+= cold_open | apartment | {dave: couch, kyle: right}
+@ {act: 3, cam: wide, hp: "100", ui: [{kind: chat, text: "[SERVER] Kyle has woken up with a strange new app on his phone.", at: 0.4, dur: 4}]}
+kyle: Dave. Dave, wake up. Look at my phone.
+dave: It is seven in the morning, Kyle. Nothing good happens at seven in the morning.
+kyle: There is an app. Next to the weather. It is black, and it has a little arrow in it.
+dave: Kyle. That is the console.
+kyle: I did not install it. It was just there. Exactly like you said.
+dave: Welcome to multiplayer.
+kyle: I am not going to use it. I am going to delete it.
+dave: You can not delete it. I tried for a week. It just comes back with a little smiley face.
+kyle: Then I am going to ignore it.
+dave: Nobody can ignore it. It is calling to you. It is whispering noclip.
+kyle: It is not whispering anything. It is an app.
+@ {act: 3, cam: kyle, sfx: [{name: chime, at: 0.6}], ui: [{kind: system, text: "Welcome, Player 2. Type help for commands.", at: 0.5, dur: 4}]}
+kyle: Okay. It is whispering a little.
+dave: What are you going to do first? Noclip? Speedhack? Spawn a landlord?
+kyle: I am going to do something responsible. Something that helps.
+dave: Boring.
+kyle: Helpful, Dave. There is a difference.
+= title | black |
+@ {card: "IRL BUT CHEATS", sub: "S01E07  -  MULTIPLAYER", dur: 5, sfx: [boom]}
+= first_command | apartment | {dave: couch, kyle: center}
+kyle: Okay. Help. Let me read the whole list. Every single line. Like a normal person.
+dave: That will take forever.
+kyle: It is called being careful. You should try it some time.
+@ {loading: "Kyle is reading the terms and conditions. All of them.", dur: 5}
+dave: Are you done yet?
+kyle: Almost. Page forty. Did you know there is a command called clean?
+dave: Clean what?
+kyle: Clean anything. It cleans the room you are standing in.
+dave: That is the most boring cheat in the entire universe.
+kyle: Dave. Look at this apartment. There is a pizza from episode five under the couch.
+dave: That pizza is a memory.
+kyle: That pizza is growing a second pizza.
+@ {act: 4, cam: kyle, sfx: [{name: chime, at: 1.0}, {name: ding, at: 2.4}], ui: [{kind: console, text: "> clean", at: 0.3, dur: 1.4}, {kind: system, text: "CHEAT ACTIVATED: clean", at: 1.4, dur: 3}, {kind: achievement, text: "First Responsible Cheat", at: 2.4, dur: 3.5}]}
+dave: Oh no. It is so clean. I can see the floor.
+kyle: It is beautiful.
+dave: Where is my pizza memory?
+kyle: Gone, Dave. Like it should have been two weeks ago.
+dave: That pizza had value to me.
+kyle: You see? This is how you use the console. One command. Everybody wins.
+dave: Kyle, I have to say, I am a little bit proud of you. And also a little bit sad, because now there are two of us, and one of us is responsible.
+kyle: Exactly. And it is me.
+= the_list | apartment | {dave: left, kyle: center}
+kyle: There is another one. Fix.
+dave: Fix what?
+kyle: It says fix, followed by anything. Fix the sink. Fix the door. Fix the window that you broke in episode two.
+dave: I did not break the window. I sped through the window.
+kyle: That is called breaking it, Dave.
+@ {act: 4, cam: kyle, sfx: [{name: chime, at: 1.0}, {name: pop, at: 1.8}], ui: [{kind: console, text: "> fix window", at: 0.3, dur: 1.4}, {kind: system, text: "Window: fixed.", at: 1.6, dur: 3}]}
+dave: It is so easy for you. Why is it so easy for you?
+kyle: Because I read the list.
+dave: I read the list too.
+kyle: You read the first word of the list.
+dave: That is the most important word.
+kyle: Fix sink.
+@ {act: 3, cam: wide, sfx: [{name: pop, at: 1.0}], ui: [{kind: system, text: "Sink: fixed.", at: 1.0, dur: 3}]}
+kyle: Fix door.
+@ {act: 3, cam: wide, sfx: [{name: pop, at: 1.0}], ui: [{kind: system, text: "Door: fixed. Door also no longer squeaks.", at: 1.0, dur: 3}]}
+dave: Kyle, you are becoming powerful.
+kyle: I am becoming a handyman.
+dave: A powerful handyman.
+kyle: Fix rent.
+@ {act: 3, cam: kyle, sfx: [{name: error, at: 1.0}], ui: [{kind: system, text: "Rent can not be fixed. Rent is working as intended.", at: 1.0, dur: 4}]}
+dave: See, even the console is scared of rent.
+= rules | apartment | {dave: couch, kyle: center}
+kyle: Okay. Before we go outside, we need rules. House rules for two consoles. I have written them on the fridge.
+dave: You wrote rules on the fridge? With what?
+kyle: With a marker, Dave, like a normal person. Rule one. No spawning people. Ever. We already have one extra landlord on the couch, and he is eating all of our crackers.
+dave: He is a very polite landlord, though. He says thank you every single time.
+kyle: Rule two. No speedhack inside the apartment. You went through the window, the fridge, and the neighbour's cat flap.
+dave: The cat was fine. The cat was impressed with me.
+kyle: Rule three. Before you type anything, you say it out loud to the other player, and the other player has to say yes.
+dave: That is so slow. That is like asking permission to have fun.
+kyle: It is exactly asking permission to have fun. That is the whole point. That is how multiplayer works.
+dave: Fine. Kyle, I would like to type spawn pizza. Do I have permission?
+kyle: Why do you want a pizza? It is eight in the morning.
+dave: Because you cleaned away the last one, and I am grieving it.
+kyle: No.
+dave: Multiplayer is terrible.
+kyle: Multiplayer is fair. Rule four. If the Admin shows up, we both apologise immediately. No arguing. No explaining that the window was art.
+dave: The window was a little bit art.
+kyle: Rule five. Nobody touches the button that says ban. Nobody even looks at it.
+dave: There is a button that says ban?
+kyle: At the very bottom of the list. Page sixty. Under the commands nobody is allowed to use.
+dave: Why is it on our list if we are not allowed to use it?
+kyle: I do not know, Dave. I think it is there to see who would press it.
+dave: Like Premium Reality.
+kyle: Exactly like Premium Reality. So do not press it.
+dave: I would never press a button just because it is there.
+kyle: You have pressed every button that has ever been there.
+dave: That is fair. Rule five. I will try.
+= street | street | {dave: left, kyle: center}
+@ {card: "THAT AFTERNOON", sub: "Kyle has gone outside.", dur: 4, sfx: [whoosh]}
+kyle: I fixed the lamp post. I fixed the bench. I fixed the bakery awning that you dented.
+dave: That dent was a memory too.
+kyle: You have too many memories.
+@ {act: 3, cam: wide, ui: [{kind: chat, text: "[SERVER] The street is now 40% nicer than it was this morning.", at: 0.4, dur: 4}]}
+dave: People are looking at you, Kyle.
+kyle: In a good way?
+dave: In a very good way. That woman is clapping.
+kyle: Thank you! I fixed your gate!
+dave: It is not fair. I have been cheating for six weeks and nobody has ever clapped.
+kyle: You flew into a bakery.
+dave: That was art.
+@ {act: 4, cam: kyle, sfx: [{name: ding, at: 0.8}], ui: [{kind: achievement, text: "Local Hero", at: 0.8, dur: 3.5}]}
+dave: Local hero. You have local hero. I have Spawned Something Terrifying.
+kyle: You should try helping people.
+dave: I do help people. I help them be entertained.
+= temptation | street | {dave: left, kyle: center}
+kyle: Dave. Can I tell you something?
+dave: You want to try noclip.
+kyle: How did you know?
+dave: Everyone wants to try noclip. It is the first command. It is the best command.
+kyle: Just once. Just to see what it feels like. Through one wall.
+dave: Kyle. Responsible Kyle. Local hero Kyle.
+kyle: Just one wall, Dave.
+@ {act: 4, cam: kyle, sfx: [{name: chime, at: 1.0}, {name: glitch, at: 2.0}], acts: [{who: kyle, do: walk_to, to: shop_door, delay: 1.5, dur: 2}], ui: [{kind: console, text: "> noclip", at: 0.3, dur: 1.4}, {kind: system, text: "CHEAT ACTIVATED: noclip", at: 1.4, dur: 3}]}
+kyle: Oh. Oh, Dave. Oh, that is incredible.
+dave: Right?
+kyle: I am inside the bakery. I am inside the wall of the bakery. There is a whole loaf of bread inside the wall.
+dave: Everyone finds the bread.
+kyle: I am going through another one.
+dave: Kyle, slow down.
+kyle: You are telling me to slow down?
+dave: I know. I can hear it. I can hear myself. It is very strange.
+@ {act: 3, cam: wide, sfx: [{name: warn, at: 0.6}], ui: [{kind: chat, text: "[SERVER] Kyle has passed through four walls in thirty seconds.", at: 0.5, dur: 4}]}
+= trouble | street | {dave: left, kyle: center, npc_baker: {at: right, face: 0}}
+npc_baker: Why is the other one in my wall now?
+dave: Good afternoon. He is new.
+npc_baker: First the awning, and now my wall. What is wrong with your apartment?
+kyle: I am so sorry. I can fix it. I can fix anything. Watch. Fix wall.
+@ {act: 4, cam: kyle, sfx: [{name: error, at: 1.2}], ui: [{kind: console, text: "> fix wall", at: 0.3, dur: 1.4}, {kind: system, text: "You can not fix a wall while you are inside it.", at: 1.4, dur: 4}]}
+kyle: Dave. I am stuck in the wall.
+dave: Turn off noclip.
+kyle: If I turn off noclip, I will be stuck in the wall for real.
+dave: Then do not turn it off.
+kyle: Then how do I get out?
+dave: Walk out. Slowly. Like you are leaving a party.
+@ {act: 4, cam: wide, sfx: [{name: whoosh, at: 1.0}], acts: [{who: kyle, do: walk_to, to: center, dur: 2.5}], ui: [{kind: chat, text: "[SERVER] Kyle has left the wall. The wall is relieved.", at: 2.6, dur: 4}]}
+npc_baker: I am putting up a sign. No console users. Not one more.
+kyle: That is fair. That is so fair.
+= admin | street | {dave: left, kyle: center, admin: right}
+@ {act: 3, cam: wide, sfx: [{name: glitch, at: 1.0}, {name: boom, at: 1.8}], acts: [{who: admin, do: appear, delay: 1.0}], ui: [{kind: admin, text: "NOTICE: Two users. One console. One problem.", at: 1.2, dur: 4.5}]}
+admin: Kyle.
+kyle: Hello. I am so sorry. I fixed a lot of things first. Please look at the things I fixed.
+admin: The console was never supposed to go to two people.
+dave: Then why did it go to Kyle?
+admin: Because Dave shared his screen during episode four.
+dave: Did I?
+admin: You showed Kyle your aimbot. The console saw. The console copied itself.
+kyle: So this is Dave's fault.
+dave: Everything is my fault. That is the theme of the show.
+admin: Kyle, you have done eleven good things and one bad thing. Dave has done one good thing in six weeks.
+dave: Which one?
+admin: You fixed an awning with your head.
+dave: That was a good thing. Thank you.
+admin: This is warning two of three. For both of you. Shared warnings. Multiplayer rules.
+@ {act: 3, cam: dave, sfx: [{name: warn, at: 0.5}], ui: [{kind: system, text: "WARNING 2/3  (shared)", at: 0.5, dur: 4}]}
+kyle: Shared? I get Dave's warnings now?
+admin: You are on the same server. You are on the same team.
+kyle: I did not want to be on Dave's team.
+dave: Nobody does, Kyle. And yet here we all are.
+= epilogue | apartment | {dave: couch, kyle: center}
+@ {card: "THAT NIGHT", sub: "Two consoles. One apartment.", dur: 4, sfx: [whoosh]}
+kyle: The apartment is so clean.
+dave: I hate it.
+kyle: The sink works. The door does not squeak. The window has glass in it.
+dave: I hate all of it.
+kyle: Dave. One more warning and something happens. The Admin did not say what.
+dave: The Admin never says what. It is part of the mystery.
+kyle: What if it is a ban?
+dave: A ban from what? From reality?
+kyle: Yes, Dave. From reality.
+dave: That can not be real. Can it?
+@ {act: 3, cam: wide, sfx: [{name: glitch, at: 0.8}], ui: [{kind: chat, text: "[SERVER] Somewhere, an Admin is looking at a very large button.", at: 0.6, dur: 4.5}]}
+kyle: Promise me one thing. No cheats for a week.
+dave: A whole week?
+kyle: One week. No console.
+dave: I promise. Probably.
+@ {act: 3, cam: wide, ui: [{kind: chat, text: "[SERVER] It is 2 a.m. Nobody is asleep.", at: 0.4, dur: 3.5}]}
+# | apartment | {dave: couch, kyle: right}
+kyle: Dave, are you still awake?
+dave: I am always awake. My brain is full of commands I am not allowed to type.
+kyle: I keep thinking about the wall. About being inside it. It was the best thirty seconds of my whole life, and also the worst.
+dave: That is how all the good cheats feel. Like flying and falling at the same time.
+kyle: I understand you now. I did not before. I used to think you were just being stupid.
+dave: I was also being stupid. Both things can be true.
+kyle: When I was fixing the street, people clapped, and it felt amazing. And when I went through the wall, nobody clapped, and it felt even better. What does that say about me?
+dave: It says you are a player now, Kyle. Welcome to the server.
+kyle: I do not want to be a player. I want to be the guy who reads the list.
+dave: You can be both. You can be the guy who reads the list, and then does something stupid anyway, but carefully.
+kyle: That is the worst advice I have ever heard.
+dave: Thank you. I have been working on it for six weeks.
+@ {act: 4, cam: wide, sfx: [{name: chime, at: 1.0}], ui: [{kind: system, text: "Next time: the Ban Hammer.", at: 0.8, dur: 4}]}

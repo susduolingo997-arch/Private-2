@@ -68,7 +68,7 @@
 
   function player(v) {
     const c = chan[v.channel];
-    if (v.src) return `<div class="player" id="vp"><video controls preload="metadata" playsinline poster="${esc(v.thumb_img || "")}" src="${esc(v.src)}"></video>
+    if (v.src) return `<div class="player" id="vp"><video controls preload="metadata" playsinline poster="${esc(v.thumb_img || "")}" src="${esc(v.src)}" data-sd="${esc(v.src)}" data-hd="${esc(v.hd || "")}"></video>
       <div class="fallback" id="vfb" hidden><p>This browser can't play the video inline.</p><p id="vfe" style="font-size:12px;opacity:.7"></p><a class="go" href="${esc(v.src)}" target="_blank" rel="noopener">&#9654; Open the video</a></div></div>`;
     if (v.link) return `<div class="player ext" style="--c:${esc(c.color)}"><div class="fake">
       <h2>${esc(v.title.split(" - ").pop())}</h2><p>${esc(v.description.split("\n")[0])}</p>
@@ -199,8 +199,14 @@
       fsb.onclick = () => { if (vid0.webkitEnterFullscreen) vid0.webkitEnterFullscreen(); else if (vid0.requestFullscreen) vid0.requestFullscreen(); };
       $("#vp").after(fsb);
       const show = () => { const fb = $("#vfb"); if (fb) { fb.hidden = false; vid0.style.display = "none"; const m = $("#vfe"); if (m) m.textContent = "Browser said: " + (vid0.error ? "media error " + vid0.error.code + (vid0.error.message ? " (" + vid0.error.message + ")" : "") : "no response") + " | " + navigator.userAgent.replace(/\).*/, ")").slice(0, 80); } };
-      vid0.addEventListener("error", show);
-      setTimeout(() => { if (vid0.readyState === 0 && !vid0.error) show(); }, 8000);
+      // PC: stream the full-quality file (720p release); phones keep the small same-site copy.
+      const hd = vid0.dataset.hd, mobile = /iPhone|iPad|iPod|Android/i.test(navigator.userAgent) || (navigator.maxTouchPoints > 1 && /Mac/.test(navigator.userAgent));
+      let onHd = false;
+      if (hd && !mobile && hd !== vid0.getAttribute("src")) { onHd = true; vid0.src = hd; }
+      const back = () => { if (onHd) { onHd = false; vid0.src = vid0.dataset.sd; vid0.load(); return true; } return false; };
+      vid0.addEventListener("error", () => { if (!back()) show(); });
+      setTimeout(() => { if (vid0.readyState === 0 && !vid0.error && !back()) show(); }, 8000);
+      setTimeout(() => { if (vid0.readyState === 0 && !vid0.error) show(); }, 16000);
     }
     const fp = $("#fakeplay");
     if (fp) fp.onclick = () => {

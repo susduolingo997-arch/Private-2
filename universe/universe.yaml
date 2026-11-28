@@ -199,6 +199,51 @@ videos:
       - {by: landlord2, text: "I am the real one. It is in the clipboard.", likes: 66000}
       - {by: kyle,      text: "Dave.", likes: 59000}
 
+  - id: irl-s01e06
+    channel: irl-but-cheats
+    title: "I Paid My Last $4 For Premium Reality | IRL BUT CHEATS S01E06"
+    episode: episodes/s01e06_fly_premium.yaml
+    published: 2026-04-06
+    views: 2410000
+    likes: 221000
+    cast: [dave, kyle, admin, pruitt]
+    thumb: {set: street, cast: {dave: center, kyle: right}, acts: [{who: dave, do: jump, dur: 1.5}], at: 20, text: ["I CAN", "FLY?!"], hl: 1, tag: FLY (PREMIUM)}
+    description: |
+      Fly is back in the console, with a little crown. It costs $4. Dave has exactly $4. Gravity is now a subscription.
+      Cheat used: fly (premium)
+    comments:
+      - {by: kyle, text: "Four inches, Dave.", likes: 71000}
+
+  - id: irl-s01e07
+    channel: irl-but-cheats
+    title: "My Roommate Got The Console Too | IRL BUT CHEATS S01E07"
+    episode: episodes/s01e07_multiplayer.yaml
+    published: 2026-04-13
+    views: 2290000
+    likes: 209000
+    cast: [dave, kyle, admin]
+    thumb: {set: apartment, cast: {dave: left, kyle: center}, acts: [{who: kyle, do: shake, amt: 0.1, dur: 1.5}], at: 20, text: ["MULTI", "PLAYER"], hl: 1, tag: MULTIPLAYER}
+    description: |
+      Kyle wakes up with the console on his phone. He reads the whole list. He fixes the street. Then he tries noclip.
+      Cheat used: clean, fix, noclip
+    comments:
+      - {by: dave, text: "the pizza was a memory", likes: 64000}
+
+  - id: irl-s01e08
+    channel: irl-but-cheats
+    title: "I Pressed The Ban Button (Season Finale) | IRL BUT CHEATS S01E08"
+    episode: episodes/s01e08_ban_hammer.yaml
+    published: 2026-04-20
+    views: 3120000
+    likes: 302000
+    cast: [dave, kyle, admin]
+    thumb: {set: street, cast: {dave: center, kyle: right, admin: left}, at: 20, text: ["BAN", "HAMMER"], hl: 1, tag: SEASON FINALE}
+    description: |
+      Day six of no cheats. The ban button moves to the top of the list. Dave types "ban nobody". The closest match is everybody.
+      Cheat used: ban
+    comments:
+      - {by: admin, text: "Thank you for the bug report.", likes: 120000}
+
   # ================================================================ CHANNEL 9
   # e01 and e02 are the original Channel 9 episodes (self-contained pages in universe/embeds/).
   - id: n9-s01e01

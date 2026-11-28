@@ -157,6 +157,11 @@ def enrich(u, media_dir, art_dir=ART_DIR):
             ep = schema.load(os.path.join(ROOT, v["episode"]))
             d["duration"] = round(planner.build_plan(ep, estimate=True)["seconds"])
             d["target"] = ep.get("target_seconds")
+        if v.get("play"):
+            d["hd"] = v["play"]
+        elif v.get("episode"):  # render.yml publishes the full 720p file as release ep-<episode id>
+            eid = schema.load(os.path.join(ROOT, v["episode"]))["id"]
+            d["hd"] = f"https://github.com/susduolingo997-arch/Private-2/releases/download/ep-{eid}/{eid}.mp4"
         mf = _media_file(v, media_dir)
         if mf:  # a copy hosted on the site itself plays best (correct MIME type, same origin)
             d["status"], d["src"] = "live", "media/" + os.path.basename(mf)

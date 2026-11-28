@@ -1,0 +1,625 @@
+scenes:
+- id: cold_open
+  set: apartment
+  cast:
+    dave: couch
+    kyle: right
+  beats:
+  - act: 3
+    cam: wide
+    hp: '100'
+    ui:
+    - kind: chat
+      text: '[SERVER] Kyle has woken up with a strange new app on his phone.'
+      at: 0.4
+      dur: 4
+  - say: kyle
+    text: Dave. Dave, wake up. Look at my phone.
+  - say: dave
+    text: It is seven in the morning, Kyle. Nothing good happens at seven in the morning.
+  - say: kyle
+    text: There is an app. Next to the weather. It is black, and it has a little arrow in it.
+  - say: dave
+    text: Kyle. That is the console.
+  - say: kyle
+    text: I did not install it. It was just there. Exactly like you said.
+  - say: dave
+    text: Welcome to multiplayer.
+  - say: kyle
+    text: I am not going to use it. I am going to delete it.
+  - say: dave
+    text: You can not delete it. I tried for a week. It just comes back with a little smiley face.
+  - say: kyle
+    text: Then I am going to ignore it.
+  - say: dave
+    text: Nobody can ignore it. It is calling to you. It is whispering noclip.
+  - say: kyle
+    text: It is not whispering anything. It is an app.
+  - act: 3
+    cam: kyle
+    sfx:
+    - name: chime
+      at: 0.6
+    ui:
+    - kind: system
+      text: Welcome, Player 2. Type help for commands.
+      at: 0.5
+      dur: 4
+  - say: kyle
+    text: Okay. It is whispering a little.
+  - say: dave
+    text: What are you going to do first? Noclip? Speedhack? Spawn a landlord?
+  - say: kyle
+    text: I am going to do something responsible. Something that helps.
+  - say: dave
+    text: Boring.
+  - say: kyle
+    text: Helpful, Dave. There is a difference.
+- id: title
+  set: black
+  beats:
+  - card: IRL BUT CHEATS
+    sub: S01E07  -  MULTIPLAYER
+    dur: 5
+    sfx:
+    - boom
+- id: first_command
+  set: apartment
+  cast:
+    dave: couch
+    kyle: center
+  beats:
+  - say: kyle
+    text: Okay. Help. Let me read the whole list. Every single line. Like a normal person.
+  - say: dave
+    text: That will take forever.
+  - say: kyle
+    text: It is called being careful. You should try it some time.
+  - loading: Kyle is reading the terms and conditions. All of them.
+    dur: 5
+  - say: dave
+    text: Are you done yet?
+  - say: kyle
+    text: Almost. Page forty. Did you know there is a command called clean?
+  - say: dave
+    text: Clean what?
+  - say: kyle
+    text: Clean anything. It cleans the room you are standing in.
+  - say: dave
+    text: That is the most boring cheat in the entire universe.
+  - say: kyle
+    text: Dave. Look at this apartment. There is a pizza from episode five under the couch.
+  - say: dave
+    text: That pizza is a memory.
+  - say: kyle
+    text: That pizza is growing a second pizza.
+  - act: 4
+    cam: kyle
+    sfx:
+    - name: chime
+      at: 1.0
+    - name: ding
+      at: 2.4
+    ui:
+    - kind: console
+      text: '> clean'
+      at: 0.3
+      dur: 1.4
+    - kind: system
+      text: 'CHEAT ACTIVATED: clean'
+      at: 1.4
+      dur: 3
+    - kind: achievement
+      text: First Responsible Cheat
+      at: 2.4
+      dur: 3.5
+  - say: dave
+    text: Oh no. It is so clean. I can see the floor.
+  - say: kyle
+    text: It is beautiful.
+  - say: dave
+    text: Where is my pizza memory?
+  - say: kyle
+    text: Gone, Dave. Like it should have been two weeks ago.
+  - say: dave
+    text: That pizza had value to me.
+  - say: kyle
+    text: You see? This is how you use the console. One command. Everybody wins.
+  - say: dave
+    text: Kyle, I have to say, I am a little bit proud of you. And also a little bit sad, because now there are two of us, and one of us is responsible.
+  - say: kyle
+    text: Exactly. And it is me.
+- id: the_list
+  set: apartment
+  cast:
+    dave: left
+    kyle: center
+  beats:
+  - say: kyle
+    text: There is another one. Fix.
+  - say: dave
+    text: Fix what?
+  - say: kyle
+    text: It says fix, followed by anything. Fix the sink. Fix the door. Fix the window that you broke in episode two.
+  - say: dave
+    text: I did not break the window. I sped through the window.
+  - say: kyle
+    text: That is called breaking it, Dave.
+  - act: 4
+    cam: kyle
+    sfx:
+    - name: chime
+      at: 1.0
+    - name: pop
+      at: 1.8
+    ui:
+    - kind: console
+      text: '> fix window'
+      at: 0.3
+      dur: 1.4
+    - kind: system
+      text: 'Window: fixed.'
+      at: 1.6
+      dur: 3
+  - say: dave
+    text: It is so easy for you. Why is it so easy for you?
+  - say: kyle
+    text: Because I read the list.
+  - say: dave
+    text: I read the list too.
+  - say: kyle
+    text: You read the first word of the list.
+  - say: dave
+    text: That is the most important word.
+  - say: kyle
+    text: Fix sink.
+  - act: 3
+    cam: wide
+    sfx:
+    - name: pop
+      at: 1.0
+    ui:
+    - kind: system
+      text: 'Sink: fixed.'
+      at: 1.0
+      dur: 3
+  - say: kyle
+    text: Fix door.
+  - act: 3
+    cam: wide
+    sfx:
+    - name: pop
+      at: 1.0
+    ui:
+    - kind: system
+      text: 'Door: fixed. Door also no longer squeaks.'
+      at: 1.0
+      dur: 3
+  - say: dave
+    text: Kyle, you are becoming powerful.
+  - say: kyle
+    text: I am becoming a handyman.
+  - say: dave
+    text: A powerful handyman.
+  - say: kyle
+    text: Fix rent.
+  - act: 3
+    cam: kyle
+    sfx:
+    - name: error
+      at: 1.0
+    ui:
+    - kind: system
+      text: Rent can not be fixed. Rent is working as intended.
+      at: 1.0
+      dur: 4
+  - say: dave
+    text: See, even the console is scared of rent.
+- id: rules
+  set: apartment
+  cast:
+    dave: couch
+    kyle: center
+  beats:
+  - say: kyle
+    text: Okay. Before we go outside, we need rules. House rules for two consoles. I have written them on the fridge.
+  - say: dave
+    text: You wrote rules on the fridge? With what?
+  - say: kyle
+    text: With a marker, Dave, like a normal person. Rule one. No spawning people. Ever. We already have one extra landlord on the couch, and he is eating all of our crackers.
+  - say: dave
+    text: He is a very polite landlord, though. He says thank you every single time.
+  - say: kyle
+    text: Rule two. No speedhack inside the apartment. You went through the window, the fridge, and the neighbour's cat flap.
+  - say: dave
+    text: The cat was fine. The cat was impressed with me.
+  - say: kyle
+    text: Rule three. Before you type anything, you say it out loud to the other player, and the other player has to say yes.
+  - say: dave
+    text: That is so slow. That is like asking permission to have fun.
+  - say: kyle
+    text: It is exactly asking permission to have fun. That is the whole point. That is how multiplayer works.
+  - say: dave
+    text: Fine. Kyle, I would like to type spawn pizza. Do I have permission?
+  - say: kyle
+    text: Why do you want a pizza? It is eight in the morning.
+  - say: dave
+    text: Because you cleaned away the last one, and I am grieving it.
+  - say: kyle
+    text: No.
+  - say: dave
+    text: Multiplayer is terrible.
+  - say: kyle
+    text: Multiplayer is fair. Rule four. If the Admin shows up, we both apologise immediately. No arguing. No explaining that the window was art.
+  - say: dave
+    text: The window was a little bit art.
+  - say: kyle
+    text: Rule five. Nobody touches the button that says ban. Nobody even looks at it.
+  - say: dave
+    text: There is a button that says ban?
+  - say: kyle
+    text: At the very bottom of the list. Page sixty. Under the commands nobody is allowed to use.
+  - say: dave
+    text: Why is it on our list if we are not allowed to use it?
+  - say: kyle
+    text: I do not know, Dave. I think it is there to see who would press it.
+  - say: dave
+    text: Like Premium Reality.
+  - say: kyle
+    text: Exactly like Premium Reality. So do not press it.
+  - say: dave
+    text: I would never press a button just because it is there.
+  - say: kyle
+    text: You have pressed every button that has ever been there.
+  - say: dave
+    text: That is fair. Rule five. I will try.
+- id: street
+  set: street
+  cast:
+    dave: left
+    kyle: center
+  beats:
+  - card: THAT AFTERNOON
+    sub: Kyle has gone outside.
+    dur: 4
+    sfx:
+    - whoosh
+  - say: kyle
+    text: I fixed the lamp post. I fixed the bench. I fixed the bakery awning that you dented.
+  - say: dave
+    text: That dent was a memory too.
+  - say: kyle
+    text: You have too many memories.
+  - act: 3
+    cam: wide
+    ui:
+    - kind: chat
+      text: '[SERVER] The street is now 40% nicer than it was this morning.'
+      at: 0.4
+      dur: 4
+  - say: dave
+    text: People are looking at you, Kyle.
+  - say: kyle
+    text: In a good way?
+  - say: dave
+    text: In a very good way. That woman is clapping.
+  - say: kyle
+    text: Thank you! I fixed your gate!
+  - say: dave
+    text: It is not fair. I have been cheating for six weeks and nobody has ever clapped.
+  - say: kyle
+    text: You flew into a bakery.
+  - say: dave
+    text: That was art.
+  - act: 4
+    cam: kyle
+    sfx:
+    - name: ding
+      at: 0.8
+    ui:
+    - kind: achievement
+      text: Local Hero
+      at: 0.8
+      dur: 3.5
+  - say: dave
+    text: Local hero. You have local hero. I have Spawned Something Terrifying.
+  - say: kyle
+    text: You should try helping people.
+  - say: dave
+    text: I do help people. I help them be entertained.
+- id: temptation
+  set: street
+  cast:
+    dave: left
+    kyle: center
+  beats:
+  - say: kyle
+    text: Dave. Can I tell you something?
+  - say: dave
+    text: You want to try noclip.
+  - say: kyle
+    text: How did you know?
+  - say: dave
+    text: Everyone wants to try noclip. It is the first command. It is the best command.
+  - say: kyle
+    text: Just once. Just to see what it feels like. Through one wall.
+  - say: dave
+    text: Kyle. Responsible Kyle. Local hero Kyle.
+  - say: kyle
+    text: Just one wall, Dave.
+  - act: 4
+    cam: kyle
+    sfx:
+    - name: chime
+      at: 1.0
+    - name: glitch
+      at: 2.0
+    acts:
+    - who: kyle
+      do: walk_to
+      to: shop_door
+      delay: 1.5
+      dur: 2
+    ui:
+    - kind: console
+      text: '> noclip'
+      at: 0.3
+      dur: 1.4
+    - kind: system
+      text: 'CHEAT ACTIVATED: noclip'
+      at: 1.4
+      dur: 3
+  - say: kyle
+    text: Oh. Oh, Dave. Oh, that is incredible.
+  - say: dave
+    text: Right?
+  - say: kyle
+    text: I am inside the bakery. I am inside the wall of the bakery. There is a whole loaf of bread inside the wall.
+  - say: dave
+    text: Everyone finds the bread.
+  - say: kyle
+    text: I am going through another one.
+  - say: dave
+    text: Kyle, slow down.
+  - say: kyle
+    text: You are telling me to slow down?
+  - say: dave
+    text: I know. I can hear it. I can hear myself. It is very strange.
+  - act: 3
+    cam: wide
+    sfx:
+    - name: warn
+      at: 0.6
+    ui:
+    - kind: chat
+      text: '[SERVER] Kyle has passed through four walls in thirty seconds.'
+      at: 0.5
+      dur: 4
+- id: trouble
+  set: street
+  cast:
+    dave: left
+    kyle: center
+    npc_baker:
+      at: right
+      face: 0
+  beats:
+  - say: npc_baker
+    text: Why is the other one in my wall now?
+  - say: dave
+    text: Good afternoon. He is new.
+  - say: npc_baker
+    text: First the awning, and now my wall. What is wrong with your apartment?
+  - say: kyle
+    text: I am so sorry. I can fix it. I can fix anything. Watch. Fix wall.
+  - act: 4
+    cam: kyle
+    sfx:
+    - name: error
+      at: 1.2
+    ui:
+    - kind: console
+      text: '> fix wall'
+      at: 0.3
+      dur: 1.4
+    - kind: system
+      text: You can not fix a wall while you are inside it.
+      at: 1.4
+      dur: 4
+  - say: kyle
+    text: Dave. I am stuck in the wall.
+  - say: dave
+    text: Turn off noclip.
+  - say: kyle
+    text: If I turn off noclip, I will be stuck in the wall for real.
+  - say: dave
+    text: Then do not turn it off.
+  - say: kyle
+    text: Then how do I get out?
+  - say: dave
+    text: Walk out. Slowly. Like you are leaving a party.
+  - act: 4
+    cam: wide
+    sfx:
+    - name: whoosh
+      at: 1.0
+    acts:
+    - who: kyle
+      do: walk_to
+      to: center
+      dur: 2.5
+    ui:
+    - kind: chat
+      text: '[SERVER] Kyle has left the wall. The wall is relieved.'
+      at: 2.6
+      dur: 4
+  - say: npc_baker
+    text: I am putting up a sign. No console users. Not one more.
+  - say: kyle
+    text: That is fair. That is so fair.
+- id: admin
+  set: street
+  cast:
+    dave: left
+    kyle: center
+    admin: right
+  beats:
+  - act: 3
+    cam: wide
+    sfx:
+    - name: glitch
+      at: 1.0
+    - name: boom
+      at: 1.8
+    acts:
+    - who: admin
+      do: appear
+      delay: 1.0
+    ui:
+    - kind: admin
+      text: 'NOTICE: Two users. One console. One problem.'
+      at: 1.2
+      dur: 4.5
+  - say: admin
+    text: Kyle.
+  - say: kyle
+    text: Hello. I am so sorry. I fixed a lot of things first. Please look at the things I fixed.
+  - say: admin
+    text: The console was never supposed to go to two people.
+  - say: dave
+    text: Then why did it go to Kyle?
+  - say: admin
+    text: Because Dave shared his screen during episode four.
+  - say: dave
+    text: Did I?
+  - say: admin
+    text: You showed Kyle your aimbot. The console saw. The console copied itself.
+  - say: kyle
+    text: So this is Dave's fault.
+  - say: dave
+    text: Everything is my fault. That is the theme of the show.
+  - say: admin
+    text: Kyle, you have done eleven good things and one bad thing. Dave has done one good thing in six weeks.
+  - say: dave
+    text: Which one?
+  - say: admin
+    text: You fixed an awning with your head.
+  - say: dave
+    text: That was a good thing. Thank you.
+  - say: admin
+    text: This is warning two of three. For both of you. Shared warnings. Multiplayer rules.
+  - act: 3
+    cam: dave
+    sfx:
+    - name: warn
+      at: 0.5
+    ui:
+    - kind: system
+      text: WARNING 2/3  (shared)
+      at: 0.5
+      dur: 4
+  - say: kyle
+    text: Shared? I get Dave's warnings now?
+  - say: admin
+    text: You are on the same server. You are on the same team.
+  - say: kyle
+    text: I did not want to be on Dave's team.
+  - say: dave
+    text: Nobody does, Kyle. And yet here we all are.
+- id: epilogue
+  set: apartment
+  cast:
+    dave: couch
+    kyle: center
+  beats:
+  - card: THAT NIGHT
+    sub: Two consoles. One apartment.
+    dur: 4
+    sfx:
+    - whoosh
+  - say: kyle
+    text: The apartment is so clean.
+  - say: dave
+    text: I hate it.
+  - say: kyle
+    text: The sink works. The door does not squeak. The window has glass in it.
+  - say: dave
+    text: I hate all of it.
+  - say: kyle
+    text: Dave. One more warning and something happens. The Admin did not say what.
+  - say: dave
+    text: The Admin never says what. It is part of the mystery.
+  - say: kyle
+    text: What if it is a ban?
+  - say: dave
+    text: A ban from what? From reality?
+  - say: kyle
+    text: Yes, Dave. From reality.
+  - say: dave
+    text: That can not be real. Can it?
+  - act: 3
+    cam: wide
+    sfx:
+    - name: glitch
+      at: 0.8
+    ui:
+    - kind: chat
+      text: '[SERVER] Somewhere, an Admin is looking at a very large button.'
+      at: 0.6
+      dur: 4.5
+  - say: kyle
+    text: Promise me one thing. No cheats for a week.
+  - say: dave
+    text: A whole week?
+  - say: kyle
+    text: One week. No console.
+  - say: dave
+    text: I promise. Probably.
+  - act: 3
+    cam: wide
+    ui:
+    - kind: chat
+      text: '[SERVER] It is 2 a.m. Nobody is asleep.'
+      at: 0.4
+      dur: 3.5
+  - say: kyle
+    text: Dave, are you still awake?
+  - say: dave
+    text: I am always awake. My brain is full of commands I am not allowed to type.
+  - say: kyle
+    text: I keep thinking about the wall. About being inside it. It was the best thirty seconds of my whole life, and also the worst.
+  - say: dave
+    text: That is how all the good cheats feel. Like flying and falling at the same time.
+  - say: kyle
+    text: I understand you now. I did not before. I used to think you were just being stupid.
+  - say: dave
+    text: I was also being stupid. Both things can be true.
+  - say: kyle
+    text: When I was fixing the street, people clapped, and it felt amazing. And when I went through the wall, nobody clapped, and it felt even better. What does that say about me?
+  - say: dave
+    text: It says you are a player now, Kyle. Welcome to the server.
+  - say: kyle
+    text: I do not want to be a player. I want to be the guy who reads the list.
+  - say: dave
+    text: You can be both. You can be the guy who reads the list, and then does something stupid anyway, but carefully.
+  - say: kyle
+    text: That is the worst advice I have ever heard.
+  - say: dave
+    text: Thank you. I have been working on it for six weeks.
+  - act: 4
+    cam: wide
+    sfx:
+    - name: chime
+      at: 1.0
+    ui:
+    - kind: system
+      text: 'Next time: the Ban Hammer.'
+      at: 0.8
+      dur: 4
+target_seconds: 600
+fps: 24
+resolution:
+- 1280
+- 720
+id: s01e07
+title: Multiplayer

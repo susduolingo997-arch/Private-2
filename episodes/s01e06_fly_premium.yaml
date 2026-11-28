@@ -1,0 +1,703 @@
+scenes:
+- id: cold_open
+  set: apartment
+  cast:
+    dave: couch
+    kyle: right
+  beats:
+  - act: 3
+    cam: wide
+    hp: '100'
+    ui:
+    - kind: chat
+      text: '[SERVER] Dave has four dollars. Dave has always had four dollars.'
+      at: 0.4
+      dur: 4
+  - say: dave
+    text: Kyle, I have been thinking about flying.
+  - say: kyle
+    text: You have been thinking about flying, or you have been thinking about the console?
+  - say: dave
+    text: Both. They are the same thought now. I type fly, and I fly. It is the dream of every human who has ever looked at a bird.
+  - say: kyle
+    text: You tried fly in episode one. It said the command does not exist.
+  - say: dave
+    text: That was before the update. Look at the list. Fly is back. It just has a little crown next to it.
+  - say: kyle
+    text: A crown means it costs money. A crown always means it costs money.
+  - say: dave
+    text: A crown means it is royal. I am going to be royalty of the sky.
+  - act: 3
+    cam: dave
+    sfx:
+    - name: chime
+      at: 0.8
+    ui:
+    - kind: console
+      text: '> fly'
+      at: 0.3
+      dur: 1.4
+    - kind: system
+      text: FLY is a PREMIUM REALITY feature. Upgrade for $4.
+      at: 1.6
+      dur: 4
+  - say: kyle
+    text: Four dollars.
+  - say: dave
+    text: That is exactly how much money I have. It is a sign.
+  - say: kyle
+    text: It is not a sign. It is a price. They know how much money you have, Dave. That is why it is four dollars.
+  - say: dave
+    text: The universe has set the price to precisely what I can afford. That is customer service.
+  - say: kyle
+    text: That is a trap. That is the definition of a trap. What about rent? What about food?
+  - say: dave
+    text: I have the bagel coupon. The bagel coupon is food.
+  - say: kyle
+    text: You have been saving that coupon for a year.
+  - say: dave
+    text: And tonight, it becomes dinner. Everything is falling into place.
+- id: title
+  set: black
+  beats:
+  - card: IRL BUT CHEATS
+    sub: S01E06  -  FLY (PREMIUM)
+    dur: 5
+    sfx:
+    - boom
+- id: purchase
+  set: apartment
+  cast:
+    dave: center
+    kyle: right
+  beats:
+  - say: dave
+    text: Okay. Upgrade. Yes. Confirm. Confirm again. Why are there so many confirms?
+  - say: kyle
+    text: Read them. Please read at least one of them.
+  - say: dave
+    text: It says, by purchasing Premium Reality you agree that gravity is now a subscription.
+  - say: kyle
+    text: Gravity is a subscription?
+  - say: dave
+    text: It is fine. I am paying to not have gravity. That is the point.
+  - say: kyle
+    text: What happens when the subscription runs out?
+  - say: dave
+    text: Then I land. Gently. Probably.
+  - act: 4
+    cam: dave
+    sfx:
+    - name: ding
+      at: 1.0
+    ui:
+    - kind: console
+      text: '> upgrade premium'
+      at: 0.3
+      dur: 1.4
+    - kind: system
+      text: 'PAYMENT ACCEPTED. Wallet: $0.00'
+      at: 1.4
+      dur: 3
+    - kind: achievement
+      text: Premium Member
+      at: 2.6
+      dur: 3
+  - say: dave
+    text: I am premium. Kyle, look at me. Do I look premium?
+  - say: kyle
+    text: You look exactly the same, but poorer.
+  - say: dave
+    text: Premium is on the inside. Now. Fly.
+  - act: 4
+    cam: wide
+    sfx:
+    - name: whoosh
+      at: 0.8
+    acts:
+    - who: dave
+      do: jump
+      delay: 0.8
+      dur: 3
+    ui:
+    - kind: console
+      text: '> fly'
+      at: 0.2
+      dur: 1.2
+    - kind: system
+      text: FLY ENABLED
+      at: 1.0
+      dur: 3
+  - say: kyle
+    text: Dave. You are off the ground.
+  - say: dave
+    text: I am off the ground! I am a bird! I am a premium bird!
+  - say: kyle
+    text: You are about four inches off the ground.
+  - say: dave
+    text: Four inches of freedom, Kyle. Four inches that nobody can take away from me.
+  - act: 3
+    cam: wide
+    sfx:
+    - name: warn
+      at: 0.6
+    ui:
+    - kind: system
+      text: Basic Premium includes altitude up to 4 inches. Upgrade to Premium Plus for more.
+      at: 0.5
+      dur: 4.5
+  - say: kyle
+    text: There it is.
+  - say: dave
+    text: Premium Plus. How much is Premium Plus?
+  - say: kyle
+    text: Do not ask how much it is. You have zero dollars.
+  - say: dave
+    text: I am just curious. Curiosity is free.
+  - act: 3
+    cam: dave
+    sfx:
+    - name: error
+      at: 0.6
+    ui:
+    - kind: system
+      text: 'Premium Plus: $40. Or watch one advertisement.'
+      at: 0.5
+      dur: 4
+  - say: dave
+    text: An advertisement. I can afford an advertisement. I have eyes.
+  - say: kyle
+    text: Dave, I do not like where this is going.
+- id: advert
+  set: void
+  cast:
+    dave: center
+  beats:
+  - loading: Your reality will resume after this message.
+    dur: 5
+  - act: 4
+    cam: wide
+    sfx:
+    - name: chime
+      at: 0.4
+    ui:
+    - kind: chat
+      text: '[AD] Are YOU tired of walking? Try FLYING. Only in Premium Reality.'
+      at: 0.4
+      dur: 4.5
+  - say: dave
+    text: This is an advert for the thing I already bought.
+  - act: 3
+    cam: wide
+    ui:
+    - kind: chat
+      text: '[AD] Premium Reality. Because gravity is for free users.'
+      at: 0.3
+      dur: 4
+  - say: dave
+    text: That is a good slogan. I feel bad for free users now.
+  - act: 3
+    cam: wide
+    sfx:
+    - name: ding
+      at: 1.0
+    ui:
+    - kind: system
+      text: 'Thank you for watching. Premium Plus trial: 10 minutes.'
+      at: 0.6
+      dur: 4
+- id: sky
+  set: street
+  cast:
+    dave: center
+    kyle: right
+  beats:
+  - say: kyle
+    text: Where did you go? You just stood there blinking for thirty seconds.
+  - say: dave
+    text: I was in the advert. It was very bright and someone was very happy about flying.
+  - say: kyle
+    text: And now?
+  - say: dave
+    text: Now I have ten minutes of Premium Plus. Watch this.
+  - act: 5
+    cam: follow
+    follow: dave
+    sfx:
+    - name: whoosh
+      at: 0.4
+    - name: chime
+      at: 1.6
+    acts:
+    - who: dave
+      do: jump
+      dur: 4
+    ui:
+    - kind: achievement
+      text: Higher Than A Lamp Post
+      at: 1.6
+      dur: 3
+  - say: kyle
+    text: Dave! You are above the lamp post!
+  - say: dave
+    text: I can see everything! I can see the bakery! I can see the pigeon! I can see my apartment, and it is so small, and so messy!
+  - say: kyle
+    text: Can you get down?
+  - say: dave
+    text: Why would I ever get down? Up here, nobody owes rent. Up here, there is only wind.
+  - say: kyle
+    text: There is also a timer. There is a timer on your screen.
+  - say: dave
+    text: The timer is just a suggestion.
+  - act: 3
+    cam: wide
+    sfx:
+    - name: warn
+      at: 0.4
+    ui:
+    - kind: system
+      text: 'Premium Plus trial: 2 minutes remaining.'
+      at: 0.3
+      dur: 3.5
+  - say: kyle
+    text: Dave, that was fast. That was not ten minutes.
+  - say: dave
+    text: Time flies when you are flying. That is where the saying comes from.
+  - say: kyle
+    text: That is not where the saying comes from. Come down now. Slowly. While you still can.
+  - say: dave
+    text: Just one more lap. One lap around the bakery.
+- id: fall
+  set: street
+  cast:
+    dave: center
+    kyle: right
+  beats:
+  - act: 4
+    cam: wide
+    sfx:
+    - name: error
+      at: 0.4
+    - name: boom
+      at: 2.0
+    acts:
+    - who: dave
+      do: flop
+      delay: 1.8
+      dur: 2
+    ui:
+    - kind: system
+      text: TRIAL ENDED. Gravity restored.
+      at: 0.3
+      dur: 3.5
+  - say: kyle
+    text: Dave! Are you okay?
+  - say: dave
+    text: I landed on the bakery awning. It was very soft. It smells like bread.
+  - say: kyle
+    text: You are lucky it was the bakery and not the road.
+  - say: dave
+    text: It was not luck. It was the bread. The bread caught me.
+  - act: 3
+    cam: dave
+    hp: '40'
+    sfx:
+    - name: chime
+      at: 0.6
+    ui:
+    - kind: system
+      text: Would you like to renew Premium Plus? $40/month.
+      at: 0.5
+      dur: 4
+  - say: dave
+    text: They are asking me to renew while I am lying on an awning.
+  - say: kyle
+    text: That is when they always ask.
+  - say: dave
+    text: I am going to cancel. Where is the cancel button?
+  - say: kyle
+    text: Look for it.
+  - say: dave
+    text: There is no cancel. There is renew, and there is renew later.
+  - say: kyle
+    text: Of course there is.
+- id: bakery
+  set: street
+  cast:
+    dave: left
+    kyle: right
+    npc_baker:
+      at: center
+      face: 0
+  beats:
+  - act: 3
+    cam: wide
+    ui:
+    - kind: chat
+      text: '[SERVER] The baker has come outside. The baker has questions.'
+      at: 0.4
+      dur: 4
+    acts:
+    - who: npc_baker
+      do: walk_to
+      to: center
+      dur: 2
+  - say: npc_baker
+    text: Excuse me. Why is there a man on my awning? Why does my awning now have a dent in it shaped like a man?
+  - say: dave
+    text: Good afternoon. I am a premium customer.
+  - say: npc_baker
+    text: Of my bakery?
+  - say: dave
+    text: Of reality. I fell out of the sky because my subscription ended. Your awning saved my life.
+  - say: npc_baker
+    text: That awning cost me three hundred dollars.
+  - say: kyle
+    text: He has zero dollars. He spent his last four on flying.
+  - say: npc_baker
+    text: You paid four dollars to fall onto my bakery?
+  - say: dave
+    text: I paid four dollars to fly. The falling was included for free.
+  - say: npc_baker
+    text: I want the awning fixed by tomorrow.
+  - say: dave
+    text: Kyle, how do I fix an awning?
+  - say: kyle
+    text: You do not. You do not fix anything with the console ever again.
+  - say: dave
+    text: I could spawn a new awning.
+  - say: kyle
+    text: Remember the landlord. Remember what happened when you spawned the landlord.
+  - say: dave
+    text: The landlord is still on our couch. He is very comfortable. Awnings do not sit on couches.
+  - say: npc_baker
+    text: Who is this man? Is he always like this?
+  - say: kyle
+    text: Every single day. Since episode one.
+  - say: npc_baker
+    text: I am going to go back inside, and when I come out, I want the man to be gone, and I want my awning to be the shape of an awning.
+  - act: 3
+    cam: wide
+    sfx:
+    - name: pop
+      at: 1.0
+    acts:
+    - who: npc_baker
+      do: walk_to
+      to: shop_door
+      dur: 2
+    ui:
+    - kind: chat
+      text: '[SERVER] The baker has gone inside. The baker is watching through the window.'
+      at: 1.2
+      dur: 4
+  - say: dave
+    text: She is watching through the window.
+  - say: kyle
+    text: Of course she is. You are standing on her bakery.
+  - say: dave
+    text: Kyle. I have an idea. A good one this time.
+  - say: kyle
+    text: You have never once had a good one.
+  - say: dave
+    text: I will hover. Four inches. Under the awning. And I will push it back up with my head.
+  - say: kyle
+    text: That is a terrible idea.
+  - say: dave
+    text: It is a premium idea.
+  - act: 4
+    cam: dave
+    sfx:
+    - name: whoosh
+      at: 0.5
+    - name: ding
+      at: 2.4
+    acts:
+    - who: dave
+      do: jump
+      delay: 0.4
+      dur: 2
+    ui:
+    - kind: achievement
+      text: Fixed An Awning With Your Head
+      at: 2.4
+      dur: 3.5
+  - say: kyle
+    text: That actually worked.
+  - say: dave
+    text: Premium, Kyle. I keep telling you.
+  - say: kyle
+    text: Your hair is full of flour.
+  - say: dave
+    text: Premium flour.
+- id: home
+  set: apartment
+  cast:
+    dave: couch
+    kyle: right
+  beats:
+  - loading: 'Tip: Subscriptions renew automatically. So does regret.'
+    dur: 5
+  - say: kyle
+    text: So let me get this straight. You spent your last four dollars. You flew for two minutes. You crashed into a bakery. And you fixed it with your head.
+  - say: dave
+    text: When you say it like that, it sounds bad.
+  - say: kyle
+    text: How else could I say it?
+  - say: dave
+    text: Dave achieved flight. Dave helped a local business. Dave is now a premium member of reality.
+  - say: kyle
+    text: And how are you going to pay rent?
+  - say: dave
+    text: The landlord on the couch said he does not need rent this month. He likes the television.
+  - say: kyle
+    text: That is the fake landlord. The real landlord still wants nine hundred dollars.
+  - say: dave
+    text: Then I will hover to his office. He will be so impressed.
+  - say: kyle
+    text: Four inches is not impressive, Dave. Four inches is a step.
+  - say: dave
+    text: It is a step that never ends.
+  - act: 3
+    cam: wide
+    sfx:
+    - name: chime
+      at: 0.6
+    ui:
+    - kind: system
+      text: 'Premium tip: Did you know Premium members can also teleport? Upgrade to Premium Max.'
+      at: 0.5
+      dur: 5
+  - say: kyle
+    text: No.
+  - say: dave
+    text: I did not say anything.
+  - say: kyle
+    text: You were going to. Close the console. Close it right now.
+  - say: dave
+    text: I am closing it. I am closing it with my eyes on the teleport button.
+  - act: 3
+    cam: wide
+    sfx:
+    - name: glitch
+      at: 0.4
+    ui:
+    - kind: chat
+      text: '[SERVER] The sky has gone a little bit darker. Someone is watching.'
+      at: 0.4
+      dur: 4
+- id: admin
+  set: street
+  cast:
+    dave: center
+    kyle: right
+    admin: left
+  beats:
+  - act: 3
+    cam: wide
+    sfx:
+    - name: glitch
+      at: 1.0
+    - name: boom
+      at: 1.8
+    acts:
+    - who: admin
+      do: appear
+      delay: 1.0
+    ui:
+    - kind: admin
+      text: 'NOTICE: A user has been flying over a bakery. Explain.'
+      at: 1.2
+      dur: 4.5
+  - say: admin
+    text: Dave. You purchased Premium Reality.
+  - say: dave
+    text: I did. With my own four dollars. Legally.
+  - say: admin
+    text: Premium Reality is not a real product. It was a test. Nobody was supposed to buy it.
+  - say: dave
+    text: Then why was it in the console with a crown?
+  - say: admin
+    text: To see who would. You are the only one.
+  - say: kyle
+    text: Of course he is.
+  - say: admin
+    text: The server cannot refund four dollars. The server does not know how to give money back.
+  - say: dave
+    text: So what happens now?
+  - say: admin
+    text: You keep the premium. Forever. Four inches of flight. For the rest of your life.
+  - say: dave
+    text: Four inches?
+  - say: admin
+    text: Four inches. Use them wisely. This is your first warning, Dave. Warning one of three.
+  - act: 3
+    cam: dave
+    sfx:
+    - name: warn
+      at: 0.5
+    ui:
+    - kind: system
+      text: WARNING 1/3
+      at: 0.5
+      dur: 4
+- id: landlord
+  set: apartment
+  cast:
+    dave: center
+    kyle: right
+    npc_pruitt:
+      at: door
+      face: 0
+  beats:
+  - act: 3
+    cam: wide
+    sfx:
+    - name: boom
+      at: 0.3
+    ui:
+    - kind: chat
+      text: '[SERVER] Mister Pruitt, the real landlord, has entered the apartment.'
+      at: 0.3
+      dur: 4
+    acts:
+    - who: npc_pruitt
+      do: walk_to
+      to: left
+      dur: 2
+  - say: npc_pruitt
+    text: Dave. Nine hundred dollars. Today.
+  - say: dave
+    text: Mister Pruitt. Before you say anything else, I would like you to look at my feet.
+  - say: npc_pruitt
+    text: Why would I look at your feet?
+  - say: dave
+    text: Just look.
+  - act: 3
+    cam: dave
+    sfx:
+    - name: whoosh
+      at: 0.4
+    acts:
+    - who: dave
+      do: jump
+      delay: 0.3
+      dur: 2
+  - say: npc_pruitt
+    text: You are floating.
+  - say: dave
+    text: Four inches. Premium.
+  - say: npc_pruitt
+    text: Can the floating pay rent?
+  - say: dave
+    text: No. But it is very impressive. You have to admit that.
+  - say: npc_pruitt
+    text: I have seen a man on my couch who looks exactly like me watching television for a week. Nothing impresses me anymore.
+  - say: kyle
+    text: That is fair.
+  - say: npc_pruitt
+    text: How much money do you have?
+  - say: dave
+    text: I had four dollars. I invested it.
+  - say: npc_pruitt
+    text: In what?
+  - say: dave
+    text: In the sky.
+  - say: npc_pruitt
+    text: I am going to give you one more week, Dave. Not because I like you. Because I am tired. And because the other me told me to.
+  - say: dave
+    text: The other you is a good man.
+  - say: npc_pruitt
+    text: The other me ate all of my crackers.
+  - act: 3
+    cam: wide
+    sfx:
+    - name: pop
+      at: 1.0
+    acts:
+    - who: npc_pruitt
+      do: walk_to
+      to: door
+      dur: 2
+    ui:
+    - kind: achievement
+      text: Rent Extended By Floating
+      at: 1.4
+      dur: 3.5
+  - say: kyle
+    text: One more week. You got one more week out of four inches.
+  - say: dave
+    text: Return on investment, Kyle. I told you premium was worth it.
+  - say: kyle
+    text: You did not get a refund. You got sympathy.
+  - say: dave
+    text: Sympathy is a currency. It is just not accepted at the bank.
+- id: epilogue
+  set: apartment
+  cast:
+    dave: center
+    kyle: right
+  beats:
+  - card: ONE WEEK LATER
+    sub: Dave hovers everywhere now.
+    dur: 4
+    sfx:
+    - whoosh
+  - say: kyle
+    text: Dave, you do not need to hover to get to the fridge.
+  - say: dave
+    text: I paid for these four inches, Kyle. I am going to use them.
+  - say: kyle
+    text: You hovered into the shower this morning.
+  - say: dave
+    text: Premium shower. Very clean.
+  - say: kyle
+    text: And the bagel coupon?
+  - say: dave
+    text: I used it. It was the best bagel of my life. I ate it four inches off the ground.
+  - say: kyle
+    text: Was it worth four dollars and a warning from the Admin?
+  - say: dave
+    text: Kyle. I flew over a bakery. For two minutes I was a bird. Yes. It was worth everything.
+  - say: kyle
+    text: Dave. Can I ask you something serious?
+  - say: dave
+    text: Always. I am a very serious person, four inches off the ground.
+  - say: kyle
+    text: Where did the console even come from? Who gave it to you?
+  - say: dave
+    text: It was just there one morning. On my phone. Next to the weather.
+  - say: kyle
+    text: And you never wondered why?
+  - say: dave
+    text: I wondered for one second. Then I typed noclip, and I went through the wall, and I stopped wondering.
+  - say: kyle
+    text: I think about it a lot. I think about how I would use it. Properly. Carefully.
+  - say: dave
+    text: You want a console, Kyle?
+  - say: kyle
+    text: I did not say that.
+  - say: dave
+    text: You did not have to. I can see it in your eyes. You want to be premium too.
+  - act: 4
+    cam: wide
+    sfx:
+    - name: chime
+      at: 1.0
+    ui:
+    - kind: system
+      text: 'Next time: Kyle gets a console.'
+      at: 0.8
+      dur: 4
+    acts:
+    - who: dave
+      do: jump
+      delay: 0.5
+      dur: 2
+target_seconds: 600
+fps: 24
+resolution:
+- 1280
+- 720
+id: s01e06
+title: Fly (Premium)
