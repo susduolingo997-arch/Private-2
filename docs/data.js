@@ -1065,6 +1065,57 @@ window.UNIVERSE = {
    "channel_name": "Channel 9"
   },
   {
+   "id": "n9-s01e07",
+   "channel": "channel-9",
+   "title": "The Quiet Episode (Library Box 100% Full, Mime In No Box) | Channel 9 Evening News S01E07",
+   "embed": "universe/embeds/n9-s01e07.html",
+   "duration": 600,
+   "published": "2026-11-28",
+   "views": 48,
+   "likes": 3,
+   "cast": [
+    "martin",
+    "sarah",
+    "david",
+    "emma",
+    "kevin",
+    "richard",
+    "gnome"
+   ],
+   "thumb": {
+    "capture": {
+     "embed": "universe/embeds/n9-s01e07.html",
+     "at": 40
+    },
+    "text": [
+     "SHHH",
+     "QUIET NEWS"
+    ],
+    "hl": 1,
+    "tag": "EPISODE 4",
+    "style": "news"
+   },
+   "description": "After eleven complaints about screaming, CHANNEL 9 whispers. The library returns box is full. A mime is trapped in no box.\nDavid forecasts a silence front (over Iceland). Kevin makes silent soup. Zero complaints. Gerald: still missing.\n",
+   "comments": [
+    {
+     "by": "richard",
+     "text": "ZERO COMPLAINTS!!! (whispered)",
+     "likes": 51
+    },
+    {
+     "by": "kevin",
+     "text": "the soup was cold",
+     "likes": 29
+    }
+   ],
+   "mentions": [],
+   "tags": [],
+   "thumb_img": "art/thumbs/n9-s01e07.jpg",
+   "status": "live",
+   "embed_src": "embeds/n9-s01e07.html",
+   "channel_name": "Channel 9"
+  },
+  {
    "id": "pf-e1",
    "channel": "passionfruit",
    "title": "PASSIONFRUIT Event 1 - Juicier Than Ever",

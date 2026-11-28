@@ -302,6 +302,23 @@ videos:
       - {by: richard, text: "FORTY-EIGHT!", likes: 40}
       - {by: kevin,   text: "keys", likes: 33}
 
+  - id: n9-s01e07
+    channel: channel-9
+    title: "The Quiet Episode (Library Box 100% Full, Mime In No Box) | Channel 9 Evening News S01E07"
+    embed: universe/embeds/n9-s01e07.html
+    duration: 600
+    published: 2026-11-28
+    views: 48
+    likes: 3
+    cast: [martin, sarah, david, emma, kevin, richard, gnome]
+    thumb: {capture: {embed: universe/embeds/n9-s01e07.html, at: 40}, text: ["SHHH", "QUIET NEWS"], hl: 1, tag: "EPISODE 4", style: news}
+    description: |
+      After eleven complaints about screaming, CHANNEL 9 whispers. The library returns box is full. A mime is trapped in no box.
+      David forecasts a silence front (over Iceland). Kevin makes silent soup. Zero complaints. Gerald: still missing.
+    comments:
+      - {by: richard, text: "ZERO COMPLAINTS!!! (whispered)", likes: 51}
+      - {by: kevin,   text: "the soup was cold", likes: 29}
+
   # ================================================================ PASSIONFRUIT
   # The five real events (cast and products from passionfruit/eventN/event.json). Each is a ~22 minute film
   # published as a GitHub release; the site links out to it.
